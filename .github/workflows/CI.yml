@@ -1,0 +1,108 @@
+name: CI
+
+on:
+  - push
+  - pull_request
+  - workflow_dispatch
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # the check script below needs the whole history
+
+      - name: Setup Nix
+        uses: cachix/install-nix-action@v17
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            substituters        = https://cache.iog.io https://cache.nixos.org https://foliage.cachix.org
+            trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= foliage.cachix.org-1:kAFyYLnk8JcRURWReWZCatM9v3Rk24F5wNMpEj14Q/g=
+
+      - name: Run checks
+        run: nix shell -c ./scripts/check.sh
+
+  build:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: check
+
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      contents: write
+      id-token: write
+      pages: write
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/cache@v3
+        with:
+          path: _cache
+          key: 1 # bump to refresh
+
+      - name: Setup Nix
+        uses: cachix/install-nix-action@v17
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            substituters        = https://cache.iog.io https://cache.nixos.org https://foliage.cachix.org
+            trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= foliage.cachix.org-1:kAFyYLnk8JcRURWReWZCatM9v3Rk24F5wNMpEj14Q/g=
+
+      - name: Unpack keys
+        env:
+          KEYS: ${{ secrets.KEYS }}
+        run: |
+          mkdir _keys
+          echo "$KEYS" | base64 -d | tar xvz -C _keys
+
+      - name: Build repository
+        run: |
+          nix shell -c foliage build
+
+      - name: Copy static web assets
+        run: |
+          cp static/index.html _repo
+          cp README.md _repo
+
+      - name: Commit as branch
+        run: |
+          set -xe
+
+          # see https://github.com/orgs/community/discussions/26560 and https://github.com/actions/checkout/issues/13
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Need --force because _repo is gitignore'd
+          git add --force _repo
+          treeId=$(git write-tree --prefix=_repo)
+          # the checkout action doesn't checkout all branches
+          git fetch origin repo
+          commitId=$(git commit-tree -p origin/repo -m "Update from ${{ github.sha }}" "$treeId")
+          git update-ref "refs/heads/repo" "$commitId"
+          git push origin repo
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v1
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: _repo
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+
