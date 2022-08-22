@@ -30,7 +30,11 @@ render_meta() {
 }
 
 log() {
-  echo "$*" >&2
+  printf '%s\n' "$*" >&2
+}
+
+warning() {
+  log "WARNING: $*"
 }
 
 # NOTE: This function prints to stdout the package id (which is not known beforehand).
@@ -39,37 +43,37 @@ do_package() {
   local SUBDIR=$2
   local WORKDIR=$3
 
-  local cabal_file
-  cabal_file=$(echo "$WORKDIR"/"$SUBDIR"/*.cabal)
+  local CABAL_FILE
+  CABAL_FILE=$(echo "$WORKDIR"/"$SUBDIR"/*.cabal)
 
-  local pkg_name
-  pkg_name=$(basename "$cabal_file" .cabal)
+  local PKG_NAME
+  PKG_NAME=$(basename "$CABAL_FILE" .cabal)
 
-  local pkg_version
-  pkg_version=$(awk -v IGNORECASE=1 -e '/^version/ { print $2 }' "$cabal_file")
+  local PKG_VERSION
+  PKG_VERSION=$(awk -v IGNORECASE=1 -e '/^version/ { print $2 }' "$CABAL_FILE")
 
-  local pkg_id="$pkg_name-$pkg_version"
+  local PKG_ID="$PKG_NAME-$PKG_VERSION"
 
-  if [[ -z $pkg_version ]]; then
-    log "cannot extract version from $cabal_file, skipping ..."
+  if [[ -z $PKG_VERSION ]]; then
+    warning "cannot extract version from $CABAL_FILE, skipping ..."
     return
   fi
 
-  local metafile="_sources/$pkg_name/$pkg_version/meta.toml"
-  if [[ -f $metafile ]]; then
-    log "$metafile already exists! you can only publish new versions of a package"
+  local METAFILE="_sources/$PKG_NAME/$PKG_VERSION/meta.toml"
+  if [[ -f $METAFILE ]]; then
+    warning "$METAFILE already exists! you can only publish new versions of a package"
     if [[ -z $SUBDIR ]]; then
-      log "skipping $pkg_id from $URL"
+      warning "skipping $PKG_ID from $URL"
     else
-      log "skipping $pkg_id from $URL subdir $SUBDIR"
+      warning "skipping $PKG_ID from $URL subdir $SUBDIR"
     fi
     return
   fi
 
-  mkdir -p "$(dirname "$metafile")"
-  render_meta "$TIMESTAMP" "$URL" "$SUBDIR" > "$metafile"
-  log "Written $metafile"
-  echo "$pkg_id"
+  mkdir -p "$(dirname "$METAFILE")"
+  render_meta "$TIMESTAMP" "$URL" "$SUBDIR" > "$METAFILE"
+  log "Written $METAFILE"
+  echo "$PKG_ID"
 }
 
 REPO_URL="$1" # e.g. input-output-hk/optparse-applicative
