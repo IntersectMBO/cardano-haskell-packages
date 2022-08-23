@@ -1,15 +1,18 @@
 {
+  description = "Metadata for Cardano's Haskell package repository";
+
   inputs = {
     foliage.url = "github:andreabedini/foliage";
     flake-utils.url = "github:numtide/flake-utils";
   };
+
   outputs = { self, nixpkgs, foliage, flake-utils }:
     flake-utils.lib.eachDefaultSystem
       (system:
         let pkgs = nixpkgs.legacyPackages.${system}; in
         {
           packages.default = pkgs.buildEnv {
-            name = "hackage-a-la-carte";
+            name = "cardano-haskell-package-repo";
             paths = [
               pkgs.bash
               pkgs.coreutils
