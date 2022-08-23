@@ -1,0 +1,47 @@
+name: Publish repository
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Setup Nix
+        uses: cachix/install-nix-action@v16
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            substituters        = https://cache.iog.io https://cache.nixos.org/
+            trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+
+      - name: Run checks
+        run: nix shell -c ./scripts/check.sh
+
+      - name: Unpack keys
+        env:
+          KEYS: ${{ secrets.KEYS }}
+        run: |
+          mkdir _keys
+          echo "$KEYS" | base64 -d | tar xvz -C _keys
+
+      - name: Build repository
+        run: nix run .#foliage build
+
+      - name: Copy static web assets
+        run: |
+          cp static/index.html _repo
+          cp README.md _repo
+          touch _repo/.nojekyll
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.2
+        with:
+          branch: gh-pages
+          folder: _repo
