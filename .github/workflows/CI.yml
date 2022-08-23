@@ -25,19 +25,21 @@ jobs:
       - name: Run checks
         run: nix shell -c ./scripts/check.sh
 
-
-  publish:
+  build:
     runs-on: ubuntu-latest
-
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: check
 
-    needs:
-      - check
-
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
       contents: read
-      pages: write
       id-token: write
+      pages: write
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     concurrency:
       group: "pages"
