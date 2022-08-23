@@ -32,9 +32,12 @@ url = 'https://github.com/input-output-hk/ouroboros-network/tarball/fa10cb4eef1e
 subdir = 'typed-protocols'
 ```
 
-NOTE: To not break the cabal `index-state` functionality when adding a
-package, it is important that the timestamp is greater than any other
-timestamp in the index.
+NOTE: When adding a package, it is important to use a timestamp that is
+greater than any other timestamp in the index. Indeed, cabal users rely on
+the changes to the repository index to be append-only. A non append-only
+change to the package index would change the repository index state as
+pinned by `index-state`, breaking reproducibility.
+
 Using the current date and time (e.g. `date --utc +%Y-%m-%dT%H:%M:%SZ`)
 works alright but if you are sending a PR you need to consider the
 possibility that another developer has inserted a new (greater) timestamp
@@ -52,8 +55,9 @@ Usage: ./scripts/add-from-github.sh REPO_URL REV [SUBDIR...]
 ```
 
 The script will:
+
 - Find the cabal files in the repo (either at the root or in the specified subdirectories)
-- Figure out the package names and versions
+- Obtain package names and versions from the cabal files
 - Create the corresponding `meta.toml` files
 - Prepopulate a canned commit message in `COMMIT_MSG.txt`
 
