@@ -8,6 +8,10 @@
       (system:
         let pkgs = nixpkgs.legacyPackages.${system}; in
         {
+          apps.foliage = {
+              type = "app";
+              program = "${foliage.packages.${system}.default}/bin/foliage";
+          };
           packages.default = pkgs.buildEnv {
             name = "hackage-a-la-carte";
             paths = [
