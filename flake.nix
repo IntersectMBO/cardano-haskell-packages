@@ -12,6 +12,7 @@
             name = "hackage-a-la-carte";
             paths = [
               pkgs.bash
+              pkgs.coreutils
               pkgs.curl
               pkgs.git
               foliage.packages.${system}.default

@@ -139,11 +139,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1661159711,
-        "narHash": "sha256-S5FI2rWnaga8oquI4wdPehwJZSrCxrAWjpg3PjfmYF4=",
+        "lastModified": 1661256675,
+        "narHash": "sha256-vpAm3Ga6YELSj68yfyicvSVDNPzItLkZpVvi9SiOOj8=",
         "owner": "andreabedini",
         "repo": "foliage",
-        "rev": "df2fb98a1efb7a7ca976ac45a5f88bae1ceef361",
+        "rev": "bbeaaf16fe9beac78bd76a792b0bf372bb93558a",
         "type": "github"
       },
       "original": {
@@ -430,11 +430,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1661151577,
-        "narHash": "sha256-++S0TuJtuz9IpqP8rKktWyHZKpgdyrzDFUXVY07MTRI=",
+        "lastModified": 1661239106,
+        "narHash": "sha256-C5OCLnrv2c4CHs9DMEtYKkjJmGL7ySAZ1PqPkHBonxQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "54060e816971276da05970a983487a25810c38a7",
+        "rev": "963d27a0767422be9b8686a8493dcade6acee992",
         "type": "github"
       },
       "original": {
