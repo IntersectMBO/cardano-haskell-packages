@@ -1,4 +1,4 @@
-# Metadata for Haskell package repository
+# Cardano Haskell package repository
 
 This git repository contains the metadata used to create the internal
 Hackage package repository available at https://...

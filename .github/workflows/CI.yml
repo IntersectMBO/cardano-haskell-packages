@@ -11,6 +11,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # the check script below needs the whole history
 
       - name: Setup Nix
         uses: cachix/install-nix-action@v17
