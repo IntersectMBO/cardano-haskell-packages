@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup Nix
         uses: cachix/install-nix-action@v17
@@ -42,7 +42,12 @@ jobs:
       cancel-in-progress: true
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
+      - uses: actions/cache@v3
+        with:
+          path: _repo
+          key: 0 # bump to refresh
 
       - name: Setup Nix
         uses: cachix/install-nix-action@v17
