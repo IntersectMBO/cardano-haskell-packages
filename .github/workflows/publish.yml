@@ -32,7 +32,7 @@ jobs:
           echo "$KEYS" | base64 -d | tar xvz -C _keys
 
       - name: Build repository
-        run: nix run .#foliage build
+        run: nix run github:andreabedini/foliage build
 
       - name: Copy static web assets
         run: |
