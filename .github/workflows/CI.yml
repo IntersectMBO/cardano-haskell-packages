@@ -3,13 +3,13 @@ name: CI
 on:
   - push
   - pull_request
+  - workflow_dispatch
 
 jobs:
   check:
     runs-on: ubuntu-latest
 
     steps:
-
       - uses: actions/checkout@v2
 
       - name: Setup Nix
@@ -26,12 +26,22 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
+
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
     needs:
       - check
 
-    steps:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
 
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+
+    steps:
       - uses: actions/checkout@v2
 
       - name: Setup Nix
@@ -56,10 +66,15 @@ jobs:
         run: |
           cp static/index.html _repo
           cp README.md _repo
-          touch _repo/.nojekyll
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.2.2
+      - name: Setup Pages
+        uses: actions/configure-pages@v1
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          branch: gh-pages
-          folder: _repo
+          path: _repo
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
