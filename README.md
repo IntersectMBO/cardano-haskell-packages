@@ -1,9 +1,29 @@
 # Cardano Haskell package repository
 
-This git repository contains the metadata used to create the internal
-Hackage package repository available at https://...
+This git repository contains the metadata used to create a
+Cabal package repository available at https://input-output-hk.github.io/cardano-haskell-package-repo/ .
 
-To use that repository from cabal, add the following lines to your
+The purpose of this package repository is to contain all the Haskell 
+packages used by the Cardano open-source project which are not on
+Hackage.
+
+If you're here because you need to add a new version of your package, you
+probably want to read the section on [adding a package from GitHub](#-from-github).
+
+## What is a Cabal package repository?
+
+A package repository is essentially a mapping from package name and version
+to the source distribution for the package. Most Haskell programmers will be
+familiar with the package repository hosted on Hackage, which is enabled
+by default in Cabal.
+
+However, Cabal supports the use of _additional_ package repositories.
+This is convenient for users who can't or don't want to put their packages
+on Hackage.
+
+## How to use the package repository
+
+To use the package repository from cabal, add the following lines to your
 `cabal.project` file:
 
 ```
@@ -20,11 +40,41 @@ repository cardano-haskell-package-repo
   key-threshold: 3
 ```
 
-## Including a new package (or package version)
+The package repository will be understood by cabal, and can be updated with `cabal update`.
 
-To add a new package (or package version) to the repository, all you have
-to do is to add a file `_sources/$pkg_name/$pkg_version/meta.toml` with the
-following format:
+The `index-state` for the package repository can also be pinned in as usual:
+
+```
+index-state: cardano-haskell-package-repo 2022-08-25T00:00:00Z
+```
+
+### ... with haskell.nix
+
+To use the package repository with `haskell.nix`, do the following:
+
+1. Add the package repository to your `cabal.project` as above.
+2. Setup a fetcher for the package repository. The easiest way is to use a flake input, such as:
+```
+inputs.cardanoHaskellPackageRepo = {
+  url = "github:input-output-hk/cardano-haskell-package-repo?ref=repo";
+  flake = false;
+};
+```
+3. Add the fetched input to the `inputMap` argument of `cabalProject`, like this:
+```
+cabalProject {
+  ...
+  inputMap = { "https://input-output-hk.github.io/cardano-haskell-package-repo" = cardanoHaskellPackageRepo; };
+}
+```
+
+When you want to update the state of the package repository, you can simply update the flake input
+(in the example above you would run `nix flake lock --update-input cardanoHaskellPackageRepo`).
+
+## How to add a new package (or package version) to the repository 
+
+Package versions are defined using metadata files `_sources/$pkg_name/$pkg_version/meta.toml`,
+which you can create directly. The metadata files have the following format:
 
 ```toml
 # REQUIRED timestamp at which the package appears in the index
@@ -45,26 +95,28 @@ Using the current date and time (e.g. `date --utc +%Y-%m-%dT%H:%M:%SZ`)
 works alright but if you are sending a PR you need to consider the
 possibility that another developer has inserted a new (greater) timestamp
 before your PR got merged. We have CI check that prevents this from
-happening.
+happening, and we enforce FF-only merges.
 
-## Including a new package from GitHub
+### ... from GitHub
 
-We include a convenience script `./scripts/add-from-github.sh` to simplify
+There is a convenience script `./scripts/add-from-github.sh` to simplify
 adding a package from a GitHub repository.
 
-```
+```console
 $ ./scripts/add-from-github.sh
 Usage: ./scripts/add-from-github.sh REPO_URL REV [SUBDIR...]
 ```
 
 The script will:
 
-- Find the cabal files in the repo (either at the root or in the specified subdirectories)
-- Obtain package names and versions from the cabal files
-- Create the corresponding `meta.toml` files
-- Prepopulate a canned commit message in `COMMIT_MSG.txt`
+1. Find the cabal files in the repo (either at the root or in the specified subdirectories)
+2. Obtain package names and versions from the cabal files
+3. Create the corresponding `meta.toml` files
+4. Prepopulate a canned commit message in `COMMIT_MSG.txt`
 
-# Help!
+## Help!
+
+If you have trouble, open an issue, or contact the maintainers:
 
 - Andrea Bedini (andrea.bedini@iohk.io)
 - Michael Peyton Jones (michael.peyton-jones@iohk.io)
