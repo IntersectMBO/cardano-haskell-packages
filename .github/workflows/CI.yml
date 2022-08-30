@@ -48,11 +48,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/checkout@v3
-        with:
-          ref: repo
-          path: _repo
-
       - uses: actions/cache@v3
         with:
           path: _cache
@@ -83,14 +78,15 @@ jobs:
           cp README.md _repo
 
       - name: Commit as branch
-        working-directory: _repo
         run: |
           # see https://github.com/orgs/community/discussions/26560 and https://github.com/actions/checkout/issues/13
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add --all .
-          git commit --message "Update from ${{ github.sha }}"
+          git add _repo
+          treeId=$(git write-tree --prefix=_repo)
+          commitId=$(git commit-tree -p repo -m "Update from ${{ github.sha }}" "$treeId")
+          git update-ref "refs/heads/repo" "$commitId"
           git push origin repo
 
       - name: Setup Pages
