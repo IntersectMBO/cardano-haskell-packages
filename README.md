@@ -114,6 +114,23 @@ The script will:
 3. Create the corresponding `meta.toml` files
 4. Prepopulate a canned commit message in `COMMIT_MSG.txt`
 
+## How do I add a patched versions of a Hackage package to this package repository?
+
+This package repository should mostly contain versions of packages which are _not_ on Hackage.
+
+If you need to patch a version of a package on Hackage, then there are two options:
+
+1. For short lived forks, use a `source-repository-package` stanza by preference.
+2. For long-lived forks (because e.g. the maintainer is unresponsive or the patch is large and will take time to upstream), then we can consider releasing a patched version in this package repository.
+
+The main constraint when adding a patched version to this repository is to be sure that we use a version number that won't ever conflict with a release made by upstream on Hackage.
+There are two approaches to doing this:
+
+1. Release the package into this package repository under a different name (for the fork). 
+This is very safe, but may not be possible if the dependency is incurred via a packge we don't control, as then we can't force it to depend on the renamed package.
+2. Release the package under a version that is very unlikely to be used by upstream. 
+The scheme that we typically use is to take the existing version number, add four zero components and then a patch version, e.g. `1.2.3.4.0.0.0.0.1`.
+
 ## Help!
 
 If you have trouble, open an issue, or contact the maintainers:
