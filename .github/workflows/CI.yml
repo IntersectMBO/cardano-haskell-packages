@@ -83,7 +83,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add _repo
+          git add -f _repo
           treeId=$(git write-tree --prefix=_repo)
           commitId=$(git commit-tree -p repo -m "Update from ${{ github.sha }}" "$treeId")
           git update-ref "refs/heads/repo" "$commitId"
