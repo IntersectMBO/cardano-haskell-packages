@@ -1,0 +1,28 @@
+cabal-version:      >=1.10
+name:               flat
+version:            0.4.5.0.99.97.114.100.97.110.111.0.1
+license:            BSD3
+license-file:       LICENSE
+copyright:          Copyright: (c) 2016-2021 Pasqualino `Titto` Assini
+maintainer:         tittoassini@gmail.com
+author:             Pasqualino `Titto` Assini
+tested-with:
+    ghc ==7.10.3 || ==8.0.2 || ==8.2.2 || ==8.4.4 || ==8.6.5 || ==8.8.4 || ==8.10.3
+
+homepage:           http://quid2.org
+synopsis:           Principled and efficient bit-oriented binary serialization.
+description:
+    Reference implementation of `flat`, a principled and efficient binary serialization format.
+
+category:           Data,Parsing,Serialization
+build-type:         Simple
+extra-source-files:
+    stack.yaml
+    stack-6.35.yaml
+    stack-9.21.yaml
+    README.md
+    CHANGELOG
+
+source-repository head
+    type:     git
+    location: https://github.com/Quid2/flat
