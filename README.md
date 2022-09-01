@@ -1,7 +1,7 @@
 # Cardano Haskell package repository
 
-This git repository contains the metadata used to create a
-Cabal package repository available at https://input-output-hk.github.io/cardano-haskell-package-repo/ .
+This git repository contains the metadata used by [`foliage`](https://github.com/andreabedini/foliage) 
+to create a Cabal package repository available at https://input-output-hk.github.io/cardano-haskell-package-repo/ .
 
 The purpose of this package repository is to contain all the Haskell
 packages used by the Cardano open-source project which are not on
@@ -70,7 +70,14 @@ cabalProject {
 When you want to update the state of the package repository, you can simply update the flake input
 (in the example above you would run `nix flake lock --update-input cardanoHaskellPackageRepo`).
 
-## How to add a new package (or package version) to the repository
+If you have the repository configured correctly, then when you run `cabal build` from inside a `haskell.nix` 
+shell, you should not see any of the packages in the repository being built by cabal.
+The exception is if you have a `source-repository-package` stanza which overrides a _dependency_ of one
+of the packages in the repository. Then cabal will rebuild them both. If this becomes a problem,
+you can consider adding the patched package to the repository itself, 
+see [below](#how-do-i-add-a-patched-versions-of-a-hackage-package-to-this-package-repository).
+
+## How to add a new package (or package version) to the repository 
 
 Package versions are defined using metadata files `_sources/$pkg_name/$pkg_version/meta.toml`,
 which you can create directly. The metadata files have the following format:
@@ -111,7 +118,7 @@ The script will:
 1. Find the cabal files in the repo (either at the root or in the specified subdirectories)
 2. Obtain package names and versions from the cabal files
 3. Create the corresponding `meta.toml` files
-4. Prepopulate a canned commit message in `COMMIT_MSG.txt`
+4. Commit the changes to the repository
 
 ## How do I add a patched versions of a Hackage package to this package repository?
 
@@ -129,6 +136,15 @@ There are two approaches to doing this:
 This is very safe, but may not be possible if the dependency is incurred via a packge we don't control, as then we can't force it to depend on the renamed package.
 2. Release the package under a version that is very unlikely to be used by upstream.
 The scheme that we typically use is to take the existing version number, add four zero components and then a patch version, e.g. `1.2.3.4.0.0.0.0.1`.
+
+## CI for this repository
+
+The CI for this repository does the following things:
+
+- Checks that the timestamps in the repository are monotonically increasing through commits. 
+Along with requiring linear history, this ensures that repository that we build is always an extension of the previous one.
+- Builds the package repository from the metadata using `foliage`.
+- Deploys the package repository to the `repo` branch, along with some static web content.
 
 ## Help!
 
