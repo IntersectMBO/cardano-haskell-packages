@@ -3,7 +3,7 @@
 This git repository contains the metadata used to create a
 Cabal package repository available at https://input-output-hk.github.io/cardano-haskell-package-repo/ .
 
-The purpose of this package repository is to contain all the Haskell 
+The purpose of this package repository is to contain all the Haskell
 packages used by the Cardano open-source project which are not on
 Hackage.
 
@@ -37,7 +37,6 @@ repository cardano-haskell-package-repo
     bcec67e8e99cabfa7764d75ad9b158d72bfacf70ca1d0ec8bc6b4406d1bf8413
     c00aae8461a256275598500ea0e187588c35a5d5d7454fb57eac18d9edb86a56
     d4a35cd3121aa00d18544bb0ac01c3e1691d618f462c46129271bccf39f7e8ee
-  key-threshold: 3
 ```
 
 The package repository will be understood by cabal, and can be updated with `cabal update`.
@@ -71,7 +70,7 @@ cabalProject {
 When you want to update the state of the package repository, you can simply update the flake input
 (in the example above you would run `nix flake lock --update-input cardanoHaskellPackageRepo`).
 
-## How to add a new package (or package version) to the repository 
+## How to add a new package (or package version) to the repository
 
 Package versions are defined using metadata files `_sources/$pkg_name/$pkg_version/meta.toml`,
 which you can create directly. The metadata files have the following format:
@@ -126,9 +125,9 @@ If you need to patch a version of a package on Hackage, then there are two optio
 The main constraint when adding a patched version to this repository is to be sure that we use a version number that won't ever conflict with a release made by upstream on Hackage.
 There are two approaches to doing this:
 
-1. Release the package into this package repository under a different name (for the fork). 
+1. Release the package into this package repository under a different name (for the fork).
 This is very safe, but may not be possible if the dependency is incurred via a packge we don't control, as then we can't force it to depend on the renamed package.
-2. Release the package under a version that is very unlikely to be used by upstream. 
+2. Release the package under a version that is very unlikely to be used by upstream.
 The scheme that we typically use is to take the existing version number, add four zero components and then a patch version, e.g. `1.2.3.4.0.0.0.0.1`.
 
 ## Help!
