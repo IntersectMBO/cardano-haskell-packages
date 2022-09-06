@@ -70,7 +70,7 @@ do_package() {
   log "Written $METAFILE"
 
   git add "$METAFILE"
-  git commit -m"Added $PKG_ID from $REPO_URL at $REV"
+  git commit -m"Added $PKG_ID" -m "From $REPO_URL at $REV"
 }
 
 TAR_URL="$REPO_URL/tarball/$REV"
