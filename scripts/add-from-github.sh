@@ -78,9 +78,17 @@ TIMESTAMP=$(date --utc +%Y-%m-%dT%H:%M:%SZ)
 
 WORKDIR=$(mktemp -d)
 log "Work directory is $WORKDIR"
+pushd "$WORKDIR"
 
 log "Fetching $REPO_URL at revision $REV"
-curl --silent --location "$TAR_URL" | tar xz -C "$WORKDIR" --strip-component=1 --wildcards '**/*.cabal'
+
+if ! curl --fail --silent --location --remote-name "$TAR_URL"; then
+  echo "Failed to download $TAR_URL"
+  exit 1
+fi
+
+tar xzf * --strip-component=1 --wildcards '**/*.cabal'
+popd
 
 if [[ -z $SUBDIRS ]]; then
   do_package "$TAR_URL" "" "$WORKDIR"
