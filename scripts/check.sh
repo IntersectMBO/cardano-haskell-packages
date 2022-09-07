@@ -9,13 +9,13 @@ convert_timestamp_to_unix_time() {
 
 removed_timestamps_in_rev() {
   local rev=$1
-  git show -p "$rev" '_sources/*/*/meta.toml' \
+  git show --ignore-all-space -p "$rev" '_sources/*/*/meta.toml' \
   | sed -n -e 's/^-\s*timestamp\s\+=\s\+//p'
 }
 
 added_timestamps_in_rev() {
   local rev=$1
-  git show -p "$rev" '_sources/*/*/meta.toml' \
+  git show --ignore-all-space -p "$rev" '_sources/*/*/meta.toml' \
   | sed -n -e 's/^+\s*timestamp\s\+=\s\+//p'
 }
 
