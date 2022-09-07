@@ -61,7 +61,7 @@ library
         , bytestring        >= 0.10.12.0 && <0.11
         , containers        >= 0.6.2.1   && <0.7
         , extra             >= 1.7.10    && <1.8
-        , flat              >= 0.4.5     && <0.5
+        , flat              >= 0.4.4     && <0.5
         , ghc-prim          >= 0.6.1     && <0.7
         , plutus-core      ^>= 1.0
         , lens              >= 4.19.2    && <4.20

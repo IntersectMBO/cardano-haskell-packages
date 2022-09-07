@@ -67,7 +67,7 @@ library
         , bytestring         >= 0.10.12.0 && <0.11
         , cborg              >= 0.2.6.0   && <0.3
         , containers         >= 0.6.2.1   && <0.7
-        , flat               >= 0.4.5     && <0.5
+        , flat               >= 0.4.4     && <0.5
         , plutus-core       ^>= 1.0
         , mtl                >= 2.2.2     && <2.3
         , plutus-tx         ^>= 1.0
