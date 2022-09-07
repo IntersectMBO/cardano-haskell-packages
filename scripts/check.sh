@@ -10,13 +10,13 @@ convert_timestamp_to_unix_time() {
 removed_timestamps_in_rev() {
   local rev=$1
   git show -p "$rev" '_sources/*/*/meta.toml' \
-  | sed -n -e 's/^-timestamp\s\+=\s\+//p'
+  | sed -n -e 's/^-\s*timestamp\s\+=\s\+//p'
 }
 
 added_timestamps_in_rev() {
   local rev=$1
   git show -p "$rev" '_sources/*/*/meta.toml' \
-  | sed -n -e 's/^+timestamp\s\+=\s\+//p'
+  | sed -n -e 's/^+\s*timestamp\s\+=\s\+//p'
 }
 
 for rev in $(git rev-list --reverse HEAD); do
