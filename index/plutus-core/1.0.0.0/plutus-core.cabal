@@ -245,63 +245,63 @@ library
         Universe.Core
         GHC.Natural.Extras
     build-depends:
-        aeson -any,
-        algebraic-graphs >= 0.3,
-        array -any,
-        barbies -any,
-        base >=4.9 && <5,
-        bimap -any,
-        bytestring -any,
-        cardano-crypto,
-        cassava -any,
-        cborg -any,
-        composition-prelude >=1.1.0.1,
-        containers -any,
-        cryptonite -any,
-        data-default-class -any,
-        deepseq -any,
-        dependent-sum-template -any,
-        deriving-aeson >= 0.2.3,
-        deriving-compat -any,
-        dlist -any,
-        dom-lt -any,
-        exceptions -any,
-        extra -any,
-        filepath -any,
-        flat -any,
-        ghc-prim -any,
-        hashable,
-        hedgehog >=1.0,
-        int-cast -any,
-        integer-gmp -any,
-        lens -any,
-        megaparsec -any,
-        mmorph -any,
-        monoidal-containers,
-        mtl -any,
-        parser-combinators >= 0.4.0,
-        prettyprinter >=1.1.0.1,
-        prettyprinter-configurable -any,
-        primitive -any,
-        recursion-schemes -any,
-        secp256k1-haskell -any,
-        semigroupoids -any,
-        semigroups >=0.19.1,
-        serialise -any,
-        some < 1.0.3,
-        template-haskell -any,
-        th-compat -any,
-        text -any,
-        th-lift -any,
-        th-lift-instances -any,
-        th-utilities -any,
-        time -any,
-        transformers -any,
-        unordered-containers -any,
-        witherable -any,
-        word-array -any,
-        cardano-crypto-class -any,
-        index-envs
+        aeson                  >= 2.0.3.0   && <2.1
+      , algebraic-graphs       >= 0.3       && <0.7
+      , array                  >= 0.5.4.0   && <0.6
+      , barbies                >= 2.0.3.1   && <2.1
+      , base                   >= 4.9       && <5
+      , bimap                  >= 0.4.0     && <0.5
+      , bytestring             >= 0.10.12.0 && <0.11
+      , cardano-crypto         >= 1.1.0     && <1.2
+      , cassava                >= 0.5.2.0   && <0.6
+      , cborg                  >= 0.2.6.0   && <0.3
+      , composition-prelude    >= 1.1.0.1   && <3.1
+      , containers             >= 0.6.2.1   && <0.7
+      , cryptonite             >= 0.29      && <0.30
+      , data-default-class     >= 0.1.2.0   && <0.2
+      , deepseq                >= 1.4.4.0   && <1.5
+      , dependent-sum-template >= 0.1.0.3   && <0.2
+      , deriving-aeson         >= 0.2.3     && <0.3
+      , deriving-compat        >= 0.5.9     && <0.6
+      , dlist                  >= 1.0       && <1.1
+      , dom-lt                 >= 0.2.3     && <0.3
+      , exceptions             >= 0.10.4    && <0.11
+      , extra                  >= 1.7.10    && <1.8
+      , filepath               >= 1.4.2.1   && <1.5
+      , flat                   >= 0.4.5     && <0.5
+      , ghc-prim               >= 0.6.1     && <0.7
+      , hashable               >= 1.3.5.0   && <1.4
+      , hedgehog               >= 1.0       && <1.2
+      , int-cast               >= 0.2.0.0   && <0.3
+      , integer-gmp            >= 1.0.3.0   && <1.1
+      , lens                   >= 4.19.2    && <4.20
+      , megaparsec             >= 9.2.0     && <9.3
+      , mmorph                 >= 1.2.0     && <1.3
+      , monoidal-containers    >= 0.6.2.0   && <0.7
+      , mtl                    >= 2.2.2     && <2.3
+      , parser-combinators     >= 0.4.0     && <1.4
+      , prettyprinter          >= 1.1.0.1   && <1.8
+      , prettyprinter-configurable
+      , primitive              >= 0.7.3.0   && <0.8
+      , recursion-schemes      >= 5.2       && <5.3
+      , secp256k1-haskell      >= 0.6.0     && <0.7
+      , semigroupoids          >= 5.3.4     && <5.4
+      , semigroups             >= 0.19.1    && <0.21
+      , serialise              >= 0.2.4.0   && <0.3
+      , some                   >= 1.0.2     && <1.1
+      , template-haskell       >= 2.16.0.0  && <2.17
+      , th-compat              >= 0.1.3     && <0.2
+      , text                   >= 1.2.4.1   && <1.3
+      , th-lift                >= 0.8.2     && <0.9
+      , th-lift-instances      >= 0.1.19    && <0.2
+      , th-utilities           >= 0.2.4.1   && <0.3
+      , time                   >= 1.9.3     && <1.10
+      , transformers           >= 0.5.6.2   && <0.6
+      , unordered-containers   >= 0.2.16.0  && <0.3
+      , witherable             >= 0.4.2     && <0.5
+      , word-array
+      , cardano-crypto-class   >= 2.0.0     && <2.1
+      , index-envs
 
 -- could split this up if we split up the main library for UPLC/PLC/PIR
 library plutus-core-testlib
@@ -331,32 +331,32 @@ library plutus-core-testlib
         PlutusCore.Generators.Internal.TypedBuiltinGen
         PlutusCore.Generators.Internal.Utils
     build-depends:
-        base >=4.9 && <5,
-        bifunctors -any,
-        bytestring -any,
-        containers -any,
-        dependent-map >=0.4.0.0,
-        filepath -any,
-        ghc-prim -any,
-        hedgehog >=1.0,
-        integer-gmp -any,
-        lazy-search -any,
-        lens -any,
-        megaparsec -any,
-        mmorph -any,
-        mtl -any,
-        plutus-core -any,
-        prettyprinter >=1.1.0.1,
-        prettyprinter-configurable -any,
-        size-based -any,
-        some < 1.0.3,
-        Stream -any,
-        tasty -any,
-        tasty-golden -any,
-        tasty-hedgehog -any,
-        tasty-hunit -any,
-        text -any,
-        transformers -any
+        base           >= 4.9       && <5
+      , bifunctors     >= 5.5.7     && <5.6
+      , bytestring     >= 0.10.12.0 && <0.11
+      , containers     >= 0.6.2.1   && <0.7
+      , dependent-map  >= 0.4.0.0   && <0.5
+      , filepath       >= 1.4.2.1   && <1.5
+      , ghc-prim       >= 0.6.1     && <0.7
+      , hedgehog       >= 1.0       && <1.2
+      , integer-gmp    >= 1.0.3.0   && <1.1
+      , lazy-search    >= 0.1.2.1   && <0.2
+      , lens           >= 4.19.2    && <4.20
+      , megaparsec     >= 9.2.0     && <9.3
+      , mmorph         >= 1.2.0     && <1.3
+      , mtl            >= 2.2.2     && <2.3
+      , plutus-core
+      , prettyprinter  >= 1.1.0.1   && <1.8
+      , prettyprinter-configurable
+      , size-based     >= 0.1.2.0   && <0.2
+      , some           >= 1.0.2     && <1.1
+      , Stream         >= 0.4.7.2   && <0.5
+      , tasty          >= 1.4.2.1   && <1.5
+      , tasty-golden   >= 2.3.5     && <2.4
+      , tasty-hedgehog >= 1.1.0.0   && <1.2
+      , tasty-hunit    >= 0.10.0.3  && <0.11
+      , text           >= 1.2.4.1   && <1.3
+      , transformers   >= 0.5.6.2   && <0.6
 
 test-suite satint-test
   import: lang
@@ -696,10 +696,10 @@ library index-envs
       Data.DeBruijnEnv
       Data.RandomAccessList.SkewBinary
     build-depends:
-        base -any,
-        containers -any,
+        base       >= 4.14.1.0 && <4.15
+      , containers >= 0.6.2.1  && <0.7
         -- broken for ral-0.2 conflicts with cardano-binary:recursion-schemes
-        ral == 0.1
+      , ral        == 0.1
 
 benchmark index-envs-bench
     import: lang

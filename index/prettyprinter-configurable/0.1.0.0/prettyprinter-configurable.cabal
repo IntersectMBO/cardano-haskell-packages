@@ -45,11 +45,11 @@ library
         Text.PrettyBy.Internal.Utils
         Text.PrettyBy.Monad
     build-depends:
-        base,
-        prettyprinter,
-        mtl,
-        text,
-        microlens
+          base          >= 4.14.1.0 && <4.15
+        , prettyprinter >= 1.7.1    && <1.8
+        , mtl           >= 2.2.2    && <2.3
+        , text          >= 1.2.4.1  && <1.3
+        , microlens     >= 0.4.12.0 && <0.5
     ghc-options: -O2
 
 test-suite prettyprinter-configurable-test

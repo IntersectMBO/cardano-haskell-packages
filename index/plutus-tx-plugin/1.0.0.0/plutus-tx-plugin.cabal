@@ -57,21 +57,21 @@ library
         PlutusTx.PIRTypes
         PlutusTx.PLCTypes
     build-depends:
-        base >=4.9 && <5,
-        bytestring -any,
-        containers -any,
-        extra -any,
-        flat -any,
-        ghc-prim -any,
-        plutus-core ^>=1.0,
-        lens -any,
-        mtl -any,
-        prettyprinter -any,
-        template-haskell -any,
-        text -any,
-        transformers -any,
-        plutus-tx ^>=1.0,
-        array -any
+          base              >= 4.9       && <5
+        , bytestring        >= 0.10.12.0 && <0.11
+        , containers        >= 0.6.2.1   && <0.7
+        , extra             >= 1.7.10    && <1.8
+        , flat              >= 0.4.5     && <0.5
+        , ghc-prim          >= 0.6.1     && <0.7
+        , plutus-core      ^>= 1.0
+        , lens              >= 4.19.2    && <4.20
+        , mtl               >= 2.2.2     && <2.3
+        , prettyprinter     >= 1.7.1     && <1.8
+        , template-haskell  >= 2.16.0.0  && <2.17
+        , text              >= 1.2.4.1   && <1.3
+        , transformers      >= 0.5.6.2   && <0.6
+        , plutus-tx        ^>= 1.0
+        , array             >= 0.5.4.0   && <0.6
     if flag(use-ghc-stub)
         build-depends: plutus-ghc-stub
         ghc-options: -Wno-unused-packages -Wno-unused-imports -Wno-overlapping-patterns

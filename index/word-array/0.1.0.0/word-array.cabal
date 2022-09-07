@@ -33,10 +33,10 @@ library
       Data.Word64Array.Word8
 
   build-depends:
-    , base >=4.13 && <5.0
-    , mono-traversable
-    , primitive
-    , deepseq
+      base             >= 4.13     && <5.0
+    , mono-traversable >= 1.0.15.3 && <1.1
+    , primitive        >= 0.7.3.0  && <0.8
+    , deepseq          >= 1.4.4.0  && <1.5
   hs-source-dirs: src
   ghc-options: -O2
 

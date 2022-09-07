@@ -25,10 +25,11 @@ Library
     Default-Extensions: ImportQualifiedPost
     Exposed: False
 
-    Build-Depends: base,
-                   ghc-boot,
-                   bytestring -any,
-                   template-haskell -any
+    Build-Depends:
+          base             >= 4.14.1.0        && <4.15
+        , ghc-boot         >= 8.10.4.20210212 && <8.11
+        , bytestring       >= 0.10.12.0       && <0.11
+        , template-haskell >= 2.16.0.0        && <2.17
 
     hs-source-dirs:
         src

@@ -63,24 +63,24 @@ library
         Data.Either.Extras
         Prettyprinter.Extras
     build-depends:
-        base >=4.9 && <5,
-        bytestring -any,
-        cborg -any,
-        containers -any,
-        flat -any,
-        plutus-core ^>=1.0,
-        mtl -any,
-        plutus-tx ^>=1.0,
-        serialise -any,
-        template-haskell -any,
-        text -any,
-        prettyprinter -any,
-        transformers -any,
-        base16-bytestring >= 1,
-        deepseq -any,
-        tagged -any,
-        lens -any,
-        barbies -any
+          base               >= 4.9       && <5
+        , bytestring         >= 0.10.12.0 && <0.11
+        , cborg              >= 0.2.6.0   && <0.3
+        , containers         >= 0.6.2.1   && <0.7
+        , flat               >= 0.4.5     && <0.5
+        , plutus-core       ^>= 1.0
+        , mtl                >= 2.2.2     && <2.3
+        , plutus-tx         ^>= 1.0
+        , serialise          >= 0.2.4.0   && <0.3
+        , template-haskell   >= 2.16.0.0  && <2.17
+        , text               >= 1.2.4.1   && <1.3
+        , prettyprinter      >= 1.7.1     && <1.8
+        , transformers       >= 0.5.6.2   && <0.6
+        , base16-bytestring  >= 1         && <1.1
+        , deepseq            >= 1.4.4.0   && <1.5
+        , tagged             >= 0.8.6.1   && <0.9
+        , lens               >= 4.19.2    && <4.20
+        , barbies            >= 2.0.3.1   && <2.1
 
 test-suite plutus-ledger-api-test
     import: lang
