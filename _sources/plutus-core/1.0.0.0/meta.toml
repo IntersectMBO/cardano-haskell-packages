@@ -9,3 +9,7 @@ subdir = 'plutus-core'
 [[revisions]]
   number = 2
   timestamp = 2022-09-07T12:30:34Z
+
+[[revisions]]
+  number = 3
+  timestamp = 2022-09-07T13:32:39Z
