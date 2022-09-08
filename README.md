@@ -1,6 +1,6 @@
 # Cardano Haskell package repository
 
-This git repository contains the metadata used by [`foliage`](https://github.com/andreabedini/foliage) 
+This git repository contains the metadata used by [`foliage`](https://github.com/andreabedini/foliage)
 to create a Cabal package repository available at https://input-output-hk.github.io/cardano-haskell-package-repo/ .
 
 The purpose of this package repository is to contain all the Haskell
@@ -70,14 +70,14 @@ cabalProject {
 When you want to update the state of the package repository, you can simply update the flake input
 (in the example above you would run `nix flake lock --update-input cardanoHaskellPackageRepo`).
 
-If you have the repository configured correctly, then when you run `cabal build` from inside a `haskell.nix` 
+If you have the repository configured correctly, then when you run `cabal build` from inside a `haskell.nix`
 shell, you should not see any of the packages in the repository being built by cabal.
 The exception is if you have a `source-repository-package` stanza which overrides a _dependency_ of one
 of the packages in the repository. Then cabal will rebuild them both. If this becomes a problem,
-you can consider adding the patched package to the repository itself, 
+you can consider adding the patched package to the repository itself,
 see [below](#how-do-i-add-a-patched-versions-of-a-hackage-package-to-this-package-repository).
 
-## How to add a new package (or package version) to the repository 
+## How to add a new package (or package version) to the repository
 
 Package versions are defined using metadata files `_sources/$pkg_name/$pkg_version/meta.toml`,
 which you can create directly. The metadata files have the following format:
@@ -137,11 +137,35 @@ This is very safe, but may not be possible if the dependency is incurred via a p
 2. Release the package under a version that is very unlikely to be used by upstream.
 The scheme that we typically use is to take the existing version number, add four zero components and then a patch version, e.g. `1.2.3.4.0.0.0.0.1`.
 
+## How to test changes to this package repository against haskell.nix projects
+
+Sometimes it is useful to test in advance how a new package or a cabal file
+revision affect a certain project. If the project uses haskell.nix, one can
+follow these steps:
+
+- Make a local checkout of this repository and make the intended changes
+- Build the repository with `nix shell -c foliage build`
+- Build the project to test overriding the repository with your local
+  version in `_repo`.
+  ```bash
+  $ nix build --override-input cardanoHaskellPackageRepo path:/home/user/cardano-haskell-package-repo/_repo
+  ```
+- In particular you can examine the build plan without completing the
+  build:
+  ```bash
+  $ nix build .#cardano-node.project.plan-nix.json \
+    --out-link plan.json                           \
+    --override-input cardanoHaskellPackageRepo path:/home/user/cardano-haskell-package-repo/_repo
+  ```
+- Note that you might need to bump the index-state to allow cabal to see
+  the changes in the repository.
+
+
 ## CI for this repository
 
 The CI for this repository does the following things:
 
-- Checks that the timestamps in the repository are monotonically increasing through commits. 
+- Checks that the timestamps in the repository are monotonically increasing through commits.
 Along with requiring linear history, this ensures that repository that we build is always an extension of the previous one.
 - Builds the package repository from the metadata using `foliage`.
 - Deploys the package repository to the `repo` branch, along with some static web content.
