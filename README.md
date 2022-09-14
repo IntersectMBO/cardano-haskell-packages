@@ -54,7 +54,7 @@ To use the package repository with `haskell.nix`, do the following:
 1. Add the package repository to your `cabal.project` as above.
 2. Setup a fetcher for the package repository. The easiest way is to use a flake input, such as:
 ```
-inputs.cardanoHaskellPackageRepo = {
+inputs.cardanoHaskellPackages = {
   url = "github:input-output-hk/cardano-haskell-packages?ref=repo";
   flake = false;
 };
@@ -63,12 +63,12 @@ inputs.cardanoHaskellPackageRepo = {
 ```
 cabalProject {
   ...
-  inputMap = { "https://input-output-hk.github.io/cardano-haskell-packages" = cardanoHaskellPackageRepo; };
+  inputMap = { "https://input-output-hk.github.io/cardano-haskell-packages" = cardanoHaskellPackages; };
 }
 ```
 
 When you want to update the state of the package repository, you can simply update the flake input
-(in the example above you would run `nix flake lock --update-input cardanoHaskellPackageRepo`).
+(in the example above you would run `nix flake lock --update-input cardanoHaskellPackages`).
 
 If you have the repository configured correctly, then when you run `cabal build` from inside a `haskell.nix`
 shell, you should not see any of the packages in the repository being built by cabal.
@@ -148,14 +148,14 @@ follow these steps:
 - Build the project to test overriding the repository with your local
   version in `_repo`.
   ```bash
-  $ nix build --override-input cardanoHaskellPackageRepo path:/home/user/cardano-haskell-packages/_repo
+  $ nix build --override-input cardanoHaskellPackages path:/home/user/cardano-haskell-packages/_repo
   ```
 - In particular you can examine the build plan without completing the
   build:
   ```bash
   $ nix build .#cardano-node.project.plan-nix.json \
     --out-link plan.json                           \
-    --override-input cardanoHaskellPackageRepo path:/home/user/cardano-haskell-packages/_repo
+    --override-input cardanoHaskellPackages path:/home/user/cardano-haskell-packages/_repo
   ```
 - Note that you might need to bump the index-state to allow cabal to see
   the changes in the repository.
