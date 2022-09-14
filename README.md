@@ -1,7 +1,7 @@
 # Cardano Haskell package repository
 
 This git repository contains the metadata used by [`foliage`](https://github.com/andreabedini/foliage)
-to create a Cabal package repository available at https://input-output-hk.github.io/cardano-haskell-package-repo/ .
+to create a Cabal package repository available at https://input-output-hk.github.io/cardano-haskell-packages/ .
 
 The purpose of this package repository is to contain all the Haskell
 packages used by the Cardano open-source project which are not on
@@ -27,8 +27,8 @@ To use the package repository from cabal, add the following lines to your
 `cabal.project` file:
 
 ```
-repository cardano-haskell-package-repo
-  url: https://input-output-hk.github.io/cardano-haskell-package-repo/
+repository cardano-haskell-packages
+  url: https://input-output-hk.github.io/cardano-haskell-packages/
   secure: True
   root-keys:
     3e0cce471cf09815f930210f7827266fd09045445d65923e6d0238a6cd15126f
@@ -44,7 +44,7 @@ The package repository will be understood by cabal, and can be updated with `cab
 The `index-state` for the package repository can also be pinned in as usual:
 
 ```
-index-state: cardano-haskell-package-repo 2022-08-25T00:00:00Z
+index-state: cardano-haskell-packages 2022-08-25T00:00:00Z
 ```
 
 ### ... with haskell.nix
@@ -55,7 +55,7 @@ To use the package repository with `haskell.nix`, do the following:
 2. Setup a fetcher for the package repository. The easiest way is to use a flake input, such as:
 ```
 inputs.cardanoHaskellPackageRepo = {
-  url = "github:input-output-hk/cardano-haskell-package-repo?ref=repo";
+  url = "github:input-output-hk/cardano-haskell-packages?ref=repo";
   flake = false;
 };
 ```
@@ -63,7 +63,7 @@ inputs.cardanoHaskellPackageRepo = {
 ```
 cabalProject {
   ...
-  inputMap = { "https://input-output-hk.github.io/cardano-haskell-package-repo" = cardanoHaskellPackageRepo; };
+  inputMap = { "https://input-output-hk.github.io/cardano-haskell-packages" = cardanoHaskellPackageRepo; };
 }
 ```
 
@@ -148,14 +148,14 @@ follow these steps:
 - Build the project to test overriding the repository with your local
   version in `_repo`.
   ```bash
-  $ nix build --override-input cardanoHaskellPackageRepo path:/home/user/cardano-haskell-package-repo/_repo
+  $ nix build --override-input cardanoHaskellPackageRepo path:/home/user/cardano-haskell-packages/_repo
   ```
 - In particular you can examine the build plan without completing the
   build:
   ```bash
   $ nix build .#cardano-node.project.plan-nix.json \
     --out-link plan.json                           \
-    --override-input cardanoHaskellPackageRepo path:/home/user/cardano-haskell-package-repo/_repo
+    --override-input cardanoHaskellPackageRepo path:/home/user/cardano-haskell-packages/_repo
   ```
 - Note that you might need to bump the index-state to allow cabal to see
   the changes in the repository.

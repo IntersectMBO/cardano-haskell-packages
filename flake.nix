@@ -12,7 +12,7 @@
         let pkgs = nixpkgs.legacyPackages.${system}; in
         {
           packages.default = pkgs.buildEnv {
-            name = "cardano-haskell-package-repo";
+            name = "cardano-haskell-packages";
             paths = [
               pkgs.bash
               pkgs.coreutils
