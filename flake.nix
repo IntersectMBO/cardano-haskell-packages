@@ -11,13 +11,14 @@
       (system:
         let pkgs = nixpkgs.legacyPackages.${system}; in
         {
-          packages.default = pkgs.buildEnv {
+          packages.default = with pkgs; buildEnv {
             name = "cardano-haskell-packages";
             paths = [
-              pkgs.bash
-              pkgs.coreutils
-              pkgs.curl
-              pkgs.git
+              bash
+              coreutils
+              curl
+              git
+              gnutar
               foliage.packages.${system}.default
             ];
           };
