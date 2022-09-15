@@ -3,7 +3,7 @@
 set -o errexit
 set -o pipefail
 
-REPO_URL="$1" # e.g. input-output-hk/optparse-applicative
+REPO_URL="$1" # e.g. https://github.com/input-output-hk/optparse-applicative
 REV="$2"  # e.g. 7497a29cb998721a9068d5725d49461f2bba0e7a
 
 if ! shift 2; then
