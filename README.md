@@ -160,7 +160,6 @@ follow these steps:
 - Note that you might need to bump the index-state to allow cabal to see
   the changes in the repository.
 
-
 ## CI for this repository
 
 The CI for this repository does the following things:
@@ -169,6 +168,12 @@ The CI for this repository does the following things:
 Along with requiring linear history, this ensures that repository that we build is always an extension of the previous one.
 - Builds the package repository from the metadata using `foliage`.
 - Deploys the package repository to the `repo` branch, along with some static web content.
+
+## Creating a repository like this
+
+If you just want or test changes to this repository, you should make a
+fork. If you want to replicate the setup from scratch you can clone [this
+template](https://github.com/andreabedini/foliage-template).
 
 ## Help!
 
