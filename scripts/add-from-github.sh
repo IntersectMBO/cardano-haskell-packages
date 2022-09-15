@@ -3,25 +3,77 @@
 set -o errexit
 set -o pipefail
 
+function usage {
+  echo "Usage $(basename "$0") [-r REVISION] [-v VERSION] REPO_URL REV [SUBDIRS...]"
+  echo
+  echo "        -r REVISION     adds .0.0.0.0.REVISION to the package version"
+  echo "        -v VERSION      uses VERSION as the package version"
+  exit
+}
+
+optstring=":hr:v:"
+
+REVISION=
+VERSION=
+
+while getopts ${optstring} arg; do
+  case ${arg} in
+    h)
+      usage
+      ;;
+    r)
+      echo "Revision ${OPTARG}"
+      REVISION="${OPTARG}"
+      ;;
+    v)
+      echo "Version ${OPTARG}"
+      VERSION="${OPTARG}"
+      ;;
+    :)
+      echo "$0: Must supply an argument to -$OPTARG." >&2
+      exit 1
+      ;;
+    ?)
+      echo "Invalid option: -${OPTARG}."
+      exit 2
+      ;;
+  esac
+done
+
+if [[ -n $VERSION && -n $REVISION ]]; then
+  echo "You can either use -r or -v but not both at the same time"
+  exit 1
+fi
+
+shift $((OPTIND - 1))
+
 REPO_URL="$1" # e.g. input-output-hk/optparse-applicative
 REV="$2"  # e.g. 7497a29cb998721a9068d5725d49461f2bba0e7a
 
 if ! shift 2; then
-  echo "Usage: $0 REPO_URL REV [SUBDIR...]"
-  exit 1
+  usage
 fi
 
 SUBDIRS="$*"
+
+if [[ -n $SUBDIRS && (-n $VERSION || -n $REVISION) ]]; then
+  echo "You can use -r or -v only with a single package"
+  exit 1
+fi
 
 render_meta() {
   local TIMESTAMP=$1
   local URL=$2
   local SUBDIR=$3
+  local FORCE_VERSION=$4
 
   echo "timestamp = $TIMESTAMP"
   echo "url = '$URL'"
   if [[ -n $SUBDIR ]]; then
     echo "subdir = '$SUBDIR'"
+  fi
+  if [[ -n $FORCE_VERSION ]]; then
+    echo "force-version = true"
   fi
 }
 
@@ -47,6 +99,12 @@ do_package() {
   local PKG_VERSION
   PKG_VERSION=$(awk -v IGNORECASE=1 -e '/^version/ { print $2 }' "$CABAL_FILE")
 
+  if [[ -n $VERSION ]]; then
+    PKG_VERSION="$VERSION"
+  elif [[ -n $REVISION ]]; then
+    PKG_VERSION="${PKG_VERSION}.0.0.0.0.${REVISION}"
+  fi
+
   local PKG_ID="$PKG_NAME-$PKG_VERSION"
 
   if [[ -z $PKG_VERSION ]]; then
@@ -66,7 +124,7 @@ do_package() {
   fi
 
   mkdir -p "$(dirname "$METAFILE")"
-  render_meta "$TIMESTAMP" "$URL" "$SUBDIR" > "$METAFILE"
+  render_meta "$TIMESTAMP" "$URL" "$SUBDIR" "$REVISION$VERSION" > "$METAFILE"
   log "Written $METAFILE"
 
   git add "$METAFILE"
@@ -87,7 +145,7 @@ if ! curl --fail --silent --location --remote-name "$TAR_URL"; then
   exit 1
 fi
 
-tar xzf * --strip-component=1 --wildcards '**/*.cabal'
+tar xzf ./* --strip-component=1 --wildcards '**/*.cabal'
 popd
 
 if [[ -z $SUBDIRS ]]; then

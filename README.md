@@ -110,7 +110,10 @@ adding a package from a GitHub repository.
 
 ```console
 $ ./scripts/add-from-github.sh
-Usage: ./scripts/add-from-github.sh REPO_URL REV [SUBDIR...]
+Usage add-from-github.sh [-r REVISION] [-v VERSION] REPO_URL REV [SUBDIRS...]
+
+        -r REVISION     adds .0.0.0.0.REVISION to the package version
+        -v VERSION      uses VERSION as the package version
 ```
 
 The script will:
@@ -119,6 +122,9 @@ The script will:
 2. Obtain package names and versions from the cabal files
 3. Create the corresponding `meta.toml` files
 4. Commit the changes to the repository
+
+You can tell the script to override the package version either by passing
+the version explicitly or by adding a "revision number" (see below).
 
 ## How do I add a patched versions of a Hackage package to this package repository?
 
