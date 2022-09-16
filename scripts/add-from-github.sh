@@ -22,11 +22,9 @@ while getopts ${optstring} arg; do
       usage
       ;;
     r)
-      echo "Revision ${OPTARG}"
       REVISION="${OPTARG}"
       ;;
     v)
-      echo "Version ${OPTARG}"
       VERSION="${OPTARG}"
       ;;
     :)
@@ -48,15 +46,15 @@ fi
 shift $((OPTIND - 1))
 
 REPO_URL="$1" # e.g. https://github.com/input-output-hk/optparse-applicative
-REV="$2"  # e.g. 7497a29cb998721a9068d5725d49461f2bba0e7a
+REPO_REV="$2"  # e.g. 7497a29cb998721a9068d5725d49461f2bba0e7a
 
 if ! shift 2; then
   usage
 fi
 
-SUBDIRS="$*"
+SUBDIRS=("$@")
 
-if [[ -n $SUBDIRS && (-n $VERSION || -n $REVISION) ]]; then
+if [[ ${#SUBDIRS[@]} -gt 1 && (-n $VERSION || -n $REVISION) ]]; then
   echo "You can use -r or -v only with a single package"
   exit 1
 fi
@@ -128,17 +126,17 @@ do_package() {
   log "Written $METAFILE"
 
   git add "$METAFILE"
-  git commit -m"Added $PKG_ID" -m "From $REPO_URL at $REV"
+  git commit -m"Added $PKG_ID" -m "From $REPO_URL at $REPO_REV"
 }
 
-TAR_URL="$REPO_URL/tarball/$REV"
+TAR_URL="$REPO_URL/tarball/$REPO_REV"
 TIMESTAMP=$(date --utc +%Y-%m-%dT%H:%M:%SZ)
 
 WORKDIR=$(mktemp -d)
 log "Work directory is $WORKDIR"
 pushd "$WORKDIR"
 
-log "Fetching $REPO_URL at revision $REV"
+log "Fetching $REPO_URL at revision $REPO_REV"
 
 if ! curl --fail --silent --location --remote-name "$TAR_URL"; then
   echo "Failed to download $TAR_URL"
@@ -148,10 +146,10 @@ fi
 tar xzf ./* --strip-component=1 --wildcards '**/*.cabal'
 popd
 
-if [[ -z $SUBDIRS ]]; then
+if [[ ${#SUBDIRS[@]} -eq 0 ]]; then
   do_package "$TAR_URL" "" "$WORKDIR"
 else
-  for subdir in $SUBDIRS; do
+  for subdir in "${SUBDIRS[@]}"; do
     do_package "$TAR_URL" "$subdir" "$WORKDIR"
   done
 fi
