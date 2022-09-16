@@ -88,9 +88,17 @@ jobs:
           # Need --force because _repo is gitignore'd
           git add --force _repo
           treeId=$(git write-tree --prefix=_repo)
-          # the checkout action doesn't checkout all branches
-          git fetch origin repo
-          commitId=$(git commit-tree -p origin/repo -m "Update from ${{ github.sha }}" "$treeId")
+
+          # the checkout action doesn't checkout all branches so we fetch
+          # the repo branch, if the remote doesn't have it, it's ok we do
+          # without
+          if git fetch --quiet origin repo; then
+            # add commit to branch
+            commitId=$(git commit-tree -p origin/repo -m "Update from ${{ github.sha }}" "$treeId")
+          else
+            # add commit with no parents
+            commitId=$(git commit-tree -m "Update from ${{ github.sha }}" "$treeId")
+          fi
           git update-ref "refs/heads/repo" "$commitId"
           git push origin repo
 
