@@ -166,6 +166,13 @@ follow these steps:
 - Note that you might need to bump the index-state to allow cabal to see
   the changes in the repository.
 
+## What do I do if I want to release a package in this repository to Hackage?
+
+It's totally fine to release a package in this repository to Hackage.
+The thing to avoid is to have the same package _version_ in both repositories.
+The simplest solution is to just make sure to use a higher major version number when you start releasing to Hackage, even if this looks a bit odd.
+For example, if this repository contains `X-1.0` and `X-1.1`, then the first Hackage release should be `X-1.2` or `X-2.0`.
+
 ## CI for this repository
 
 The CI for this repository does the following things:
