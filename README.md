@@ -1,9 +1,9 @@
-# Cardano Haskell package repository
+# Cardano Haskell package repository ("CHaP")
 
 This git repository contains the metadata used by [`foliage`](https://github.com/andreabedini/foliage)
 to create a Cabal package repository available at https://input-output-hk.github.io/cardano-haskell-packages/ .
 
-The purpose of this package repository is to contain all the Haskell
+The purpose of this package repository ("CHaP") is to contain all the Haskell
 packages used by the Cardano open-source project which are not on
 Hackage.
 
@@ -21,9 +21,9 @@ However, Cabal supports the use of _additional_ package repositories.
 This is convenient for users who can't or don't want to put their packages
 on Hackage.
 
-## How to use the package repository
+## How to use CHaP
 
-To use the package repository from cabal, add the following lines to your
+To use CHaP from cabal, add the following lines to your
 `cabal.project` file:
 
 ```
@@ -49,12 +49,12 @@ index-state: cardano-haskell-packages 2022-08-25T00:00:00Z
 
 ### ... with haskell.nix
 
-To use the package repository with `haskell.nix`, do the following:
+To use CHaP with `haskell.nix`, do the following:
 
 1. Add the package repository to your `cabal.project` as above.
 2. Setup a fetcher for the package repository. The easiest way is to use a flake input, such as:
 ```
-inputs.cardanoHaskellPackages = {
+inputs.CHaP = {
   url = "github:input-output-hk/cardano-haskell-packages?ref=repo";
   flake = false;
 };
@@ -63,21 +63,21 @@ inputs.cardanoHaskellPackages = {
 ```
 cabalProject {
   ...
-  inputMap = { "https://input-output-hk.github.io/cardano-haskell-packages" = cardanoHaskellPackages; };
+  inputMap = { "https://input-output-hk.github.io/cardano-haskell-packages" = CHaP; };
 }
 ```
 
-When you want to update the state of the package repository, you can simply update the flake input
+When you want to update the state of CHaP, you can simply update the flake input
 (in the example above you would run `nix flake lock --update-input cardanoHaskellPackages`).
 
-If you have the repository configured correctly, then when you run `cabal build` from inside a `haskell.nix`
-shell, you should not see any of the packages in the repository being built by cabal.
+If you have CHaP configured correctly, then when you run `cabal build` from inside a `haskell.nix`
+shell, you should not see any of the packages in CHaP being built by cabal.
 The exception is if you have a `source-repository-package` stanza which overrides a _dependency_ of one
-of the packages in the repository. Then cabal will rebuild them both. If this becomes a problem,
-you can consider adding the patched package to the repository itself,
-see [below](#how-do-i-add-a-patched-versions-of-a-hackage-package-to-this-package-repository).
+of the packages in CHaP. Then cabal will rebuild them both. If this becomes a problem,
+you can consider adding the patched package to CHaP itself,
+see [below](#how-do-i-add-a-patched-versions-of-a-hackage-package-to-chap).
 
-## How to add a new package (or package version) to the repository
+## How to add a new package (or package version) to CHaP 
 
 Package versions are defined using metadata files `_sources/$pkg_name/$pkg_version/meta.toml`,
 which you can create directly. The metadata files have the following format:
@@ -121,70 +121,70 @@ The script will:
 1. Find the cabal files in the repo (either at the root or in the specified subdirectories)
 2. Obtain package names and versions from the cabal files
 3. Create the corresponding `meta.toml` files
-4. Commit the changes to the repository
+4. Commit the changes to the git repository
 
 You can tell the script to override the package version either by passing
 the version explicitly or by adding a "revision number" (see below).
 
-## How do I add a patched versions of a Hackage package to this package repository?
+## How do I add a patched versions of a Hackage package to CHaP?
 
-This package repository should mostly contain versions of packages which are _not_ on Hackage.
+CHaP should mostly contain versions of packages which are _not_ on Hackage.
 
 If you need to patch a version of a package on Hackage, then there are two options:
 
 1. For short lived forks, use a `source-repository-package` stanza by preference.
-2. For long-lived forks (because e.g. the maintainer is unresponsive or the patch is large and will take time to upstream), then we can consider releasing a patched version in this package repository.
+2. For long-lived forks (because e.g. the maintainer is unresponsive or the patch is large and will take time to upstream), then we can consider releasing a patched version in CHaP.
 
-The main constraint when adding a patched version to this repository is to be sure that we use a version number that won't ever conflict with a release made by upstream on Hackage.
+The main constraint when adding a patched version to CHaP is to be sure that we use a version number that won't ever conflict with a release made by upstream on Hackage.
 There are two approaches to doing this:
 
-1. Release the package into this package repository under a different name (for the fork).
+1. Release the package in CHaP under a different name (for the fork).
 This is very safe, but may not be possible if the dependency is incurred via a packge we don't control, as then we can't force it to depend on the renamed package.
 2. Release the package under a version that is very unlikely to be used by upstream.
 The scheme that we typically use is to take the existing version number, add four zero components and then a patch version, e.g. `1.2.3.4.0.0.0.0.1`.
 
-## How to test changes to this package repository against haskell.nix projects
+## How to test changes to CHaP against haskell.nix projects
 
 Sometimes it is useful to test in advance how a new package or a cabal file
 revision affect a certain project. If the project uses haskell.nix, one can
 follow these steps:
 
-- Make a local checkout of this repository and make the intended changes
+- Make a local checkout of CHaP and make the intended changes
 - Build the repository with `nix shell -c foliage build`
 - Build the project to test overriding the repository with your local
   version in `_repo`.
   ```bash
-  $ nix build --override-input cardanoHaskellPackages path:/home/user/cardano-haskell-packages/_repo
+  $ nix build --override-input CHaP path:/home/user/cardano-haskell-packages/_repo
   ```
 - In particular you can examine the build plan without completing the
   build:
   ```bash
   $ nix build .#cardano-node.project.plan-nix.json \
     --out-link plan.json                           \
-    --override-input cardanoHaskellPackages path:/home/user/cardano-haskell-packages/_repo
+    --override-input CHaP path:/home/user/cardano-haskell-packages/_repo
   ```
 - Note that you might need to bump the index-state to allow cabal to see
   the changes in the repository.
 
-## What do I do if I want to release a package in this repository to Hackage?
+## What do I do if I want to release a package in CHaP to Hackage?
 
-It's totally fine to release a package in this repository to Hackage.
+It's totally fine to release a package in CHaP to Hackage.
 The thing to avoid is to have the same package _version_ in both repositories.
 The simplest solution is to just make sure to use a higher major version number when you start releasing to Hackage, even if this looks a bit odd.
-For example, if this repository contains `X-1.0` and `X-1.1`, then the first Hackage release should be `X-1.2` or `X-2.0`.
+For example, if CHaP contains `X-1.0` and `X-1.1`, then the first Hackage release should be `X-1.2` or `X-2.0`.
 
-## CI for this repository
+## CI for CHaP 
 
-The CI for this repository does the following things:
+The CI for CHaP does the following things:
 
-- Checks that the timestamps in the repository are monotonically increasing through commits.
-Along with requiring linear history, this ensures that repository that we build is always an extension of the previous one.
+- Checks that the timestamps in the git repository are monotonically increasing through commits.
+Along with requiring linear history, this ensures that package repository that we build is always an extension of the previous one.
 - Builds the package repository from the metadata using `foliage`.
 - Deploys the package repository to the `repo` branch, along with some static web content.
 
-## Creating a repository like this
+## Creating a repository like CHaP
 
-If you just want or test changes to this repository, you should make a
+If you just want or test changes to CHaP, you should make a
 fork. If you want to replicate the setup from scratch you can clone [this
 template](https://github.com/andreabedini/foliage-template).
 
