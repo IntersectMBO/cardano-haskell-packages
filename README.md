@@ -1,4 +1,4 @@
-# Cardano Haskell package repository
+# Cardano Haskell package repository ("CHaP")
 
 This git repository contains the metadata used by [`foliage`](https://github.com/andreabedini/foliage)
 to create a Cabal package repository available at https://input-output-hk.github.io/cardano-haskell-packages/ .
@@ -54,7 +54,7 @@ To use the package repository with `haskell.nix`, do the following:
 1. Add the package repository to your `cabal.project` as above.
 2. Setup a fetcher for the package repository. The easiest way is to use a flake input, such as:
 ```
-inputs.cardanoHaskellPackages = {
+inputs.CHaP = {
   url = "github:input-output-hk/cardano-haskell-packages?ref=repo";
   flake = false;
 };
@@ -63,7 +63,7 @@ inputs.cardanoHaskellPackages = {
 ```
 cabalProject {
   ...
-  inputMap = { "https://input-output-hk.github.io/cardano-haskell-packages" = cardanoHaskellPackages; };
+  inputMap = { "https://input-output-hk.github.io/cardano-haskell-packages" = CHaP; };
 }
 ```
 
@@ -154,14 +154,14 @@ follow these steps:
 - Build the project to test overriding the repository with your local
   version in `_repo`.
   ```bash
-  $ nix build --override-input cardanoHaskellPackages path:/home/user/cardano-haskell-packages/_repo
+  $ nix build --override-input CHaP path:/home/user/cardano-haskell-packages/_repo
   ```
 - In particular you can examine the build plan without completing the
   build:
   ```bash
   $ nix build .#cardano-node.project.plan-nix.json \
     --out-link plan.json                           \
-    --override-input cardanoHaskellPackages path:/home/user/cardano-haskell-packages/_repo
+    --override-input CHaP path:/home/user/cardano-haskell-packages/_repo
   ```
 - Note that you might need to bump the index-state to allow cabal to see
   the changes in the repository.
