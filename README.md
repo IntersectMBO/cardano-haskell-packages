@@ -68,7 +68,7 @@ cabalProject {
 ```
 
 When you want to update the state of CHaP, you can simply update the flake input
-(in the example above you would run `nix flake lock --update-input cardanoHaskellPackages`).
+(in the example above you would run `nix flake lock --update-input CHaP`).
 
 If you have CHaP configured correctly, then when you run `cabal build` from inside a `haskell.nix`
 shell, you should not see any of the packages in CHaP being built by cabal.
