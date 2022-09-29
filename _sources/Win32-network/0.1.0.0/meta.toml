@@ -1,2 +1,2 @@
 timestamp = 2022-08-31T08:36:38Z
-url = 'https://github.com/input-output-hk/Win32-network/tarball/3825d3abf75f83f406c1f7161883c438dac7277d'
+github = { repo = "input-output-hk/Win32-network", rev = "3825d3abf75f83f406c1f7161883c438dac7277d" }

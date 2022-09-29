@@ -61,12 +61,15 @@ fi
 
 render_meta() {
   local TIMESTAMP=$1
-  local URL=$2
-  local SUBDIR=$3
-  local FORCE_VERSION=$4
+  local REPO_URL=$2
+  local REPO_REV=$3
+  local SUBDIR=$4
+  local FORCE_VERSION=$5
+
+  local REPO=${REPO_URL#https://github.com/}
 
   echo "timestamp = $TIMESTAMP"
-  echo "url = '$URL'"
+  echo "github = { repo = \"$REPO\", rev = \"$REPO_REV\" }"
   if [[ -n $SUBDIR ]]; then
     echo "subdir = '$SUBDIR'"
   fi
@@ -84,9 +87,10 @@ warning() {
 }
 
 do_package() {
-  local URL=$1
-  local SUBDIR=$2
-  local WORKDIR=$3
+  local REPO_URL=$1
+  local REPO_REV=$2
+  local SUBDIR=$3
+  local WORKDIR=$4
 
   local CABAL_FILE
   CABAL_FILE=$(echo "$WORKDIR"/"$SUBDIR"/*.cabal)
@@ -122,7 +126,7 @@ do_package() {
   fi
 
   mkdir -p "$(dirname "$METAFILE")"
-  render_meta "$TIMESTAMP" "$URL" "$SUBDIR" "$REVISION$VERSION" > "$METAFILE"
+  render_meta "$TIMESTAMP" "$REPO_URL" "$REPO_REV" "$SUBDIR" "$REVISION$VERSION" > "$METAFILE"
   log "Written $METAFILE"
 
   git add "$METAFILE"
@@ -147,10 +151,10 @@ tar xzf ./* --strip-component=1 --wildcards '**/*.cabal'
 popd
 
 if [[ ${#SUBDIRS[@]} -eq 0 ]]; then
-  do_package "$TAR_URL" "" "$WORKDIR"
+  do_package "$REPO_URL" "$REPO_REV" "" "$WORKDIR"
 else
   for subdir in "${SUBDIRS[@]}"; do
-    do_package "$TAR_URL" "$subdir" "$WORKDIR"
+    do_package "$REPO_URL" "$REPO_REV" "$subdir" "$WORKDIR"
   done
 fi
 

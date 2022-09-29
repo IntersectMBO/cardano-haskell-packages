@@ -1,2 +1,2 @@
 timestamp = 2022-08-31T08:36:32Z
-url = 'https://github.com/input-output-hk/cardano-crypto/tarball/f73079303f663e028288f9f4a9e08bcca39a923e'
+github = { repo = "input-output-hk/cardano-crypto", rev = "f73079303f663e028288f9f4a9e08bcca39a923e" }

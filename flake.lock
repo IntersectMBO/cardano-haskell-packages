@@ -139,11 +139,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1661945531,
-        "narHash": "sha256-Z0DX6r9uy+3sC2LiGFdn/CrPpMnWGJ5pefBuxSM4Zis=",
+        "lastModified": 1664460140,
+        "narHash": "sha256-R+jMYcdBeDkXZQiRlsDksNpUbyp9BHCjbRVX+W2Ck1A=",
         "owner": "andreabedini",
         "repo": "foliage",
-        "rev": "1a91935397ae804e3123e7cb307063600769ce53",
+        "rev": "166b340d1323d363df9665aca67e99ba5089def3",
         "type": "github"
       },
       "original": {
