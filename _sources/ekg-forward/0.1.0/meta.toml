@@ -1,2 +1,2 @@
 timestamp = 2022-08-31T08:36:43Z
-url = 'https://github.com/input-output-hk/ekg-forward/tarball/297cd9db5074339a2fb2e5ae7d0780debb670c63'
+github = { repo = "input-output-hk/ekg-forward", rev = "297cd9db5074339a2fb2e5ae7d0780debb670c63" }

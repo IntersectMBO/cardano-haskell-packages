@@ -1,2 +1,2 @@
 timestamp = 2022-08-31T08:36:31Z
-url = 'https://github.com/input-output-hk/hedgehog-extras/tarball/714ee03a5a786a05fc57ac5d2f1c2edce4660d85'
+github = { repo = "input-output-hk/hedgehog-extras", rev = "714ee03a5a786a05fc57ac5d2f1c2edce4660d85" }
