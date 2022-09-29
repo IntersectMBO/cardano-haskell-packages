@@ -59,6 +59,11 @@ if [[ ${#SUBDIRS[@]} -gt 1 && (-n $VERSION || -n $REVISION) ]]; then
   exit 1
 fi
 
+if [[ ! "$REPO_URL" =~ "https://github.com/" ]]; then
+  echo "Provided url is not a github url: $REPO_URL"
+  exit 1
+fi
+
 render_meta() {
   local TIMESTAMP=$1
   local REPO_URL=$2
