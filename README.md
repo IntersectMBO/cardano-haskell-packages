@@ -21,6 +21,19 @@ However, Cabal supports the use of _additional_ package repositories.
 This is convenient for users who can't or don't want to put their packages
 on Hackage.
 
+### Cabal package repositories and `source-repository-package`
+
+Using `source-repository-package` stanzas is another common way of getting dependencies
+that are not on Hackage. Both have their place: CHaP gives us proper versioning
+and simpler setup, `source-repository-package`s are useful for ad-hoc use of
+patched or pre-release versions.
+
+Crucially, additional Cabal pacakge repositories like CHaP and `source-repository-package`
+stanzas are _compatible_ and _`source-repository-package`s always win_. That is,
+they interact in the same way as Hackage and `source-repository-package`s do. This gives us
+behaviour that we want: ad-hoc `source-repository-package` stanzas will override
+packages from Hackage _or_ CHaP.
+
 ## How to use CHaP
 
 To use CHaP from cabal, add the following lines to your
