@@ -1,0 +1,3 @@
+timestamp = 2022-10-10T16:39:01Z
+github = { repo = "vshabanov/ekg-json", rev = "00ebe7211c981686e65730b7144fbf5350462608" }
+force-version = true
