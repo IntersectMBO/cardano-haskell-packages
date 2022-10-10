@@ -41,7 +41,7 @@ To use CHaP from cabal, add the following lines to your
 
 ```
 repository cardano-haskell-packages
-  url: https://input-output-hk.github.io/cardano-haskell-packages/
+  url: https://input-output-hk.github.io/cardano-haskell-packages
   secure: True
   root-keys:
     3e0cce471cf09815f930210f7827266fd09045445d65923e6d0238a6cd15126f
