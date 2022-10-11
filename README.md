@@ -91,6 +91,41 @@ of the packages in CHaP. Then cabal will rebuild them both. If this becomes a pr
 you can consider adding the patched package to CHaP itself,
 see [below](#how-do-i-add-a-patched-versions-of-a-hackage-package-to-chap).
 
+## Requirements for including a package in CHaP
+
+### Monotonically increasing timestamps
+
+When adding a package, it is important to use a timestamp (see [below](#how-to-add-a-new-package-or-package-version-to-chap)) 
+that is greater than any other timestamp in the index. Indeed, cabal users rely on
+the changes to the repository index to be append-only. A non append-only
+change to the package index would change the repository index state as
+pinned by `index-state`, breaking reproducibility.
+
+Using the current date and time (e.g. `date --utc +%Y-%m-%dT%H:%M:%SZ`)
+works alright but if you are sending a PR you need to consider the
+possibility that another developer has inserted a new (greater) timestamp
+before your PR got merged. We have CI check that prevents this from
+happening, and we enforce FF-only merges.
+
+### No extra build configuration beyond what is given in the cabal file
+
+When downstream users pull a package from CHaP, `cabal` will build it based _only_ on the 
+information in the cabal file. This means that if your package needs any additonal configuration
+to build, then it will simply be broken for downstream users unless they replicate that 
+configuration.
+
+Typical examples of this are anything that you add in `cabal.project`:
+- `constraints`
+- `allow-newer`
+- `source-repository-package`
+
+Try to avoid adding packages to CHaP that need extra configuration in this way. This is not 
+a hard rule, but please bear in mind that doing so requires _all_ downstream consumers to 
+replicate that configuration, making the package much harder to use.
+
+At some point we may start checking this, e.g. by trying to build each added package in
+isolation.
+
 ## How to add a new package (or package version) to CHaP 
 
 Package versions are defined using metadata files `_sources/$pkg_name/$pkg_version/meta.toml`,
@@ -104,18 +139,6 @@ url = 'https://github.com/input-output-hk/ouroboros-network/tarball/fa10cb4eef1e
 # OPTIONAL subdirectory inside the tarball where the package is located
 subdir = 'typed-protocols'
 ```
-
-NOTE: When adding a package, it is important to use a timestamp that is
-greater than any other timestamp in the index. Indeed, cabal users rely on
-the changes to the repository index to be append-only. A non append-only
-change to the package index would change the repository index state as
-pinned by `index-state`, breaking reproducibility.
-
-Using the current date and time (e.g. `date --utc +%Y-%m-%dT%H:%M:%SZ`)
-works alright but if you are sending a PR you need to consider the
-possibility that another developer has inserted a new (greater) timestamp
-before your PR got merged. We have CI check that prevents this from
-happening, and we enforce FF-only merges.
 
 ### ... from GitHub
 
