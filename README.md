@@ -1,11 +1,12 @@
 # Cardano Haskell package repository ("CHaP")
 
-This git repository contains the metadata used by [`foliage`](https://github.com/andreabedini/foliage)
-to create a Cabal package repository available at https://input-output-hk.github.io/cardano-haskell-packages/ .
+This is a Cabal package repository ("CHaP") whose purpose is to contain all the Haskell
+packages used by the Cardano open-source project which are not on Hackage.
 
-The purpose of this package repository ("CHaP") is to contain all the Haskell
-packages used by the Cardano open-source project which are not on
-Hackage.
+The package repository itself is available [here](https://input-output-hk.github.io/cardano-haskell-packages).
+It is built from a [git repository](https://github.com/input-output-hk/cardano-haskell-packages) which
+contains the metadata specifying all the package versions. The package repository is built using 
+[`foliage`](https://github.com/andreabedini/foliage).
 
 If you're here because you need to add a new version of your package, you
 probably want to read the section on [adding a package from GitHub](#-from-github).
