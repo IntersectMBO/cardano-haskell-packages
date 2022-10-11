@@ -11,9 +11,9 @@
       (system:
         let pkgs = nixpkgs.legacyPackages.${system}; in
         {
-          packages.default = with pkgs; buildEnv {
+          devShells.default = with pkgs; mkShell {
             name = "cardano-haskell-packages";
-            paths = [
+            buildInputs = [
               bash
               coreutils
               curl
