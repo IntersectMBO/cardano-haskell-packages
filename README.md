@@ -187,7 +187,7 @@ revision affect a certain project. If the project uses haskell.nix, one can
 follow these steps:
 
 - Make a local checkout of CHaP and make the intended changes
-- Build the repository with `nix shell -c foliage build`
+- Build the repository with `nix develop -c foliage build`
 - Build the project to test overriding the repository with your local
   version in `_repo`.
   ```bash

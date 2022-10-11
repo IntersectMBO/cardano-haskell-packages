@@ -23,7 +23,7 @@ jobs:
             trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= foliage.cachix.org-1:kAFyYLnk8JcRURWReWZCatM9v3Rk24F5wNMpEj14Q/g=
 
       - name: Run checks
-        run: nix shell -c ./scripts/check.sh
+        run: nix develop -c ./scripts/check.sh
 
   build:
     runs-on: ubuntu-latest
@@ -70,7 +70,7 @@ jobs:
 
       - name: Build repository
         run: |
-          nix shell -c foliage build
+          nix develop -c foliage build
 
       - name: Copy static web assets
         run: |
