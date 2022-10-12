@@ -1,0 +1,4 @@
+timestamp = 2022-10-12T14:37:03Z
+github = { repo = "input-output-hk/plutus", rev = "d5f6f4a5505094490f61c8d164515adf7c8f46cc" }
+subdir = 'plutus-core'
+force-version = true
