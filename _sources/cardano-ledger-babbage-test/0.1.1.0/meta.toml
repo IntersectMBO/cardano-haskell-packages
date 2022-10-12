@@ -1,0 +1,4 @@
+timestamp = 2022-10-12T14:46:27Z
+github = { repo = "input-output-hk/cardano-ledger", rev = "26849193788a38479367799cbb249699ac952bab" }
+subdir = 'eras/babbage/test-suite'
+force-version = true
