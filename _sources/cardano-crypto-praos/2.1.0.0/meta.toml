@@ -1,3 +1,3 @@
-timestamp = 2022-10-14T18:50:54Z
+timestamp = 2022-10-14T18:59:20Z
 github = { repo = "input-output-hk/cardano-base", rev = "2c5285e40f9076d15a86c53254777601c1077cc9" }
 subdir = 'cardano-crypto-praos'
