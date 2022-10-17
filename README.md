@@ -180,6 +180,9 @@ This is very safe, but may not be possible if the dependency is incurred via a p
 2. Release the package under a version that is very unlikely to be used by upstream.
 The scheme that we typically use is to take the existing version number, add four zero components and then a patch version, e.g. `1.2.3.4.0.0.0.0.1`.
 
+IMPORTANT: if you release a patched package to CHaP, make sure to open an issue about it so we can keep track of which patched packages we have.
+Ideally, include the conditions under which we can deprecate it, e.g. "can deprecate either when it's fixed upstream or when package X removes their dependency on it".
+
 ## How to test changes to CHaP against haskell.nix projects
 
 Sometimes it is useful to test in advance how a new package or a cabal file
