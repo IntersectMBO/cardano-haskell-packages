@@ -1,3 +1,3 @@
-timestamp = 2022-08-31T08:36:32Z
-github = { repo = "input-output-hk/cardano-ledger", rev = "f49879a79098d9372d63baa13b94a941a56eda34" }
+timestamp = 2022-10-17T17:16:10Z
+github = { repo = "input-output-hk/cardano-ledger", rev = "c7c63dabdb215ebdaed8b63274965966f2bf408f" }
 subdir = 'eras/alonzo/test-suite'
