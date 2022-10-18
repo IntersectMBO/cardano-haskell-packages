@@ -226,6 +226,7 @@ benchmark mainbench
     cardano-slotting,
     containers,
     criterion,
+    data-default-class,
     deepseq,
     mtl,
     QuickCheck,
