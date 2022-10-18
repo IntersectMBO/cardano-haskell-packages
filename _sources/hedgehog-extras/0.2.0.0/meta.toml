@@ -1,0 +1,2 @@
+timestamp = 2022-10-17T00:00:00Z
+github = { repo = "input-output-hk/hedgehog-extras", rev = "714ee03a5a786a05fc57ac5d2f1c2edce4660d85" }

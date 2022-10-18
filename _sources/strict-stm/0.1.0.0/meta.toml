@@ -1,0 +1,3 @@
+timestamp = 2022-10-17T00:00:00Z
+github = { repo = "input-output-hk/io-sim", rev = "f4183f274d88d0ad15817c7052df3a6a8b40e6dc" }
+subdir = 'strict-stm'

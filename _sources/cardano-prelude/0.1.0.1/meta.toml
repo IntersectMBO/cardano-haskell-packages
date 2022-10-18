@@ -1,0 +1,3 @@
+timestamp = 2022-10-17T00:00:00Z
+github = { repo = "input-output-hk/cardano-prelude", rev = "f3c145a7f67fe1c1e04828c68fc15608e0debd43" }
+subdir = 'cardano-prelude'

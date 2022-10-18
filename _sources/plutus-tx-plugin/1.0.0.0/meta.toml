@@ -1,0 +1,3 @@
+timestamp = 2022-10-17T00:00:00Z
+github = { repo = "input-output-hk/plutus", rev = "a56c96598b4b25c9e28215214d25189331087244" }
+subdir = 'plutus-tx-plugin'

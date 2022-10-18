@@ -1,0 +1,3 @@
+timestamp = 2022-10-17T00:00:00Z
+github = { repo = "input-output-hk/iohk-monitoring-framework", rev = "066f7002aac5a0efc20e49643fea45454f226caa" }
+subdir = 'contra-tracer'

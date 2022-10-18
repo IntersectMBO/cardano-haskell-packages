@@ -1,0 +1,3 @@
+timestamp = 2022-10-17T00:00:00Z
+github = { repo = "input-output-hk/flat", rev = "3bd82065ec7f8f253bcb18832b200dbf07707a3b" }
+force-version = true

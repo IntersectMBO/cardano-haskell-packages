@@ -1,0 +1,3 @@
+timestamp = 2022-10-17T00:00:00Z
+github = { repo = "input-output-hk/cardano-base", rev = "0f3a867493059e650cda69e20a5cbf1ace289a57" }
+subdir = 'orphans-deriving-via'

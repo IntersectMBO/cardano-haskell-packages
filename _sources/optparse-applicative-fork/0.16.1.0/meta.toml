@@ -1,0 +1,2 @@
+timestamp = 2022-10-17T00:00:00Z
+github = { repo = "input-output-hk/optparse-applicative", rev = "7497a29cb998721a9068d5725d49461f2bba0e7a" }

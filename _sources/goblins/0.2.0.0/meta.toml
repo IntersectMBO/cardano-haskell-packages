@@ -1,0 +1,2 @@
+timestamp = 2022-10-17T00:00:00Z
+github = { repo = "input-output-hk/goblins", rev = "cde90a2b27f79187ca8310b6549331e59595e7ba" }
