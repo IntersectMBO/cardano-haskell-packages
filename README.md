@@ -61,6 +61,20 @@ The `index-state` for the package repository can also be pinned in as usual:
 index-state: cardano-haskell-packages 2022-08-25T00:00:00Z
 ```
 
+You _can_ use the `active-repositories` stanza if you like.
+This explicitly tells cabal which repositories to use and with which precedence.
+You don't need to set this, because cabal implicitly does the right thing (CHaP will take 
+precedence, since it is defined in the project file).
+
+```
+-- note: later = higher precedence
+active-repositories: hackage.haskell.org, cardano-haskell-packages
+```
+
+IMPORTANT: do _not_ use the `:override` modifier on CHaP. 
+This is in principle a good idea, but since we add patched Hackage packages to CHaP, it 
+would prevent cabal from taking later versions of those packages from Hackage, which is not what we want.
+
 ### ... with haskell.nix
 
 To use CHaP with `haskell.nix`, do the following:
