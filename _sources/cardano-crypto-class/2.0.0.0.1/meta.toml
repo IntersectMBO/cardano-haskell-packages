@@ -1,0 +1,4 @@
+timestamp = 2022-10-21T18:32:30Z
+github = { repo = "input-output-hk/cardano-base", rev = "cc049d7c9b9a0129c15b1355fd1dff9e1a1a551c" }
+subdir = 'cardano-crypto-class'
+force-version = true
