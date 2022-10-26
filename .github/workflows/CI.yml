@@ -27,16 +27,8 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    needs: check
 
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/cache@v3
-        with:
-          path: _cache
-          key: 1 # bump to refresh
-
       - name: Setup Nix
         uses: cachix/install-nix-action@v17
         with:
@@ -45,14 +37,40 @@ jobs:
             substituters        = https://cache.iog.io https://cache.nixos.org https://foliage.cachix.org
             trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= foliage.cachix.org-1:kAFyYLnk8JcRURWReWZCatM9v3Rk24F5wNMpEj14Q/g=
 
+      - name: Checkout main 
+        uses: actions/checkout@v3
+        with:
+          ref: main
+             
+      - uses: actions/cache@v3
+        with:
+          path: _cache
+          key: 1 # bump to refresh
+
       - name: Unpack keys
         env:
           KEYS: ${{ secrets.KEYS }}
         run: |
-          mkdir _keys
-          echo "$KEYS" | base64 -d | tar xvz -C _keys
+          if [[ -z "$KEYS" ]]; then
+            echo "Could not access repository secret keys (PR is coming from a fork?)"
+            echo "Generating fresh keys for this run"
+            nix develop -c foliage create-keys
+          else 
+            mkdir _keys
+            echo "$KEYS" | base64 -d | tar xvz -C _keys
+          fi
 
-      - name: Build repository
+      - name: Build repository (main)
+        run: |
+          nix develop -c foliage build
+          mv _repo _repo-main
+
+      - name: Checkout tip commit
+        uses: actions/checkout@v3
+        with:
+          clean: false
+
+      - name: Build repository (tip)
         run: |
           nix develop -c foliage build
 
@@ -61,16 +79,61 @@ jobs:
           cp static/index.html _repo
           cp README.md _repo
 
+      # Do this before the check, useful to have the artifact in case the 
+      # check fails!
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: built-repo
           path: _repo
 
+      # Note: we use the check script from the tip so we pick up changes 
+      # to the script from the PR itself.
+      - name: Check new index is an extension of the old index
+        run: |
+          ./scripts/check-archive-extension.sh _repo-main/01-index.tar _repo/01-index.tar
+          echo "If this check failed because 'some entries only exist in the old index'"
+          echo "then you may need to update your branch.\n"
+          echo "If it failed because 'the last old entry is newer than the first new entry'"
+          echo "then you may need to update the timestamps in your new packages to be newer than those in main."
+
+  deploy-check:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: 
+      - build
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: src
+
+      - uses: actions/checkout@v3
+        with:
+          path: repo
+          ref: repo
+
+      - name: Download built repository
+        uses: actions/download-artifact@v3
+        with:
+          name: built-repo
+          path: built-repo
+
+      # This is meaningfully different to the check in 'build': that checks the repository
+      # built from main and from the PR tip, but that's not _actually_ the repository
+      # deployed in the repo branch. It should be the same, but it can't hurt to check
+      # against the thing that's actually deployed before we deploy.
+      - name: Check new index is an extension of the old index
+        run: |
+          ./src/scripts/check-archive-extension.sh repo/01-index.tar built-repo/01-index.tar
+
   deploy:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: build
+    needs: 
+      - check
+      - build
+      - deploy-check
 
     concurrency:
       group: "pages"
