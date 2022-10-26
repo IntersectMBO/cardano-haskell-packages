@@ -1,0 +1,80 @@
+# cardano-node
+# No team?
+
+# cardano-ledger
+
+_sources/byron-spec-chain        @input-output-hk/cardano-ledger 
+_sources/byron-spec-ledger       @input-output-hk/cardano-ledger 
+_sources/cardano-crypto-test     @input-output-hk/cardano-ledger 
+_sources/cardano-crypto-wrapper  @input-output-hk/cardano-ledger 
+_sources/cardano-data            @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-core     @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-pretty   @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-test     @input-output-hk/cardano-ledger 
+_sources/cardano-protocol-tpraos @input-output-hk/cardano-ledger 
+_sources/ledger-state            @input-output-hk/cardano-ledger 
+_sources/non-integral            @input-output-hk/cardano-ledger 
+_sources/plutus-preprocessor     @input-output-hk/cardano-ledger 
+_sources/set-algebra             @input-output-hk/cardano-ledger 
+_sources/small-steps             @input-output-hk/cardano-ledger 
+_sources/small-steps-test        @input-output-hk/cardano-ledger 
+
+## Eras
+_sources/cardano-ledger-alonzo          @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-alonzo-test     @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-babbage         @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-babbage-test    @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-byron           @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-byron-test      @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-conway          @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-conway-test     @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-shelley         @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-shelley-test    @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-shelley-ma      @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-shelley-ma-test @input-output-hk/cardano-ledger 
+
+# ouroboros-network
+
+## Network
+_sources/io-sim                             @input-output-hk/network-superowners
+_sources/io-sim-classes                     @input-output-hk/network-superowners
+_sources/network-mux                        @input-output-hk/network-superowners
+_sources/ntp-client                         @input-output-hk/network-superowners
+_sources/typed-protocols                    @input-output-hk/network-superowners
+_sources/typed-protocols-examples           @input-output-hk/network-superowners
+_sources/Win32-network                      @input-output-hk/network-superowners
+_sources/ouroboros-network-framework        @input-output-hk/network-superowners
+_sources/ouroboros-network                  @input-output-hk/network-superowners
+_sources/ouroboros-network/wireshark-plugin @input-output-hk/network-superowners
+_sources/ouroboros-network-testing          @input-output-hk/network-superowners
+_sources/cardano-client                     @input-output-hk/network-superowners
+
+## Consensus
+_sources/ouroboros-consensus/               @input-output-hk/consensus-superowners
+_sources/ouroboros-consensus-test/          @input-output-hk/consensus-superowners
+_sources/ouroboros-consensus-mock/          @input-output-hk/consensus-superowners
+_sources/ouroboros-consensus-mock-test/     @input-output-hk/consensus-superowners
+_sources/ouroboros-consensus-byron/         @input-output-hk/consensus-superowners
+_sources/ouroboros-consensus-byronspec/     @input-output-hk/consensus-superowners
+_sources/ouroboros-consensus-byron-test/    @input-output-hk/consensus-superowners
+_sources/ouroboros-consensus-shelley/       @input-output-hk/consensus-superowners
+_sources/ouroboros-consensus-shelley-test/  @input-output-hk/consensus-superowners
+_sources/ouroboros-consensus-cardano/       @input-output-hk/consensus-superowners
+_sources/ouroboros-consensus-cardano-test/  @input-output-hk/consensus-superowners
+
+# plutus
+_sources/plutus-core                @input-output-hk/plutus
+_sources/plutus-ghc-stub            @input-output-hk/plutus
+_sources/plutus-ledger-api          @input-output-hk/plutus
+_sources/plutus-tx                  @input-output-hk/plutus
+_sources/plutus-tx-plugin           @input-output-hk/plutus
+_sources/prettyprinter-configurable @input-output-hk/plutus
+_sources/word-array                 @input-output-hk/plutus
+
+# Patched packages
+
+_sources/flat     @input-output-hk/plutus
+_sources/int-cast @input-output-hk/plutus
+_sources/moo      @input-output-hk/cardano-ledger
+# Need a node team
+# _sources/ekg-json   
