@@ -1,3 +1,6 @@
 _cache/
 _keys/
 _repo/
+
+.envrc
+.direnv
