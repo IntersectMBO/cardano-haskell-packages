@@ -1,0 +1,3 @@
+timestamp = 2022-10-25T00:00:00Z
+github = { repo = "input-output-hk/Win32-network", rev = "4ed1f5dc22754e4e461cfc6901fd5eebe34541f4" }
+
