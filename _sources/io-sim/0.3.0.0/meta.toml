@@ -1,0 +1,4 @@
+timestamp = 2022-10-26T00:00:00Z
+github = { repo = "input-output-hk/io-sim", rev = "0df93fe773e9b66ce35f3637128533e5b0029558" }
+subdir = 'io-sim'
+
