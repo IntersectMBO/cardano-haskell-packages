@@ -187,28 +187,80 @@ The scheme that we typically use is to take the existing version number, add fou
 IMPORTANT: if you release a patched package to CHaP, make sure to open an issue about it so we can keep track of which patched packages we have.
 Ideally, include the conditions under which we can deprecate it, e.g. "can deprecate either when it's fixed upstream or when package X removes their dependency on it".
 
-## How to test changes to CHaP against haskell.nix projects
+## How to test changes to CHaP 
 
 Sometimes it is useful to test in advance how a new package or a cabal file
-revision affect a certain project. If the project uses haskell.nix, one can
-follow these steps:
+revision affects things
 
+The first steps are always the same, you need a built version of your modified 
+CHaP locally:
 - Make a local checkout of CHaP and make the intended changes
 - Build the repository with `nix develop -c foliage build`
-- Build the project to test overriding the repository with your local
-  version in `_repo`.
-  ```bash
-  $ nix build --override-input CHaP path:/home/user/cardano-haskell-packages/_repo
-  ```
-- In particular you can examine the build plan without completing the
-  build:
-  ```bash
-  $ nix build .#cardano-node.project.plan-nix.json \
-    --out-link plan.json                           \
-    --override-input CHaP path:/home/user/cardano-haskell-packages/_repo
-  ```
-- Note that you might need to bump the index-state to allow cabal to see
-  the changes in the repository.
+
+For the rest of this section we will assume the built repository is in 
+`/home/user/cardano-haskell-packages/_repo`.
+
+### ... in isolation
+
+You can test a locally built CHaP with a small test project consisting of just a
+`cabal.project` file:
+
+```
+-- Give it a different name to avoid cabal confusing it with the 
+-- real CHaP
+repository cardano-haskell-packages-local
+  -- Point this to the *built* repository
+  url: file:/home/user/cardano-haskell-packages/_repo
+  secure: True
+  -- You can skip the root-keys field
+
+-- Adjust as needed, you need the `cardano-haskell-packages` `index-state`
+-- to be newer than the repository you just built, otherwise cabal will ignore
+-- your new package versions!
+index-state: 2022-07-01T00:00:00Z
+index-state: cardano-haskell-packages 2022-10-17T00:00:00Z
+
+-- Add all the packages you want to try building
+extra-packages:
+  cardano-prelude
+```
+
+You need to tell cabal about the new repository with `cabal update` (you might need to
+clear out `~/.cabal/packages/cardano-haskell-packages-local` if  you've been
+editing your repository destructively).
+
+Then you can build whatever package version you want with `cabal`:
+
+```bash
+$ cabal build cardano-prelude --constraint "cardano-prelude==0.1.0.0"
+```
+
+The `--constraint` flag is useful here to build a particular 
+version of the package, since CHaP may contain many versions.
+
+### ... against haskell.nix projects
+
+If you want to test a locally built CHaP against a project that uses CHaP 
+via haskell.nix, you can build the project whilte overriding CHaP
+with your local version.
+
+```bash
+$ nix build --override-input CHaP path:/home/user/cardano-haskell-packages/_repo
+```
+
+Note that you will need to change the `index-state` for `cardano-haskell-packages` 
+to be newer than the repository you just built, otherwise cabal will ignore your 
+new package versions!
+
+Also, you you can examine the build plan without completing the build:
+```bash
+$ nix build .#project.plan-nix.json \
+	--out-link plan.json \
+	--override-input CHaP path:/home/user/cardano-haskell-packages/_repo
+```
+
+This is useful if you jsut want to see whether cabal is able to successfully
+resolve dependencies and see what versions it picked.
 
 ## What do I do if I want to release a package in CHaP to Hackage?
 
