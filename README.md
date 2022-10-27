@@ -1,7 +1,7 @@
 # Cardano Haskell package repository ("CHaP")
 
 * [All packages](https://input-output-hk.github.io/cardano-haskell-packages/all-packages/).
-* [All pacakge versions](https://input-output-hk.github.io/cardano-haskell-packages/all-package-versions/).
+* [All package versions](https://input-output-hk.github.io/cardano-haskell-packages/all-package-versions/).
 
 IMPORTANT: If you're here because you need to publish a new version of your package, you
 probably want to read the section on [adding a package from GitHub](#-from-github).
