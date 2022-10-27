@@ -3,6 +3,9 @@
 * [All packages](https://input-output-hk.github.io/cardano-haskell-packages/all-packages/).
 * [All pacakge versions](https://input-output-hk.github.io/cardano-haskell-packages/all-package-versions/).
 
+IMPORTANT: If you're here because you need to publish a new version of your package, you
+probably want to read the section on [adding a package from GitHub](#-from-github).
+
 This is a Cabal package repository ("CHaP") whose purpose is to contain all the Haskell
 packages used by the Cardano open-source project which are not on Hackage.
 
@@ -10,10 +13,6 @@ The package repository itself is available [here](https://input-output-hk.github
 It is built from a [git repository](https://github.com/input-output-hk/cardano-haskell-packages) which
 contains the metadata specifying all the package versions. The package repository is built using
 [`foliage`](https://github.com/andreabedini/foliage).
-
-If you're here because you need to add a new version of your package, you
-probably want to read the section on [adding a package from GitHub](#-from-github).
-
 
 ## What is a Cabal package repository?
 
@@ -59,11 +58,17 @@ repository cardano-haskell-packages
 
 The package repository will be understood by cabal, and can be updated with `cabal update`.
 
-The `index-state` for the package repository can also be pinned in as usual:
-
+The `index-state` for the package repository can also be pinned as usual. You can either
+just use a single `index-state` stanza, which will pin the `index-state` for all package
+repositories (i.e. both Hackage and CHaP), or you can give CHaP its own independent
+`index-state`:
 ```
 index-state: cardano-haskell-packages 2022-08-25T00:00:00Z
 ```
+
+It's usually a good idea to give CHaP an independent `index-state`. That allows you to
+update CHaP and Hackage independently, which is helpful if you don't want to deal with
+breakage from getting new Hackage packages!
 
 ### ... with haskell.nix
 
@@ -130,7 +135,7 @@ replicate that configuration, making the package much harder to use.
 At some point we may start checking this, e.g. by trying to build each added package in
 isolation.
 
-## How to add a new package (or package version) to CHaP
+## How to add a new package version to CHaP
 
 Package versions are defined using metadata files `_sources/$pkg_name/$pkg_version/meta.toml`,
 which you can create directly. The metadata files have the following format:
