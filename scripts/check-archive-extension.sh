@@ -19,6 +19,12 @@ if [ "$#" == "0" ]; then
 	exit 1
 fi
 
+# The approach we take is to compare the *listings* of the tar files including
+# file sizes. It would be nicer if we were able to compare them by bytes, but
+# unfortunately tar files are terminated by two "blocks" of zeros. So a tar
+# file that is semantically an extension of another tar file will not be an
+# extension of its bytes.
+
 OLD_INDEX_TAR=$1
 NEW_INDEX_TAR=$2
 
@@ -49,7 +55,11 @@ else
 fi
 
 LAST_OLD_ENTRY=$(echo "$OLD_LISTING" | tail -n1)
-# Take the first thing taht appears only in the new, cut out the ">" marker 
+# Take the first thing that appears only in the new, cut out the ">" marker 
+# Note: this cannot be empty since:
+# 1. The diff was not empty
+# 2. The diff on the old side was empty
+# therefore the diff on the new side must be non-empty
 FIRST_ACTUALLY_NEW_ENTRY=$(echo "$NEW_INDEX_ONLY" | head -n1 | cut -f"2-" -d' ')
 
 function getDate (){
@@ -58,6 +68,7 @@ function getDate (){
 
 LAST_OLD_DATE=$(getDate "$LAST_OLD_ENTRY")
 FIRST_ACTUALLY_NEW_DATE=$(getDate "$FIRST_ACTUALLY_NEW_ENTRY")
+
 
 # Standard string comparison will do the job here, because
 # we're comparing dates in the format YYYY-MM-DD-HH:MM!
@@ -68,7 +79,18 @@ if [[ $LAST_OLD_DATE > $FIRST_ACTUALLY_NEW_DATE ]]; then
   echo "First new entry:"
   echo "$FIRST_ACTUALLY_NEW_ENTRY"
   exit 1
-else 
-  echo "All new entries are newer than the last old entry"
 fi
+
+if [[ $LAST_OLD_DATE = $FIRST_ACTUALLY_NEW_DATE ]]; then
+  echo "The first new entry has the same timestamp as the last old entry"
+  echo "This may mean that they are not ordered correctly since foliage sorts by timestamp only"
+  echo "Last old entry:"
+  echo "$LAST_OLD_ENTRY"
+  echo "First new entry:"
+  echo "$FIRST_ACTUALLY_NEW_ENTRY"
+  exit 1
+fi
+
+echo "All new entries are strictly newer than the last old entry"
+exit 0
 
