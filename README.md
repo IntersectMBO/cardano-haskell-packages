@@ -1,15 +1,19 @@
 # Cardano Haskell package repository ("CHaP")
 
+* [All packages](https://input-output-hk.github.io/cardano-haskell-packages/all-packages/).
+* [All pacakge versions](https://input-output-hk.github.io/cardano-haskell-packages/all-package-versions/).
+
 This is a Cabal package repository ("CHaP") whose purpose is to contain all the Haskell
 packages used by the Cardano open-source project which are not on Hackage.
 
 The package repository itself is available [here](https://input-output-hk.github.io/cardano-haskell-packages).
 It is built from a [git repository](https://github.com/input-output-hk/cardano-haskell-packages) which
-contains the metadata specifying all the package versions. The package repository is built using 
+contains the metadata specifying all the package versions. The package repository is built using
 [`foliage`](https://github.com/andreabedini/foliage).
 
 If you're here because you need to add a new version of your package, you
 probably want to read the section on [adding a package from GitHub](#-from-github).
+
 
 ## What is a Cabal package repository?
 
@@ -95,7 +99,7 @@ see [below](#how-do-i-add-a-patched-versions-of-a-hackage-package-to-chap).
 
 ### Monotonically increasing timestamps
 
-When adding a package, it is important to use a timestamp (see [below](#how-to-add-a-new-package-or-package-version-to-chap)) 
+When adding a package, it is important to use a timestamp (see [below](#how-to-add-a-new-package-or-package-version-to-chap))
 that is greater than any other timestamp in the index. Indeed, cabal users rely on
 the changes to the repository index to be append-only. A non append-only
 change to the package index would change the repository index state as
@@ -109,9 +113,9 @@ happening, and we enforce FF-only merges.
 
 ### No extra build configuration beyond what is given in the cabal file
 
-When downstream users pull a package from CHaP, `cabal` will build it based _only_ on the 
+When downstream users pull a package from CHaP, `cabal` will build it based _only_ on the
 information in the cabal file. This means that if your package needs any additonal configuration
-to build, then it will simply be broken for downstream users unless they replicate that 
+to build, then it will simply be broken for downstream users unless they replicate that
 configuration.
 
 Typical examples of this are anything that you add in `cabal.project`:
@@ -119,14 +123,14 @@ Typical examples of this are anything that you add in `cabal.project`:
 - `allow-newer`
 - `source-repository-package`
 
-Try to avoid adding packages to CHaP that need extra configuration in this way. This is not 
-a hard rule, but please bear in mind that doing so requires _all_ downstream consumers to 
+Try to avoid adding packages to CHaP that need extra configuration in this way. This is not
+a hard rule, but please bear in mind that doing so requires _all_ downstream consumers to
 replicate that configuration, making the package much harder to use.
 
 At some point we may start checking this, e.g. by trying to build each added package in
 isolation.
 
-## How to add a new package (or package version) to CHaP 
+## How to add a new package (or package version) to CHaP
 
 Package versions are defined using metadata files `_sources/$pkg_name/$pkg_version/meta.toml`,
 which you can create directly. The metadata files have the following format:
@@ -213,7 +217,7 @@ The thing to avoid is to have the same package _version_ in both repositories.
 The simplest solution is to just make sure to use a higher major version number when you start releasing to Hackage, even if this looks a bit odd.
 For example, if CHaP contains `X-1.0` and `X-1.1`, then the first Hackage release should be `X-1.2` or `X-2.0`.
 
-## CI for CHaP 
+## CI for CHaP
 
 The CI for CHaP does the following things:
 
