@@ -1,7 +1,7 @@
 # Cardano Haskell package repository ("CHaP")
 
-* [Contents](https://input-output-hk.github.io/cardano-haskell-packages/contents/).
-* [Timeline](https://input-output-hk.github.io/cardano-haskell-packages/timeline/).
+* [All packages](https://input-output-hk.github.io/cardano-haskell-packages/all-packages/).
+* [All pacakge versions](https://input-output-hk.github.io/cardano-haskell-packages/all-package-versions/).
 
 This is a Cabal package repository ("CHaP") whose purpose is to contain all the Haskell
 packages used by the Cardano open-source project which are not on Hackage.
