@@ -27,23 +27,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: check
-
-    concurrency:
-      group: "pages"
-      cancel-in-progress: true
-
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      contents: write
-      id-token: write
-      pages: write
-
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - uses: actions/checkout@v3
@@ -77,6 +61,41 @@ jobs:
           cp static/index.html _repo
           cp README.md _repo
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: built-repo
+          path: _repo
+
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      contents: write
+      id-token: write
+      pages: write
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download built repository
+        uses: actions/download-artifact@v3
+        with:
+          name: built-repo
+          path: _repo
+
       - name: Commit as branch
         run: |
           set -xe
@@ -105,7 +124,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v1
 
-      - name: Upload artifact
+      - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
           path: _repo
@@ -113,4 +132,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-
