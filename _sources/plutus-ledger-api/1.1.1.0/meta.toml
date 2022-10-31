@@ -1,0 +1,3 @@
+timestamp = 2022-10-31T00:00:00Z
+github = { repo = "input-output-hk/plutus", rev = "867fd234301d28525404de839d9a3c8220cbea63" }
+subdir = 'plutus-ledger-api'
