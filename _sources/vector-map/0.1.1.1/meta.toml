@@ -1,0 +1,3 @@
+timestamp = 2022-11-11T00:24:50Z
+github = { repo = "input-output-hk/cardano-ledger", rev = "2fac95ef338ff9622543d08fe16d0fa6716d0019" }
+subdir = 'libs/vector-map'
