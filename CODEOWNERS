@@ -1,37 +1,43 @@
 # cardano-node
-# No team?
+_sources/cardano-api             @input-output-hk/release
+_sources/cardano-cli             @input-output-hk/release
+_sources/cardano-client-demo     @input-output-hk/release
+_sources/cardano-node            @input-output-hk/release
+_sources/cardano-submit-api      @input-output-hk/release
+_sources/cardano-testnet         @input-output-hk/release
+
 
 # cardano-ledger
 
-_sources/byron-spec-chain        @input-output-hk/cardano-ledger 
-_sources/byron-spec-ledger       @input-output-hk/cardano-ledger 
-_sources/cardano-crypto-test     @input-output-hk/cardano-ledger 
-_sources/cardano-crypto-wrapper  @input-output-hk/cardano-ledger 
-_sources/cardano-data            @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-core     @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-pretty   @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-test     @input-output-hk/cardano-ledger 
-_sources/cardano-protocol-tpraos @input-output-hk/cardano-ledger 
-_sources/ledger-state            @input-output-hk/cardano-ledger 
-_sources/non-integral            @input-output-hk/cardano-ledger 
-_sources/plutus-preprocessor     @input-output-hk/cardano-ledger 
-_sources/set-algebra             @input-output-hk/cardano-ledger 
-_sources/small-steps             @input-output-hk/cardano-ledger 
-_sources/small-steps-test        @input-output-hk/cardano-ledger 
+_sources/byron-spec-chain        @input-output-hk/cardano-ledger
+_sources/byron-spec-ledger       @input-output-hk/cardano-ledger
+_sources/cardano-crypto-test     @input-output-hk/cardano-ledger
+_sources/cardano-crypto-wrapper  @input-output-hk/cardano-ledger
+_sources/cardano-data            @input-output-hk/cardano-ledger
+_sources/cardano-ledger-core     @input-output-hk/cardano-ledger
+_sources/cardano-ledger-pretty   @input-output-hk/cardano-ledger
+_sources/cardano-ledger-test     @input-output-hk/cardano-ledger
+_sources/cardano-protocol-tpraos @input-output-hk/cardano-ledger
+_sources/ledger-state            @input-output-hk/cardano-ledger
+_sources/non-integral            @input-output-hk/cardano-ledger
+_sources/plutus-preprocessor     @input-output-hk/cardano-ledger
+_sources/set-algebra             @input-output-hk/cardano-ledger
+_sources/small-steps             @input-output-hk/cardano-ledger
+_sources/small-steps-test        @input-output-hk/cardano-ledger
 
 ## Eras
-_sources/cardano-ledger-alonzo          @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-alonzo-test     @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-babbage         @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-babbage-test    @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-byron           @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-byron-test      @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-conway          @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-conway-test     @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-shelley         @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-shelley-test    @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-shelley-ma      @input-output-hk/cardano-ledger 
-_sources/cardano-ledger-shelley-ma-test @input-output-hk/cardano-ledger 
+_sources/cardano-ledger-alonzo          @input-output-hk/cardano-ledger
+_sources/cardano-ledger-alonzo-test     @input-output-hk/cardano-ledger
+_sources/cardano-ledger-babbage         @input-output-hk/cardano-ledger
+_sources/cardano-ledger-babbage-test    @input-output-hk/cardano-ledger
+_sources/cardano-ledger-byron           @input-output-hk/cardano-ledger
+_sources/cardano-ledger-byron-test      @input-output-hk/cardano-ledger
+_sources/cardano-ledger-conway          @input-output-hk/cardano-ledger
+_sources/cardano-ledger-conway-test     @input-output-hk/cardano-ledger
+_sources/cardano-ledger-shelley         @input-output-hk/cardano-ledger
+_sources/cardano-ledger-shelley-test    @input-output-hk/cardano-ledger
+_sources/cardano-ledger-shelley-ma      @input-output-hk/cardano-ledger
+_sources/cardano-ledger-shelley-ma-test @input-output-hk/cardano-ledger
 
 # ouroboros-network
 
@@ -77,4 +83,4 @@ _sources/flat     @input-output-hk/plutus-core
 _sources/int-cast @input-output-hk/plutus-core
 _sources/moo      @input-output-hk/cardano-ledger
 # Need a node team
-# _sources/ekg-json   
+# _sources/ekg-json
