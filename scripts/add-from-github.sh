@@ -104,7 +104,7 @@ do_package() {
   PKG_NAME=$(basename "$CABAL_FILE" .cabal)
 
   local PKG_VERSION
-  PKG_VERSION=$(awk -v IGNORECASE=1 -e '/^version/ { print $2 }' "$CABAL_FILE")
+  PKG_VERSION=$(awk -v IGNORECASE=1 '/^version/ { print $2 }' "$CABAL_FILE")
 
   if [[ -n $VERSION ]]; then
     PKG_VERSION="$VERSION"
