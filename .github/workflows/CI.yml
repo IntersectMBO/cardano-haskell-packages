@@ -91,11 +91,11 @@ jobs:
       # to the script from the PR itself.
       - name: Check new index is an extension of the old index
         run: |
-          ./scripts/check-archive-extension.sh _repo-main/01-index.tar _repo/01-index.tar
           echo "If this check failed because 'some entries only exist in the old index'"
           echo "then you may need to update your branch.\n"
           echo "If it failed because 'the last old entry is newer than the first new entry'"
           echo "then you may need to update the timestamps in your new packages to be newer than those in main."
+          ./scripts/check-archive-extension.sh _repo-main/01-index.tar _repo/01-index.tar
 
   deploy-check:
     runs-on: ubuntu-latest
