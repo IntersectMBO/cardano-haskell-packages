@@ -274,6 +274,16 @@ The thing to avoid is to have the same package _version_ in both repositories.
 The simplest solution is to just make sure to use a higher major version number when you start releasing to Hackage, even if this looks a bit odd.
 For example, if CHaP contains `X-1.0` and `X-1.1`, then the first Hackage release should be `X-1.2` or `X-2.0`.
 
+## Access control for CHaP
+
+Since packages are released to CHaP simply by making PRs, CHaP uses `CODEOWNERS` to determine whose approval is needed to release a package. 
+The general rules are:
+- If a package is clearly owned by a particular team, then set that team as the CODEOWNER.
+- Prefer to use GitHub teams over individual accounts wherever possible.
+- In the case of patched packages, the owner should be whichever team owns the package that causes the dependency on the package that needs patching.
+
+Generally, use your judgement about what's appropriate.
+
 ## CI for CHaP
 
 The CI for CHaP does the following things:
