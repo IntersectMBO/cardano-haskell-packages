@@ -1,0 +1,4 @@
+timestamp = 2022-11-17T04:56:26Z
+github = { repo = "input-output-hk/cardano-node", rev = "ebc7be471b30e5931b35f9bbc236d21c375b91bb" }
+subdir = 'trace-forward'
+force-version = true
