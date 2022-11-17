@@ -80,10 +80,26 @@ _sources/word-array                 @input-output-hk/plutus-core
 # hydra
 _sources/hydra-* @input-output-hk/hydra-engineering
 
+# performance-tracing
+_sources/cardano-topology               @input-output-hk/performance-tracing
+_sources/cardano-tracer                 @input-output-hk/performance-tracing
+_sources/ekg-forward                    @input-output-hk/performance-tracing
+_sources/ekg-json                       @input-output-hk/performance-tracing
+_sources/iohk-monitoring                @input-output-hk/performance-tracing
+_sources/lobemo-backend-aggregation     @input-output-hk/performance-tracing
+_sources/lobemo-backend-ekg             @input-output-hk/performance-tracing
+_sources/lobemo-backend-monitoring      @input-output-hk/performance-tracing
+_sources/lobemo-backend-trace-forwarder @input-output-hk/performance-tracing
+_sources/lobemo-scribe-systemd          @input-output-hk/performance-tracing
+_sources/locli                          @input-output-hk/performance-tracing
+_sources/trace-dispatcher               @input-output-hk/performance-tracing
+_sources/trace-forward                  @input-output-hk/performance-tracing
+_sources/trace-resources                @input-output-hk/performance-tracing
+_sources/tracer-transformers            @input-output-hk/performance-tracing
+_sources/tx-generator                   @input-output-hk/performance-tracing
+
 # Patched packages
 
 _sources/flat     @input-output-hk/plutus-core
 _sources/int-cast @input-output-hk/plutus-core
 _sources/moo      @input-output-hk/cardano-ledger
-# Need a node team
-# _sources/ekg-json
