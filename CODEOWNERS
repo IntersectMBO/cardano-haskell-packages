@@ -77,6 +77,9 @@ _sources/plutus-tx-plugin           @input-output-hk/plutus-core
 _sources/prettyprinter-configurable @input-output-hk/plutus-core
 _sources/word-array                 @input-output-hk/plutus-core
 
+# hydra
+_sources/hydra-* @input-output-hk/hydra-engineering
+
 # Patched packages
 
 _sources/flat     @input-output-hk/plutus-core

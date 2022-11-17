@@ -1,0 +1,3 @@
+timestamp = 2022-11-16T08:13:53Z
+github = { repo = "input-output-hk/hydra-poc", rev = "d4f242b68069765117e7c615101df17708de40a2" }
+subdir = 'hydra-cardano-api'
