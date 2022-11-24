@@ -226,8 +226,8 @@ index-state: 2022-07-01T00:00:00Z
 index-state: cardano-haskell-packages 2022-10-17T00:00:00Z
 
 -- Add all the packages you want to try building
-extra-packages:
-  cardano-prelude
+extra-packages: 
+  , cardano-prelude-0.1.0.0
 ```
 
 You need to tell cabal about the new repository with `cabal update` (you might need to
@@ -237,11 +237,10 @@ editing your repository destructively).
 Then you can build whatever package version you want with `cabal`:
 
 ```bash
-$ cabal build cardano-prelude --constraint "cardano-prelude==0.1.0.0"
+$ cabal build cardano-prelude
 ```
 
-The `--constraint` flag is useful here to build a particular 
-version of the package, since CHaP may contain many versions.
+You can troubleshoot a failed build plan using the cabal flags `--constraint`, `--allow-newer- and `--allow-older`. Once you have obtained a working build plan, you should revise you cabal file with appropriate constraints.
 
 ### ... against haskell.nix projects
 
