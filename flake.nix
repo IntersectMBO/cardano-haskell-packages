@@ -2,6 +2,7 @@
   description = "Metadata for Cardano's Haskell package repository";
 
   inputs = {
+    nixpkgs.follows = "foliage/nixpkgs";
     foliage.url = "github:andreabedini/foliage";
     flake-utils.url = "github:numtide/flake-utils";
   };
@@ -11,13 +12,13 @@
       (system:
         let pkgs = nixpkgs.legacyPackages.${system}; in
         {
-          devShells.default = with pkgs; mkShell {
+          devShells.default = with pkgs; mkShellNoCC {
             name = "cardano-haskell-packages";
             buildInputs = [
               bash
               coreutils
               curl
-              git
+              gitMinimal
               gnutar
               foliage.packages.${system}.default
             ];
