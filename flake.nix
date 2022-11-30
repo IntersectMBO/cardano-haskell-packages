@@ -17,7 +17,7 @@
             buildInputs = [
               bash
               coreutils
-              curl
+              curlMinimal
               gitMinimal
               gnutar
               foliage.packages.${system}.default
