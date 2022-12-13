@@ -1,5 +1,10 @@
 #! /usr/bin/env bash
 
+# Use gnu-tar and gnu-date regardless of whether the OS is Linux
+# or BSD-based.  The correct command will be assigned to TAR and DATE
+# variables.
+source "$(dirname "$(which "$0")")/use-gnu-tar.sh"
+
 # for some reason you can't just put a heredoc in a variable...
 read -r -d '' USAGE << EOF
 check-archive-extension.sh OLD_ARCHIVE NEW_ARCHIVE
@@ -47,8 +52,8 @@ fi
 # Output looks like this:
 # -rw-r--r-- foliage/foliage  6976 2022-10-25 18:33 network-mux/0.1.0.1/network-mux.cabal
 # So fields 4 and 5 are the date and the time
-OLD_LISTING=$(tar -tvf "$OLD_INDEX_TAR" | sort -k4,5)
-NEW_LISTING=$(tar -tvf "$NEW_INDEX_TAR" | sort -k4,5)
+OLD_LISTING=$("$TAR" -tvf "$OLD_INDEX_TAR" | sort -k4,5)
+NEW_LISTING=$("$TAR" -tvf "$NEW_INDEX_TAR" | sort -k4,5)
 
 DIFF=$(diff <(echo "$OLD_LISTING") <(echo "$NEW_LISTING"))
 
