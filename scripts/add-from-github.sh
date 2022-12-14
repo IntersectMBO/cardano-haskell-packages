@@ -3,6 +3,11 @@
 set -o errexit
 set -o pipefail
 
+# Use gnu-tar and gnu-date regardless of whether the OS is Linux
+# or BSD-based.  The correct command will be assigned to TAR and DATE
+# variables.
+source "$(dirname "$(which "$0")")/use-gnu-tar.sh"
+
 function usage {
   echo "Usage $(basename "$0") [-r REVISION] [-v VERSION] REPO_URL REV [SUBDIRS...]"
   echo
@@ -139,7 +144,7 @@ do_package() {
 }
 
 TAR_URL="$REPO_URL/tarball/$REPO_REV"
-TIMESTAMP=$(date --utc +%Y-%m-%dT%H:%M:%SZ)
+TIMESTAMP=$("$DATE" --utc +%Y-%m-%dT%H:%M:%SZ)
 
 WORKDIR=$(mktemp -d)
 log "Work directory is $WORKDIR"
@@ -152,7 +157,7 @@ if ! curl --fail --silent --location --remote-name "$TAR_URL"; then
   exit 1
 fi
 
-tar xzf ./* --strip-component=1 --wildcards '**/*.cabal'
+"$TAR" xzf ./* --strip-component=1 --wildcards '**/*.cabal'
 popd
 
 if [[ ${#SUBDIRS[@]} -eq 0 ]]; then

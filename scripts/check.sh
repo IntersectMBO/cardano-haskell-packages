@@ -3,8 +3,13 @@
 set -o errexit
 set -o pipefail
 
+# Use gnu-tar and gnu-date regardless of whether the OS is Linux
+# or BSD-based.  The correct command will be assigned to TAR and DATE
+# variables.
+source "$(dirname "$(which "$0")")/use-gnu-tar.sh"
+
 convert_timestamp_to_unix_time() {
-  date --date "$1" +%s
+  "$DATE" --date "$1" +%s
 }
 
 removed_timestamps_in_rev() {
