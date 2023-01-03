@@ -1,0 +1,3 @@
+timestamp = 2023-01-03T09:34:24Z
+github = { repo = "input-output-hk/Win32-network", rev = "1521906427571afd64670c2ce5f074d36aefb636" }
+force-version = true
