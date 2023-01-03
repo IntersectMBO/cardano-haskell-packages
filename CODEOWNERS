@@ -101,5 +101,6 @@ _sources/tx-generator                   @input-output-hk/performance-tracing
 # Patched packages
 
 _sources/flat     @input-output-hk/plutus-core
+_sources/inline-r @input-output-hk/plutus-core
 _sources/int-cast @input-output-hk/plutus-core
 _sources/moo      @input-output-hk/cardano-ledger
