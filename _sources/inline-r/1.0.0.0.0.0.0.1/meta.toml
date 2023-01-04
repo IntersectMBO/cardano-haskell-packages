@@ -1,0 +1,4 @@
+timestamp = 2023-01-03T13:59:37Z
+github = { repo = "tweag/HaskellR", rev = "53ce6887d8043252a068bc0a7db438abd4cfdc52" }
+subdir = 'inline-r'
+force-version = true
