@@ -32,7 +32,7 @@ that are not on Hackage. Both have their place: CHaP gives us proper versioning
 and simpler setup, `source-repository-package`s are useful for ad-hoc use of
 patched or pre-release versions.
 
-Crucially, additional Cabal pacakge repositories like CHaP and `source-repository-package`
+Crucially, additional Cabal package repositories like CHaP and `source-repository-package`
 stanzas are _compatible_ and _`source-repository-package`s always win_. That is,
 they interact in the same way as Hackage and `source-repository-package`s do. This gives us
 behaviour that we want: ad-hoc `source-repository-package` stanzas will override
@@ -119,7 +119,7 @@ happening, and we enforce FF-only merges.
 ### No extra build configuration beyond what is given in the cabal file
 
 When downstream users pull a package from CHaP, `cabal` will build it based _only_ on the
-information in the cabal file. This means that if your package needs any additonal configuration
+information in the cabal file. This means that if your package needs any additional configuration
 to build, then it will simply be broken for downstream users unless they replicate that
 configuration.
 
@@ -143,7 +143,7 @@ which you can create directly. The metadata files have the following format:
 ```toml
 # REQUIRED timestamp at which the package appears in the index
 timestamp = 2022-03-29T06:19:50+00:00
-# REQUIRED URL pointing to the source code tarball (not decessarily a sdist)
+# REQUIRED URL pointing to the source code tarball (not necessarily a sdist)
 url = 'https://github.com/input-output-hk/ouroboros-network/tarball/fa10cb4eef1e7d3e095cec3c2bb1210774b7e5fa'
 # OPTIONAL subdirectory inside the tarball where the package is located
 subdir = 'typed-protocols'
@@ -185,7 +185,7 @@ The main constraint when adding a patched version to CHaP is to be sure that we 
 There are two approaches to doing this:
 
 1. Release the package in CHaP under a different name (for the fork).
-This is very safe, but may not be possible if the dependency is incurred via a packge we don't control, as then we can't force it to depend on the renamed package.
+This is very safe, but may not be possible if the dependency is incurred via a package we don't control, as then we can't force it to depend on the renamed package.
 2. Release the package under a version that is very unlikely to be used by upstream.
 The scheme that we typically use is to take the existing version number, add four zero components and then a patch version, e.g. `1.2.3.4.0.0.0.0.1`.
 
@@ -245,7 +245,7 @@ You can troubleshoot a failed build plan using the cabal flags `--constraint`, `
 ### ... against haskell.nix projects
 
 If you want to test a locally built CHaP against a project that uses CHaP 
-via haskell.nix, you can build the project whilte overriding CHaP
+via haskell.nix, you can build the project while overriding CHaP
 with your local version.
 
 ```bash
