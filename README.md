@@ -58,17 +58,29 @@ repository cardano-haskell-packages
 
 The package repository will be understood by cabal, and can be updated with `cabal update`.
 
-The `index-state` for the package repository can also be pinned as usual. You can either
-just use a single `index-state` stanza, which will pin the `index-state` for all package
-repositories (i.e. both Hackage and CHaP), or you can give CHaP its own independent
-`index-state`:
+The `index-state` for the package repository can also be pinned as usual. 
+You can either just use a single `index-state` for both Hackage and CHaP:
+
 ```
+index-state: 2022-08-25T00:00:00Z
+```
+
+or you can specify a different index-state for each repository:
+
+```
+index-state:
+  , hackage.haskell.org      2022-12-31T00:00:00Z
+  , cardano-haskell-packages 2022-08-25T00:00:00Z
+```
+
+Note that a second `index-state` stanza completely ovverides the first, so
+
+```
+index-state: 2022-08-25T00:00:00Z
 index-state: cardano-haskell-packages 2022-08-25T00:00:00Z
 ```
 
-It's usually a good idea to give CHaP an independent `index-state`. That allows you to
-update CHaP and Hackage independently, which is helpful if you don't want to deal with
-breakage from getting new Hackage packages!
+would override the index-state for Hackage to HEAD (since HEAD is the default).
 
 ### ... with haskell.nix
 
@@ -218,12 +230,6 @@ repository cardano-haskell-packages-local
   url: file:/home/user/cardano-haskell-packages/_repo
   secure: True
   -- You can skip the root-keys field
-
--- Adjust as needed, you need the `cardano-haskell-packages` `index-state`
--- to be newer than the repository you just built, otherwise cabal will ignore
--- your new package versions!
-index-state: 2022-07-01T00:00:00Z
-index-state: cardano-haskell-packages 2022-10-17T00:00:00Z
 
 -- Add all the packages you want to try building
 extra-packages: 
