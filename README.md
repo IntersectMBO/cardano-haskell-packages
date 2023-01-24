@@ -94,7 +94,7 @@ inputs.CHaP = {
   flake = false;
 };
 ```
-3. Add the fetched input to the `inputMap` argument of `cabalProject`, like this:
+3. Tell haskell-nix to map the CHaP url to the appropriate nix store path using the `inputMap` argument of one of [haskell.nix project functions](https://input-output-hk.github.io/haskell.nix/reference/library.html#top-level-attributes). Using `cabalProject` this would look like the following:
 ```
 cabalProject {
   ...
