@@ -62,7 +62,7 @@ jobs:
 
       - name: Build repository (main)
         run: |
-          nix develop -c foliage build
+          nix develop -c foliage build -j 0
           mv _repo _repo-main
 
       - name: Checkout tip commit
@@ -72,7 +72,7 @@ jobs:
 
       - name: Build repository (tip)
         run: |
-          nix develop -c foliage build
+          nix develop -c foliage build -j 0
 
       - name: Copy static web assets
         run: |
