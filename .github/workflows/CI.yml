@@ -46,6 +46,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: main
+
+      - name: Compute old package list
+        run: ./scripts/list-packages.sh > old-packages
              
       - uses: actions/cache@v3
         with:
@@ -75,6 +78,9 @@ jobs:
         with:
           clean: false
 
+      - name: Compute new package list
+        run: ./scripts/list-packages.sh > new-packages
+
       - name: Build repository (tip)
         run: |
           nix develop -c foliage build -j 0
@@ -86,11 +92,19 @@ jobs:
 
       # Do this before the check, useful to have the artifact in case the 
       # check fails!
-      - name: Upload artifact
+      - name: Upload built repository
         uses: actions/upload-artifact@v3
         with:
           name: built-repo
           path: _repo
+
+      - name: Upload package lists
+        uses: actions/upload-artifact@v3
+        with:
+          name: package-lists
+          path: |
+            old-packages
+            new-packages
 
       # Note: we use the check script from the tip so we pick up changes 
       # to the script from the PR itself.
@@ -129,8 +143,19 @@ jobs:
           name: built-repo
           path: _repo
 
+      - name: Download package lists 
+        uses: actions/download-artifact@v3
+        with:
+          name: package-lists
+          path: .
+
       - name: Build a smoke-test package
         run: ./scripts/test-package-build.sh "./_repo" ${{matrix.ghc}} "plutus-core" "1.1.1.0"
+
+      - name: Build new packages
+        run: |
+          comm -13 old-packages new-packages > only-new-packages
+          ./scripts/test-packages-build.sh "./_repo" ${{matrix.ghc}} only-new-packages
 
   deploy-check:
     runs-on: ubuntu-latest

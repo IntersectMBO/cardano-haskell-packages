@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Run from the root
 
 BUILT_REPO=$1
