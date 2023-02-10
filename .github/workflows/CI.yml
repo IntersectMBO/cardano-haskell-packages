@@ -1,9 +1,14 @@
 name: CI
 
 on:
-  - push
-  - pull_request
-  - workflow_dispatch
+  # Following https://github.com/orgs/community/discussions/26276
+  # to get builds on PRs and pushes to master but not double
+  # builds on PRs.
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   check:
