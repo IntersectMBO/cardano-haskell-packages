@@ -19,8 +19,7 @@
   };
 
   outputs = { self, nixpkgs, foliage, flake-utils, haskell-nix, ... }:
-    let ghcVersions = [ "ghc8107" "ghc924" ];
-    in flake-utils.lib.eachDefaultSystem
+    flake-utils.lib.eachDefaultSystem
       (system:
         let overlays = [ haskell-nix.overlay ];
             pkgs = import nixpkgs { inherit system overlays; inherit (haskell-nix) config; };
