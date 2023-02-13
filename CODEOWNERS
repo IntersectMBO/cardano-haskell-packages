@@ -57,16 +57,19 @@ _sources/cardano-client                     @input-output-hk/ouroboros-networkin
 
 ## Consensus
 _sources/ouroboros-consensus/               @input-output-hk/ouroboros-consensus
+_sources/ouroboros-consensus-diffusion/     @input-output-hk/ouroboros-consensus
 _sources/ouroboros-consensus-test/          @input-output-hk/ouroboros-consensus
 _sources/ouroboros-consensus-mock/          @input-output-hk/ouroboros-consensus
 _sources/ouroboros-consensus-mock-test/     @input-output-hk/ouroboros-consensus
 _sources/ouroboros-consensus-byron/         @input-output-hk/ouroboros-consensus
 _sources/ouroboros-consensus-byronspec/     @input-output-hk/ouroboros-consensus
 _sources/ouroboros-consensus-byron-test/    @input-output-hk/ouroboros-consensus
+_sources/ouroboros-consensus-protocol/      @input-output-hk/ouroboros-consensus
 _sources/ouroboros-consensus-shelley/       @input-output-hk/ouroboros-consensus
 _sources/ouroboros-consensus-shelley-test/  @input-output-hk/ouroboros-consensus
 _sources/ouroboros-consensus-cardano/       @input-output-hk/ouroboros-consensus
 _sources/ouroboros-consensus-cardano-test/  @input-output-hk/ouroboros-consensus
+_sources/ouroboros-consensus-cardano-tools/ @input-output-hk/ouroboros-consensus
 
 # plutus
 _sources/plutus-core                @input-output-hk/plutus-core
