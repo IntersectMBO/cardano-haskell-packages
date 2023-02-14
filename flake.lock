@@ -251,32 +251,6 @@
         "type": "github"
       }
     },
-    "foliage": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "haskell-nix": [
-          "haskell-nix"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1675999288,
-        "narHash": "sha256-BBgEp/eyjDra+vEzyKi5CVl4MKMCePCaduPJtKZ7qgg=",
-        "owner": "andreabedini",
-        "repo": "foliage",
-        "rev": "f76eb918451ac275367a340fee86f4e7189314ee",
-        "type": "github"
-      },
-      "original": {
-        "owner": "andreabedini",
-        "repo": "foliage",
-        "type": "github"
-      }
-    },
     "ghc-8.6.5-iohk": {
       "flake": false,
       "locked": {
@@ -841,7 +815,6 @@
           "haskell-nix",
           "flake-utils"
         ],
-        "foliage": "foliage",
         "hackage-nix": "hackage-nix",
         "haskell-nix": "haskell-nix",
         "iohk-nix": "iohk-nix",

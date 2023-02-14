@@ -1,13 +1,7 @@
 {
   inputs = {
     nixpkgs.follows = "haskell-nix/nixpkgs";
-    foliage = {
-      url = "github:andreabedini/foliage";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.haskell-nix.follows = "haskell-nix";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-utils.follows = "haskell-nix/flake-utils";
     haskell-nix = {
       url = "github:input-output-hk/haskell.nix";
       inputs.hackage.follows = "hackage-nix";
@@ -16,7 +10,6 @@
       url = "github:input-output-hk/hackage.nix";
       flake = false;
     };
-    flake-utils.follows = "haskell-nix/flake-utils";
     CHaP = {
       url = "github:input-output-hk/cardano-haskell-packages?ref=repo";
       flake = false;
