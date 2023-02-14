@@ -6,7 +6,7 @@ on:
   # builds on PRs.
   push:
     branches:
-      - master
+      - main
   pull_request:
   workflow_dispatch:
 
