@@ -89,7 +89,10 @@
           all-packages = compiler-nix-name:
             builtins.listToAttrs (
               builtins.map
-                (package-id: { name = package-id; value = build-chap-package { inherit compiler-nix-name package-id; }; })
+                (package-id: {
+                  name = builtins.replaceStrings [ "." ] [ "-" ] package-id;
+                  value = build-chap-package { inherit compiler-nix-name package-id; };
+                })
                 chap-package-list);
 
         in
