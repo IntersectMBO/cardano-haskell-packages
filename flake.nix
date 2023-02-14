@@ -48,6 +48,7 @@
             }:
 
             let
+              package-name = (builtins.parseDrvName package-id).name;
 
               project = pkgs.haskell-nix.cabalProject' {
                 inherit compiler-nix-name;
@@ -74,10 +75,8 @@
 
               };
 
-              flake = project.flake { };
-
             in
-            flake.hydraJobs;
+            project.hsPkgs.${package-name}.components;
 
           all-packages = compiler-nix-name:
             builtins.listToAttrs (
