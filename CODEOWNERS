@@ -71,6 +71,10 @@ _sources/ouroboros-consensus-cardano/       @input-output-hk/ouroboros-consensus
 _sources/ouroboros-consensus-cardano-test/  @input-output-hk/ouroboros-consensus
 _sources/ouroboros-consensus-cardano-tools/ @input-output-hk/ouroboros-consensus
 
+_sources/diff-containers/                   @input-output-hk/ouroboros-consensus
+_sources/fingertree-rm/                     @input-output-hk/ouroboros-consensus
+_sources/simple-semigroupoids/              @input-output-hk/ouroboros-consensus
+
 # plutus
 _sources/plutus-core                @input-output-hk/plutus-core
 _sources/plutus-ghc-stub            @input-output-hk/plutus-core
