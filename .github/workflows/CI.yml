@@ -67,7 +67,7 @@ jobs:
 
       - name: Build repository (main)
         run: |
-          nix develop -c foliage build -j 0 --write-metadata
+          nix develop -c foliage build -j 0
           mv _repo _repo-main
 
       - name: Checkout tip commit
