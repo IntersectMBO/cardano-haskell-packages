@@ -1,0 +1,3 @@
+timestamp = 2023-02-23T00:00:00Z
+github = { repo = "input-output-hk/quickcheck-contractmodel", rev = "3daca9ba44388b9a4f9b3030bfe6d7f6c4bd0b54" }
+subdir = 'contractmodel'
