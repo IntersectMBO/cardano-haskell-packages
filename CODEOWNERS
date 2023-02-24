@@ -87,7 +87,7 @@ _sources/prettyprinter-configurable @input-output-hk/plutus-core
 _sources/word-array                 @input-output-hk/plutus-core
 
 # plutus-apps
-_sources/quickcheck-contractmodel @input-output-hk/plutus-apps
+_sources/quickcheck-contractmodel @input-output-hk/plutus-tools
 
 # hydra
 _sources/hydra-* @input-output-hk/hydra-engineering
