@@ -76,23 +76,19 @@
               };
 
             in
-            project.hsPkgs.${package-name}.components;
+            pkgs.releaseTools.aggregate {
+              name = package-id;
+              constituents = lib.collect lib.isDerivation project.hsPkgs.${package-name}.components;
+            };
 
           all-packages = compiler-nix-name:
-            builtins.listToAttrs (
-              builtins.map
-                (package-id: {
-                  name = builtins.replaceStrings [ "." ] [ "-" ] package-id;
-                  value = build-chap-package { inherit compiler-nix-name package-id; };
-                })
-                chap-package-list);
+            lib.attrsets.mapAttrs' (name: lib.attrsets.nameValuePair (builtins.replaceStrings [ "." ] [ "-" ] name)) (
+              lib.attrsets.genAttrs chap-package-list (package-id: build-chap-package { inherit compiler-nix-name package-id; })
+            );
 
         in
         {
-          hydraJobs = builtins.listToAttrs (
-            builtins.map
-              (compiler-nix-name: { name = compiler-nix-name; value = all-packages compiler-nix-name; })
-              compiler-list);
+          hydraJobs = lib.attrsets.genAttrs compiler-list all-packages;
         });
 
   nixConfig = {
