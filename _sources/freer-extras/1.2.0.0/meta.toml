@@ -1,0 +1,3 @@
+timestamp = 2023-03-10T07:05:55Z
+github = { repo = "input-output-hk/plutus-apps", rev = "c4f4dc5fedd5b1804781abb7db0fb5a553e24ecb" }
+subdir = 'freer-extras'
