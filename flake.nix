@@ -21,7 +21,13 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, haskell-nix, CHaP, iohk-nix, ... }:
-    flake-utils.lib.eachSystem [ "x86_64-linux" ]
+    let 
+      supportedSystems = [ "x86_64-linux" ];
+      compilers = [ "ghc8107" "ghc925" ];
+      chap-package-list =
+        builtins.map (p: "${p.pkg-name}-${p.pkg-version}")
+          (builtins.fromJSON (builtins.readFile "${CHaP}/foliage/packages.json"));
+    in flake-utils.lib.eachSystem supportedSystems
       (system:
         let
           pkgs = import nixpkgs {
@@ -37,12 +43,6 @@
 
           # last index state known to haskell-nix
           index-state = lib.last (__attrNames (import pkgs.haskell-nix.indexStateHashesPath));
-
-          compiler-list = [ "ghc8107" "ghc925" ];
-
-          chap-package-list =
-            builtins.map (p: "${p.pkg-name}-${p.pkg-version}")
-              (builtins.fromJSON (builtins.readFile "${CHaP}/foliage/packages.json"));
 
           build-chap-package =
             { compiler-nix-name
@@ -94,7 +94,7 @@
 
         in
         {
-          hydraJobs = lib.attrsets.genAttrs compiler-list all-packages;
+          hydraJobs = lib.attrsets.genAttrs compilers all-packages;
         });
 
   nixConfig = {
