@@ -35,12 +35,14 @@
 
           inherit (pkgs) lib;
 
+          # last index state known to haskell-nix
+          index-state = lib.last (__attrNames (import pkgs.haskell-nix.indexStateHashesPath));
+
           compiler-list = [ "ghc8107" "ghc925" ];
 
-          # TODO revisit when foliage outputs metadata
           chap-package-list =
-            let entries = builtins.readDir "${CHaP}/package";
-            in builtins.filter (n: entries.${n} == "directory") (builtins.attrNames entries);
+            builtins.map (p: "${p.pkg-name}-${p.pkg-version}")
+              (builtins.fromJSON (builtins.readFile "${CHaP}/foliage/packages.json"));
 
           build-chap-package =
             { compiler-nix-name
@@ -52,6 +54,8 @@
 
               project = pkgs.haskell-nix.cabalProject' {
                 inherit compiler-nix-name;
+                inherit index-state;
+
                 src = ./empty;
 
                 inputMap = {
@@ -83,7 +87,9 @@
 
           all-packages = compiler-nix-name:
             lib.attrsets.mapAttrs' (name: lib.attrsets.nameValuePair (builtins.replaceStrings [ "." ] [ "-" ] name)) (
-              lib.attrsets.genAttrs chap-package-list (package-id: build-chap-package { inherit compiler-nix-name package-id; })
+              lib.attrsets.genAttrs chap-package-list (package-id: build-chap-package {
+                inherit compiler-nix-name package-id;
+              })
             );
 
         in
