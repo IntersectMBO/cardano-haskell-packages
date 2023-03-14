@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0 # the check script below needs the whole history
 
       - name: Setup Nix
-        uses: cachix/install-nix-action@v17
+        uses: cachix/install-nix-action@v20
         with:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
@@ -29,12 +29,12 @@ jobs:
       - name: Run checks
         run: nix develop -c ./scripts/check.sh
 
-  build:
+  build-repo:
     runs-on: ubuntu-latest
 
     steps:
       - name: Setup Nix
-        uses: cachix/install-nix-action@v17
+        uses: cachix/install-nix-action@v20
         with:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
@@ -64,8 +64,10 @@ jobs:
           fi
 
       - name: Build repository (main)
+        # We don't need the metadata here, since we're just
+        # using this to compare the generated index
         run: |
-          nix develop -c foliage build -j 0
+          nix develop -c foliage build -j 0 
           mv _repo _repo-main
 
       - name: Checkout tip commit
@@ -84,7 +86,7 @@ jobs:
 
       # Do this before the check, useful to have the artifact in case the 
       # check fails!
-      - name: Upload artifact
+      - name: Upload built repository
         uses: actions/upload-artifact@v3
         with:
           name: built-repo
@@ -100,11 +102,50 @@ jobs:
           echo "then you may need to update the timestamps in your new packages to be newer than those in main."
           ./scripts/check-archive-extension.sh _repo-main/01-index.tar _repo/01-index.tar
 
+  build-packages:
+    runs-on: ubuntu-latest
+    needs:
+      - build-repo
+    strategy:
+      matrix:
+        ghc:
+          - ghc8107
+          - ghc925
+
+    steps:
+      - name: Install Nix
+        uses: cachix/install-nix-action@v20
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            substituters        = https://cache.iog.io https://cache.nixos.org https://foliage.cachix.org
+            trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= foliage.cachix.org-1:kAFyYLnk8JcRURWReWZCatM9v3Rk24F5wNMpEj14Q/g=
+
+      - name: Setup nixbuild.net
+        uses: nixbuild/nixbuild-action@biscuit
+        with:
+          nixbuild_token: ${{secrets.NIXBUILD_TOKEN}}
+
+      - uses: actions/checkout@v3
+        with:
+          # The flake for building packages is on the builder branch
+          ref: builder
+
+      - name: Download built repository
+        uses: actions/download-artifact@v3
+        with:
+          name: built-repo
+          path: _repo
+
+      - name: Build a smoke-test package
+        run: |
+          nix build --accept-flake-config -L --override-input CHaP path:_repo --eval-store auto --store ssh-ng://eu.nixbuild.net .#hydraJobs.${{matrix.ghc}}.plutus-core-1-1-1-0.x86_64-linux  
+
   deploy-check:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: 
-      - build
+      - build-repo
 
     steps:
       - uses: actions/checkout@v3
@@ -135,7 +176,7 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: 
       - check
-      - build
+      - build-repo
       - deploy-check
 
     concurrency:
