@@ -2,15 +2,49 @@
   description = "Metadata for Cardano's Haskell package repository";
 
   inputs = {
-    nixpkgs.follows = "foliage/nixpkgs";
-    foliage.url = "github:andreabedini/foliage";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.follows = "haskell-nix/nixpkgs";
+    flake-utils.follows = "haskell-nix/flake-utils";
+
+    foliage = {
+      url = "github:andreabedini/foliage";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.haskell-nix.follows = "haskell-nix";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
+    haskell-nix = {
+      url = "github:input-output-hk/haskell.nix";
+      inputs.hackage.follows = "hackage-nix";
+    };
+
+    hackage-nix = {
+      url = "github:input-output-hk/hackage.nix";
+      flake = false;
+    };
+
+    CHaP = {
+      url = "github:input-output-hk/cardano-haskell-packages?ref=repo";
+      flake = false;
+    };
+
+    iohk-nix = {
+      url = "github:input-output-hk/iohk-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, foliage, flake-utils }:
+  outputs = { self, nixpkgs, flake-utils, foliage, haskell-nix, CHaP, iohk-nix, ... }:
     flake-utils.lib.eachDefaultSystem
       (system:
-        let pkgs = nixpkgs.legacyPackages.${system}; in
+        let pkgs = import nixpkgs {
+          inherit system;
+          inherit (haskell-nix) config;
+          overlays = [
+            haskell-nix.overlay
+            iohk-nix.overlays.crypto
+          ];
+        };
+        in
         {
           devShells.default = with pkgs; mkShellNoCC {
             name = "cardano-haskell-packages";
@@ -23,6 +57,14 @@
               foliage.packages.${system}.default
             ];
           };
+
+          hydraJobs =
+            let
+              inherit (pkgs) lib;
+              builder = import ./builder { inherit pkgs CHaP; };
+              compilers = [ "ghc8107" "ghc925" ];
+            in
+            lib.attrsets.genAttrs compilers builder;
         });
 
   nixConfig = {
