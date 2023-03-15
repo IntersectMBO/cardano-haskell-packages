@@ -7,8 +7,9 @@ let
   index-state = lib.last (builtins.attrNames (import pkgs.haskell-nix.indexStateHashesPath));
 
   chap-package-list =
-    builtins.map (p: "${p.pkg-name}-${p.pkg-version}")
-      (builtins.fromJSON (builtins.readFile "${CHaP}/foliage/packages.json"));
+    builtins.filter (lib.strings.hasPrefix "plutus-core") (
+      builtins.map (p: "${p.pkg-name}-${p.pkg-version}")
+        (builtins.fromJSON (builtins.readFile "${CHaP}/foliage/packages.json")));
 
   build-chap-package = package-id:
     let
@@ -45,7 +46,7 @@ let
     pkgs.releaseTools.aggregate {
       name = package-id;
       constituents = lib.collect lib.isDerivation {
-        inherit (project.hsPkgs.pkg-a) components checks;
+        inherit (project.hsPkgs.${package-name}) components checks;
       };
     };
 
