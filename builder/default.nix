@@ -3,9 +3,6 @@ compiler-nix-name:
 let
   inherit (pkgs) lib;
 
-  # last index state known to haskell-nix
-  index-state = lib.last (builtins.attrNames (import pkgs.haskell-nix.indexStateHashesPath));
-
   chap-package-list =
     builtins.filter (lib.strings.hasPrefix "plutus-core") (
       builtins.map (p: "${p.pkg-name}-${p.pkg-version}")
@@ -15,9 +12,12 @@ let
     let
       package-name = (builtins.parseDrvName package-id).name;
 
+      # No need to set index-state:
+      # - haskell.nix will automatically use the latest known one for hackage
+      # - we want the very latest state for CHaP so it includes anything from
+      #   e.g. a PR being tested
       project = pkgs.haskell-nix.cabalProject' {
         inherit compiler-nix-name;
-        inherit index-state;
 
         name = package-id;
         src = ./empty;
@@ -30,6 +30,11 @@ let
           repository cardano-haskell-packages
             url: https://input-output-hk.github.io/cardano-haskell-packages
             secure: True
+
+          -- Work around https://github.com/input-output-hk/nothunks/issues/17
+          package nothunks
+            flags: +vector
+
           extra-packages: ${package-id}
         '';
 
