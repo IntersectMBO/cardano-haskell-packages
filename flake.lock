@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "CHaP": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1678854831,
+        "narHash": "sha256-HzXVzCPJSnJGxatqOmbcLc23qDHvF4itTkqk4oxi3dk=",
+        "owner": "input-output-hk",
+        "repo": "cardano-haskell-packages",
+        "rev": "329015d09ac4dc74a97226d0aa5b1705e2c1d52f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "input-output-hk",
+        "ref": "repo",
+        "repo": "cardano-haskell-packages",
+        "type": "github"
+      }
+    },
     "HTTP": {
       "flake": false,
       "locked": {
@@ -101,14 +118,12 @@
     "devshell": {
       "inputs": {
         "flake-utils": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
           "flake-utils"
         ],
         "nixpkgs": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
@@ -132,14 +147,12 @@
     "dmerge": {
       "inputs": {
         "nixlib": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
           "nixpkgs"
         ],
         "yants": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
@@ -195,21 +208,6 @@
     },
     "flake-utils": {
       "locked": {
-        "lastModified": 1659877975,
-        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "flake-utils_2": {
-      "locked": {
         "lastModified": 1667395993,
         "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
         "owner": "numtide",
@@ -223,7 +221,7 @@
         "type": "github"
       }
     },
-    "flake-utils_3": {
+    "flake-utils_2": {
       "locked": {
         "lastModified": 1653893745,
         "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
@@ -238,7 +236,7 @@
         "type": "github"
       }
     },
-    "flake-utils_4": {
+    "flake-utils_3": {
       "locked": {
         "lastModified": 1659877975,
         "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
@@ -256,15 +254,13 @@
     "foliage": {
       "inputs": {
         "flake-utils": [
-          "foliage",
-          "haskell-nix",
           "flake-utils"
         ],
-        "haskell-nix": "haskell-nix",
+        "haskell-nix": [
+          "haskell-nix"
+        ],
         "nixpkgs": [
-          "foliage",
-          "haskell-nix",
-          "nixpkgs-unstable"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -317,14 +313,14 @@
         "type": "github"
       }
     },
-    "hackage": {
+    "hackage-nix": {
       "flake": false,
       "locked": {
-        "lastModified": 1677809131,
-        "narHash": "sha256-MQ+ybbu5VFA6ERvh8mXcYEVlBCTte4BDxRaILSwBdAk=",
+        "lastModified": 1678839912,
+        "narHash": "sha256-U13Gt95c4lAy+J1tAEInK4batuv4Az3q2Imar8V4qqA=",
         "owner": "input-output-hk",
         "repo": "hackage.nix",
-        "rev": "4ea4b12737ea42e47eb5c6a7e4a3eafe9da2fc52",
+        "rev": "8d86d399acebee778bc0211008d0f1cea77b4307",
         "type": "github"
       },
       "original": {
@@ -341,14 +337,15 @@
         "cabal-36": "cabal-36",
         "cardano-shell": "cardano-shell",
         "flake-compat": "flake-compat",
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils",
         "ghc-8.6.5-iohk": "ghc-8.6.5-iohk",
-        "hackage": "hackage",
+        "hackage": [
+          "hackage-nix"
+        ],
         "hpc-coveralls": "hpc-coveralls",
         "hydra": "hydra",
         "iserv-proxy": "iserv-proxy",
         "nixpkgs": [
-          "foliage",
           "haskell-nix",
           "nixpkgs-unstable"
         ],
@@ -363,11 +360,11 @@
         "tullia": "tullia"
       },
       "locked": {
-        "lastModified": 1677809260,
-        "narHash": "sha256-RSiv9/LP8/+sf15B305z4DYaj7IiAVjPBkqPfByxAp4=",
+        "lastModified": 1678849774,
+        "narHash": "sha256-xYXstGlytKVcqFaYiDbu9onpWEo4idgVyMD811Hla+U=",
         "owner": "input-output-hk",
         "repo": "haskell.nix",
-        "rev": "02a5acdfc937129e51e41de0eafd0c44f29896b4",
+        "rev": "6ffd8778d5e423aaef84a3766e55c19906a82c7b",
         "type": "github"
       },
       "original": {
@@ -396,7 +393,6 @@
       "inputs": {
         "nix": "nix",
         "nixpkgs": [
-          "foliage",
           "haskell-nix",
           "hydra",
           "nix",
@@ -419,7 +415,6 @@
     "incl": {
       "inputs": {
         "nixlib": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
@@ -437,6 +432,26 @@
       "original": {
         "owner": "divnix",
         "repo": "incl",
+        "type": "github"
+      }
+    },
+    "iohk-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1678326995,
+        "narHash": "sha256-cGIHTWB3ENLTCc2/3eLMPL5eBE87grCDOBS4lBllaZg=",
+        "owner": "input-output-hk",
+        "repo": "iohk-nix",
+        "rev": "6f1ca44c8bf714df4866e8bf30030a70f55e64e2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "input-output-hk",
+        "repo": "iohk-nix",
         "type": "github"
       }
     },
@@ -476,14 +491,12 @@
     "n2c": {
       "inputs": {
         "flake-utils": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
           "flake-utils"
         ],
         "nixpkgs": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
@@ -529,7 +542,6 @@
       "inputs": {
         "flake-compat": "flake-compat_2",
         "flake-utils": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "nix2container",
@@ -537,13 +549,11 @@
         ],
         "gomod2nix": "gomod2nix",
         "nixpkgs": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "nixpkgs"
         ],
         "nixpkgs-lib": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "nixpkgs"
@@ -565,7 +575,7 @@
     },
     "nix2container": {
       "inputs": {
-        "flake-utils": "flake-utils_3",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
@@ -585,21 +595,18 @@
     "nixago": {
       "inputs": {
         "flake-utils": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
           "flake-utils"
         ],
         "nixago-exts": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
           "blank"
         ],
         "nixpkgs": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
@@ -829,10 +836,17 @@
     },
     "root": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "CHaP": "CHaP",
+        "flake-utils": [
+          "haskell-nix",
+          "flake-utils"
+        ],
         "foliage": "foliage",
+        "hackage-nix": "hackage-nix",
+        "haskell-nix": "haskell-nix",
+        "iohk-nix": "iohk-nix",
         "nixpkgs": [
-          "foliage",
+          "haskell-nix",
           "nixpkgs"
         ]
       }
@@ -840,11 +854,11 @@
     "stackage": {
       "flake": false,
       "locked": {
-        "lastModified": 1677543037,
-        "narHash": "sha256-7CPQZZafTQiw7YL+a2KCamb9a3PU0do9iZKy1AaRkBo=",
+        "lastModified": 1678839001,
+        "narHash": "sha256-i4Z+YDYYx7y3sdHcIc7sq5JxIJiGO1hB91eprZ7R894=",
         "owner": "input-output-hk",
         "repo": "stackage.nix",
-        "rev": "f4d29fa4403f45541d9f3993523df6027c21fe90",
+        "rev": "1318f064092c1f17df9c9c2b280bf72531e4642f",
         "type": "github"
       },
       "original": {
@@ -856,7 +870,6 @@
     "std": {
       "inputs": {
         "arion": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
@@ -865,17 +878,15 @@
         "blank": "blank",
         "devshell": "devshell",
         "dmerge": "dmerge",
-        "flake-utils": "flake-utils_4",
+        "flake-utils": "flake-utils_3",
         "incl": "incl",
         "makes": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
           "blank"
         ],
         "microvm": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
@@ -906,7 +917,6 @@
         "nix-nomad": "nix-nomad",
         "nix2container": "nix2container",
         "nixpkgs": [
-          "foliage",
           "haskell-nix",
           "nixpkgs"
         ],
@@ -944,7 +954,6 @@
     "yants": {
       "inputs": {
         "nixpkgs": [
-          "foliage",
           "haskell-nix",
           "tullia",
           "std",
