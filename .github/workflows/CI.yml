@@ -110,7 +110,7 @@ jobs:
       matrix:
         ghc:
           - ghc8107
-          - ghc925
+          - ghc926
 
     steps:
       - name: Install Nix
