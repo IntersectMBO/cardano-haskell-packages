@@ -62,7 +62,7 @@
             let
               inherit (pkgs) lib;
               builder = import ./builder { inherit pkgs CHaP; };
-              compilers = [ "ghc8107" "ghc925" ];
+              compilers = [ "ghc8107" "ghc926" ];
             in
             lib.attrsets.genAttrs compilers builder;
         });
