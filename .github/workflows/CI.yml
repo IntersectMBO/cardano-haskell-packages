@@ -127,9 +127,6 @@ jobs:
           nixbuild_token: ${{secrets.NIXBUILD_TOKEN}}
 
       - uses: actions/checkout@v3
-        with:
-          # The flake for building packages is on the builder branch
-          ref: builder
 
       - name: Download built repository
         uses: actions/download-artifact@v3
