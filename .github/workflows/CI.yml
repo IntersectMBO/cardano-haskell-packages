@@ -144,6 +144,8 @@ jobs:
           --override-input CHaP path:_repo 
           --eval-store auto 
           --store ssh-ng://eu.nixbuild.net 
+          --max-jobs 2
+          --builders ""
           .#hydraJobs.${{matrix.ghc}}.plutus-core-1-1-1-0.x86_64-linux  
 
   deploy-check:
