@@ -99,6 +99,8 @@
       "https://cache.zw3rk.com"
     ];
     extra-trusted-substituters = [
+      # If you have a nixbuild.net SSH key set up, you can pull builds from there
+      # by using '--extra-substituters ssh://eu.nixbuild.net' manually
       "ssh://eu.nixbuild.net"
     ];
     extra-trusted-public-keys = [

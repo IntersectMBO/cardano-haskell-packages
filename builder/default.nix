@@ -58,8 +58,7 @@ let
       };
       pkg = project.hsPkgs.${package-name};
       components = haskellLib.getAllComponents pkg;
-    # Not an ideal name here, would be nice to use something simpler
-    in lib.recurseIntoAttrs (builtins.listToAttrs (builtins.map (c: lib.nameValuePair c.name c) components));
+    in lib.recurseIntoAttrs (builtins.listToAttrs (builtins.map (c: lib.nameValuePair c.pname c) components));
 in
 # { foo = { X.Y.Z = <components>; P.Q.R = <components>; }; ... }
 lib.recurseIntoAttrs (lib.mapAttrs (name: versions: lib.recurseIntoAttrs (lib.genAttrs versions (version: chap-package-components name version))) chap-package-attrs)

@@ -220,7 +220,7 @@ Ideally, include the conditions under which we can deprecate it, e.g. "can depre
 ## How to test changes to CHaP 
 
 Sometimes it is useful to test in advance how a new package or a cabal file
-revision affects things
+revision affects things.
 
 The first steps are always the same, you need a built version of your modified 
 CHaP locally:
@@ -230,7 +230,7 @@ CHaP locally:
 For the rest of this section we will assume the built repository is in 
 `/home/user/cardano-haskell-packages/_repo`.
 
-### ... in isolation
+### ... by building packages with Cabal
 
 You can test a locally built CHaP with a small test project consisting of just a
 `cabal.project` file:
@@ -261,7 +261,24 @@ $ cabal build cardano-prelude
 
 You can troubleshoot a failed build plan using the cabal flags `--constraint`, `--allow-newer- and `--allow-older`. Once you have obtained a working build plan, you should revise you cabal file with appropriate constraints.
 
-### ... against haskell.nix projects
+### ... by building packages with Nix
+
+You can build packages from CHaP using Nix like this:
+
+```
+nix build 
+  --override-input /home/user/cardano-haskell-packages/_repo
+  .#haskellPackages.x86_64-linux.ghc8107.plutus-core."1.1.0.0".plutus-core-exe-plc
+```
+
+The final attribute name is `<package-name>-<component-type>-<component-name>`.
+
+We need to use `--override-input` because the CHaP flake relies on a built repository. 
+By default it points to a built repository on the main CHaP `repo` branch. 
+But if you have just produced your own built repository (see above) then you want to
+use that instead, and `-override-input` will let you do that.
+
+### ... by testing against a haskell.nix project
 
 If you want to test a locally built CHaP against a project that uses CHaP 
 via haskell.nix, you can build the project while overriding CHaP
@@ -310,6 +327,9 @@ The CI for CHaP does the following things:
 Along with requiring linear history, this ensures that package repository that we build is always an extension of the previous one.
 - Builds the package repository from the metadata using `foliage`.
 - Deploys the package repository to the `repo` branch, along with some static web content.
+- Builds a small set of packages using the newly built repository, to flush out any build issues.
+    - We build with all the major GHC versions we expect to be in use.
+    - At the moment we don't build all the packages in the repository, only a fixed set.
 
 ## Creating a repository like CHaP
 
