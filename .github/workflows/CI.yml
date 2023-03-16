@@ -134,8 +134,17 @@ jobs:
           path: _repo
 
       - name: Build a smoke-test package
-        run: |
-          nix build --accept-flake-config -L --override-input CHaP path:_repo --eval-store auto --store ssh-ng://eu.nixbuild.net .#hydraJobs.${{matrix.ghc}}.plutus-core-1-1-1-0.x86_64-linux  
+        # This is the "YAML folded string" marker, which replaces 
+        # newlines with spaces, since the usual bash idiom of \ 
+        # doesn't work for some reason
+        run: >
+          nix build 
+          --accept-flake-config 
+          -L 
+          --override-input CHaP path:_repo 
+          --eval-store auto 
+          --store ssh-ng://eu.nixbuild.net 
+          .#hydraJobs.${{matrix.ghc}}.plutus-core-1-1-1-0.x86_64-linux  
 
   deploy-check:
     runs-on: ubuntu-latest
