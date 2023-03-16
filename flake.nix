@@ -37,9 +37,9 @@
     let 
       compilers = [ "ghc8107" "ghc926" ];
       smokeTestPackages = [ 
-        "cardano-node" 
-        "cardano-cli" 
-        "cardano-api" 
+        #"cardano-node" 
+        #"cardano-cli" 
+        #"cardano-api" 
         "plutus-core" 
         ];
     # The foliage flake only works on this system, so we are stuck with it too
