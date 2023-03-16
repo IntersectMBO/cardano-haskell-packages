@@ -134,12 +134,14 @@ jobs:
           path: _repo
 
       - name: Build a smoke-test package
-        # This is the "YAML folded string" marker, which replaces 
+        # The > is the "YAML folded string" marker, which replaces 
         # newlines with spaces, since the usual bash idiom of \ 
         # doesn't work for some reason
+        # 
+        # See https://github.com/nixbuild/feedback/issues/14 for
+        # why some of these options are here
         run: >
           nix build 
-          --accept-flake-config 
           -L 
           --override-input CHaP path:_repo 
           --eval-store auto 
