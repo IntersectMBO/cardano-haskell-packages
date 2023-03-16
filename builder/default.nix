@@ -2,15 +2,25 @@
 compiler-nix-name:
 let
   inherit (pkgs) lib;
+  inherit (pkgs.haskell-nix) haskellLib;
 
+  # [ { name = "foo"; version = "X.Y.Z"; }, { name = "foo"; version = "P.Q.R"; } ]
   chap-package-list =
-    builtins.filter (lib.strings.hasPrefix "plutus-core") (
-      builtins.map (p: "${p.pkg-name}-${p.pkg-version}")
-        (builtins.fromJSON (builtins.readFile "${CHaP}/foliage/packages.json")));
+      builtins.map (p: { name = p.pkg-name; version = p.pkg-version; })
+        (builtins.fromJSON (builtins.readFile "${CHaP}/foliage/packages.json"));
 
-  build-chap-package = package-id:
+  # { "foo" : [ "X.Y.Z" "P.Q.R" ], ... }
+  chap-package-attrs = 
+    let 
+      # { "foo" = [{ name = "foo"; version = "X.Y.Z"; }, { name = "foo"; version = "P.Q.R"; }]; ... }
+      grouped = lib.groupBy (m: m.name) chap-package-list;
+      # { "foo" : [ "X.Y.Z" "P.Q.R" ], ... }
+      simplified = lib.mapAttrs (name: metas: builtins.map (m: m.version) metas) grouped;
+    in simplified;
+
+  chap-package-components = package-name: package-version:
     let
-      package-name = (builtins.parseDrvName package-id).name;
+      package-id = "${package-name}-${package-version}";
 
       # No need to set index-state:
       # - haskell.nix will automatically use the latest known one for hackage
@@ -46,16 +56,10 @@ let
         }];
 
       };
-
-    in
-    pkgs.releaseTools.aggregate {
-      name = package-id;
-      constituents = lib.collect lib.isDerivation {
-        inherit (project.hsPkgs.${package-name}) components checks;
-      };
-    };
-
+      pkg = project.hsPkgs.${package-name};
+      components = haskellLib.getAllComponents pkg;
+    # Not an ideal name here, would be nice to use something simpler
+    in lib.recurseIntoAttrs (builtins.listToAttrs (builtins.map (c: lib.nameValuePair c.name c) components));
 in
-lib.attrsets.mapAttrs' (name: lib.attrsets.nameValuePair (builtins.replaceStrings [ "." ] [ "-" ] name)) (
-  lib.attrsets.genAttrs chap-package-list build-chap-package
-)
+# { foo = { X.Y.Z = <components>; P.Q.R = <components>; }; ... }
+lib.recurseIntoAttrs (lib.mapAttrs (name: versions: lib.recurseIntoAttrs (lib.genAttrs versions (version: chap-package-components name version))) chap-package-attrs)

@@ -34,18 +34,29 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, foliage, haskell-nix, CHaP, iohk-nix, ... }:
-    flake-utils.lib.eachDefaultSystem
+    let 
+      compilers = [ "ghc8107" "ghc926" ];
+      smokeTestPackages = [ 
+        "cardano-node" 
+        "cardano-cli" 
+        "cardano-api" 
+        "plutus-core" 
+        ];
+    # The foliage flake only works on this system, so we are stuck with it too
+    in flake-utils.lib.eachSystem [ "x86_64-linux" ]
       (system:
-        let pkgs = import nixpkgs {
-          inherit system;
-          inherit (haskell-nix) config;
-          overlays = [
-            haskell-nix.overlay
-            iohk-nix.overlays.crypto
-          ];
-        };
+        let 
+          pkgs = import nixpkgs {
+            inherit system;
+            inherit (haskell-nix) config;
+            overlays = [
+              haskell-nix.overlay
+              iohk-nix.overlays.crypto
+            ];
+          };
+          inherit (pkgs) lib;
         in
-        {
+        rec {
           devShells.default = with pkgs; mkShellNoCC {
             name = "cardano-haskell-packages";
             buildInputs = [
@@ -58,13 +69,27 @@
             ];
           };
 
-          hydraJobs =
+          # { ghc8107 = { foo = { X.Y.Z = <components>; ... }; ...}; ... }
+          haskellPackages = 
             let
-              inherit (pkgs) lib;
               builder = import ./builder { inherit pkgs CHaP; };
-              compilers = [ "ghc8107" "ghc926" ];
             in
-            lib.attrsets.genAttrs compilers builder;
+            lib.recurseIntoAttrs (lib.genAttrs compilers builder);
+
+          # A nested tree of derivations containing all the smoke test packages for all the compiler versions
+          smokeTestDerivations = lib.genAttrs compilers (compiler: 
+            let 
+              # The latest version in the set (attrValues sorts by key). Remove the 'recurseForDerivations' here otherwise
+              # we get that!
+              latest = versionToValue: lib.last (lib.attrValues (builtins.removeAttrs versionToValue ["recurseForDerivations"]));
+              compilerPkgs = builtins.getAttr compiler haskellPackages;
+              smokeTestPkgs = lib.recurseIntoAttrs (lib.genAttrs smokeTestPackages (pkgname: latest (builtins.getAttr pkgname compilerPkgs)));
+            in smokeTestPkgs);
+
+          # The standard checks: build all the smoke test packages
+          checks = flake-utils.lib.flattenTree smokeTestDerivations;
+
+          hydraJobs = checks;
         });
 
   nixConfig = {
@@ -82,5 +107,6 @@
       "loony-tools:pr9m4BkM/5/eSTZlkQyRt57Jz7OMBxNSUiMC4FkcNfk="
       "nixbuild.net/smart.contracts@iohk.io-1:s2PhQXWwsZo1y5IxFcx2D/i2yfvgtEnRBOZavlA8Bog="
     ];
+    allow-import-from-derivation = true;
   };
 }

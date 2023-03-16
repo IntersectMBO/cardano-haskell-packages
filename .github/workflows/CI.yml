@@ -106,11 +106,6 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - build-repo
-    strategy:
-      matrix:
-        ghc:
-          - ghc8107
-          - ghc926
 
     steps:
       - name: Install Nix
@@ -133,7 +128,7 @@ jobs:
           name: built-repo
           path: _repo
 
-      - name: Build a smoke-test package
+      - name: Build checks
         # The > is the "YAML folded string" marker, which replaces 
         # newlines with spaces, since the usual bash idiom of \ 
         # doesn't work for some reason
@@ -141,14 +136,13 @@ jobs:
         # See https://github.com/nixbuild/feedback/issues/14 for
         # why some of these options are here
         run: >
-          nix build 
+          nix flake check 
           -L 
           --override-input CHaP path:_repo 
           --eval-store auto 
           --store ssh-ng://eu.nixbuild.net 
           --max-jobs 2
           --builders ""
-          .#hydraJobs.${{matrix.ghc}}.plutus-core-1-1-1-0.x86_64-linux  
 
   deploy-check:
     runs-on: ubuntu-latest
