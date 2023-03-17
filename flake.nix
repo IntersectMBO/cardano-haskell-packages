@@ -54,10 +54,12 @@
           chap-meta = import ./nix/chap-meta.nix { inherit pkgs CHaP; };
 
           smokeTestPackages = [ 
-            #"cardano-node" 
-            #"cardano-cli" 
-            #"cardano-api" 
-            "plutus-core" 
+            "plutus-ledger-api" 
+            "cardano-ledger-api" 
+            "ouroboros-network" 
+            "ouroboros-consensus-cardano" 
+            "cardano-api" 
+            "cardano-node" 
             ];
           # using intersectAttrs like this is a cheap way to throw away everything with keys not in
           # smokeTestPackages
@@ -92,7 +94,11 @@
               derivations = compiler: lib.recurseIntoAttrs (lib.mapAttrs (name: version: builder compiler name version) smokeTestPackageVersions);
               # A nested tree of derivations containing all the smoke test packages for all the compiler versions
               perCompilerDerivations = lib.recurseIntoAttrs (lib.genAttrs compilers derivations);
-            in builtins.trace (builtins.toJSON smokeTestPackageVersions) (flake-utils.lib.flattenTree perCompilerDerivations);
+              # cardano-node/cardano-api can't build on 9.2 yet
+              # TODO: work out a better way of doing these exclusions
+              toRemove = [ (lib.setAttrByPath [ "ghc926" "cardano-api" ] null) (lib.setAttrByPath [ "ghc926" "cardano-node" ] null) ];
+              filtered = builtins.foldl' lib.recursiveUpdate perCompilerDerivations toRemove;
+            in flake-utils.lib.flattenTree filtered;
 
           hydraJobs = checks;
         });
