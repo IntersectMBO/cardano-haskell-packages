@@ -34,16 +34,8 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, foliage, haskell-nix, CHaP, iohk-nix, ... }:
-    let 
-      compilers = [ "ghc8107" "ghc926" ];
-      smokeTestPackages = [ 
-        #"cardano-node" 
-        #"cardano-cli" 
-        #"cardano-api" 
-        "plutus-core" 
-        ];
     # The foliage flake only works on this system, so we are stuck with it too
-    in flake-utils.lib.eachSystem [ "x86_64-linux" ]
+    flake-utils.lib.eachSystem [ "x86_64-linux" ]
       (system:
         let 
           pkgs = import nixpkgs {
@@ -55,6 +47,21 @@
             ];
           };
           inherit (pkgs) lib;
+
+          compilers = [ "ghc8107" "ghc926" ];
+
+          builder = import ./nix/builder.nix { inherit pkgs CHaP; };
+          chap-meta = import ./nix/chap-meta.nix { inherit pkgs CHaP; };
+
+          smokeTestPackages = [ 
+            #"cardano-node" 
+            #"cardano-cli" 
+            #"cardano-api" 
+            "plutus-core" 
+            ];
+          # using intersectAttrs like this is a cheap way to throw away everything with keys not in
+          # smokeTestPackages
+          smokeTestPackageVersions = builtins.intersectAttrs (lib.genAttrs smokeTestPackages (pkg: {})) chap-meta.chap-package-latest-versions;
         in
         rec {
           devShells.default = with pkgs; mkShellNoCC {
@@ -69,25 +76,23 @@
             ];
           };
 
-          # { ghc8107 = { foo = { X.Y.Z = <components>; ... }; ...}; ... }
+          # { ghc8107 = { foo = { X.Y.Z = <derivation>; ... }; ...}; ... }
           haskellPackages = 
             let
-              builder = import ./builder { inherit pkgs CHaP; };
+              derivations = compiler: (lib.mapAttrs 
+                (name: versions: (lib.genAttrs versions (version: builder compiler name version))) 
+                chap-meta.chap-package-versions);
             in
-            lib.recurseIntoAttrs (lib.genAttrs compilers builder);
-
-          # A nested tree of derivations containing all the smoke test packages for all the compiler versions
-          smokeTestDerivations = lib.genAttrs compilers (compiler: 
-            let 
-              # The latest version in the set (attrValues sorts by key). Remove the 'recurseForDerivations' here otherwise
-              # we get that!
-              latest = versionToValue: lib.last (lib.attrValues (builtins.removeAttrs versionToValue ["recurseForDerivations"]));
-              compilerPkgs = builtins.getAttr compiler haskellPackages;
-              smokeTestPkgs = lib.recurseIntoAttrs (lib.genAttrs smokeTestPackages (pkgname: latest (builtins.getAttr pkgname compilerPkgs)));
-            in smokeTestPkgs);
+            lib.genAttrs compilers derivations;
 
           # The standard checks: build all the smoke test packages
-          checks = flake-utils.lib.flattenTree smokeTestDerivations;
+          checks = 
+            # We use recurseIntoAttrs so flattenTree will flatten it back out again.
+            let 
+              derivations = compiler: lib.recurseIntoAttrs (lib.mapAttrs (name: version: builder compiler name version) smokeTestPackageVersions);
+              # A nested tree of derivations containing all the smoke test packages for all the compiler versions
+              perCompilerDerivations = lib.recurseIntoAttrs (lib.genAttrs compilers derivations);
+            in builtins.trace (builtins.toJSON smokeTestPackageVersions) (flake-utils.lib.flattenTree perCompilerDerivations);
 
           hydraJobs = checks;
         });
@@ -100,7 +105,8 @@
     ];
     extra-trusted-substituters = [
       # If you have a nixbuild.net SSH key set up, you can pull builds from there
-      # by using '--extra-substituters ssh://eu.nixbuild.net' manually
+      # by using '--extra-substituters ssh://eu.nixbuild.net' manually, otherwise this
+      # does nothing
       "ssh://eu.nixbuild.net"
     ];
     extra-trusted-public-keys = [

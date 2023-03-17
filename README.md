@@ -268,10 +268,10 @@ You can build packages from CHaP using Nix like this:
 ```
 nix build 
   --override-input CHaP /home/user/cardano-haskell-packages/_repo
-  .#haskellPackages.x86_64-linux.ghc8107.plutus-core."1.1.0.0".plutus-core-exe-plc
+  .#haskellPackages.x86_64-linux.ghc8107.plutus-core."1.1.0.0"
 ```
 
-The final attribute name is `<package-name>-<component-type>-<component-name>`.
+This will build all the components of that package version that CHaP cares about, namely libraries and executables (test suites and benchmarks are not built).
 
 We need to use `--override-input` because the CHaP flake relies on a built repository. 
 By default it points to a built repository on the main CHaP `repo` branch. 
@@ -329,7 +329,7 @@ Along with requiring linear history, this ensures that package repository that w
 - Deploys the package repository to the `repo` branch, along with some static web content.
 - Builds a small set of packages using the newly built repository, to flush out any build issues.
     - We build with all the major GHC versions we expect to be in use.
-    - At the moment we don't build all the packages in the repository, only a fixed set.
+    - At the moment we don't build all the packages in the repository, only the latest versions of a fixed set.
 
 ## Creating a repository like CHaP
 

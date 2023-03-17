@@ -4,20 +4,6 @@ let
   inherit (pkgs) lib;
   inherit (pkgs.haskell-nix) haskellLib;
 
-  # [ { name = "foo"; version = "X.Y.Z"; }, { name = "foo"; version = "P.Q.R"; } ]
-  chap-package-list =
-      builtins.map (p: { name = p.pkg-name; version = p.pkg-version; })
-        (builtins.fromJSON (builtins.readFile "${CHaP}/foliage/packages.json"));
-
-  # { "foo" : [ "X.Y.Z" "P.Q.R" ], ... }
-  chap-package-attrs = 
-    let 
-      # { "foo" = [{ name = "foo"; version = "X.Y.Z"; }, { name = "foo"; version = "P.Q.R"; }]; ... }
-      grouped = lib.groupBy (m: m.name) chap-package-list;
-      # { "foo" : [ "X.Y.Z" "P.Q.R" ], ... }
-      simplified = lib.mapAttrs (name: metas: builtins.map (m: m.version) metas) grouped;
-    in simplified;
-
   build-chap-package = package-name: package-version:
     let
       package-id = "${package-name}-${package-version}";
@@ -69,8 +55,4 @@ let
       # does Hackage).
       constituents = components;
     }; 
-in
-# { foo = { X.Y.Z = <derivation>; P.Q.R = <derivation>; }; ... }
-lib.recurseIntoAttrs (lib.mapAttrs 
-  (name: versions: lib.recurseIntoAttrs (lib.genAttrs versions (build-chap-package name))) 
-  chap-package-attrs)
+in build-chap-package
