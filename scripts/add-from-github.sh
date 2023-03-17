@@ -3,10 +3,7 @@
 set -o errexit
 set -o pipefail
 
-# Use gnu-tar and gnu-date regardless of whether the OS is Linux
-# or BSD-based.  The correct command will be assigned to TAR and DATE
-# variables.
-source "$(dirname "$(which "$0")")/use-gnu-tar.sh"
+SCRIPT_DIR=$(dirname "$(which "$0")")
 
 function usage {
   echo "Usage $(basename "$0") [-r REVISION] [-v VERSION] REPO_URL REV [SUBDIRS...]"
@@ -68,6 +65,8 @@ if [[ ! "$REPO_URL" =~ "https://github.com/" ]]; then
   echo "Provided url is not a github url: $REPO_URL"
   exit 1
 fi
+
+TIMESTAMP=$($SCRIPT_DIR/current-timestamp.sh)
 
 render_meta() {
   local TIMESTAMP=$1
@@ -143,22 +142,7 @@ do_package() {
   git commit -m"Added $PKG_ID" -m "From $REPO_URL at $REPO_REV"
 }
 
-TAR_URL="$REPO_URL/tarball/$REPO_REV"
-TIMESTAMP=$("$DATE" --utc +%Y-%m-%dT%H:%M:%SZ)
-
-WORKDIR=$(mktemp -d)
-log "Work directory is $WORKDIR"
-pushd "$WORKDIR"
-
-log "Fetching $REPO_URL at revision $REPO_REV"
-
-if ! curl --fail --silent --location --remote-name "$TAR_URL"; then
-  echo "Failed to download $TAR_URL"
-  exit 1
-fi
-
-"$TAR" xzf ./* --strip-component=1 --wildcards '**/*.cabal'
-popd
+WORKDIR=$($SCRIPT_DIR/fetch-github-cabal-files.sh $REPO_URL $REPO_REV)
 
 if [[ ${#SUBDIRS[@]} -eq 0 ]]; then
   do_package "$REPO_URL" "$REPO_REV" "" "$WORKDIR"
