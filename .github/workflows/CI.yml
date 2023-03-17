@@ -23,8 +23,7 @@ jobs:
         uses: cachix/install-nix-action@v20
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-          extra_nix_config: |
-            accept-flake-config = true
+          extra_nix_config: accept-flake-config = true
 
       - name: Run checks
         run: nix develop -c ./scripts/check.sh
@@ -37,8 +36,7 @@ jobs:
         uses: cachix/install-nix-action@v20
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-          extra_nix_config: |
-            accept-flake-config = true
+          extra_nix_config: accept-flake-config = true
 
       - name: Checkout main 
         uses: actions/checkout@v3
@@ -112,8 +110,7 @@ jobs:
         uses: cachix/install-nix-action@v20
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-          extra_nix_config: |
-            accept-flake-config = true
+          extra_nix_config: accept-flake-config = true
 
       - name: Setup nixbuild.net
         uses: nixbuild/nixbuild-action@biscuit

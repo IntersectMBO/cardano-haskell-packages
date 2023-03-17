@@ -230,7 +230,7 @@ CHaP locally:
 For the rest of this section we will assume the built repository is in 
 `/home/user/cardano-haskell-packages/_repo`.
 
-### ... by building packages with Cabal
+### ... by building packages with `cabal`
 
 You can test a locally built CHaP with a small test project consisting of just a
 `cabal.project` file:
@@ -259,7 +259,7 @@ Then you can build whatever package version you want with `cabal`:
 $ cabal build cardano-prelude
 ```
 
-You can troubleshoot a failed build plan using the cabal flags `--constraint`, `--allow-newer- and `--allow-older`. Once you have obtained a working build plan, you should revise you cabal file with appropriate constraints.
+You can troubleshoot a failed build plan using the cabal flags `--constraint`, `--allow-newer` and `--allow-older`. Once you have obtained a working build plan, you should revise you cabal file with appropriate constraints.
 
 ### ... by building packages with Nix
 
@@ -267,7 +267,7 @@ You can build packages from CHaP using Nix like this:
 
 ```
 nix build 
-  --override-input /home/user/cardano-haskell-packages/_repo
+  --override-input CHaP /home/user/cardano-haskell-packages/_repo
   .#haskellPackages.x86_64-linux.ghc8107.plutus-core."1.1.0.0".plutus-core-exe-plc
 ```
 
@@ -276,7 +276,7 @@ The final attribute name is `<package-name>-<component-type>-<component-name>`.
 We need to use `--override-input` because the CHaP flake relies on a built repository. 
 By default it points to a built repository on the main CHaP `repo` branch. 
 But if you have just produced your own built repository (see above) then you want to
-use that instead, and `-override-input` will let you do that.
+use that instead, and `--override-input` will let you do that.
 
 ### ... by testing against a haskell.nix project
 
