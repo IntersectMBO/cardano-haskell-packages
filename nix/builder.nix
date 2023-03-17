@@ -8,6 +8,10 @@ let
     let
       package-id = "${package-name}-${package-version}";
 
+      # Global config needed to build CHaP packages should go here. Obviously
+      # this should be kept to an absolute minimum, since that means config
+      # that every downstream project needs also.
+      #
       # No need to set index-state:
       # - haskell.nix will automatically use the latest known one for hackage
       # - we want the very latest state for CHaP so it includes anything from
@@ -30,10 +34,6 @@ let
           repository cardano-haskell-packages
             url: https://input-output-hk.github.io/cardano-haskell-packages
             secure: True
-
-          -- Work around https://github.com/input-output-hk/nothunks/issues/17
-          package nothunks
-            flags: +vector
 
           extra-packages: ${package-id}
         '';
