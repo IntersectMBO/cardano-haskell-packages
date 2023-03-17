@@ -1,3 +1,7 @@
 timestamp = 2022-10-26T11:25:05Z
 github = { repo = "input-output-hk/typed-protocols", rev = "c5e87c9ba2854966794f04c5c2887faa09bf2214" }
 subdir = 'typed-protocols'
+
+[[revisions]]
+number = 1
+timestamp = 2023-03-21T14:31:13Z
