@@ -48,7 +48,7 @@ library
                     , ghc-prim
                     , integer-gmp
                     , mtl
-                    , protolude
+                    , protolude < 0.3.1
                     , tagged
                     , text
                     , time

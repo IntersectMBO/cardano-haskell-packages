@@ -129,16 +129,16 @@ library
                       , base16-bytestring
                       , bytestring
                       , deepseq
-                      , cardano-api
+                      , cardano-api == 1.35.4
                       , cardano-data
                       , cardano-git-rev
                       , cardano-crypto-class
                       , cardano-crypto-wrapper
-                      , cardano-ledger-alonzo
-                      , cardano-ledger-babbage
-                      , cardano-ledger-byron
-                      , cardano-ledger-core
-                      , cardano-ledger-shelley-ma
+                      , cardano-ledger-alonzo < 0.1.1
+                      , cardano-ledger-babbage < 0.1.1
+                      , cardano-ledger-byron < 0.1.1
+                      , cardano-ledger-core < 0.1.1
+                      , cardano-ledger-shelley-ma < 0.1.1
                       , cardano-prelude
                       , cardano-protocol-tpraos
                       , cardano-slotting
@@ -163,18 +163,18 @@ library
                       , network-mux
                       , nothunks
                       , optparse-applicative-fork
-                      , ouroboros-consensus
-                      , ouroboros-consensus-byron
-                      , ouroboros-consensus-cardano
-                      , ouroboros-consensus-protocol
-                      , ouroboros-consensus-shelley
-                      , ouroboros-network
-                      , ouroboros-network-framework
+                      , ouroboros-consensus < 0.1.0.1
+                      , ouroboros-consensus-byron < 0.1.0.1
+                      , ouroboros-consensus-cardano < 0.1.0.1
+                      , ouroboros-consensus-protocol < 0.1.0.1
+                      , ouroboros-consensus-shelley < 0.1.0.1
+                      , ouroboros-network < 0.1.0.1
+                      , ouroboros-network-framework < 0.1.0.1
                       , psqueues
                       , safe-exceptions
                       , scientific
                       , strict-stm
-                      , cardano-ledger-shelley
+                      , cardano-ledger-shelley < 0.1.1
                       , small-steps
                       , stm
                       , text

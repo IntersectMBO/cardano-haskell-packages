@@ -113,11 +113,11 @@ library
                       , cardano-crypto-class
                       , cardano-crypto-wrapper
                       , cardano-data
-                      , cardano-ledger-alonzo
-                      , cardano-ledger-babbage
-                      , cardano-ledger-byron
-                      , cardano-ledger-core
-                      , cardano-ledger-shelley-ma
+                      , cardano-ledger-alonzo < 0.1.1
+                      , cardano-ledger-babbage < 0.1.1
+                      , cardano-ledger-byron < 0.1.1
+                      , cardano-ledger-core < 0.1.1
+                      , cardano-ledger-shelley-ma < 0.1.1
                       , cardano-prelude
                       , cardano-protocol-tpraos
                       , cardano-slotting
@@ -135,21 +135,21 @@ library
                       , network
                       , nothunks
                       , optparse-applicative-fork
-                      , ouroboros-consensus
-                      , ouroboros-consensus-byron
-                      , ouroboros-consensus-cardano
-                      , ouroboros-consensus-protocol
-                      , ouroboros-consensus-shelley
-                      , ouroboros-network
-                      , ouroboros-network-framework
+                      , ouroboros-consensus <= 0.1.0.1
+                      , ouroboros-consensus-byron <= 0.1.0.1
+                      , ouroboros-consensus-cardano <= 0.1.0.1
+                      , ouroboros-consensus-protocol <= 0.1.0.1
+                      , ouroboros-consensus-shelley <= 0.1.0.1
+                      , ouroboros-network <= 0.1.0.1
+                      , ouroboros-network-framework <= 0.1.0.1
                       , parsec
-                      , plutus-ledger-api
+                      , plutus-ledger-api < 1.1
                       , prettyprinter
                       , prettyprinter-configurable
                       , scientific
                       , serialise
                       , small-steps
-                      , cardano-ledger-shelley
+                      , cardano-ledger-shelley < 0.2.0.0
                       , small-steps
                       , stm
                       , strict-containers

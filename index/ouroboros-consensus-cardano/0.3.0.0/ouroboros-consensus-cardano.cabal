@@ -42,7 +42,7 @@ library
                      , nothunks
                      , these             >=1.1   && <1.2
 
-                     , cardano-binary
+                     , cardano-binary    < 1.6
                      , cardano-crypto-class
                      , cardano-data
                      , cardano-ledger-alonzo

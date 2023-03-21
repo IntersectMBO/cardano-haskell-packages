@@ -146,10 +146,10 @@ library
                      , binary
                      , bytestring
                      , canonical-json
-                     , cardano-binary
+                     , cardano-binary <= 1.5.0.0
                      , cardano-crypto
                      , cardano-crypto-wrapper
-                     , cardano-prelude
+                     , cardano-prelude < 0.1.0.1
                      , cborg
                      , containers
                      , contra-tracer

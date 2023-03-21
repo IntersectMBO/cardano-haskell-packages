@@ -62,7 +62,7 @@ library
                      , Unique >= 0.4.7.6
                      -- IOHK deps
                      , cardano-binary
-                     , cardano-prelude
+                     , cardano-prelude >= 0.1.0.1
                      -- Local deps
                      , small-steps
                      , small-steps-test

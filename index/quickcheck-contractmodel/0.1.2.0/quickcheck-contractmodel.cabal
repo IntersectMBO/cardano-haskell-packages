@@ -92,7 +92,7 @@ library
     -- Plutus and Cardano dependencies
     build-depends:
       plutus-tx ^>= 1.0,
-      cardano-api ^>= 1.35,
+      cardano-api ^>= 1.35.4,
       cardano-ledger-core ^>= 0.1,
       cardano-ledger-alonzo ^>= 0.1,
       cardano-ledger-shelley ^>= 0.1,

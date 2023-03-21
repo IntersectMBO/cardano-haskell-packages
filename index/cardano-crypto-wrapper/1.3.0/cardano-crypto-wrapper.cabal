@@ -66,12 +66,12 @@ library
                      , base16-bytestring >= 1
                      , base64-bytestring
                      , base64-bytestring-type
-                     , binary
+                     , binary 
                      , bytestring
                      , canonical-json
-                     , cardano-binary
+                     , cardano-binary <= 1.5.0.0
                      , cardano-crypto
-                     , cardano-prelude
+                     , cardano-prelude < 0.1.0.1
                      , cryptonite
                      , data-default
                      , formatting

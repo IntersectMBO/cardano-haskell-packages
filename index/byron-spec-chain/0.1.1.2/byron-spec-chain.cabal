@@ -42,7 +42,7 @@ library
                      , bytestring
                      , cardano-data
                      , containers
-                     , byron-spec-ledger
+                     , byron-spec-ledger >= 0.1.1.2
                      , goblins
                      , hashable
                      , hedgehog >= 1.0.4
