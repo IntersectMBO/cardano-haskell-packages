@@ -4,6 +4,14 @@ let
   inherit (pkgs) lib;
   inherit (pkgs.haskell-nix) haskellLib;
 
+  # Build all the derivations that we care about for a package-version.
+  #
+  # Note that this is not-cheap in two ways:
+  # 1. Each invocation of this function will incur some IFD to run the
+  # cabal solver to create a build plan.
+  # 2. Since each invocation of this has its own build plan, there is
+  # little chance that derivations will actually be shared between 
+  # invocations.
   build-chap-package = package-name: package-version:
     let
       package-id = "${package-name}-${package-version}";
@@ -34,6 +42,11 @@ let
           repository cardano-haskell-packages
             url: https://input-output-hk.github.io/cardano-haskell-packages
             secure: True
+
+          -- cardano-node depends on ekg, which has an unnecessarily tight
+          -- lower bound on aeson, see https://github.com/tibbe/ekg/issues/90
+          -- We need to fix this upstream, or patch it in CHaP
+          allow-newer: ekg:aeson
 
           extra-packages: ${package-id}
         '';
