@@ -60,6 +60,8 @@
             "ouroboros-consensus-cardano" 
             "cardano-api" 
             "cardano-node" 
+            # from plutus-apps
+            "plutus-ledger" 
             ];
           # using intersectAttrs like this is a cheap way to throw away everything with keys not in
           # smokeTestPackages
@@ -96,7 +98,11 @@
               perCompilerDerivations = lib.recurseIntoAttrs (lib.genAttrs compilers derivations);
               # cardano-node/cardano-api can't build on 9.2 yet
               # TODO: work out a better way of doing these exclusions
-              toRemove = [ (lib.setAttrByPath [ "ghc926" "cardano-api" ] null) (lib.setAttrByPath [ "ghc926" "cardano-node" ] null) ];
+              toRemove = [ 
+                (lib.setAttrByPath [ "ghc926" "cardano-api" ] null) 
+                (lib.setAttrByPath [ "ghc926" "cardano-node" ] null) 
+                (lib.setAttrByPath [ "ghc926" "plutus-ledger" ] null) 
+              ];
               filtered = builtins.foldl' lib.recursiveUpdate perCompilerDerivations toRemove;
             in flake-utils.lib.flattenTree filtered;
 
