@@ -153,12 +153,7 @@ Typical examples of this are anything that you add in `cabal.project`:
 - `allow-newer`
 - `source-repository-package`
 
-Try to avoid adding packages to CHaP that need extra configuration in this way. This is not
-a hard rule, but please bear in mind that doing so requires _all_ downstream consumers to
-replicate that configuration, making the package much harder to use.
-
-At some point we may start checking this, e.g. by trying to build each added package in
-isolation.
+This is partially enforced by the CI, as we try to build some of the packages from CHaP on PRs.
 
 ## How to add a new package version to CHaP
 
@@ -197,7 +192,22 @@ The script will:
 You can tell the script to override the package version either by passing
 the version explicitly or by adding a "revision number" (see below).
 
-## How do I add a patched versions of a Hackage package to CHaP?
+## How to add a new package metadata revision to CHaP
+
+CHaP supports package metadata revisions just like Hackage. These allow you to provide an edited cabal 
+file for a package version. The primary use of this is to tweak the dependency bounds of a package. 
+In principle you can change other things too, but this is generally frowned upon.
+
+There is a convenience script for adding a revision to CHaP:
+```
+$ ./scripts/add-revision.sh BUILT_REPO PACKAGE_NAME PACKAGE_VERSION
+```
+
+You need a built repository (`foliage build`) in order to use the script.
+It will add a new revision and copy the _current_ cabal file in as the revised cabal file.
+You can then edit that file and commit the result.
+
+## How to add a patched versions of a Hackage package to CHaP
 
 CHaP should mostly contain versions of packages which are _not_ on Hackage.
 
@@ -302,7 +312,7 @@ $ nix build .#project.plan-nix.json \
 This is useful if you jsut want to see whether cabal is able to successfully
 resolve dependencies and see what versions it picked.
 
-## What do I do if I want to release a package in CHaP to Hackage?
+## How to release a package in CHaP to Hackage
 
 It's totally fine to release a package in CHaP to Hackage.
 The thing to avoid is to have the same package _version_ in both repositories.
@@ -326,10 +336,10 @@ The CI for CHaP does the following things:
 - Checks that the timestamps in the git repository are monotonically increasing through commits.
 Along with requiring linear history, this ensures that package repository that we build is always an extension of the previous one.
 - Builds the package repository from the metadata using `foliage`.
-- Deploys the package repository to the `repo` branch, along with some static web content.
 - Builds a small set of packages using the newly built repository, to flush out any build issues.
     - We build with all the major GHC versions we expect to be in use.
     - At the moment we don't build all the packages in the repository, only the latest versions of a fixed set.
+- If on the master branch, deploys the package repository to the `repo` branch, along with some static web content.
 
 ## Creating a repository like CHaP
 
