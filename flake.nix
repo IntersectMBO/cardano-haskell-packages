@@ -48,10 +48,34 @@
           };
           inherit (pkgs) lib;
 
+          # type CompilerName = String
+          # compilers :: [CompilerName]
           compilers = [ "ghc8107" "ghc926" ];
 
           builder = import ./nix/builder.nix { inherit pkgs CHaP; };
           chap-meta = import ./nix/chap-meta.nix { inherit pkgs CHaP; };
+
+          # type PkgSet = Map CompilerName (Map PkgName (Map PkgVerison Derivation))
+          # pkgVersionsToPkgSet :: PkgVersions -> PkgSet
+          pkgVersionsToPkgSet = pkg-versions:
+            # We use recurseIntoAttrs so flattenTree will flatten it back out again.
+            let 
+              derivations = compiler: lib.recurseIntoAttrs (lib.mapAttrs 
+                (name: versions: (lib.recurseIntoAttrs (lib.genAttrs versions (version: builder compiler name version))))
+                 pkg-versions);
+              # A nested tree of derivations containing all the packages for all the compiler versions
+              perCompilerDerivations = lib.recurseIntoAttrs (lib.genAttrs compilers derivations);
+              # cardano-node/cardano-api can't build on 9.2 yet
+              # TODO: work out a better way of doing these exclusions
+              toRemove = [ 
+                (lib.setAttrByPath [ "ghc926" "cardano-api" ] null) 
+                (lib.setAttrByPath [ "ghc926" "cardano-node" ] null) 
+                (lib.setAttrByPath [ "ghc926" "plutus-ledger" ] null) 
+              ];
+              filtered = builtins.foldl' lib.recursiveUpdate perCompilerDerivations toRemove;
+            in filtered;
+
+          allPkgVersions = chap-meta.chap-package-versions chap-meta.chap-package-meta;
 
           smokeTestPackages = [ 
             "plutus-ledger-api" 
@@ -63,9 +87,13 @@
             # from plutus-apps
             "plutus-ledger" 
             ];
+
           # using intersectAttrs like this is a cheap way to throw away everything with keys not in
           # smokeTestPackages
-          smokeTestPackageVersions = builtins.intersectAttrs (lib.genAttrs smokeTestPackages (pkg: {})) chap-meta.chap-package-latest-versions;
+          smokeTestPkgVersions = 
+            builtins.intersectAttrs 
+              (lib.genAttrs smokeTestPackages (pkg: {})) 
+              (chap-meta.chap-package-latest-versions chap-meta.chap-package-meta);
         in
         rec {
           devShells.default = with pkgs; mkShellNoCC {
@@ -80,31 +108,23 @@
             ];
           };
 
-          # { ghc8107 = { foo = { X.Y.Z = <derivation>; ... }; ...}; ... }
-          haskellPackages = 
-            let
-              derivations = compiler: (lib.mapAttrs 
-                (name: versions: (lib.genAttrs versions (version: builder compiler name version))) 
-                chap-meta.chap-package-versions);
-            in
-            lib.genAttrs compilers derivations;
+          haskellPackages = pkgVersionsToPkgSet allPkgVersions;
+          smokeTestPackages = pkgVersionsToPkgSet smokeTestPkgVersions;
+
+          packages = flake-utils.lib.flattenTree haskellPackages // { 
+            allPackages = pkgs.releaseTools.aggregate {
+              name = "all-packages";
+              constituents = builtins.attrValues (flake-utils.lib.flattenTree haskellPackages);
+            };
+
+            allSmokeTestPackages = pkgs.releaseTools.aggregate {
+              name = "all-smoke-test-packages";
+              constituents = builtins.attrValues (flake-utils.lib.flattenTree smokeTestPackages);
+            };
+          };
 
           # The standard checks: build all the smoke test packages
-          checks = 
-            # We use recurseIntoAttrs so flattenTree will flatten it back out again.
-            let 
-              derivations = compiler: lib.recurseIntoAttrs (lib.mapAttrs (name: version: builder compiler name version) smokeTestPackageVersions);
-              # A nested tree of derivations containing all the smoke test packages for all the compiler versions
-              perCompilerDerivations = lib.recurseIntoAttrs (lib.genAttrs compilers derivations);
-              # cardano-node/cardano-api can't build on 9.2 yet
-              # TODO: work out a better way of doing these exclusions
-              toRemove = [ 
-                (lib.setAttrByPath [ "ghc926" "cardano-api" ] null) 
-                (lib.setAttrByPath [ "ghc926" "cardano-node" ] null) 
-                (lib.setAttrByPath [ "ghc926" "plutus-ledger" ] null) 
-              ];
-              filtered = builtins.foldl' lib.recursiveUpdate perCompilerDerivations toRemove;
-            in flake-utils.lib.flattenTree filtered;
+          checks = flake-utils.lib.flattenTree smokeTestPackages;
 
           hydraJobs = checks;
         });

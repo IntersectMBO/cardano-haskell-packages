@@ -62,11 +62,10 @@ jobs:
           fi
 
       - name: Build repository (main)
-        # We don't need the metadata here, since we're just
-        # using this to compare the generated index
         run: |
-          nix develop -c foliage build -j 0 
+          nix develop -c foliage build -j 0  --write-metadata
           mv _repo _repo-main
+          cp _repo-main/foliage/packages.json packages-old.json
 
       - name: Checkout tip commit
         uses: actions/checkout@v3
@@ -76,6 +75,7 @@ jobs:
       - name: Build repository (tip)
         run: |
           nix develop -c foliage build -j 0 --write-metadata
+          cp _repo/foliage/packages.json packages-new.json
 
       - name: Copy static web assets
         run: |
@@ -89,6 +89,14 @@ jobs:
         with:
           name: built-repo
           path: _repo
+
+      - name: Upload package metadata
+        uses: actions/upload-artifact@v3
+        with:
+          name: package-metadata
+          path: |
+            packages-old.json
+            packages-new.json
 
       # Note: we use the check script from the tip so we pick up changes 
       # to the script from the PR itself.
@@ -126,7 +134,7 @@ jobs:
           name: built-repo
           path: _repo
 
-      - name: Build checks
+      - name: Build smoke test packages
         # The > is the "YAML folded string" marker, which replaces 
         # newlines with spaces, since the usual bash idiom of \ 
         # doesn't work for some reason
@@ -134,7 +142,63 @@ jobs:
         # See https://github.com/nixbuild/feedback/issues/14 for
         # why some of these options are here
         run: >
-          nix flake check 
+          nix build .#allSmokeTestPackages
+          -L 
+          --override-input CHaP path:_repo 
+          --eval-store auto 
+          --store ssh-ng://eu.nixbuild.net 
+          --max-jobs 2
+          --builders ""
+
+  build-new-packages:
+    runs-on: ubuntu-latest
+    needs:
+      - build-repo
+
+    steps:
+      - name: Install Nix
+        uses: cachix/install-nix-action@v20
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: accept-flake-config = true
+
+      - name: Setup nixbuild.net
+        uses: nixbuild/nixbuild-action@v16
+        with:
+          nixbuild_token: ${{secrets.NIXBUILD_TOKEN}}
+          generate_summary_for: 'job'
+
+      - uses: actions/checkout@v3
+
+      - name: Download built repository
+        uses: actions/download-artifact@v3
+        with:
+          name: built-repo
+          path: _repo
+
+      - name: Download package metadata 
+        uses: actions/download-artifact@v3
+        with:
+          name: package-metadata
+          path: .
+
+      # This is a bit of a hack: to build the newly added packages, we:
+      # 1. compute the packages.json that just contains the new pacakge-versions
+      # 2. overwrite the built repository's packages.json with the computed one
+      # 3. build "all the packages" which now means "the new packages"
+      #
+      # This avoids us having to do other complicated tricks to make the flake
+      # take the set of packages to build as an argument.
+      - name: Adjust repository metadata
+        run: |
+          scripts/compare-package-metadata.sh packages-old.json packages-new.json > packages-diff.json
+          echo "Newly added packages:"
+          cat packages-diff.json
+          mv -f packages-diff.json _repo/foliage/packages.json
+
+      - name: Build all newly added packages
+        run: >
+          nix build .#allPackages
           -L 
           --override-input CHaP path:_repo 
           --eval-store auto 
