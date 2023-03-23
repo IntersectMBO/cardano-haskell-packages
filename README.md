@@ -278,7 +278,7 @@ You can build packages from CHaP using Nix like this:
 ```
 nix build 
   --override-input CHaP /home/user/cardano-haskell-packages/_repo
-  .#haskellPackages.x86_64-linux.ghc8107.plutus-core."1.1.0.0"
+  .#"ghc926/plutus-core/1.1.0.0"
 ```
 
 This will build all the components of that package version that CHaP cares about, namely libraries and executables (test suites and benchmarks are not built).
