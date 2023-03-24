@@ -92,7 +92,7 @@ library
     cardano-crypto,
     cardano-crypto-class,
     cardano-crypto-wrapper,
-    cardano-data <= 0.1.0.0, 
+    cardano-data < 0.1.1.0, 
     cardano-ledger-byron,
     cardano-ledger-core,
     cardano-prelude,
@@ -116,3 +116,4 @@ library
     time,
     transformers,
     validation-selective,
+

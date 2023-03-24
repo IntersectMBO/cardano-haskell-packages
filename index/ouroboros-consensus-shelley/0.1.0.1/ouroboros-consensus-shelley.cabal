@@ -83,7 +83,7 @@ library
                      , cardano-ledger-shelley-ma
                      , small-steps
 
-                     , ouroboros-network < 0.2
+                     , ouroboros-network < 0.4
                      , ouroboros-consensus < 0.2
                      , ouroboros-consensus-protocol < 0.2
 
@@ -98,3 +98,4 @@ library
                        -Wmissing-export-lists
   if flag(asserts)
     ghc-options:       -fno-ignore-asserts
+
