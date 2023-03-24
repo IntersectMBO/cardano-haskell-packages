@@ -153,7 +153,7 @@ Typical examples of this are anything that you add in `cabal.project`:
 - `allow-newer`
 - `source-repository-package`
 
-This is partially enforced by the CI, as we try to build some of the packages from CHaP on PRs.
+This is enforced by the CI, which will build newly added packages in PRs. 
 
 ## How to add a new package version to CHaP
 
@@ -200,10 +200,10 @@ In principle you can change other things too, but this is generally frowned upon
 
 There is a convenience script for adding a revision to CHaP:
 ```
-$ ./scripts/add-revision.sh BUILT_REPO PACKAGE_NAME PACKAGE_VERSION
+$ ./scripts/add-revision.sh _repo PACKAGE_NAME PACKAGE_VERSION
 ```
 
-You need a built repository (`foliage build`) in order to use the script.
+You need a built package repository (see "How to build the Cabal package repository") in order to use the script.
 It will add a new revision and copy the _current_ cabal file in as the revised cabal file.
 You can then edit that file and commit the result.
 
@@ -227,16 +227,18 @@ The scheme that we typically use is to take the existing version number, add fou
 IMPORTANT: if you release a patched package to CHaP, make sure to open an issue about it so we can keep track of which patched packages we have.
 Ideally, include the conditions under which we can deprecate it, e.g. "can deprecate either when it's fixed upstream or when package X removes their dependency on it".
 
+## How to build the Cabal package repository
+
+The Cabal package repository itself is built using the tool `foliage`. `foliage` is available in the Nix dev shell, which you can get into using `nix develop`.
+
+To build the repository, run `foliage build -j 0 --write-metadata`. This will build the repository and put it in `_repo`.
+
 ## How to test changes to CHaP 
 
 Sometimes it is useful to test in advance how a new package or a cabal file
 revision affects things.
 
-The first steps are always the same, you need a built version of your modified 
-CHaP locally:
-- Make a local checkout of CHaP and make the intended changes
-- Build the repository with `nix develop -c foliage build`
-
+First of all, build the repository (see "How to build the Cabal package repository"). 
 For the rest of this section we will assume the built repository is in 
 `/home/user/cardano-haskell-packages/_repo`.
 
@@ -336,9 +338,10 @@ The CI for CHaP does the following things:
 - Checks that the timestamps in the git repository are monotonically increasing through commits.
 Along with requiring linear history, this ensures that package repository that we build is always an extension of the previous one.
 - Builds the package repository from the metadata using `foliage`.
-- Builds a small set of packages using the newly built repository, to flush out any build issues.
+- Builds a small set of packages using the newly built repository.
     - We build with all the major GHC versions we expect to be in use.
     - At the moment we don't build all the packages in the repository, only the latest versions of a fixed set.
+- Builds any newly added packages using the newly built repository.
 - If on the master branch, deploys the package repository to the `repo` branch, along with some static web content.
 
 ## Creating a repository like CHaP
