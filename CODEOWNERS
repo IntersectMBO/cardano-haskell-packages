@@ -76,6 +76,8 @@ _sources/cardano-lmdb/                      @input-output-hk/ouroboros-consensus
 _sources/cardano-lmdb-simple/               @input-output-hk/ouroboros-consensus
 _sources/diff-containers/                   @input-output-hk/ouroboros-consensus
 _sources/fingertree-rm/                     @input-output-hk/ouroboros-consensus
+_sources/fs-api/                            @input-output-hk/ouroboros-consensus
+_sources/fs-sim/                            @input-output-hk/ouroboros-consensus
 _sources/simple-semigroupoids/              @input-output-hk/ouroboros-consensus
 
 # plutus
