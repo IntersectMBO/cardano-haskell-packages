@@ -340,7 +340,7 @@ library
      build-depends:    Win32            >= 2.6.1.0
   else
      build-depends:    unix
-                     , unix-bytestring
+                     , unix-bytestring < 0.4
 
   ghc-options:         -Wall
                        -Wcompat
