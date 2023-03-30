@@ -1,0 +1,3 @@
+timestamp = 2023-03-30T11:59:26Z
+github = { repo = "input-output-hk/io-sim", rev = "af3a08a86d559265b562dbb06a9e070f0f429e20" }
+subdir = 'io-classes'
