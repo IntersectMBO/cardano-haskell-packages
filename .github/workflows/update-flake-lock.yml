@@ -3,7 +3,7 @@ name: Bump hackage.nix
 on:
   workflow_dispatch: # allows manual triggering
   schedule:
-    - cron: '0 0 * * *' # runs daily at 00:00
+    - cron: '0 0 * * 0' # runs weekly on Sunday at 00:00
 
 jobs:
   lockfile:
@@ -16,7 +16,7 @@ jobs:
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v18
         with:
-          inputs: hackage-nix
+          inputs: hackage-nix CHaP
           pr-labels: |
             dependencies
             automated
