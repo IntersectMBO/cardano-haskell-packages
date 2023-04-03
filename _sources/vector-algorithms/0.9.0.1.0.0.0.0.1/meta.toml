@@ -1,0 +1,7 @@
+timestamp = 2023-04-03T17:08:55Z
+github = { repo = "erikd/vector-algorithms", rev = "e3fc242ac75d928ca613be9702ff2946011ef7d4" }
+force-version = true
+
+[[revisions]]
+number = 1
+timestamp = 2023-04-03T17:09:42Z
