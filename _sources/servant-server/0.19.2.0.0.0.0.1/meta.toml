@@ -1,0 +1,8 @@
+timestamp = 2023-04-03T17:04:10Z
+github = { repo = "haskell-servant/servant", rev = "58aa0d1c0c19f7b1c26ffc52bfd65c70934704c9" }
+subdir = 'servant-server'
+force-version = true
+
+[[revisions]]
+number = 1
+timestamp = 2023-04-03T17:05:03Z
