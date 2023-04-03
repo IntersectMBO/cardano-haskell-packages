@@ -119,3 +119,8 @@ _sources/flat     @input-output-hk/plutus-core
 _sources/inline-r @input-output-hk/plutus-core
 _sources/int-cast @input-output-hk/plutus-core
 _sources/moo      @input-output-hk/cardano-ledger
+
+# Marlowe
+_sources/marlowe           @input-output-hk/marlowe
+_sources/marlowe-reference @input-output-hk/marlowe
+_sources/marlowe-spec-test @input-output-hk/marlowe
