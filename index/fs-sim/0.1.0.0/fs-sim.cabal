@@ -42,7 +42,7 @@ library
     , bytestring         >=0.10 && <0.12
     , containers         >=0.5  && <0.7
     , fs-api             ^>=0.1
-    , io-classes         ^>=0.3
+    , io-classes         >=0.3  && <0.6
     , mtl
     , QuickCheck
     , strict-stm
