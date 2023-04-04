@@ -71,6 +71,13 @@
                 (lib.setAttrByPath [ "ghc926" "cardano-api" ] null) 
                 (lib.setAttrByPath [ "ghc926" "cardano-node" ] null) 
                 (lib.setAttrByPath [ "ghc926" "plutus-ledger" ] null) 
+                (lib.setAttrByPath [ "ghc926" "marlowe-cardano" ] null) 
+                (lib.setAttrByPath [ "ghc926" "marlowe-chain-sync" ] null) 
+                (lib.setAttrByPath [ "ghc926" "marlowe-client" ] null) 
+                (lib.setAttrByPath [ "ghc926" "marlowe-protocols" ] null) 
+                (lib.setAttrByPath [ "ghc926" "marlowe-runtime" ] null) 
+                (lib.setAttrByPath [ "ghc926" "marlowe-runtime-web" ] null) 
+                (lib.setAttrByPath [ "ghc926" "marlowe-test" ] null) 
               ];
               filtered = builtins.foldl' lib.recursiveUpdate perCompilerDerivations toRemove;
             in filtered;
