@@ -157,13 +157,12 @@ the changes to the repository index to be append-only. A non append-only
 change to the package index would change the repository index state as
 pinned by `index-state`, breaking reproducibility.
 
-Using the current date and time (e.g. `date --utc +%Y-%m-%dT%H:%M:%SZ`)
-works alright but if you are sending a PR you need to consider the
-possibility that another developer has inserted a new (greater) timestamp
-before your PR got merged. We have CI check that prevents this from
-happening, and we enforce FF-only merges.
+This condition is enforced by the CI, and we only allow FF-merges in order to ensure that we are always checking a linear history.
 
-This is handled for you if you use the `./scripts/add-from-github` script described [below](#-from-github).
+Tips for working with timestamps:
+- Most of the scripts will insert timestamps for you, e.g. `./scripts/add-from-github.sh`
+- If you have a PR and the timestamps are now too old (e.g. because someone else made a PR in the meantime), then see [below](#dealing-with-timestamp-conflicts) for tips
+- If you want to get a suitable timestamp for some other reason, `./scripts/current-timestamp.sh` will produce one
 
 #### No extra build configuration beyond what is given in the cabal file
 
@@ -378,3 +377,15 @@ Along with requiring linear history, this ensures that package repository that w
     - At the moment we don't build all the packages in the repository, only the latest versions of a fixed set.
 - Builds any newly added packages using the newly built repository.
 - If on the master branch, deploys the package repository to the `repo` branch, along with some static web content.
+
+### Dealing with timestamp conflicts
+
+Since we require monotonically increasing timestamps, there can be timestamp conflicts if someone else merges a PR with later timestamps than yours.
+That means that your PR (once updated from `main`) will now introduce "old" timestamps, which is not allowed.
+
+There are some scripts for dealing with this:
+- `./scripts/update-timestamps-in-revision.sh REV` will look at the given revision, find any timestamps that were added in that commit, and make changes to update them to a fresh timestamp.
+- `./scripts/update-timestamps-and-fixup.sh REV` will do the same but also commit the changes as a fixup commit. You can either leave these in your PR or get rid of them with `git rebase main --autosquash`
+
+An easy way to run `update-timestamps-and-fixup` on a multi-commit PR is to run `git rebase main --exec "./scripts/update-timestamps-and-fixup.sh HEAD"`.
+This will run the script at every step of the rebase on `HEAD` (i.e. the commit you have reached).
