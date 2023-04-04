@@ -43,11 +43,6 @@ let
             url: https://input-output-hk.github.io/cardano-haskell-packages
             secure: True
 
-          -- cardano-node depends on ekg, which has an unnecessarily tight
-          -- lower bound on aeson, see https://github.com/tibbe/ekg/issues/90
-          -- We need to fix this upstream, or patch it in CHaP
-          allow-newer: ekg:aeson
-
           extra-packages: ${package-id}
         '';
 
