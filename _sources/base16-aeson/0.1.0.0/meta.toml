@@ -1,0 +1,3 @@
+timestamp = 2023-04-04T14:44:11Z
+github = { repo = "input-output-hk/marlowe-cardano", rev = "8cbf483f45e568e1c5ad7eb31432d89b363a5690" }
+subdir = 'libs/base16-aeson'
