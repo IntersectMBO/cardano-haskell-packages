@@ -30,17 +30,13 @@ let
         name = package-id;
         src = ./empty;
 
-        inputMap = {
-          "https://input-output-hk.github.io/cardano-haskell-packages" = CHaP;
-        };
-
         # Note that we do not set tests or benchmarks to True, so we won't
         # build them by default. This is the same as what happens on Hackage,
         # for example, and they can't be depended on by downstream packages
         # anyway.
         cabalProject = ''
           repository cardano-haskell-packages
-            url: https://input-output-hk.github.io/cardano-haskell-packages
+            url: file:${CHaP}
             secure: True
 
           extra-packages: ${package-id}
