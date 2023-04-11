@@ -58,5 +58,6 @@ let
       # actually run tests: CHaP will not check that your tests pass (neither
       # does Hackage).
       constituents = components;
-    }; 
+      # pass through the plan for debugging purposes
+    } // { passthru = { inherit (project) plan-nix; }; }; 
 in build-chap-package
