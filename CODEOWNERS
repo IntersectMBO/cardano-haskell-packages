@@ -1,3 +1,7 @@
+# Anything that isn't explicitly owned by a team 
+# needs approval from the admins
+* @input-output-hk/cardano-haskell-packages-trustees
+
 # cardano-node
 _sources/cardano-api             @input-output-hk/release
 _sources/cardano-cli             @input-output-hk/release
@@ -6,9 +10,7 @@ _sources/cardano-node            @input-output-hk/release
 _sources/cardano-submit-api      @input-output-hk/release
 _sources/cardano-testnet         @input-output-hk/release
 
-
 # cardano-ledger
-
 _sources/byron-spec-chain        @input-output-hk/cardano-ledger
 _sources/byron-spec-ledger       @input-output-hk/cardano-ledger
 _sources/cardano-crypto-test     @input-output-hk/cardano-ledger
@@ -19,6 +21,7 @@ _sources/cardano-ledger-pretty   @input-output-hk/cardano-ledger
 _sources/cardano-ledger-test     @input-output-hk/cardano-ledger
 _sources/cardano-protocol-tpraos @input-output-hk/cardano-ledger
 _sources/ledger-state            @input-output-hk/cardano-ledger
+_sources/moo                     @input-output-hk/cardano-ledger
 _sources/non-integral            @input-output-hk/cardano-ledger
 _sources/plutus-preprocessor     @input-output-hk/cardano-ledger
 _sources/set-algebra             @input-output-hk/cardano-ledger
@@ -89,6 +92,10 @@ _sources/plutus-tx-plugin           @input-output-hk/plutus-core
 _sources/prettyprinter-configurable @input-output-hk/plutus-core
 _sources/word-array                 @input-output-hk/plutus-core
 
+_sources/flat     @input-output-hk/plutus-core
+_sources/inline-r @input-output-hk/plutus-core
+_sources/int-cast @input-output-hk/plutus-core
+
 # plutus-apps
 _sources/quickcheck-contractmodel @input-output-hk/plutus-tools
 
@@ -112,13 +119,6 @@ _sources/trace-forward                  @input-output-hk/performance-tracing
 _sources/trace-resources                @input-output-hk/performance-tracing
 _sources/tracer-transformers            @input-output-hk/performance-tracing
 _sources/tx-generator                   @input-output-hk/performance-tracing
-
-# Patched packages
-
-_sources/flat     @input-output-hk/plutus-core
-_sources/inline-r @input-output-hk/plutus-core
-_sources/int-cast @input-output-hk/plutus-core
-_sources/moo      @input-output-hk/cardano-ledger
 
 # Marlowe
 _sources/marlowe           @input-output-hk/marlowe
