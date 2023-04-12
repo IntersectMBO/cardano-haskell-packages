@@ -1,0 +1,3 @@
+timestamp = 2023-04-12T11:58:17Z
+github = { repo = "input-output-hk/ouroboros-network", rev = "release-cardano-test-0.4.0.1" }
+subdir = 'ouroboros-consensus-cardano-test'
