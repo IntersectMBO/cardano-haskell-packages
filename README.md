@@ -16,10 +16,7 @@ contains the metadata specifying all the package versions. The package repositor
 
 ## Help!
 
-If you have trouble, open an issue, or contact the maintainers:
-
-- Andrea Bedini (andrea.bedini@iohk.io)
-- Michael Peyton Jones (michael.peyton-jones@iohk.io)
+If you have trouble, open an issue, or contact the trustees: @input-output-hk/cardano-haskell-packages-trustees
 
 ## Background 
 
