@@ -46,14 +46,19 @@ _sources/cardano-ledger-shelley-ma-test @input-output-hk/cardano-ledger
 
 ## Network
 _sources/io-sim                             @input-output-hk/ouroboros-networking
-_sources/io-sim-classes                     @input-output-hk/ouroboros-networking
+_sources/io-classes                         @input-output-hk/ouroboros-networking
+_sources/strict-stm                         @input-output-hk/ouroboros-networking
+_sources/strict-mvar                        @input-output-hk/ouroboros-networking
 _sources/network-mux                        @input-output-hk/ouroboros-networking
 _sources/ntp-client                         @input-output-hk/ouroboros-networking
 _sources/typed-protocols                    @input-output-hk/ouroboros-networking
 _sources/typed-protocols-examples           @input-output-hk/ouroboros-networking
 _sources/Win32-network                      @input-output-hk/ouroboros-networking
-_sources/ouroboros-network-framework        @input-output-hk/ouroboros-networking
 _sources/ouroboros-network                  @input-output-hk/ouroboros-networking
+_sources/ouroboros-network-api              @input-output-hk/ouroboros-networking
+_sources/ouroboros-network-framework        @input-output-hk/ouroboros-networking
+_sources/ouroboros-network-mock             @input-output-hk/ouroboros-networking
+_sources/ouroboros-network-protocols        @input-output-hk/ouroboros-networking
 _sources/ouroboros-network/wireshark-plugin @input-output-hk/ouroboros-networking
 _sources/ouroboros-network-testing          @input-output-hk/ouroboros-networking
 _sources/cardano-client                     @input-output-hk/ouroboros-networking
