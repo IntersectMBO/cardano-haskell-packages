@@ -25,11 +25,6 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: accept-flake-config = true
 
-      - name: Setup nixbuild.net
-        uses: nixbuild/nixbuild-action@v16
-        with:
-          nixbuild_token: ${{secrets.NIXBUILD_TOKEN}}
-
       - name: Run checks
         run: nix develop -c ./scripts/check.sh
 
@@ -42,11 +37,6 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: accept-flake-config = true
-
-      - name: Setup nixbuild.net
-        uses: nixbuild/nixbuild-action@v16
-        with:
-          nixbuild_token: ${{secrets.NIXBUILD_TOKEN}}
 
       - name: Checkout main 
         uses: actions/checkout@v3
@@ -159,6 +149,7 @@ jobs:
           --store ssh-ng://eu.nixbuild.net 
           --max-jobs 2
           --builders ""
+          --fallback
 
   build-new-packages:
     runs-on: ubuntu-latest
@@ -215,6 +206,7 @@ jobs:
           --store ssh-ng://eu.nixbuild.net 
           --max-jobs 2
           --builders ""
+          --fallback
 
   deploy-check:
     runs-on: ubuntu-latest
