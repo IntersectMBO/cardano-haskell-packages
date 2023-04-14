@@ -1,6 +1,6 @@
 cabal-version:       2.4
 name:                io-sim
-version:             0.5.0.0
+version:             0.6.0.0
 synopsis:            A pure simulator for monadic concurrency with STM
 -- description:
 license:             Apache-2.0
@@ -21,7 +21,7 @@ flag asserts
 
 source-repository head
   type:     git
-  location: https://github.com/input-output-hk/ouroboros-network
+  location: https://github.com/input-output-hk/io-sim
   subdir:   io-sim
 
 library
@@ -49,8 +49,8 @@ library
                        RankNTypes,
                        ScopedTypeVariables,
                        TypeFamilies
-  build-depends:       base              <0,
-                       io-classes        ^>=0.5,
+  build-depends:       base              >=4.9 && <4.18,
+                       io-classes        ^>=0.6,
                        exceptions        >=0.10,
                        containers,
                        deque,
