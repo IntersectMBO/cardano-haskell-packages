@@ -14,7 +14,15 @@ It is built from a [git repository](https://github.com/input-output-hk/cardano-h
 contains the metadata specifying all the package versions. The package repository is built using
 [`foliage`](https://github.com/andreabedini/foliage).
 
-## What is a Cabal package repository?
+## Help!
+
+If you have trouble, open an issue, or contact the trustees: @input-output-hk/cardano-haskell-packages-trustees
+
+## Background 
+
+This section explains some concepts that are useful for understanding and working with CHaP.
+
+### What is a Cabal package repository?
 
 A package repository is essentially a mapping from package name and version
 to the source distribution for the package. Most Haskell programmers will be
@@ -38,9 +46,9 @@ they interact in the same way as Hackage and `source-repository-package`s do. Th
 behaviour that we want: ad-hoc `source-repository-package` stanzas will override
 packages from Hackage _or_ CHaP.
 
-## How to use CHaP
+## Using CHaP
 
-To use CHaP from cabal, add the following lines to your
+To use CHaP with cabal, add the following lines to your
 `cabal.project` file:
 
 ```
@@ -57,6 +65,7 @@ repository cardano-haskell-packages
 ```
 
 The package repository will be understood by cabal, and can be updated with `cabal update`.
+You must run `cabal update` at least once so cabal can download the package index!
 
 The `index-state` for the package repository can also be pinned as usual. 
 You can either just use a single `index-state` for both Hackage and CHaP:
@@ -125,23 +134,34 @@ index-state:
   , cardano-haskell-packages 2022-08-25T00:00:00Z
 ```
 
-## Requirements for including a package in CHaP
+### Creating a repository like CHaP
 
-### Monotonically increasing timestamps
+If you just want to test changes to CHaP, you should make a
+fork. If you want to replicate the setup from scratch you can clone [this template](https://github.com/andreabedini/foliage-template).
 
-When adding a package, it is important to use a timestamp (see [below](#how-to-add-a-new-package-or-package-version-to-chap))
+## Contributing packages and revisions 
+
+This section explains how to contribute to the main content of CHaP: packages and revisions.
+The contribution itself should be [made in a PR](#making-changes).
+
+### Requirements for including a package 
+
+#### Monotonically increasing timestamps
+
+When adding a package, it is important to use a timestamp (see [below](#how-to-add-a-new-package-version))
 that is greater than any other timestamp in the index. Indeed, cabal users rely on
 the changes to the repository index to be append-only. A non append-only
 change to the package index would change the repository index state as
 pinned by `index-state`, breaking reproducibility.
 
-Using the current date and time (e.g. `date --utc +%Y-%m-%dT%H:%M:%SZ`)
-works alright but if you are sending a PR you need to consider the
-possibility that another developer has inserted a new (greater) timestamp
-before your PR got merged. We have CI check that prevents this from
-happening, and we enforce FF-only merges.
+This condition is enforced by the CI, and we only allow FF-merges in order to ensure that we are always checking a linear history.
 
-### No extra build configuration beyond what is given in the cabal file
+Tips for working with timestamps:
+- Most of the scripts will insert timestamps for you, e.g. `./scripts/add-from-github.sh`
+- If you have a PR and the timestamps are now too old (e.g. because someone else made a PR in the meantime), then see [below](#dealing-with-timestamp-conflicts) for tips
+- If you want to get a suitable timestamp for some other reason, `./scripts/current-timestamp.sh` will produce one
+
+#### No extra build configuration beyond what is given in the cabal file
 
 When downstream users pull a package from CHaP, `cabal` will build it based _only_ on the
 information in the cabal file. This means that if your package needs any additional configuration
@@ -153,9 +173,9 @@ Typical examples of this are anything that you add in `cabal.project`:
 - `allow-newer`
 - `source-repository-package`
 
-This is partially enforced by the CI, as we try to build some of the packages from CHaP on PRs.
+This is enforced by the CI, which will build newly added packages in PRs. 
 
-## How to add a new package version to CHaP
+### How to add a new package version 
 
 Package versions are defined using metadata files `_sources/$pkg_name/$pkg_version/meta.toml`,
 which you can create directly. The metadata files have the following format:
@@ -169,7 +189,7 @@ url = 'https://github.com/input-output-hk/ouroboros-network/tarball/fa10cb4eef1e
 subdir = 'typed-protocols'
 ```
 
-### ... from GitHub
+#### ... from GitHub
 
 There is a convenience script `./scripts/add-from-github.sh` to simplify
 adding a package from a GitHub repository.
@@ -192,7 +212,7 @@ The script will:
 You can tell the script to override the package version either by passing
 the version explicitly or by adding a "revision number" (see below).
 
-## How to add a new package metadata revision to CHaP
+### How to add a new package metadata revision 
 
 CHaP supports package metadata revisions just like Hackage. These allow you to provide an edited cabal 
 file for a package version. The primary use of this is to tweak the dependency bounds of a package. 
@@ -200,14 +220,14 @@ In principle you can change other things too, but this is generally frowned upon
 
 There is a convenience script for adding a revision to CHaP:
 ```
-$ ./scripts/add-revision.sh BUILT_REPO PACKAGE_NAME PACKAGE_VERSION
+$ ./scripts/add-revision.sh _repo PACKAGE_NAME PACKAGE_VERSION
 ```
 
-You need a built repository (`foliage build`) in order to use the script.
+You need a [built package repository](#how-to-build-the-cabal-package-repository) in order to use the script.
 It will add a new revision and copy the _current_ cabal file in as the revised cabal file.
 You can then edit that file and commit the result.
 
-## How to add a patched versions of a Hackage package to CHaP
+### How to add a patched versions of a Hackage package 
 
 CHaP should mostly contain versions of packages which are _not_ on Hackage.
 
@@ -227,20 +247,35 @@ The scheme that we typically use is to take the existing version number, add fou
 IMPORTANT: if you release a patched package to CHaP, make sure to open an issue about it so we can keep track of which patched packages we have.
 Ideally, include the conditions under which we can deprecate it, e.g. "can deprecate either when it's fixed upstream or when package X removes their dependency on it".
 
-## How to test changes to CHaP 
+### Releasing CHaP packages to Hackage
+
+It's totally fine to release a package in CHaP to Hackage.
+The thing to avoid is to have the same package _version_ in both repositories.
+The simplest solution is to just make sure to use a higher major version number when you start releasing to Hackage, even if this looks a bit odd.
+For example, if CHaP contains `X-1.0` and `X-1.1`, then the first Hackage release should be `X-1.2` or `X-2.0`.
+
+## Building and testing CHaP
+
+For most contributors this section is not going to be necessary, and you can rely on the CI. 
+
+However if you are making a large number of changes (e.g. many revisions), it can be useful to test your work before making a PR.
+
+### How to build the Cabal package repository
+
+The Cabal package repository itself is built using the tool `foliage`. `foliage` is available in the Nix dev shell, which you can get into using `nix develop`.
+
+To build the repository, run `foliage build -j 0 --write-metadata`. This will build the repository and put it in `_repo`.
+
+### How to test changes 
 
 Sometimes it is useful to test in advance how a new package or a cabal file
 revision affects things.
 
-The first steps are always the same, you need a built version of your modified 
-CHaP locally:
-- Make a local checkout of CHaP and make the intended changes
-- Build the repository with `nix develop -c foliage build`
-
+First of all, [build the repository](#how-to-build-the-cabal-package-repository).
 For the rest of this section we will assume the built repository is in 
 `/home/user/cardano-haskell-packages/_repo`.
 
-### ... by building packages with `cabal`
+#### ... by building packages with `cabal`
 
 You can test a locally built CHaP with a small test project consisting of just a
 `cabal.project` file:
@@ -271,7 +306,7 @@ $ cabal build cardano-prelude
 
 You can troubleshoot a failed build plan using the cabal flags `--constraint`, `--allow-newer` and `--allow-older`. Once you have obtained a working build plan, you should revise you cabal file with appropriate constraints.
 
-### ... by building packages with Nix
+#### ... by building packages with Nix
 
 You can build packages from CHaP using Nix like this:
 
@@ -288,7 +323,7 @@ By default it points to a built repository on the main CHaP `repo` branch.
 But if you have just produced your own built repository (see above) then you want to
 use that instead, and `--override-input` will let you do that.
 
-### ... by testing against a haskell.nix project
+#### ... by testing against a haskell.nix project
 
 If you want to test a locally built CHaP against a project that uses CHaP 
 via haskell.nix, you can build the project while overriding CHaP
@@ -312,44 +347,42 @@ $ nix build .#project.plan-nix.json \
 This is useful if you jsut want to see whether cabal is able to successfully
 resolve dependencies and see what versions it picked.
 
-## How to release a package in CHaP to Hackage
+## Making changes 
 
-It's totally fine to release a package in CHaP to Hackage.
-The thing to avoid is to have the same package _version_ in both repositories.
-The simplest solution is to just make sure to use a higher major version number when you start releasing to Hackage, even if this looks a bit odd.
-For example, if CHaP contains `X-1.0` and `X-1.1`, then the first Hackage release should be `X-1.2` or `X-2.0`.
+Changes to CHaP should simply be made using PRs.
 
-## Access control for CHaP
+### Access control 
 
-Since packages are released to CHaP simply by making PRs, CHaP uses `CODEOWNERS` to determine whose approval is needed to release a package. 
+CHaP uses `CODEOWNERS` to determine whose approval is needed to release a package. 
 The general rules are:
+
 - If a package is clearly owned by a particular team, then set that team as the CODEOWNER.
 - Prefer to use GitHub teams over individual accounts wherever possible.
 - In the case of patched packages, the owner should be whichever team owns the package that causes the dependency on the package that needs patching.
 
 Generally, use your judgement about what's appropriate.
 
-## CI for CHaP
+### CI 
 
 The CI for CHaP does the following things:
 
 - Checks that the timestamps in the git repository are monotonically increasing through commits.
 Along with requiring linear history, this ensures that package repository that we build is always an extension of the previous one.
 - Builds the package repository from the metadata using `foliage`.
-- Builds a small set of packages using the newly built repository, to flush out any build issues.
+- Builds a small set of packages using the newly built repository.
     - We build with all the major GHC versions we expect to be in use.
     - At the moment we don't build all the packages in the repository, only the latest versions of a fixed set.
+- Builds any newly added packages using the newly built repository.
 - If on the master branch, deploys the package repository to the `repo` branch, along with some static web content.
 
-## Creating a repository like CHaP
+### Dealing with timestamp conflicts
 
-If you just want or test changes to CHaP, you should make a
-fork. If you want to replicate the setup from scratch you can clone [this
-template](https://github.com/andreabedini/foliage-template).
+Since we require monotonically increasing timestamps, there can be timestamp conflicts if someone else merges a PR with later timestamps than yours.
+That means that your PR (once updated from `main`) will now introduce "old" timestamps, which is not allowed.
 
-## Help!
+There are some scripts for dealing with this:
+- `./scripts/update-timestamps-in-revision.sh REV` will look at the given revision, find any timestamps that were added in that commit, and make changes to update them to a fresh timestamp.
+- `./scripts/update-timestamps-and-fixup.sh REV` will do the same but also commit the changes as a fixup commit. You can either leave these in your PR or get rid of them with `git rebase main --autosquash`
 
-If you have trouble, open an issue, or contact the maintainers:
-
-- Andrea Bedini (andrea.bedini@iohk.io)
-- Michael Peyton Jones (michael.peyton-jones@iohk.io)
+An easy way to run `update-timestamps-and-fixup` on a multi-commit PR is to run `git rebase main --exec "./scripts/update-timestamps-and-fixup.sh HEAD"`.
+This will run the script at every step of the rebase on `HEAD` (i.e. the commit you have reached).

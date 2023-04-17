@@ -1,0 +1,8 @@
+timestamp = 2023-04-03T16:59:56Z
+github = { repo = "hedgehogqa/haskell-hedgehog", rev = "70cf9fd0719e2d0ace1093cbe75673d7b9b4cf65" }
+subdir = 'hedgehog'
+force-version = true
+
+[[revisions]]
+number = 1
+timestamp = 2023-04-03T17:01:06Z

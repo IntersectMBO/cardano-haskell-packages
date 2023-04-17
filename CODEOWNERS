@@ -1,3 +1,7 @@
+# Anything that isn't explicitly owned by a team 
+# needs approval from the admins
+* @input-output-hk/cardano-haskell-packages-trustees
+
 # cardano-node
 _sources/cardano-api             @input-output-hk/release
 _sources/cardano-cli             @input-output-hk/release
@@ -6,9 +10,7 @@ _sources/cardano-node            @input-output-hk/release
 _sources/cardano-submit-api      @input-output-hk/release
 _sources/cardano-testnet         @input-output-hk/release
 
-
 # cardano-ledger
-
 _sources/byron-spec-chain        @input-output-hk/cardano-ledger
 _sources/byron-spec-ledger       @input-output-hk/cardano-ledger
 _sources/cardano-crypto-test     @input-output-hk/cardano-ledger
@@ -19,6 +21,7 @@ _sources/cardano-ledger-pretty   @input-output-hk/cardano-ledger
 _sources/cardano-ledger-test     @input-output-hk/cardano-ledger
 _sources/cardano-protocol-tpraos @input-output-hk/cardano-ledger
 _sources/ledger-state            @input-output-hk/cardano-ledger
+_sources/moo                     @input-output-hk/cardano-ledger
 _sources/non-integral            @input-output-hk/cardano-ledger
 _sources/plutus-preprocessor     @input-output-hk/cardano-ledger
 _sources/set-algebra             @input-output-hk/cardano-ledger
@@ -43,14 +46,19 @@ _sources/cardano-ledger-shelley-ma-test @input-output-hk/cardano-ledger
 
 ## Network
 _sources/io-sim                             @input-output-hk/ouroboros-networking
-_sources/io-sim-classes                     @input-output-hk/ouroboros-networking
+_sources/io-classes                         @input-output-hk/ouroboros-networking
+_sources/strict-stm                         @input-output-hk/ouroboros-networking
+_sources/strict-mvar                        @input-output-hk/ouroboros-networking
 _sources/network-mux                        @input-output-hk/ouroboros-networking
 _sources/ntp-client                         @input-output-hk/ouroboros-networking
 _sources/typed-protocols                    @input-output-hk/ouroboros-networking
 _sources/typed-protocols-examples           @input-output-hk/ouroboros-networking
 _sources/Win32-network                      @input-output-hk/ouroboros-networking
-_sources/ouroboros-network-framework        @input-output-hk/ouroboros-networking
 _sources/ouroboros-network                  @input-output-hk/ouroboros-networking
+_sources/ouroboros-network-api              @input-output-hk/ouroboros-networking
+_sources/ouroboros-network-framework        @input-output-hk/ouroboros-networking
+_sources/ouroboros-network-mock             @input-output-hk/ouroboros-networking
+_sources/ouroboros-network-protocols        @input-output-hk/ouroboros-networking
 _sources/ouroboros-network/wireshark-plugin @input-output-hk/ouroboros-networking
 _sources/ouroboros-network-testing          @input-output-hk/ouroboros-networking
 _sources/cardano-client                     @input-output-hk/ouroboros-networking
@@ -76,6 +84,8 @@ _sources/cardano-lmdb/                      @input-output-hk/ouroboros-consensus
 _sources/cardano-lmdb-simple/               @input-output-hk/ouroboros-consensus
 _sources/diff-containers/                   @input-output-hk/ouroboros-consensus
 _sources/fingertree-rm/                     @input-output-hk/ouroboros-consensus
+_sources/fs-api/                            @input-output-hk/ouroboros-consensus
+_sources/fs-sim/                            @input-output-hk/ouroboros-consensus
 _sources/simple-semigroupoids/              @input-output-hk/ouroboros-consensus
 
 # plutus
@@ -86,6 +96,10 @@ _sources/plutus-tx                  @input-output-hk/plutus-core
 _sources/plutus-tx-plugin           @input-output-hk/plutus-core
 _sources/prettyprinter-configurable @input-output-hk/plutus-core
 _sources/word-array                 @input-output-hk/plutus-core
+
+_sources/flat     @input-output-hk/plutus-core
+_sources/inline-r @input-output-hk/plutus-core
+_sources/int-cast @input-output-hk/plutus-core
 
 # plutus-apps
 _sources/quickcheck-contractmodel @input-output-hk/plutus-tools
@@ -111,9 +125,7 @@ _sources/trace-resources                @input-output-hk/performance-tracing
 _sources/tracer-transformers            @input-output-hk/performance-tracing
 _sources/tx-generator                   @input-output-hk/performance-tracing
 
-# Patched packages
-
-_sources/flat     @input-output-hk/plutus-core
-_sources/inline-r @input-output-hk/plutus-core
-_sources/int-cast @input-output-hk/plutus-core
-_sources/moo      @input-output-hk/cardano-ledger
+# Marlowe
+_sources/marlowe           @input-output-hk/marlowe
+_sources/marlowe-reference @input-output-hk/marlowe
+_sources/marlowe-spec-test @input-output-hk/marlowe

@@ -1,0 +1,11 @@
+timestamp = 2023-03-31T11:59:45Z
+github = { repo = "ocharles/libsystemd-journal", rev = "c49785d4e56b6b14fbff47b75c54784292af950c" }
+force-version = true
+
+[[revisions]]
+number = 1
+timestamp = 2023-03-31T11:59:45Z
+
+[[revisions]]
+number = 2
+timestamp = 2023-04-11T20:31:44Z

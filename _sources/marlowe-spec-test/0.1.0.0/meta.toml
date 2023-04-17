@@ -1,0 +1,3 @@
+timestamp = 2023-04-03T13:30:28Z
+github = { repo = "input-output-hk/marlowe", rev = "8e7cabd6874547adf27848d69586e4878897252a" }
+subdir = 'marlowe-spec-test'

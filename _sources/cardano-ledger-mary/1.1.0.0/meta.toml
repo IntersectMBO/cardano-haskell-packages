@@ -1,0 +1,3 @@
+timestamp = 2023-04-05T21:13:03Z
+github = { repo = "input-output-hk/cardano-ledger", rev = "f10f06f6ab96b5ee52a28ccc45b41a592efde4b7" }
+subdir = 'eras/mary/impl'
