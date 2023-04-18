@@ -37,7 +37,7 @@
     # The foliage flake only works on this system, so we are stuck with it too
     flake-utils.lib.eachSystem [ "x86_64-linux" ]
       (system:
-        let 
+        let
           pkgs = import nixpkgs {
             inherit system;
             inherit (haskell-nix) config;
@@ -59,47 +59,48 @@
           # pkgVersionsToPkgSet :: PkgVersions -> PkgSet
           pkgVersionsToPkgSet = pkg-versions:
             # We use recurseIntoAttrs so flattenTree will flatten it back out again.
-            let 
-              derivations = compiler: lib.recurseIntoAttrs (lib.mapAttrs 
+            let
+              derivations = compiler: lib.recurseIntoAttrs (lib.mapAttrs
                 (name: versions: (lib.recurseIntoAttrs (lib.genAttrs versions (version: builder compiler name version))))
                  pkg-versions);
               # A nested tree of derivations containing all the packages for all the compiler versions
               perCompilerDerivations = lib.recurseIntoAttrs (lib.genAttrs compilers derivations);
               # cardano-node/cardano-api can't build on 9.2 yet
               # TODO: work out a better way of doing these exclusions
-              toRemove = [ 
-                (lib.setAttrByPath [ "ghc926" "cardano-api" ] null) 
-                (lib.setAttrByPath [ "ghc926" "cardano-node" ] null) 
-                (lib.setAttrByPath [ "ghc926" "plutus-ledger" ] null) 
-                (lib.setAttrByPath [ "ghc926" "marlowe-cardano" ] null) 
-                (lib.setAttrByPath [ "ghc926" "marlowe-chain-sync" ] null) 
-                (lib.setAttrByPath [ "ghc926" "marlowe-client" ] null) 
-                (lib.setAttrByPath [ "ghc926" "marlowe-protocols" ] null) 
-                (lib.setAttrByPath [ "ghc926" "marlowe-runtime" ] null) 
-                (lib.setAttrByPath [ "ghc926" "marlowe-runtime-web" ] null) 
-                (lib.setAttrByPath [ "ghc926" "marlowe-test" ] null) 
+              toRemove = [
+                (lib.setAttrByPath [ "ghc926" "cardano-api" ] null)
+                (lib.setAttrByPath [ "ghc926" "cardano-node" ] null)
+                (lib.setAttrByPath [ "ghc926" "plutus-ledger" ] null)
+                (lib.setAttrByPath [ "ghc926" "marlowe-cardano" ] null)
+                (lib.setAttrByPath [ "ghc926" "marlowe-chain-sync" ] null)
+                (lib.setAttrByPath [ "ghc926" "marlowe-client" ] null)
+                (lib.setAttrByPath [ "ghc926" "marlowe-protocols" ] null)
+                (lib.setAttrByPath [ "ghc926" "marlowe-runtime" ] null)
+                (lib.setAttrByPath [ "ghc926" "marlowe-runtime-web" ] null)
+                (lib.setAttrByPath [ "ghc926" "marlowe-test" ] null)
+                (lib.setAttrByPath [ "ghc926" "quickcheck-contractmodel" ] null)
               ];
               filtered = builtins.foldl' lib.recursiveUpdate perCompilerDerivations toRemove;
             in filtered;
 
           allPkgVersions = chap-meta.chap-package-versions chap-meta.chap-package-meta;
 
-          smokeTestPackages = [ 
-            "plutus-ledger-api" 
-            "cardano-ledger-api" 
-            "ouroboros-network" 
-            "ouroboros-consensus-cardano" 
-            "cardano-api" 
-            "cardano-node" 
+          smokeTestPackages = [
+            "plutus-ledger-api"
+            "cardano-ledger-api"
+            "ouroboros-network"
+            "ouroboros-consensus-cardano"
+            "cardano-api"
+            "cardano-node"
             # from plutus-apps
-            "plutus-ledger" 
+            "plutus-ledger"
             ];
 
           # using intersectAttrs like this is a cheap way to throw away everything with keys not in
           # smokeTestPackages
-          smokeTestPkgVersions = 
-            builtins.intersectAttrs 
-              (lib.genAttrs smokeTestPackages (pkg: {})) 
+          smokeTestPkgVersions =
+            builtins.intersectAttrs
+              (lib.genAttrs smokeTestPackages (pkg: {}))
               (chap-meta.chap-package-latest-versions chap-meta.chap-package-meta);
         in
         rec {
@@ -118,7 +119,7 @@
           haskellPackages = pkgVersionsToPkgSet allPkgVersions;
           smokeTestPackages = pkgVersionsToPkgSet smokeTestPkgVersions;
 
-          packages = flake-utils.lib.flattenTree haskellPackages // { 
+          packages = flake-utils.lib.flattenTree haskellPackages // {
             allPackages = pkgs.releaseTools.aggregate {
               name = "all-packages";
               constituents = builtins.attrValues (flake-utils.lib.flattenTree haskellPackages);
