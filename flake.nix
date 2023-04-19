@@ -34,8 +34,10 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, foliage, haskell-nix, CHaP, iohk-nix, ... }:
-    # The foliage flake only works on this system, so we are stuck with it too
-    flake-utils.lib.eachSystem [ "x86_64-linux" ]
+    # The foliage flake only works on linux, so the other systems won't actually work
+    # until https://github.com/andreabedini/foliage/issues/53 is fixed, but we might
+    # as well leave the more general code in here.
+    flake-utils.lib.eachDefaultSystem
       (system:
         let
           pkgs = import nixpkgs {
