@@ -11,9 +11,31 @@ function usage {
   exit
 }
 
+optstring="h"
+
+while getopts ${optstring} arg; do
+  case ${arg} in
+    h)
+      usage
+      exit 0
+      ;;
+    ?)
+      echo "Invalid option: -${OPTARG}."
+      exit 2
+      ;;
+  esac
+done
+
+shift $((OPTIND - 1))
+
 BUILT_REPO=$1
 PKG_NAME=$2
 PKG_VERSION=$3
+
+if ! shift 3; then
+  usage
+  exit 1
+fi
 
 META_DIR="_sources/$PKG_NAME/$PKG_VERSION"
 META_FILE="$META_DIR/meta.toml"
