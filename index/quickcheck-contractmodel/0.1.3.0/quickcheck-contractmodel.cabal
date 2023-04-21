@@ -88,7 +88,7 @@ library
       time ^>= 1.9.3,
     -- QuickCheck dependencies
       QuickCheck ^>= 2.14,
-      quickcheck-dynamic >= 3.0.2,
+      quickcheck-dynamic >= 3.0.2 && < 3.1.0,
     -- Plutus and Cardano dependencies
     build-depends:
       plutus-tx ^>= 1.0,

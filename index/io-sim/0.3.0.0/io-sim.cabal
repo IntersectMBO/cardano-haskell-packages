@@ -53,7 +53,7 @@ library
                        io-classes        ^>=0.3,
                        exceptions        >=0.10,
                        containers,
-                       deque,
+                       deque             >= 0.4,
                        parallel,
                        pretty-simple,
                        psqueues          >=0.2 && <0.3,
