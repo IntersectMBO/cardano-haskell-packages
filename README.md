@@ -247,6 +247,12 @@ The scheme that we typically use is to take the existing version number, add fou
 IMPORTANT: if you release a patched package to CHaP, make sure to open an issue about it so we can keep track of which patched packages we have.
 Ideally, include the conditions under which we can deprecate it, e.g. "can deprecate either when it's fixed upstream or when package X removes their dependency on it".
 
+### How to update Hackage index used by CHaP
+
+If one of your packages requires a newer version of a package published on Hackage, you will need to run: `nix flake lock --update-input hackage-nix`.
+[`hackage.nix`] is automatically updated from Hackage once per day.
+If things still don't work because the version of the package is not available you'll need either wait for the automatic update or make a PR to [`hackage.nix`] first and then rerun the above command.
+
 ### Releasing CHaP packages to Hackage
 
 It's totally fine to release a package in CHaP to Hackage.
@@ -386,3 +392,5 @@ There are some scripts for dealing with this:
 
 An easy way to run `update-timestamps-and-fixup` on a multi-commit PR is to run `git rebase main --exec "./scripts/update-timestamps-and-fixup.sh HEAD"`.
 This will run the script at every step of the rebase on `HEAD` (i.e. the commit you have reached).
+
+[`hackage.nix`]: https://github.com/input-output-hk/hackage.nix
