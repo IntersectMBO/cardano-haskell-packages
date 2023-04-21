@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-# Updates the bounds on CHaP packages in cabal files to pin to the latest major version
+# When run in a Haskell project, and passed a built CHaP repo, goes through the .cabal files and updates the
+# bounds on any CHaP packages to be ^>= the latest major versin. The remaining arguments are packages to
+# blacklist and not update, in case e.g. you know that the update will break you, or it's your own package!
 
 SCRIPT_DIR=$(dirname "$(which "$0")")
 
