@@ -40,7 +40,7 @@ library
 
   build-depends:       ansi-wl-pprint
                      , base >=4.11 && <5
-                     , cardano-data
+                     , cardano-data <1.1
                      , containers
   hs-source-dirs:      src
 
