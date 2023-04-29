@@ -7,6 +7,10 @@ on:
   push:
     branches:
       - main
+    # do not run the workflow if only markdown files
+    # in the root folder were changed.
+    paths:
+      - "!*.md"
   pull_request:
   workflow_dispatch:
 
