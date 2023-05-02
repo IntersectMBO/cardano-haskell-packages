@@ -1,0 +1,3 @@
+timestamp = 2023-04-24T15:33:00Z
+github = { repo = "input-output-hk/typed-protocols", rev = "adc4f2e22398f02be2bcddfc8ae918a84de28a36" }
+subdir = 'typed-protocols-examples'

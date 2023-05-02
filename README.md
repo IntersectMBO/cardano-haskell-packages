@@ -256,6 +256,12 @@ The scheme that we typically use is to take the existing version number, add fou
 IMPORTANT: if you release a patched package to CHaP, make sure to open an issue about it so we can keep track of which patched packages we have.
 Ideally, include the conditions under which we can deprecate it, e.g. "can deprecate either when it's fixed upstream or when package X removes their dependency on it".
 
+### How to update Hackage index used by CHaP
+
+If one of your packages requires a newer version of a package published on Hackage, you will need to run: `nix flake lock --update-input hackage-nix`.
+[`hackage.nix`] is automatically updated from Hackage once per day.
+If things still don't work because the version of the package is not available you'll need either wait for the automatic update or make a PR to [`hackage.nix`] first and then rerun the above command.
+
 ### Releasing CHaP packages to Hackage
 
 It's totally fine to release a package in CHaP to Hackage.
@@ -384,6 +390,10 @@ Along with requiring linear history, this ensures that package repository that w
 - Builds any newly added packages using the newly built repository.
 - If on the master branch, deploys the package repository to the `repo` branch, along with some static web content.
 
+#### Troubleshooting CI / GitHub Actions
+
+In case the `build-packages` or `build-new-packages` actions fail, you can retrieve the `built-repo` Artifact from the Actions Summary page for the failed action. Then, unpack it into the `_repo` directory and proceed with the remaining steps in the [CI.yml GitHub Workflow file](.github/workflows/CI.yml). Note that the nixbuild flags are not relevant for reproducing the issue locally and can be ignored.
+
 ### Dealing with timestamp conflicts
 
 Since we require monotonically increasing timestamps, there can be timestamp conflicts if someone else merges a PR with later timestamps than yours.
@@ -395,3 +405,5 @@ There are some scripts for dealing with this:
 
 An easy way to run `update-timestamps-and-fixup` on a multi-commit PR is to run `git rebase main --exec "./scripts/update-timestamps-and-fixup.sh HEAD"`.
 This will run the script at every step of the rebase on `HEAD` (i.e. the commit you have reached).
+
+[`hackage.nix`]: https://github.com/input-output-hk/hackage.nix
