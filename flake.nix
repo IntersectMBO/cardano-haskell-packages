@@ -104,6 +104,12 @@
             builtins.intersectAttrs
               (lib.genAttrs smokeTestPackages (pkg: {}))
               (chap-meta.chap-package-latest-versions chap-meta.chap-package-meta);
+
+          # use a self + path reference to ensure this runs in the context of the
+          # whole flake source, so can see the other scripts
+          update-chap-deps = pkgs.writeShellScriptBin "update-chap-deps" ''
+            ${self + "/scripts/update-chap-deps.sh"} ${CHaP} $@
+          '';
         in
         rec {
           devShells.default = with pkgs; mkShellNoCC {
@@ -122,6 +128,8 @@
           smokeTestPackages = pkgVersionsToPkgSet smokeTestPkgVersions;
 
           packages = flake-utils.lib.flattenTree haskellPackages // {
+            inherit update-chap-deps;
+
             allPackages = pkgs.releaseTools.aggregate {
               name = "all-packages";
               constituents = builtins.attrValues (flake-utils.lib.flattenTree haskellPackages);
