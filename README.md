@@ -381,6 +381,10 @@ Along with requiring linear history, this ensures that package repository that w
 - Builds any newly added packages using the newly built repository.
 - If on the master branch, deploys the package repository to the `repo` branch, along with some static web content.
 
+#### Troubleshooting CI / GitHub Actions
+
+In case the `build-packages` or `build-new-packages` actions fail, you can retrieve the `built-repo` Artifact from the Actions Summary page for the failed action. Then, unpack it into the `_repo` directory and proceed with the remaining steps in the [CI.yml GitHub Workflow file](.github/workflows/CI.yml). Note that the nixbuild flags are not relevant for reproducing the issue locally and can be ignored.
+
 ### Dealing with timestamp conflicts
 
 Since we require monotonically increasing timestamps, there can be timestamp conflicts if someone else merges a PR with later timestamps than yours.
