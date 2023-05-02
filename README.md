@@ -134,6 +134,15 @@ index-state:
   , cardano-haskell-packages 2022-08-25T00:00:00Z
 ```
 
+### Updating dependencies from CHaP
+
+If you have a Haskell project which has bounds on CHaP packages, we provide a script which will update all of those bounds to
+pin the latest major version of each that is released to CHaP.
+
+You can run it like so: `nix run --update-input CHaP --no-write-lock-file "github:input-output-hk/cardano-haskell-packages#update-chap-deps" pkgA pkgB`.
+This will update the bounds for everything from CHaP, except for those on `pkgA` or `pkgB`. This lets you blacklist packages
+that you don't want to update (e.g. because you know that the update will break you, or it's your own package!).
+
 ### Creating a repository like CHaP
 
 If you just want to test changes to CHaP, you should make a
