@@ -144,7 +144,7 @@
           # The standard checks: build all the smoke test packages
           checks = flake-utils.lib.flattenTree smokeTestPackages;
 
-          hydraJobs = checks;
+          hydraJobs = haskellPackages;
         });
 
   nixConfig = {
