@@ -144,7 +144,7 @@
           # The standard checks: build all the smoke test packages
           checks = flake-utils.lib.flattenTree smokeTestPackages;
 
-          hydraJobs = haskellPackages;
+          hydraJobs = pkgs.lib.filterAttrsRecursive (n: _: n != "recurseForDerivations") haskellPackages;
         });
 
   nixConfig = {
