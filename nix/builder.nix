@@ -59,5 +59,5 @@ let
       # does Hackage).
       constituents = components;
       # pass through the plan for debugging purposes
-    } // { passthru = { inherit (project) plan-nix; }; }; 
+    } // { passthru = { inherit project; }; };
 in build-chap-package
