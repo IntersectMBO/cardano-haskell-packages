@@ -3,12 +3,13 @@
 * @input-output-hk/cardano-haskell-packages-trustees
 
 # cardano-node
-_sources/cardano-api             @input-output-hk/release
-_sources/cardano-cli             @input-output-hk/release
-_sources/cardano-client-demo     @input-output-hk/release
-_sources/cardano-node            @input-output-hk/release
-_sources/cardano-submit-api      @input-output-hk/release
-_sources/cardano-testnet         @input-output-hk/release
+_sources/cardano-api                @input-output-hk/release
+_sources/cardano-cli                @input-output-hk/release
+_sources/cardano-client-demo        @input-output-hk/release
+_sources/cardano-node               @input-output-hk/release
+_sources/cardano-submit-api         @input-output-hk/release
+_sources/cardano-testnet            @input-output-hk/release
+_sources/optparse-applicative-fork  @input-output-hk/cardano-node
 
 # cardano-ledger
 _sources/byron-spec-chain        @input-output-hk/cardano-ledger
