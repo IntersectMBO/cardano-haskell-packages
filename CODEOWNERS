@@ -50,9 +50,11 @@ _sources/io-sim                             @input-output-hk/ouroboros-networkin
 _sources/io-classes                         @input-output-hk/ouroboros-networking
 _sources/strict-stm                         @input-output-hk/ouroboros-networking
 _sources/strict-mvar                        @input-output-hk/ouroboros-networking
+_sources/si-timers                          @input-output-hk/ouroboros-networking
 _sources/network-mux                        @input-output-hk/ouroboros-networking
 _sources/ntp-client                         @input-output-hk/ouroboros-networking
 _sources/typed-protocols                    @input-output-hk/ouroboros-networking
+_sources/typed-protocols-cborg              @input-output-hk/ouroboros-networking
 _sources/typed-protocols-examples           @input-output-hk/ouroboros-networking
 _sources/Win32-network                      @input-output-hk/ouroboros-networking
 _sources/ouroboros-network                  @input-output-hk/ouroboros-networking
@@ -60,9 +62,10 @@ _sources/ouroboros-network-api              @input-output-hk/ouroboros-networkin
 _sources/ouroboros-network-framework        @input-output-hk/ouroboros-networking
 _sources/ouroboros-network-mock             @input-output-hk/ouroboros-networking
 _sources/ouroboros-network-protocols        @input-output-hk/ouroboros-networking
-_sources/ouroboros-network/wireshark-plugin @input-output-hk/ouroboros-networking
 _sources/ouroboros-network-testing          @input-output-hk/ouroboros-networking
 _sources/cardano-client                     @input-output-hk/ouroboros-networking
+_sources/cardano-ping                       @input-output-hk/ouroboros-networking
+_sources/monoidal-synchronisation           @input-output-hk/ouroboros-networking
 
 ## Consensus
 _sources/ouroboros-consensus/               @input-output-hk/ouroboros-consensus
