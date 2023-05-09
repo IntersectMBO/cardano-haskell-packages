@@ -64,7 +64,7 @@ library
                        , ekg-core
                        , io-classes
                        , network
-                       , ouroboros-network-framework
+                       , ouroboros-network-framework >= 0.1 && < 0.3
                        , serialise
                        , stm
                        , text
