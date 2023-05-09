@@ -1,2 +1,6 @@
 timestamp = 2022-10-17T00:00:00Z
 github = { repo = "input-output-hk/ekg-forward", rev = "9c92060de57d91f69c6792489489598991313901" }
+
+[[revisions]]
+number = 1
+timestamp = 2023-05-09T18:29:06Z
