@@ -359,7 +359,7 @@ $ nix build .#project.plan-nix.json \
 	--override-input CHaP path:/home/user/cardano-haskell-packages/_repo
 ```
 
-This is useful if you jsut want to see whether cabal is able to successfully
+This is useful if you just want to see whether cabal is able to successfully
 resolve dependencies and see what versions it picked.
 
 ## Making changes 
