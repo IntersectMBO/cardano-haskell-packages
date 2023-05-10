@@ -17,6 +17,8 @@ _sources/byron-spec-ledger       @input-output-hk/cardano-ledger
 _sources/cardano-crypto-test     @input-output-hk/cardano-ledger
 _sources/cardano-crypto-wrapper  @input-output-hk/cardano-ledger
 _sources/cardano-data            @input-output-hk/cardano-ledger
+_sources/cardano-ledger-api      @input-output-hk/cardano-ledger
+_sources/cardano-ledger-binary   @input-output-hk/cardano-ledger
 _sources/cardano-ledger-core     @input-output-hk/cardano-ledger
 _sources/cardano-ledger-pretty   @input-output-hk/cardano-ledger
 _sources/cardano-ledger-test     @input-output-hk/cardano-ledger
@@ -30,6 +32,7 @@ _sources/small-steps             @input-output-hk/cardano-ledger
 _sources/small-steps-test        @input-output-hk/cardano-ledger
 
 ## Eras
+_sources/cardano-ledger-allegra         @input-output-hk/cardano-ledger
 _sources/cardano-ledger-alonzo          @input-output-hk/cardano-ledger
 _sources/cardano-ledger-alonzo-test     @input-output-hk/cardano-ledger
 _sources/cardano-ledger-babbage         @input-output-hk/cardano-ledger
@@ -38,6 +41,7 @@ _sources/cardano-ledger-byron           @input-output-hk/cardano-ledger
 _sources/cardano-ledger-byron-test      @input-output-hk/cardano-ledger
 _sources/cardano-ledger-conway          @input-output-hk/cardano-ledger
 _sources/cardano-ledger-conway-test     @input-output-hk/cardano-ledger
+_sources/cardano-ledger-mary            @input-output-hk/cardano-ledger
 _sources/cardano-ledger-shelley         @input-output-hk/cardano-ledger
 _sources/cardano-ledger-shelley-test    @input-output-hk/cardano-ledger
 _sources/cardano-ledger-shelley-ma      @input-output-hk/cardano-ledger
