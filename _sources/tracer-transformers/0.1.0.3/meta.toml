@@ -1,0 +1,3 @@
+timestamp = 2023-05-11T06:16:20Z
+github = { repo = "input-output-hk/iohk-monitoring-framework/", rev = "d3a461998a45c25a842c919545b39284726fbbb1" }
+subdir = 'tracer-transformers'
