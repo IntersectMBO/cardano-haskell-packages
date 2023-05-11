@@ -51,13 +51,40 @@ let
 
       };
       pkg = project.hsPkgs.${package-name};
-      components = haskellLib.getAllComponents pkg;
-    in pkgs.releaseTools.aggregate {
-      name = package-id;
-      # Note that this does *not* include the derivations from 'checks' which
-      # actually run tests: CHaP will not check that your tests pass (neither
-      # does Hackage).
-      constituents = components;
-      # pass through the plan for debugging purposes
-    } // { passthru = { inherit (project) plan-nix; }; }; 
-in build-chap-package
+      components = builtins.map
+        (c: lib.attrsets.recursiveUpdate c {
+          passthru = {
+            addConstraint = constraint:
+              let
+                project' = project.appendModule { cabalProjectLocal = "constraints: ${constraint}"; };
+              in
+              # this is a ugly way to find the same component again
+              pkgs.lib.lists.findFirst
+                (c': c'.name == c.name)
+                (builtins.abort "cannot find component named ${c.name} in the project anymore!")
+                (haskellLib.getAllComponents project'.hsPkgs.${package-name});
+          };
+        })
+        (haskellLib.getAllComponents pkg);
+
+      aggregate = pkgs.releaseTools.aggregate
+        {
+          name = package-id;
+          # Note that this does *not* include the derivations from 'checks' which
+          # actually run tests: CHaP will not check that your tests pass (neither
+          # does Hackage).
+          constituents = components;
+          # pass through the plan for debugging purposes
+        };
+
+    in
+    lib.attrsets.recursiveUpdate aggregate {
+      passthru = {
+        inherit project;
+        addConstraint = constraint: aggregate.overrideAttrs (final: prev: {
+          constituents = map (c: c.passthru.addConstraint constraint) prev.constituents;
+        });
+      };
+    };
+in
+build-chap-package
