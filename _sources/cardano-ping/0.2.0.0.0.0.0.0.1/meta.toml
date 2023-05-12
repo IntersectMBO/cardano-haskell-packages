@@ -1,0 +1,4 @@
+timestamp = 2023-05-12T04:24:32Z
+github = { repo = "input-output-hk/ouroboros-network", rev = "28a30eb0aec111faf4ed23d11aec364a3a3ac360" }
+subdir = 'cardano-ping'
+force-version = true
