@@ -1,0 +1,4 @@
+timestamp = 2023-05-12T08:34:52Z
+github = { repo = "input-output-hk/typed-protocols", rev = "011669bda0a6ecb694be43d08ab988f75dbd3e5a" }
+subdir = 'typed-protocols-cborg'
+force-version = true
