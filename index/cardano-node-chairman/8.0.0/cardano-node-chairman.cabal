@@ -41,7 +41,7 @@ executable cardano-node-chairman
   ghc-options:          -threaded
                         -rtsopts
                         "-with-rtsopts=-T"
-  build-depends:        cardano-api
+  build-depends:        cardano-api ^>= 8.0.0
                       , cardano-git-rev
                       , cardano-node
                       , cardano-prelude
