@@ -92,6 +92,7 @@
             "cardano-ledger-api"
             "ouroboros-network"
             "ouroboros-consensus-cardano"
+            "ouroboros-consensus-diffusion"
             "cardano-api"
             "cardano-node"
             # from plutus-apps
