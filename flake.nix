@@ -64,7 +64,7 @@
             let
               derivations = compiler: lib.recurseIntoAttrs (lib.mapAttrs
                 (name: versions: (lib.recurseIntoAttrs (lib.genAttrs versions (version: builder compiler name version))))
-                 pkg-versions);
+                pkg-versions);
               # A nested tree of derivations containing all the packages for all the compiler versions
               perCompilerDerivations = lib.recurseIntoAttrs (lib.genAttrs compilers derivations);
               # cardano-node/cardano-api can't build on 9.2 yet
@@ -83,7 +83,8 @@
                 (lib.setAttrByPath [ "ghc926" "quickcheck-contractmodel" ] null)
               ];
               filtered = builtins.foldl' lib.recursiveUpdate perCompilerDerivations toRemove;
-            in filtered;
+            in
+            filtered;
 
           allPkgVersions = chap-meta.chap-package-versions chap-meta.chap-package-meta;
 
@@ -96,13 +97,13 @@
             "cardano-node"
             # from plutus-apps
             "plutus-ledger"
-            ];
+          ];
 
           # using intersectAttrs like this is a cheap way to throw away everything with keys not in
           # smokeTestPackages
           smokeTestPkgVersions =
             builtins.intersectAttrs
-              (lib.genAttrs smokeTestPackages (pkg: {}))
+              (lib.genAttrs smokeTestPackages (pkg: { }))
               (chap-meta.chap-package-latest-versions chap-meta.chap-package-meta);
 
           # use a self + path reference to ensure this runs in the context of the
@@ -144,7 +145,24 @@
           # The standard checks: build all the smoke test packages
           checks = flake-utils.lib.flattenTree smokeTestPackages;
 
-          hydraJobs = pkgs.lib.filterAttrsRecursive (n: _: n != "recurseForDerivations") haskellPackages;
+          # unfortunately hydra is picky:
+          # - it does not like the recurseForDerivations attribute
+          # - it does not like the slashes like ghc8107/typed-protocols/0.1.0.4
+          # - it does not like dots in the attribute names
+          hydraJobs =
+            builtins.mapAttrs
+              (compiler: package:
+                builtins.mapAttrs
+                  (package-name: version: lib.attrsets.mapAttrs'
+                    (version-number: drv: {
+                      name = lib.strings.concatStringsSep "_" (lib.versions.splitVersion version-number);
+                      value = drv;
+                    })
+                    version)
+                  package)
+              (pkgs.lib.filterAttrsRecursive
+                (n: _: n != "recurseForDerivations")
+                haskellPackages);
         });
 
   nixConfig = {
