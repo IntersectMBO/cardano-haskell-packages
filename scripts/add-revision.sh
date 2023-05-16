@@ -49,7 +49,10 @@ fi
 CURRENT_CABAL_FILE="$BUILT_REPO/index/$PKG_NAME/$PKG_VERSION/$PKG_NAME.cabal"
 
 if [[ ! -f "$CURRENT_CABAL_FILE" ]]; then
-  echo "Current cabal file $CURRENT_CABAL_FILE does not exist"
+  echo "Current cabal file $CURRENT_CABAL_FILE does not exist."
+  DEST_DIR=$(basename "$CURRENT_CABAL_FILE")
+  mkdir -p "$DEST_DIR"
+  echo "You can copy the correct version of the cabal file to: $DEST_DIR"
   exit 1
 fi
 
