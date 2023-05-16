@@ -1,0 +1,3 @@
+timestamp = 2023-05-16T06:01:38Z
+github = { repo = "input-output-hk/ouroboros-network", rev = "130d7aa31a8da93e1f4bba3ecc9b937251f8aec2" }
+subdir = 'ouroboros-network'
