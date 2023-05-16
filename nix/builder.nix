@@ -24,7 +24,7 @@ let
       # - haskell.nix will automatically use the latest known one for hackage
       # - we want the very latest state for CHaP so it includes anything from
       #   e.g. a PR being tested
-      project = pkgs.haskell-nix.cabalProject' {
+      project = (pkgs.haskell-nix.cabalProject' {
         inherit compiler-nix-name;
 
         name = package-id;
@@ -48,16 +48,46 @@ let
             cardano-crypto-class.components.library.pkgconfig = lib.mkForce [ [ pkgs.libsodium-vrf pkgs.secp256k1 ] ];
           };
         }];
+      });
 
-      };
-      pkg = project.hsPkgs.${package-name};
-      components = haskellLib.getAllComponents pkg;
-    in pkgs.releaseTools.aggregate {
-      name = package-id;
-      # Note that this does *not* include the derivations from 'checks' which
-      # actually run tests: CHaP will not check that your tests pass (neither
-      # does Hackage).
-      constituents = components;
-      # pass through the plan for debugging purposes
-    } // { passthru = { inherit (project) plan-nix; }; }; 
-in build-chap-package
+      # Wrapper around all package components
+      #
+      # The wrapper also provides shortcuts to quickly manipulate the cabal project.
+      #
+      # - addCabalProject adds arbitrary configuration to the project's cabalProjectLocal
+      # - addConstraint uses addCabalProject to add a "constraints: " stanza
+      # - allowNewer uses addCabalProject to add a "allow-newer: " stanza
+      #
+      # Note 1: We use cabalProjectLocal to be able to override cabalProject
+      # Note 2: `cabalProjectLocal` ends up being prepended to the existing one
+      # rather than appended. I think this is haskell.nix bug. If the project
+      # has already a `cabalProjectLocal` this might not give the intended
+      # result.
+      aggregate = project:
+        pkgs.releaseTools.aggregate
+          {
+            name = package-id;
+            # Note that this does *not* include the derivations from 'checks' which
+            # actually run tests: CHaP will not check that your tests pass (neither
+            # does Hackage).
+            constituents = haskellLib.getAllComponents project.hsPkgs.${package-name};
+          } // {
+          passthru = {
+            # pass through the project for debugging purposes
+            inherit project;
+            # Shortcuts to manipulate the project, see above
+            addCabalProject = cabalProjectLocal: aggregate (
+              project.appendModule { inherit cabalProjectLocal; }
+            );
+            addConstraint = constraint: aggregate (
+              project.appendModule { cabalProjectLocal = "constraints: ${constraint}"; }
+            );
+            allowNewer = allow-newer: aggregate (
+              project.appendModule { cabalProjectLocal = "allow-newer: ${allow-newer}"; }
+            );
+          };
+        };
+    in
+    aggregate project;
+in
+build-chap-package
