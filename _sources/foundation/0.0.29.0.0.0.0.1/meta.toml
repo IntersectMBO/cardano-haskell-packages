@@ -1,0 +1,4 @@
+timestamp = 2023-05-16T08:53:30Z
+github = { repo = "input-output-hk/foundation", rev = "0a9d642a57e323d6a40bf1c80af57fe517d78f61" }
+subdir = 'foundation'
+force-version = true
