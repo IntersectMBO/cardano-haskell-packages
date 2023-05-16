@@ -16,15 +16,7 @@ let
     let
       package-id = "${package-name}-${package-version}";
 
-      # Global config needed to build CHaP packages should go here. Obviously
-      # this should be kept to an absolute minimum, since that means config
-      # that every downstream project needs also.
-      #
-      # No need to set index-state:
-      # - haskell.nix will automatically use the latest known one for hackage
-      # - we want the very latest state for CHaP so it includes anything from
-      #   e.g. a PR being tested
-      project = pkgs.haskell-nix.cabalProject' {
+      project = (pkgs.haskell-nix.cabalProject' {
         inherit compiler-nix-name;
 
         name = package-id;
@@ -48,43 +40,35 @@ let
             cardano-crypto-class.components.library.pkgconfig = lib.mkForce [ [ pkgs.libsodium-vrf pkgs.secp256k1 ] ];
           };
         }];
+      });
 
-      };
-      pkg = project.hsPkgs.${package-name};
-      components = builtins.map
-        (c: lib.attrsets.recursiveUpdate c {
+      aggregate = project:
+        pkgs.releaseTools.aggregate
+          {
+            name = package-id;
+            # Note that this does *not* include the derivations from 'checks' which
+            # actually run tests: CHaP will not check that your tests pass (neither
+            # does Hackage).
+            constituents = haskellLib.getAllComponents project.hsPkgs.${package-name};
+          } // {
           passthru = {
-            addConstraint = constraint:
-              let
-                project' = project.appendModule { cabalProjectLocal = "constraints: ${constraint}"; };
-              in
-              # this is a ugly way to find the same component again
-              pkgs.lib.lists.findFirst
-                (c': c'.name == c.name)
-                (builtins.abort "cannot find component named ${c.name} in the project anymore!")
-                (haskellLib.getAllComponents project'.hsPkgs.${package-name});
+            inherit project;
+            # We use cabalProjectLocal to be able to override cabalProject
+            # Note: `cabalProjectLocal` ends up being prepended to the
+            # existing one rather than appended. If the project has already
+            # a `cabalProjectLocal` this might not give the intended result
+            addCabalProject = cabalProjectLocal: aggregate (
+              project.appendModule { inherit cabalProjectLocal; }
+            );
+            addConstraint = constraint: aggregate (
+              project.appendModule { cabalProjectLocal = "constraints: ${constraint}"; }
+            );
+            allowNewer = allow-newer: aggregate (
+              project.appendModule { cabalProjectLocal = "allow-newer: ${allow-newer}"; }
+            );
           };
-        })
-        (haskellLib.getAllComponents pkg);
-
-      aggregate = pkgs.releaseTools.aggregate
-        {
-          name = package-id;
-          # Note that this does *not* include the derivations from 'checks' which
-          # actually run tests: CHaP will not check that your tests pass (neither
-          # does Hackage).
-          constituents = components;
-          # pass through the plan for debugging purposes
         };
-
     in
-    lib.attrsets.recursiveUpdate aggregate {
-      passthru = {
-        inherit project;
-        addConstraint = constraint: aggregate.overrideAttrs (final: prev: {
-          constituents = map (c: c.passthru.addConstraint constraint) prev.constituents;
-        });
-      };
-    };
+    aggregate project;
 in
 build-chap-package
