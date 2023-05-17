@@ -93,7 +93,7 @@ library
                        TypeFamilies,
                        TypeInType
 
-  build-depends:       base              >=4.14 && <4.19,
+  build-depends:       base              <0,
                        bytestring        >=0.10 && <0.12,
                        cborg             >=0.2.1 && <0.3,
 
