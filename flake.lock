@@ -257,6 +257,9 @@
         "flake-utils": [
           "flake-utils"
         ],
+        "hackage-nix": [
+          "hackage-nix"
+        ],
         "haskell-nix": [
           "haskell-nix"
         ],
@@ -265,15 +268,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1678426162,
-        "narHash": "sha256-ECsiaYGvMVMgjxiWwJjUWZZxAux74imw/PL6tr5ZXeQ=",
-        "owner": "andreabedini",
+        "lastModified": 1684144463,
+        "narHash": "sha256-drQsOIK27DHeIEKqQqwox5D+kwGaPfjzBKSIKwFbP9k=",
+        "owner": "input-output-hk",
         "repo": "foliage",
-        "rev": "234f8fcbf1f953e93c56fff8fb1691c4d6b28c55",
+        "rev": "9a1eaafe734fb0768ffff4890e24439f0284c449",
         "type": "github"
       },
       "original": {
-        "owner": "andreabedini",
+        "owner": "input-output-hk",
         "repo": "foliage",
         "type": "github"
       }
