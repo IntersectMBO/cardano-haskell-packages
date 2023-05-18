@@ -6,9 +6,10 @@
     flake-utils.follows = "haskell-nix/flake-utils";
 
     foliage = {
-      url = "github:andreabedini/foliage";
+      url = "github:input-output-hk/foliage";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.haskell-nix.follows = "haskell-nix";
+      inputs.hackage-nix.follows = "hackage-nix";
       inputs.flake-utils.follows = "flake-utils";
     };
 
@@ -64,7 +65,7 @@
             let
               derivations = compiler: lib.recurseIntoAttrs (lib.mapAttrs
                 (name: versions: (lib.recurseIntoAttrs (lib.genAttrs versions (version: builder compiler name version))))
-                 pkg-versions);
+                pkg-versions);
               # A nested tree of derivations containing all the packages for all the compiler versions
               perCompilerDerivations = lib.recurseIntoAttrs (lib.genAttrs compilers derivations);
               # cardano-node/cardano-api can't build on 9.2 yet
@@ -83,7 +84,8 @@
                 (lib.setAttrByPath [ "ghc926" "quickcheck-contractmodel" ] null)
               ];
               filtered = builtins.foldl' lib.recursiveUpdate perCompilerDerivations toRemove;
-            in filtered;
+            in
+            filtered;
 
           allPkgVersions = chap-meta.chap-package-versions chap-meta.chap-package-meta;
 
@@ -96,13 +98,13 @@
             "cardano-node"
             # from plutus-apps
             "plutus-ledger"
-            ];
+          ];
 
           # using intersectAttrs like this is a cheap way to throw away everything with keys not in
           # smokeTestPackages
           smokeTestPkgVersions =
             builtins.intersectAttrs
-              (lib.genAttrs smokeTestPackages (pkg: {}))
+              (lib.genAttrs smokeTestPackages (pkg: { }))
               (chap-meta.chap-package-latest-versions chap-meta.chap-package-meta);
 
           # use a self + path reference to ensure this runs in the context of the
