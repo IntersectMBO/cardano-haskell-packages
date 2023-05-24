@@ -30,6 +30,10 @@ let
         name = package-id;
         src = ./empty;
 
+        # Workaround until https://github.com/input-output-hk/haskell.nix/pull/1966
+        # or similar is merged.
+        sha256map = null;
+
         # Note that we do not set tests or benchmarks to True, so we won't
         # build them by default. This is the same as what happens on Hackage,
         # for example, and they can't be depended on by downstream packages
