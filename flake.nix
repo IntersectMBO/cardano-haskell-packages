@@ -53,7 +53,7 @@
 
           # type CompilerName = String
           # compilers :: [CompilerName]
-          compilers = [ "ghc8107" "ghc926" ];
+          compilers = [ "ghc8107" "ghc927" ];
 
           builder = import ./nix/builder.nix { inherit pkgs CHaP; };
           chap-meta = import ./nix/chap-meta.nix { inherit pkgs CHaP; };
