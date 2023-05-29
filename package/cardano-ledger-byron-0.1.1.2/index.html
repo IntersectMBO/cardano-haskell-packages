@@ -1,63 +1,186 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    cardano-ledger-byron-0.1.1.2
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
 
-    <title>
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
       cardano-ledger-byron-0.1.1.2
-    </title>
-  </head>
-  <body>
-    <div class="container px-4 py-5">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" href="../../index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-packages/index.html">All packages</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
-        </li>
-      </ul>
-      <h1 class="py-5">
-        cardano-ledger-byron-0.1.1.2
-      </h1>
-      <dl class="row class="px-4 py-5">
-        <dt class="col-sm-3">Synopsis</dt>
-        <dd class="col-sm-9"><p>The blockchain layer of Cardano during the Byron era</p></dd>
-        <dt class="col-sm-3">Description</dt>
-        <dd class="col-sm-9"><p>The blockchain layer of Cardano during the Byron era</p></dd>
-        <dt class="col-sm-3">Author</dt>
-        <dd class="col-sm-9"><p>IOHK</p></dd>
-        <dt class="col-sm-3">Maintainer</dt>
-        <dd class="col-sm-9"><p>operations@iohk.io</p></dd>
-        <dt class="col-sm-3">License</dt>
-        <dd class="col-sm-9"><p>Apache-2.0</p></dd>
-        <dt class="col-sm-3">Source</dt>
-        <dd class="col-sm-9">
-          <dl class="row">
-            <dd>
-            <a href="https://github.com/input-output-hk/cardano-ledger/tree/760a73e89ef040d3ad91b4b0386b3bbace9431a9/eras/byron/ledger/impl">https://github.com/input-output-hk/cardano-ledger</a>
-            </dd>
-            <dt>Commit hash</dt>
-            <dd>760a73e89ef040d3ad91b4b0386b3bbace9431a9</dd>
-            <dt>Subdir</dt>
-            <dd>eras/byron/ledger/impl</dt>
-          </dl>
-        </dd>
-        <dt class="col-sm-3">Timestamp</dt>
-        <dd class="col-sm-9"><p>2022-11-14T13:25:11Z</p></dd>
-        <dt class="col-sm-3">Revisions</dt>
-        <dd class="col-sm-9">
-          <p>None</p>
-        </dd>
-      </dl>
-    </div>
-  </body>
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>The blockchain layer of Cardano during the Byron era</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>The blockchain layer of Cardano during the Byron era</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>IOHK</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>operations@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/cardano-ledger/tree/760a73e89ef040d3ad91b4b0386b3bbace9431a9/eras/byron/ledger/impl">https://github.com/input-output-hk/cardano-ledger</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>760a73e89ef040d3ad91b4b0386b3bbace9431a9</dd>
+          <dt>Subdir</dt>
+          <dd>eras/byron/ledger/impl</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2022-11-14T13:25:11Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library cardano-ledger-byron:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.12 &amp;&amp; &lt;4.17</li>
+            <li>aeson</li>
+            <li>base58-bytestring</li>
+            <li>bimap &gt;=0.4 &amp;&amp; &lt;0.5</li>
+            <li>binary</li>
+            <li>bytestring</li>
+            <li>canonical-json</li>
+            <li>cardano-binary</li>
+            <li>cardano-crypto</li>
+            <li>cardano-crypto-wrapper</li>
+            <li>cardano-prelude</li>
+            <li>cborg</li>
+            <li>containers</li>
+            <li>contra-tracer</li>
+            <li>cryptonite</li>
+            <li>Cabal</li>
+            <li>digest</li>
+            <li>directory</li>
+            <li>filepath</li>
+            <li>formatting</li>
+            <li>heapwords</li>
+            <li>nothunks</li>
+            <li>quiet</li>
+            <li>resourcet</li>
+            <li>streaming</li>
+            <li>streaming-binary &gt;=0.2 &amp;&amp; &lt;0.3</li>
+            <li>streaming-bytestring</li>
+            <li>text</li>
+            <li>time</li>
+            <li>vector</li>
+            </ul>
+                      </dd>
+          <dt>test-suite cardano-ledger-byron-test:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.12 &amp;&amp; &lt;4.17</li>
+            <li>base16-bytestring &gt;=1</li>
+            <li>bimap &gt;=0.4 &amp;&amp; &lt;0.5</li>
+            <li>bytestring</li>
+            <li>cardano-binary</li>
+            <li>cardano-binary-test</li>
+            <li>cardano-ledger-byron</li>
+            <li>cardano-crypto</li>
+            <li>cardano-crypto-test</li>
+            <li>cardano-crypto-wrapper</li>
+            <li>cardano-prelude</li>
+            <li>cardano-prelude-test</li>
+            <li>containers</li>
+            <li>byron-spec-chain</li>
+            <li>byron-spec-ledger</li>
+            <li>directory</li>
+            <li>filepath</li>
+            <li>formatting</li>
+            <li>generic-monoid</li>
+            <li>heapwords</li>
+            <li>hedgehog &gt;=1.0.4</li>
+            <li>microlens</li>
+            <li>resourcet</li>
+            <li>small-steps</li>
+            <li>small-steps-test</li>
+            <li>streaming</li>
+            <li>tasty</li>
+            <li>tasty-hedgehog</li>
+            <li>text</li>
+            <li>time</li>
+            <li>vector</li>
+            </ul>
+                      </dd>
+          <dt>test-suite epoch-validation-normal-form-test:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.12 &amp;&amp; &lt;4.17</li>
+            <li>bytestring</li>
+            <li>cardano-binary</li>
+            <li>cardano-ledger</li>
+            <li>cardano-crypto-wrapper</li>
+            <li>cardano-prelude</li>
+            <li>cardano-prelude-test</li>
+            <li>directory</li>
+            <li>filepath</li>
+            <li>hedgehog &gt;=1.0.4</li>
+            <li>resourcet</li>
+            <li>silently</li>
+            <li>streaming</li>
+            <li>tasty</li>
+            <li>tasty-hedgehog</li>
+            </ul>
+                      </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
 </html>

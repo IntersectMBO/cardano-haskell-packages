@@ -1,65 +1,271 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    marlowe-chain-sync-0.0.1
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
 
-    <title>
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
       marlowe-chain-sync-0.0.1
-    </title>
-  </head>
-  <body>
-    <div class="container px-4 py-5">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" href="../../index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-packages/index.html">All packages</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
-        </li>
-      </ul>
-      <h1 class="py-5">
-        marlowe-chain-sync-0.0.1
-      </h1>
-      <dl class="row class="px-4 py-5">
-        <dt class="col-sm-3">Synopsis</dt>
-        <dd class="col-sm-9"><p>Cardano chain sync system for thee Marlowe Runtime</p></dd>
-        <dt class="col-sm-3">Description</dt>
-        <dd class="col-sm-9"><p>Marlowe runtime component for Cardano node synchronization. Communicates with
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Cardano chain sync system for thee Marlowe Runtime</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Marlowe runtime component for Cardano node synchronization. Communicates with
 downstream compoents using the Chain Sync protocol, which provides
-efficient push and pull-based traversal of the cardano blockchain.</p></dd>
-        <dt class="col-sm-3">Author</dt>
-        <dd class="col-sm-9"><p>Jamie Bertram</p></dd>
-        <dt class="col-sm-3">Maintainer</dt>
-        <dd class="col-sm-9"><p>jamie.bertram@iohk.io</p></dd>
-        <dt class="col-sm-3">License</dt>
-        <dd class="col-sm-9"><p>Apache-2.0</p></dd>
-        <dt class="col-sm-3">Source</dt>
-        <dd class="col-sm-9">
-          <dl class="row">
-            <dd>
-            <a href="https://github.com/input-output-hk/marlowe-cardano/tree/8cbf483f45e568e1c5ad7eb31432d89b363a5690/marlowe-chain-sync">https://github.com/input-output-hk/marlowe-cardano</a>
-            </dd>
-            <dt>Commit hash</dt>
-            <dd>8cbf483f45e568e1c5ad7eb31432d89b363a5690</dd>
-            <dt>Subdir</dt>
-            <dd>marlowe-chain-sync</dt>
-          </dl>
-        </dd>
-        <dt class="col-sm-3">Timestamp</dt>
-        <dd class="col-sm-9"><p>2023-04-04T14:44:11Z</p></dd>
-        <dt class="col-sm-3">Revisions</dt>
-        <dd class="col-sm-9">
-          <p>None</p>
-        </dd>
-      </dl>
-    </div>
-  </body>
+efficient push and pull-based traversal of the cardano blockchain.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Jamie Bertram</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>jamie.bertram@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/marlowe-cardano/tree/8cbf483f45e568e1c5ad7eb31432d89b363a5690/marlowe-chain-sync">https://github.com/input-output-hk/marlowe-cardano</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>8cbf483f45e568e1c5ad7eb31432d89b363a5690</dd>
+          <dt>Subdir</dt>
+          <dd>marlowe-chain-sync</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2023-04-04T14:44:11Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library marlowe-chain-sync:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
+            <li>base16 &gt;=0.3.2 &amp;&amp; &lt;0.4</li>
+            <li>binary &gt;=0.8.8 &amp;&amp; &lt;0.9</li>
+            <li>bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12</li>
+            <li>cardano-api ==1.35.4</li>
+            <li>cardano-ledger-core ==0.1.0.0</li>
+            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
+            <li>marlowe-protocols ==0.1.0.0</li>
+            <li>nonempty-containers &gt;=0.3.4 &amp;&amp; &lt;0.4</li>
+            <li>ouroboros-consensus ==0.1.0.1</li>
+            <li>ouroboros-network ==0.1.0.1</li>
+            <li>plutus-ledger-api ==1.0.0.1</li>
+            <li>plutus-tx ==1.0.0.0</li>
+            <li>serialise &gt;=0.2.6 &amp;&amp; &lt;0.3</li>
+            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
+            <li>these &gt;=1.1 &amp;&amp; &lt;2</li>
+            <li>time &gt;=1.9 &amp;&amp; &lt;2</li>
+            <li>vector &gt;=0.12.3 &amp;&amp; &lt;0.13</li>
+            </ul>
+                      </dd>
+          <dt>library libchainsync:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
+            <li>async-components ==0.1.0.0</li>
+            <li>bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12</li>
+            <li>cardano-api ==1.35.4</li>
+            <li>cardano-binary ==1.5.0</li>
+            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
+            <li>eventuo11y ^&gt;=0.9 || ^&gt;=0.10</li>
+            <li>eventuo11y-extras ==0.1.0.0</li>
+            <li>foldl &gt;=1.4 &amp;&amp; &lt;2</li>
+            <li>hasql &gt;=1.6 &amp;&amp; &lt;2</li>
+            <li>hasql-th &gt;=0.4 &amp;&amp; &lt;0.5</li>
+            <li>hasql-transaction &gt;=1 &amp;&amp; &lt;1.1</li>
+            <li>marlowe-chain-sync ==0.0.1</li>
+            <li>marlowe-protocols ==0.1.0.0</li>
+            <li>nonempty-containers &gt;=0.3.4 &amp;&amp; &lt;0.4</li>
+            <li>ouroboros-network ==0.1.0.1</li>
+            <li>stm &gt;=2.5 &amp;&amp; &lt;2.6</li>
+            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
+            <li>transformers &gt;=0.5.6 &amp;&amp; &lt;0.6</li>
+            <li>vector &gt;=0.12.3 &amp;&amp; &lt;0.13</li>
+            </ul>
+                      </dd>
+          <dt>library chain-indexer:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
+            <li>async-components ==0.1.0.0</li>
+            <li>base16 &gt;=0.3.2 &amp;&amp; &lt;0.4</li>
+            <li>bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12</li>
+            <li>cardano-api ==1.35.4</li>
+            <li>cardano-binary ==1.5.0</li>
+            <li>cardano-crypto-wrapper ==1.3.0</li>
+            <li>cardano-ledger-alonzo ==0.1.0.0</li>
+            <li>cardano-ledger-babbage ==0.1.0.0</li>
+            <li>cardano-ledger-byron ==0.1.0.0</li>
+            <li>cardano-ledger-core ==0.1.0.0</li>
+            <li>cardano-ledger-shelley ==0.1.0.0</li>
+            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
+            <li>eventuo11y ^&gt;=0.9 || ^&gt;=0.10</li>
+            <li>eventuo11y-extras ==0.1.0.0</li>
+            <li>hasql &gt;=1.6 &amp;&amp; &lt;2</li>
+            <li>hasql-th &gt;=0.4 &amp;&amp; &lt;0.5</li>
+            <li>hasql-transaction &gt;=1 &amp;&amp; &lt;1.1</li>
+            <li>marlowe-chain-sync ==0.0.1</li>
+            <li>ouroboros-network ==0.1.0.1</li>
+            <li>profunctors &gt;=5.6 &amp;&amp; &lt;6</li>
+            <li>stm &gt;=2.5 &amp;&amp; &lt;2.6</li>
+            <li>stm-delay &gt;=0.1.1 &amp;&amp; &lt;0.2</li>
+            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
+            <li>time &gt;=1.9 &amp;&amp; &lt;2</li>
+            <li>transformers &gt;=0.5.6 &amp;&amp; &lt;0.6</li>
+            <li>typed-protocols ==0.1.0.0</li>
+            <li>vector &gt;=0.12.3 &amp;&amp; &lt;0.13</li>
+            <li>witherable &gt;=0.4 &amp;&amp; &lt;0.5</li>
+            </ul>
+                      </dd>
+          <dt>library plutus-compat:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12</li>
+            <li>cardano-api ==1.35.4</li>
+            <li>cardano-ledger-byron ==0.1.0.0</li>
+            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
+            <li>marlowe-chain-sync ==0.0.1</li>
+            <li>plutus-tx ==1.0.0.0</li>
+            <li>plutus-ledger-api ==1.0.0.1</li>
+            <li>serialise &gt;=0.2.6 &amp;&amp; &lt;0.3</li>
+            </ul>
+                      </dd>
+          <dt>library gen:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12</li>
+            <li>cardano-api ==1.35.4</li>
+            <li>cardano-api:gen ==1.35.4</li>
+            <li>hedgehog-quickcheck &gt;=0.1 &amp;&amp; &lt;0.2</li>
+            <li>marlowe-chain-sync ==0.0.1</li>
+            <li>marlowe-protocols ==0.1.0.0</li>
+            <li>nonempty-containers &gt;=0.3.4 &amp;&amp; &lt;0.4</li>
+            <li>ouroboros-consensus ==0.1.0.1</li>
+            <li>QuickCheck &gt;=2.14 &amp;&amp; &lt;3</li>
+            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
+            <li>these &gt;=1.1 &amp;&amp; &lt;2</li>
+            <li>time &gt;=1.9 &amp;&amp; &lt;2</li>
+            </ul>
+                      </dd>
+          <dt>executable marlowe-chain-indexer:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
+            <li>aeson-pretty</li>
+            <li>async-components ==0.1.0.0</li>
+            <li>cardano-api ==1.35.4</li>
+            <li>cardano-crypto-wrapper ==1.3.0</li>
+            <li>cardano-ledger-byron ==0.1.0.0</li>
+            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
+            <li>eventuo11y ^&gt;=0.9 || ^&gt;=0.10</li>
+            <li>eventuo11y-extras ==0.1.0.0</li>
+            <li>hasql &gt;=1.6 &amp;&amp; &lt;2</li>
+            <li>hasql-pool ^&gt;=0.8</li>
+            <li>marlowe-chain-sync:chain-indexer</li>
+            <li>optparse-applicative</li>
+            <li>ouroboros-network ==0.1.0.1</li>
+            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
+            <li>time &gt;=1.9 &amp;&amp; &lt;2</li>
+            <li>transformers &gt;=0.5.6 &amp;&amp; &lt;0.6</li>
+            <li>uuid</li>
+            </ul>
+                      </dd>
+          <dt>executable marlowe-chain-sync:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>aeson-pretty</li>
+            <li>async-components ==0.1.0.0</li>
+            <li>cardano-api ==1.35.4</li>
+            <li>cardano-ledger-byron ==0.1.0.0</li>
+            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
+            <li>eventuo11y ^&gt;=0.9 || ^&gt;=0.10</li>
+            <li>eventuo11y-extras ==0.1.0.0</li>
+            <li>hasql &gt;=1.6 &amp;&amp; &lt;2</li>
+            <li>hasql-pool ^&gt;=0.8</li>
+            <li>marlowe-chain-sync ==0.0.1</li>
+            <li>marlowe-chain-sync:libchainsync ==0.0.1</li>
+            <li>marlowe-protocols ==0.1.0.0</li>
+            <li>network &gt;=3.1 &amp;&amp; &lt;4</li>
+            <li>optparse-applicative</li>
+            <li>ouroboros-network ==0.1.0.1</li>
+            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
+            <li>uuid</li>
+            </ul>
+                      </dd>
+          <dt>test-suite marlowe-chain-sync-test:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>hspec &gt;=2.10 &amp;&amp; &lt;3</li>
+            <li>marlowe-chain-sync ==0.0.1</li>
+            <li>marlowe-chain-sync:gen ==0.0.1</li>
+            <li>marlowe-protocols ==0.1.0.0</li>
+            </ul>
+                      </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
 </html>

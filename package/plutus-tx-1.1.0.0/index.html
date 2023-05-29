@@ -1,63 +1,160 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    plutus-tx-1.1.0.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
 
-    <title>
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
       plutus-tx-1.1.0.0
-    </title>
-  </head>
-  <body>
-    <div class="container px-4 py-5">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" href="../../index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-packages/index.html">All packages</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
-        </li>
-      </ul>
-      <h1 class="py-5">
-        plutus-tx-1.1.0.0
-      </h1>
-      <dl class="row class="px-4 py-5">
-        <dt class="col-sm-3">Synopsis</dt>
-        <dd class="col-sm-9"><p>Libraries for Plutus Tx and its prelude</p></dd>
-        <dt class="col-sm-3">Description</dt>
-        <dd class="col-sm-9"><p>Libraries for Plutus Tx and its prelude</p></dd>
-        <dt class="col-sm-3">Author</dt>
-        <dd class="col-sm-9"><p>Michael Peyton Jones</p></dd>
-        <dt class="col-sm-3">Maintainer</dt>
-        <dd class="col-sm-9"><p>michael.peyton-jones@iohk.io</p></dd>
-        <dt class="col-sm-3">License</dt>
-        <dd class="col-sm-9"><p>Apache-2.0</p></dd>
-        <dt class="col-sm-3">Source</dt>
-        <dd class="col-sm-9">
-          <dl class="row">
-            <dd>
-            <a href="https://github.com/input-output-hk/plutus/tree/1930e25c10a4c24c2859b4969924962e062dacfd/plutus-tx">https://github.com/input-output-hk/plutus</a>
-            </dd>
-            <dt>Commit hash</dt>
-            <dd>1930e25c10a4c24c2859b4969924962e062dacfd</dd>
-            <dt>Subdir</dt>
-            <dd>plutus-tx</dt>
-          </dl>
-        </dd>
-        <dt class="col-sm-3">Timestamp</dt>
-        <dd class="col-sm-9"><p>2022-10-21T00:00:00Z</p></dd>
-        <dt class="col-sm-3">Revisions</dt>
-        <dd class="col-sm-9">
-          <p>None</p>
-        </dd>
-      </dl>
-    </div>
-  </body>
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Libraries for Plutus Tx and its prelude</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Libraries for Plutus Tx and its prelude</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Michael Peyton Jones</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>michael.peyton-jones@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/plutus/tree/1930e25c10a4c24c2859b4969924962e062dacfd/plutus-tx">https://github.com/input-output-hk/plutus</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>1930e25c10a4c24c2859b4969924962e062dacfd</dd>
+          <dt>Subdir</dt>
+          <dd>plutus-tx</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2022-10-21T00:00:00Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library plutus-tx:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>aeson</li>
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>bytestring</li>
+            <li>containers</li>
+            <li>deepseq</li>
+            <li>deriving-compat</li>
+            <li>extra</li>
+            <li>flat</li>
+            <li>ghc-prim</li>
+            <li>hashable</li>
+            <li>lens</li>
+            <li>memory</li>
+            <li>mtl</li>
+            <li>plutus-core ^&gt;=1.1</li>
+            <li>prettyprinter</li>
+            <li>serialise</li>
+            <li>template-haskell &gt;=2.13.0.0</li>
+            <li>text</li>
+            <li>th-abstraction</li>
+            <li>th-compat</li>
+            <li>transformers</li>
+            </ul>
+                      </dd>
+          <dt>library plutus-tx-testlib:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>filepath</li>
+            <li>flat</li>
+            <li>ghc-prim</li>
+            <li>lens</li>
+            <li>mtl</li>
+            <li>plutus-core:{plutus-core, plutus-core-testlib} ^&gt;=1.1</li>
+            <li>plutus-tx ^&gt;=1.1</li>
+            <li>prettyprinter</li>
+            <li>tagged</li>
+            <li>tasty</li>
+            <li>text</li>
+            </ul>
+                      </dd>
+          <dt>test-suite plutus-tx-test:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>aeson</li>
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>base16-bytestring</li>
+            <li>bytestring</li>
+            <li>cborg</li>
+            <li>filepath</li>
+            <li>hedgehog</li>
+            <li>hedgehog-fn</li>
+            <li>plutus-core:{plutus-core, plutus-core-testlib} ^&gt;=1.1</li>
+            <li>plutus-tx ^&gt;=1.1</li>
+            <li>pretty-show</li>
+            <li>serialise</li>
+            <li>tasty</li>
+            <li>tasty-hedgehog</li>
+            <li>tasty-hunit</li>
+            <li>text</li>
+            <li>transformers</li>
+            </ul>
+                      </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
 </html>

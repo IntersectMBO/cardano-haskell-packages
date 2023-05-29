@@ -1,63 +1,218 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    cardano-node-8.0.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
 
-    <title>
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
       cardano-node-8.0.0
-    </title>
-  </head>
-  <body>
-    <div class="container px-4 py-5">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" href="../../index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-packages/index.html">All packages</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
-        </li>
-      </ul>
-      <h1 class="py-5">
-        cardano-node-8.0.0
-      </h1>
-      <dl class="row class="px-4 py-5">
-        <dt class="col-sm-3">Synopsis</dt>
-        <dd class="col-sm-9"><p>The cardano full node</p></dd>
-        <dt class="col-sm-3">Description</dt>
-        <dd class="col-sm-9"><p>The cardano full node.</p></dd>
-        <dt class="col-sm-3">Author</dt>
-        <dd class="col-sm-9"><p>IOHK</p></dd>
-        <dt class="col-sm-3">Maintainer</dt>
-        <dd class="col-sm-9"><p>operations@iohk.io</p></dd>
-        <dt class="col-sm-3">License</dt>
-        <dd class="col-sm-9"><p>Apache-2.0</p></dd>
-        <dt class="col-sm-3">Source</dt>
-        <dd class="col-sm-9">
-          <dl class="row">
-            <dd>
-            <a href="https://github.com/input-output-hk/cardano-node/tree/69a117b7be3db0f4ce6d9fc5cd4c16a2a409dcb8/cardano-node">https://github.com/input-output-hk/cardano-node</a>
-            </dd>
-            <dt>Commit hash</dt>
-            <dd>69a117b7be3db0f4ce6d9fc5cd4c16a2a409dcb8</dd>
-            <dt>Subdir</dt>
-            <dd>cardano-node</dt>
-          </dl>
-        </dd>
-        <dt class="col-sm-3">Timestamp</dt>
-        <dd class="col-sm-9"><p>2023-05-09T17:00:09Z</p></dd>
-        <dt class="col-sm-3">Revisions</dt>
-        <dd class="col-sm-9">
-          <p>2023-05-12T13:56:44Z</p>
-        </dd>
-      </dl>
-    </div>
-  </body>
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>The cardano full node</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>The cardano full node.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>IOHK</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>operations@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/cardano-node/tree/69a117b7be3db0f4ce6d9fc5cd4c16a2a409dcb8/cardano-node">https://github.com/input-output-hk/cardano-node</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>69a117b7be3db0f4ce6d9fc5cd4c16a2a409dcb8</dd>
+          <dt>Subdir</dt>
+          <dd>cardano-node</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2023-05-09T17:00:09Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>2023-05-12T13:56:44Z</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library cardano-node:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.14 &amp;&amp; &lt;4.17</li>
+            <li>aeson &gt;=1.5.6.0</li>
+            <li>async</li>
+            <li>base16-bytestring</li>
+            <li>bytestring</li>
+            <li>cardano-api ^&gt;=8.0.0</li>
+            <li>cardano-crypto-class</li>
+            <li>cardano-crypto-wrapper</li>
+            <li>cardano-git-rev</li>
+            <li>cardano-ledger-alonzo</li>
+            <li>cardano-ledger-allegra</li>
+            <li>cardano-ledger-babbage</li>
+            <li>cardano-ledger-byron</li>
+            <li>cardano-ledger-conway</li>
+            <li>cardano-ledger-core</li>
+            <li>cardano-ledger-shelley</li>
+            <li>cardano-prelude</li>
+            <li>cardano-protocol-tpraos &gt;=1.0.2</li>
+            <li>cardano-slotting &gt;=0.1.1</li>
+            <li>cborg ^&gt;=0.2.4</li>
+            <li>containers</li>
+            <li>contra-tracer</li>
+            <li>deepseq</li>
+            <li>directory</li>
+            <li>dns</li>
+            <li>ekg</li>
+            <li>ekg-core</li>
+            <li>filepath</li>
+            <li>generic-data</li>
+            <li>hostname</li>
+            <li>io-classes &gt;=0.3</li>
+            <li>iohk-monitoring</li>
+            <li>iproute</li>
+            <li>lobemo-backend-aggregation</li>
+            <li>lobemo-backend-ekg</li>
+            <li>lobemo-backend-monitoring</li>
+            <li>lobemo-backend-trace-forwarder</li>
+            <li>mtl</li>
+            <li>network</li>
+            <li>network-mux &gt;=0.4</li>
+            <li>nothunks</li>
+            <li>optparse-applicative-fork</li>
+            <li>ouroboros-consensus &gt;=0.6</li>
+            <li>ouroboros-consensus-cardano &gt;=0.5</li>
+            <li>ouroboros-consensus-diffusion &gt;=0.5.1</li>
+            <li>ouroboros-consensus-protocol &gt;=0.5</li>
+            <li>ouroboros-network-api</li>
+            <li>ouroboros-network &gt;=0.6</li>
+            <li>ouroboros-network-framework &gt;=0.5</li>
+            <li>ouroboros-network-protocols</li>
+            <li>prettyprinter</li>
+            <li>prettyprinter-ansi-terminal</li>
+            <li>psqueues</li>
+            <li>safe-exceptions</li>
+            <li>scientific</li>
+            <li>si-timers</li>
+            <li>stm</li>
+            <li>strict-stm</li>
+            <li>text</li>
+            <li>time</li>
+            <li>trace-dispatcher</li>
+            <li>trace-forward</li>
+            <li>trace-resources</li>
+            <li>tracer-transformers</li>
+            <li>transformers</li>
+            <li>transformers-except</li>
+            <li>typed-protocols &gt;=0.1</li>
+            <li>yaml</li>
+            </ul>
+            <p>if (os(linux) &amp;&amp; flag(systemd))</p>
+            <ul class="build-depends">
+            <li>lobemo-scribe-systemd</li>
+            <li>systemd &gt;=2.3.0</li>
+            </ul>
+<p>if os(windows)</p>
+            <ul class="build-depends">
+            <li>Win32</li>
+            </ul>
+<p>if !os(windows)</p>
+            <ul class="build-depends">
+            <li>unix</li>
+            </ul>
+          </dd>
+          <dt>executable cardano-node:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.14 &amp;&amp; &lt;4.17</li>
+            <li>cardano-git-rev</li>
+            <li>cardano-node</li>
+            <li>optparse-applicative-fork</li>
+            <li>text</li>
+            </ul>
+                      </dd>
+          <dt>test-suite cardano-node-test:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.14 &amp;&amp; &lt;4.17</li>
+            <li>aeson &gt;=1.5.6.0</li>
+            <li>bytestring</li>
+            <li>cardano-api ^&gt;=8.0.0</li>
+            <li>cardano-node</li>
+            <li>cardano-slotting &gt;=0.1</li>
+            <li>directory</li>
+            <li>hedgehog</li>
+            <li>hedgehog-corpus</li>
+            <li>iproute</li>
+            <li>mtl</li>
+            <li>ouroboros-consensus</li>
+            <li>ouroboros-consensus-diffusion</li>
+            <li>ouroboros-network</li>
+            <li>ouroboros-network-api</li>
+            <li>text</li>
+            <li>time</li>
+            <li>vector</li>
+            </ul>
+            <p>if !os(windows)</p>
+            <ul class="build-depends">
+            <li>unix</li>
+            </ul>
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
 </html>

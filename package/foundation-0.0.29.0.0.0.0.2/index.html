@@ -1,38 +1,55 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    foundation-0.0.29.0.0.0.0.2
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
 
-    <title>
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
       foundation-0.0.29.0.0.0.0.2
-    </title>
-  </head>
-  <body>
-    <div class="container px-4 py-5">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" href="../../index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-packages/index.html">All packages</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
-        </li>
-      </ul>
-      <h1 class="py-5">
-        foundation-0.0.29.0.0.0.0.2
-      </h1>
-      <dl class="row class="px-4 py-5">
-        <dt class="col-sm-3">Synopsis</dt>
-        <dd class="col-sm-9"><p>Alternative prelude with batteries and no dependencies</p></dd>
-        <dt class="col-sm-3">Description</dt>
-        <dd class="col-sm-9"><p>A custom prelude with no dependencies apart from base.
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Alternative prelude with batteries and no dependencies</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>A custom prelude with no dependencies apart from base.
 
 This package has the following goals:
 
@@ -48,32 +65,73 @@ This package has the following goals:
 
 * Better I/O system with less Lazy IO
 
-* Usual partial functions distinguished through type system</p></dd>
-        <dt class="col-sm-3">Author</dt>
-        <dd class="col-sm-9"><p>Vincent Hanquez &lt;vincent@snarc.org&gt;</p></dd>
-        <dt class="col-sm-3">Maintainer</dt>
-        <dd class="col-sm-9"><p>vincent@snarc.org</p></dd>
-        <dt class="col-sm-3">License</dt>
-        <dd class="col-sm-9"><p>BSD3</p></dd>
-        <dt class="col-sm-3">Source</dt>
-        <dd class="col-sm-9">
-          <dl class="row">
-            <dd>
-            <a href="https://github.com/input-output-hk/foundation/tree/44ec11afdb6c64639aeae5a4a062186d49d3c9f1/foundation">https://github.com/input-output-hk/foundation</a>
-            </dd>
-            <dt>Commit hash</dt>
-            <dd>44ec11afdb6c64639aeae5a4a062186d49d3c9f1</dd>
-            <dt>Subdir</dt>
-            <dd>foundation</dt>
-          </dl>
-        </dd>
-        <dt class="col-sm-3">Timestamp</dt>
-        <dd class="col-sm-9"><p>2023-05-28T23:23:01Z</p></dd>
-        <dt class="col-sm-3">Revisions</dt>
-        <dd class="col-sm-9">
-          <p>None</p>
-        </dd>
-      </dl>
-    </div>
-  </body>
+* Usual partial functions distinguished through type system</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Vincent Hanquez &lt;vincent@snarc.org&gt;</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>vincent@snarc.org</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>BSD3</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/foundation/tree/44ec11afdb6c64639aeae5a4a062186d49d3c9f1/foundation">https://github.com/input-output-hk/foundation</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>44ec11afdb6c64639aeae5a4a062186d49d3c9f1</dd>
+          <dt>Subdir</dt>
+          <dd>foundation</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2023-05-28T23:23:01Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library foundation:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>basement ==0.0.15</li>
+            <li>[{&quot;if&quot;:&quot;!(impl(ghc &lt;8.10) || impl(ghcjs &gt;=0))&quot;,&quot;then&quot;:[&quot;base&quot;,&quot;ghc-prim&quot;]},{&quot;if&quot;:&quot;(os(windows) &amp;&amp; !(impl(ghc &lt;8.10) || impl(ghcjs &gt;=0)))&quot;,&quot;then&quot;:[&quot;Win32&quot;]}]</li>
+            </ul>
+                      </dd>
+          <dt>test-suite bench:</dt>
+          <dd>
+            <ul class="build-depends">
+            </ul>
+            <p>if !(flag(minimal-deps) || impl(ghc &lt;7.10))</p>
+            <ul class="build-depends">
+            <li>base</li>
+            <li>gauge</li>
+            <li>basement</li>
+            <li>foundation</li>
+            </ul>
+<p>if (flag(bench-all) &amp;&amp; !(flag(minimal-deps) || impl(ghc &lt;7.10)))</p>
+            <ul class="build-depends">
+            <li>text</li>
+            <li>attoparsec</li>
+            <li>vector</li>
+            <li>bytestring</li>
+            </ul>
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
 </html>

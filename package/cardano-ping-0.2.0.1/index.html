@@ -1,63 +1,113 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    cardano-ping-0.2.0.1
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
 
-    <title>
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
       cardano-ping-0.2.0.1
-    </title>
-  </head>
-  <body>
-    <div class="container px-4 py-5">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" href="../../index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-packages/index.html">All packages</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
-        </li>
-      </ul>
-      <h1 class="py-5">
-        cardano-ping-0.2.0.1
-      </h1>
-      <dl class="row class="px-4 py-5">
-        <dt class="col-sm-3">Synopsis</dt>
-        <dd class="col-sm-9"><p>Utility for pinging cardano nodes</p></dd>
-        <dt class="col-sm-3">Description</dt>
-        <dd class="col-sm-9"><p>Utility for pinging cardano nodes.</p></dd>
-        <dt class="col-sm-3">Author</dt>
-        <dd class="col-sm-9"><p>Karl Knutsson</p></dd>
-        <dt class="col-sm-3">Maintainer</dt>
-        <dd class="col-sm-9"><p>karl.knutsson-ext@cardanofoundation.org marcin.szamotulski@iohk.io</p></dd>
-        <dt class="col-sm-3">License</dt>
-        <dd class="col-sm-9"><p>Apache-2.0</p></dd>
-        <dt class="col-sm-3">Source</dt>
-        <dd class="col-sm-9">
-          <dl class="row">
-            <dd>
-            <a href="https://github.com/input-output-hk/ouroboros-network/tree/367c2c2e9c5c7dd42602855b28041b1e7d9949f3/cardano-ping">https://github.com/input-output-hk/ouroboros-network</a>
-            </dd>
-            <dt>Commit hash</dt>
-            <dd>367c2c2e9c5c7dd42602855b28041b1e7d9949f3</dd>
-            <dt>Subdir</dt>
-            <dd>cardano-ping</dt>
-          </dl>
-        </dd>
-        <dt class="col-sm-3">Timestamp</dt>
-        <dd class="col-sm-9"><p>2023-05-26T13:56:55Z</p></dd>
-        <dt class="col-sm-3">Revisions</dt>
-        <dd class="col-sm-9">
-          <p>None</p>
-        </dd>
-      </dl>
-    </div>
-  </body>
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Utility for pinging cardano nodes</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Utility for pinging cardano nodes.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Karl Knutsson</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>karl.knutsson-ext@cardanofoundation.org marcin.szamotulski@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/ouroboros-network/tree/367c2c2e9c5c7dd42602855b28041b1e7d9949f3/cardano-ping">https://github.com/input-output-hk/ouroboros-network</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>367c2c2e9c5c7dd42602855b28041b1e7d9949f3</dd>
+          <dt>Subdir</dt>
+          <dd>cardano-ping</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2023-05-26T13:56:55Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library cardano-ping:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.14 &amp;&amp; &lt;4.19</li>
+            <li>aeson &gt;=2.1.1.0 &amp;&amp; &lt;3</li>
+            <li>cborg &gt;=0.2.8 &amp;&amp; &lt;0.3</li>
+            <li>bytestring &gt;=0.10 &amp;&amp; &lt;0.12</li>
+            <li>contra-tracer &gt;=0.1 &amp;&amp; &lt;0.2</li>
+            <li>io-classes ^&gt;=1.1</li>
+            <li>si-timers</li>
+            <li>strict-stm</li>
+            <li>network-mux ^&gt;=0.4</li>
+            <li>tdigest ^&gt;=0.3</li>
+            <li>text &gt;=1.2.4 &amp;&amp; &lt;2.1</li>
+            <li>transformers &gt;=0.5 &amp;&amp; &lt;0.7</li>
+            <li>network &gt;=3.1.2.2 &amp;&amp; &lt;3.2</li>
+            </ul>
+                      </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
 </html>

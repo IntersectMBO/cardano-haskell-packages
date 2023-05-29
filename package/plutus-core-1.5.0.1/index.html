@@ -1,63 +1,415 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    plutus-core-1.5.0.1
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
 
-    <title>
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
       plutus-core-1.5.0.1
-    </title>
-  </head>
-  <body>
-    <div class="container px-4 py-5">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" href="../../index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-packages/index.html">All packages</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
-        </li>
-      </ul>
-      <h1 class="py-5">
-        plutus-core-1.5.0.1
-      </h1>
-      <dl class="row class="px-4 py-5">
-        <dt class="col-sm-3">Synopsis</dt>
-        <dd class="col-sm-9"><p>Language library for Plutus Core</p></dd>
-        <dt class="col-sm-3">Description</dt>
-        <dd class="col-sm-9"><p>Pretty-printer, parser, and typechecker for Plutus Core.</p></dd>
-        <dt class="col-sm-3">Author</dt>
-        <dd class="col-sm-9"><p>Plutus Core Team</p></dd>
-        <dt class="col-sm-3">Maintainer</dt>
-        <dd class="col-sm-9"><p>michael.peyton-jones@iohk.io</p></dd>
-        <dt class="col-sm-3">License</dt>
-        <dd class="col-sm-9"><p>Apache-2.0</p></dd>
-        <dt class="col-sm-3">Source</dt>
-        <dd class="col-sm-9">
-          <dl class="row">
-            <dd>
-            <a href="https://github.com/input-output-hk/plutus/tree/e42d1a03576520c0b7bcbbb7fed073946b9ba5ba/plutus-core">https://github.com/input-output-hk/plutus</a>
-            </dd>
-            <dt>Commit hash</dt>
-            <dd>e42d1a03576520c0b7bcbbb7fed073946b9ba5ba</dd>
-            <dt>Subdir</dt>
-            <dd>plutus-core</dt>
-          </dl>
-        </dd>
-        <dt class="col-sm-3">Timestamp</dt>
-        <dd class="col-sm-9"><p>2023-05-03T10:02:50Z</p></dd>
-        <dt class="col-sm-3">Revisions</dt>
-        <dd class="col-sm-9">
-          <p>None</p>
-        </dd>
-      </dl>
-    </div>
-  </body>
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Language library for Plutus Core</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Pretty-printer, parser, and typechecker for Plutus Core.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Plutus Core Team</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>michael.peyton-jones@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/plutus/tree/e42d1a03576520c0b7bcbbb7fed073946b9ba5ba/plutus-core">https://github.com/input-output-hk/plutus</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>e42d1a03576520c0b7bcbbb7fed073946b9ba5ba</dd>
+          <dt>Subdir</dt>
+          <dd>plutus-core</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2023-05-03T10:02:50Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library plutus-core:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>aeson</li>
+            <li>array</li>
+            <li>barbies</li>
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>base64-bytestring</li>
+            <li>bimap</li>
+            <li>bytestring</li>
+            <li>cardano-crypto</li>
+            <li>cardano-crypto-class &gt;=2.0.0.1 &amp;&amp; &lt;2.2</li>
+            <li>cassava</li>
+            <li>cborg</li>
+            <li>composition-prelude &gt;=1.1.0.1</li>
+            <li>containers</li>
+            <li>cryptonite</li>
+            <li>data-default-class</li>
+            <li>deepseq</li>
+            <li>dependent-sum &gt;=0.7.1.0</li>
+            <li>dependent-sum-template</li>
+            <li>deriving-aeson &gt;=0.2.3</li>
+            <li>deriving-compat</li>
+            <li>dlist</li>
+            <li>exceptions</li>
+            <li>extra</li>
+            <li>filepath</li>
+            <li>flat &lt;0.5</li>
+            <li>free</li>
+            <li>ghc-prim</li>
+            <li>hashable &gt;=1.4</li>
+            <li>hedgehog &gt;=1.0</li>
+            <li>plutus-core:index-envs</li>
+            <li>int-cast</li>
+            <li>lens</li>
+            <li>megaparsec</li>
+            <li>mmorph</li>
+            <li>mono-traversable</li>
+            <li>monoidal-containers</li>
+            <li>mtl</li>
+            <li>multiset</li>
+            <li>nothunks &gt;=0.1.1</li>
+            <li>parser-combinators &gt;=0.4.0</li>
+            <li>prettyprinter &gt;=1.1.0.1</li>
+            <li>prettyprinter-configurable ^&gt;=1.1</li>
+            <li>primitive</li>
+            <li>recursion-schemes</li>
+            <li>plutus-core:satint</li>
+            <li>semigroups &gt;=0.19.1</li>
+            <li>serialise</li>
+            <li>some</li>
+            <li>template-haskell</li>
+            <li>text</li>
+            <li>th-compat</li>
+            <li>th-lift</li>
+            <li>th-lift-instances</li>
+            <li>th-utilities</li>
+            <li>time</li>
+            <li>transformers</li>
+            <li>unordered-containers</li>
+            <li>witherable</li>
+            </ul>
+            <p>if impl(ghc &lt;9.0)</p>
+            <ul class="build-depends">
+            <li>integer-gmp</li>
+            </ul>
+          </dd>
+          <dt>library plutus-ir:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>algebraic-graphs &gt;=0.7</li>
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>containers</li>
+            <li>dom-lt</li>
+            <li>extra</li>
+            <li>flat &lt;0.5</li>
+            <li>lens</li>
+            <li>megaparsec</li>
+            <li>mmorph</li>
+            <li>monoidal-containers</li>
+            <li>mtl</li>
+            <li>multiset</li>
+            <li>parser-combinators &gt;=0.4.0</li>
+            <li>plutus-core ^&gt;=1.5</li>
+            <li>prettyprinter &gt;=1.1.0.1</li>
+            <li>semigroupoids</li>
+            <li>semigroups &gt;=0.19.1</li>
+            <li>text</li>
+            <li>transformers</li>
+            <li>witherable</li>
+            </ul>
+            <p>if impl(ghc &lt;9.0)</p>
+            <ul class="build-depends">
+            <li>integer-gmp</li>
+            </ul>
+          </dd>
+          <dt>library plutus-core-execlib:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>aeson</li>
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>bytestring</li>
+            <li>deepseq</li>
+            <li>flat &lt;0.5</li>
+            <li>lens</li>
+            <li>megaparsec</li>
+            <li>monoidal-containers</li>
+            <li>mtl</li>
+            <li>optparse-applicative</li>
+            <li>plutus-core:{plutus-core, plutus-core-testlib, plutus-ir} ^&gt;=1.5</li>
+            <li>prettyprinter</li>
+            <li>text</li>
+            </ul>
+                      </dd>
+          <dt>library plutus-core-testlib:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>bifunctors</li>
+            <li>bytestring</li>
+            <li>containers</li>
+            <li>data-default-class</li>
+            <li>dependent-map &gt;=0.4.0.0</li>
+            <li>filepath</li>
+            <li>hedgehog &gt;=1.0</li>
+            <li>lazy-search</li>
+            <li>lens</li>
+            <li>mmorph</li>
+            <li>mtl</li>
+            <li>multiset</li>
+            <li>plutus-core:{plutus-core, plutus-ir} ^&gt;=1.5</li>
+            <li>prettyprinter &gt;=1.1.0.1</li>
+            <li>prettyprinter-configurable</li>
+            <li>QuickCheck</li>
+            <li>quickcheck-instances</li>
+            <li>quickcheck-transformer</li>
+            <li>size-based</li>
+            <li>Stream</li>
+            <li>tagged</li>
+            <li>tasty</li>
+            <li>tasty-golden</li>
+            <li>tasty-hedgehog</li>
+            <li>tasty-hunit</li>
+            <li>text</li>
+            </ul>
+                      </dd>
+          <dt>library satint:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>aeson</li>
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>cassava</li>
+            <li>deepseq</li>
+            <li>nothunks</li>
+            <li>primitive</li>
+            <li>serialise</li>
+            <li>template-haskell</li>
+            </ul>
+                      </dd>
+          <dt>library index-envs:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>containers</li>
+            <li>extra</li>
+            <li>nonempty-vector</li>
+            <li>ral ^&gt;=0.2</li>
+            </ul>
+                      </dd>
+          <dt>executable plc:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>deepseq</li>
+            <li>optparse-applicative</li>
+            <li>plutus-core ^&gt;=1.5</li>
+            <li>plutus-core:plutus-core-execlib ^&gt;=1.5</li>
+            <li>text</li>
+            </ul>
+                      </dd>
+          <dt>executable uplc:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>deepseq</li>
+            <li>haskeline</li>
+            <li>mtl</li>
+            <li>optparse-applicative</li>
+            <li>plutus-core ^&gt;=1.5</li>
+            <li>plutus-core:plutus-core-execlib ^&gt;=1.5</li>
+            <li>prettyprinter</li>
+            <li>split</li>
+            <li>text</li>
+            </ul>
+                      </dd>
+          <dt>executable pir:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>bytestring</li>
+            <li>cassava</li>
+            <li>containers</li>
+            <li>lens</li>
+            <li>megaparsec</li>
+            <li>optparse-applicative</li>
+            <li>plutus-core:plutus-core-execlib ^&gt;=1.5</li>
+            <li>plutus-core:{plutus-core, plutus-ir} ^&gt;=1.5</li>
+            <li>text</li>
+            <li>transformers</li>
+            </ul>
+                      </dd>
+          <dt>executable debugger:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>brick</li>
+            <li>containers</li>
+            <li>megaparsec</li>
+            <li>microlens</li>
+            <li>microlens-th</li>
+            <li>mono-traversable</li>
+            <li>mtl</li>
+            <li>optparse-applicative</li>
+            <li>plutus-core ^&gt;=1.5</li>
+            <li>plutus-core:plutus-core-execlib ^&gt;=1.5</li>
+            <li>prettyprinter</li>
+            <li>text</li>
+            <li>text-zipper</li>
+            <li>vty</li>
+            </ul>
+                      </dd>
+          <dt>executable traceToStacks:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>bytestring</li>
+            <li>cassava</li>
+            <li>optparse-applicative</li>
+            <li>text</li>
+            <li>vector</li>
+            </ul>
+                      </dd>
+          <dt>executable cost-model-budgeting-bench:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>bytestring</li>
+            <li>cardano-crypto-class</li>
+            <li>criterion</li>
+            <li>criterion-measurement</li>
+            <li>deepseq</li>
+            <li>directory</li>
+            <li>filepath</li>
+            <li>hedgehog</li>
+            <li>mtl</li>
+            <li>optparse-applicative</li>
+            <li>plutus-core ^&gt;=1.5</li>
+            <li>QuickCheck</li>
+            <li>quickcheck-instances</li>
+            <li>random</li>
+            <li>text</li>
+            <li>time</li>
+            </ul>
+                      </dd>
+          <dt>executable generate-cost-model:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>aeson-pretty</li>
+            <li>barbies</li>
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>bytestring</li>
+            <li>cassava</li>
+            <li>directory</li>
+            <li>exceptions</li>
+            <li>extra</li>
+            <li>inline-r &gt;=1.0.0.0</li>
+            <li>optparse-applicative</li>
+            <li>plutus-core ^&gt;=1.5</li>
+            <li>text</li>
+            <li>vector</li>
+            </ul>
+                      </dd>
+          <dt>executable print-cost-model:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>aeson</li>
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>bytestring</li>
+            <li>text</li>
+            </ul>
+                      </dd>
+          <dt>test-suite cost-model-test:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>barbies</li>
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>bytestring</li>
+            <li>cassava</li>
+            <li>exceptions</li>
+            <li>extra</li>
+            <li>hedgehog</li>
+            <li>inline-r &gt;=1.0.0.0</li>
+            <li>mmorph</li>
+            <li>plutus-core ^&gt;=1.5</li>
+            <li>template-haskell</li>
+            <li>text</li>
+            <li>vector</li>
+            </ul>
+                      </dd>
+          <dt>test-suite index-envs-bench:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>criterion &gt;=1.5.9.0</li>
+            <li>plutus-core:index-envs</li>
+            <li>nonempty-vector</li>
+            <li>ral ^&gt;=0.2</li>
+            <li>random &gt;=1.2.0</li>
+            </ul>
+                      </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
 </html>
