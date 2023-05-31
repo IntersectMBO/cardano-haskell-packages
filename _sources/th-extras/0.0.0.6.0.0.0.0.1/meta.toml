@@ -1,0 +1,3 @@
+timestamp = 2023-05-31T23:51:04Z
+github = { repo = "input-output-hk/th-extras", rev = "53e062bf2b1e3ae933262c4012cf6badc7cd5237" }
+force-version = true
