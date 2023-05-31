@@ -1,0 +1,3 @@
+timestamp = 2023-05-31T01:47:24Z
+github = { repo = "haskell-streaming/streaming", rev = "0c815bf9043d0f0cbda92b80ef791892e2b7fb43" }
+force-version = true
