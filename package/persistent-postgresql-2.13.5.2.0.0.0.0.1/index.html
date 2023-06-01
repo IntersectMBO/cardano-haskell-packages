@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    persistent-postgresql-2.13.5.2.0.0.0.0.1
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      persistent-postgresql-2.13.5.2.0.0.0.0.1
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Backend for the persistent library using postgresql.</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Based on the postgresql-simple package</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Felipe Lessa, Michael Snoyman &lt;michael@snoyman.com&gt;</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>Michael Snoyman &lt;michael@snoyman.com&gt;</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>MIT</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/persistent/tree/088b3eedc5a78773a069a466729ca5e651b489ad/persistent-postgresql">https://github.com/input-output-hk/persistent</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>088b3eedc5a78773a069a466729ca5e651b489ad</dd>
+          <dt>Subdir</dt>
+          <dd>persistent-postgresql</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2023-06-01T02:06:15Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library persistent-postgresql:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>persistent &gt;=2.13.3 &amp;&amp; &lt;3</li>
+            <li>aeson &gt;=1.0</li>
+            <li>attoparsec</li>
+            <li>blaze-builder</li>
+            <li>bytestring &gt;=0.10</li>
+            <li>conduit &gt;=1.2.12</li>
+            <li>containers &gt;=0.5</li>
+            <li>monad-logger &gt;=0.3.25</li>
+            <li>mtl</li>
+            <li>postgresql-simple &gt;=0.6.1 &amp;&amp; &lt;0.7</li>
+            <li>postgresql-libpq &gt;=0.9.4.2 &amp;&amp; &lt;0.10</li>
+            <li>resourcet &gt;=1.1.9</li>
+            <li>resource-pool</li>
+            <li>string-conversions</li>
+            <li>text &gt;=1.2</li>
+            <li>time &gt;=1.6</li>
+            <li>transformers &gt;=0.5</li>
+            <li>unliftio-core</li>
+            <li>vault</li>
+            </ul>
+                      </dd>
+          <dt>executable conn-kill:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base</li>
+            <li>persistent-postgresql</li>
+            <li>monad-logger</li>
+            <li>text</li>
+            <li>unliftio</li>
+            <li>time</li>
+            <li>transformers</li>
+            <li>persistent</li>
+            <li>bytestring</li>
+            <li>resource-pool</li>
+            <li>mtl</li>
+            </ul>
+                      </dd>
+          <dt>test-suite test:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
+            <li>persistent</li>
+            <li>persistent-postgresql</li>
+            <li>persistent-qq</li>
+            <li>persistent-test</li>
+            <li>aeson</li>
+            <li>bytestring</li>
+            <li>containers</li>
+            <li>fast-logger</li>
+            <li>HUnit</li>
+            <li>hspec &gt;=2.4</li>
+            <li>hspec-expectations</li>
+            <li>hspec-expectations-lifted</li>
+            <li>monad-logger</li>
+            <li>QuickCheck</li>
+            <li>quickcheck-instances</li>
+            <li>resourcet</li>
+            <li>text</li>
+            <li>time</li>
+            <li>transformers</li>
+            <li>path-pieces</li>
+            <li>http-api-data</li>
+            <li>unliftio-core</li>
+            <li>unliftio</li>
+            <li>unordered-containers</li>
+            <li>vector</li>
+            </ul>
+                      </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
