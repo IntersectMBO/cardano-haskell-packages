@@ -1,0 +1,4 @@
+timestamp = 2023-06-01T02:05:59Z
+github = { repo = "input-output-hk/persistent", rev = "088b3eedc5a78773a069a466729ca5e651b489ad" }
+subdir = 'persistent'
+force-version = true
