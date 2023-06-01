@@ -89,74 +89,7 @@
           <dt>library cardano-node:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.17</li>
-            <li>aeson &gt;=1.5.6.0</li>
-            <li>async</li>
-            <li>base16-bytestring</li>
-            <li>bytestring</li>
-            <li>cardano-api ^&gt;=8.0.0</li>
-            <li>cardano-crypto-class</li>
-            <li>cardano-crypto-wrapper</li>
-            <li>cardano-git-rev</li>
-            <li>cardano-ledger-alonzo</li>
-            <li>cardano-ledger-allegra</li>
-            <li>cardano-ledger-babbage</li>
-            <li>cardano-ledger-byron</li>
-            <li>cardano-ledger-conway</li>
-            <li>cardano-ledger-core</li>
-            <li>cardano-ledger-shelley</li>
-            <li>cardano-prelude</li>
-            <li>cardano-protocol-tpraos &gt;=1.0.2</li>
-            <li>cardano-slotting &gt;=0.1.1</li>
-            <li>cborg ^&gt;=0.2.4</li>
-            <li>containers</li>
-            <li>contra-tracer</li>
-            <li>deepseq</li>
-            <li>directory</li>
-            <li>dns</li>
-            <li>ekg</li>
-            <li>ekg-core</li>
-            <li>filepath</li>
-            <li>generic-data</li>
-            <li>hostname</li>
-            <li>io-classes &gt;=0.3</li>
-            <li>iohk-monitoring</li>
-            <li>iproute</li>
-            <li>lobemo-backend-aggregation</li>
-            <li>lobemo-backend-ekg</li>
-            <li>lobemo-backend-monitoring</li>
-            <li>lobemo-backend-trace-forwarder</li>
-            <li>mtl</li>
-            <li>network</li>
-            <li>network-mux &gt;=0.4</li>
-            <li>nothunks</li>
-            <li>optparse-applicative-fork</li>
-            <li>ouroboros-consensus &gt;=0.6</li>
-            <li>ouroboros-consensus-cardano &gt;=0.5</li>
-            <li>ouroboros-consensus-diffusion &gt;=0.5.1</li>
-            <li>ouroboros-consensus-protocol &gt;=0.5</li>
-            <li>ouroboros-network-api</li>
-            <li>ouroboros-network &gt;=0.6</li>
-            <li>ouroboros-network-framework &gt;=0.5</li>
-            <li>ouroboros-network-protocols</li>
-            <li>prettyprinter</li>
-            <li>prettyprinter-ansi-terminal</li>
-            <li>psqueues</li>
-            <li>safe-exceptions</li>
-            <li>scientific</li>
-            <li>si-timers</li>
-            <li>stm</li>
-            <li>strict-stm</li>
-            <li>text</li>
-            <li>time</li>
-            <li>trace-dispatcher</li>
-            <li>trace-forward</li>
-            <li>trace-resources</li>
-            <li>tracer-transformers</li>
-            <li>transformers</li>
-            <li>transformers-except</li>
-            <li>typed-protocols &gt;=0.1</li>
-            <li>yaml</li>
+            <li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.17&quot;,&quot;aeson &gt;=1.5.6.0&quot;,&quot;async&quot;,&quot;base16-bytestring&quot;,&quot;bytestring&quot;,&quot;cardano-api ^&gt;=8.0.0&quot;,&quot;cardano-crypto-class&quot;,&quot;cardano-crypto-wrapper&quot;,&quot;cardano-git-rev&quot;,&quot;cardano-ledger-alonzo&quot;,&quot;cardano-ledger-allegra&quot;,&quot;cardano-ledger-babbage&quot;,&quot;cardano-ledger-byron&quot;,&quot;cardano-ledger-conway&quot;,&quot;cardano-ledger-core&quot;,&quot;cardano-ledger-shelley&quot;,&quot;cardano-prelude&quot;,&quot;cardano-protocol-tpraos &gt;=1.0.2&quot;,&quot;cardano-slotting &gt;=0.1.1&quot;,&quot;cborg ^&gt;=0.2.4&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;deepseq&quot;,&quot;directory&quot;,&quot;dns&quot;,&quot;ekg&quot;,&quot;ekg-core&quot;,&quot;filepath&quot;,&quot;generic-data&quot;,&quot;hostname&quot;,&quot;io-classes &gt;=0.3&quot;,&quot;iohk-monitoring&quot;,&quot;iproute&quot;,&quot;lobemo-backend-aggregation&quot;,&quot;lobemo-backend-ekg&quot;,&quot;lobemo-backend-monitoring&quot;,&quot;lobemo-backend-trace-forwarder&quot;,&quot;mtl&quot;,&quot;network&quot;,&quot;network-mux &gt;=0.4&quot;,&quot;nothunks&quot;,&quot;optparse-applicative-fork&quot;,&quot;ouroboros-consensus &gt;=0.6&quot;,&quot;ouroboros-consensus-cardano &gt;=0.5&quot;,&quot;ouroboros-consensus-diffusion &gt;=0.5.1&quot;,&quot;ouroboros-consensus-protocol &gt;=0.5&quot;,&quot;ouroboros-network-api&quot;,&quot;ouroboros-network &gt;=0.6&quot;,&quot;ouroboros-network-framework &gt;=0.5&quot;,&quot;ouroboros-network-protocols&quot;,&quot;prettyprinter&quot;,&quot;prettyprinter-ansi-terminal&quot;,&quot;psqueues&quot;,&quot;safe-exceptions&quot;,&quot;scientific&quot;,&quot;si-timers&quot;,&quot;stm&quot;,&quot;strict-stm&quot;,&quot;text&quot;,&quot;time&quot;,&quot;trace-dispatcher&quot;,&quot;trace-forward&quot;,&quot;trace-resources&quot;,&quot;tracer-transformers&quot;,&quot;transformers&quot;,&quot;transformers-except&quot;,&quot;typed-protocols &gt;=0.1&quot;,&quot;yaml&quot;]</li>
             </ul>
             <p>if (os(linux) &amp;&amp; flag(systemd))</p>
             <ul class="build-depends">
@@ -175,39 +108,20 @@
           <dt>executable cardano-node:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.17</li>
-            <li>cardano-git-rev</li>
-            <li>cardano-node</li>
-            <li>optparse-applicative-fork</li>
-            <li>text</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.17&quot;,&quot;cardano-git-rev&quot;,&quot;cardano-node&quot;,&quot;optparse-applicative-fork&quot;,&quot;text&quot;]</li>
+</ul>
+
+          </dd>
           <dt>test-suite cardano-node-test:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.17</li>
-            <li>aeson &gt;=1.5.6.0</li>
-            <li>bytestring</li>
-            <li>cardano-api ^&gt;=8.0.0</li>
-            <li>cardano-node</li>
-            <li>cardano-slotting &gt;=0.1</li>
-            <li>directory</li>
-            <li>hedgehog</li>
-            <li>hedgehog-corpus</li>
-            <li>iproute</li>
-            <li>mtl</li>
-            <li>ouroboros-consensus</li>
-            <li>ouroboros-consensus-diffusion</li>
-            <li>ouroboros-network</li>
-            <li>ouroboros-network-api</li>
-            <li>text</li>
-            <li>time</li>
-            <li>vector</li>
-            </ul>
-            <p>if !os(windows)</p>
-            <ul class="build-depends">
-            <li>unix</li>
-            </ul>
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.17&quot;,&quot;aeson &gt;=1.5.6.0&quot;,&quot;bytestring&quot;,&quot;cardano-api ^&gt;=8.0.0&quot;,&quot;cardano-node&quot;,&quot;cardano-slotting &gt;=0.1&quot;,&quot;directory&quot;,&quot;hedgehog&quot;,&quot;hedgehog-corpus&quot;,&quot;iproute&quot;,&quot;mtl&quot;,&quot;ouroboros-consensus&quot;,&quot;ouroboros-consensus-diffusion&quot;,&quot;ouroboros-network&quot;,&quot;ouroboros-network-api&quot;,&quot;text&quot;,&quot;time&quot;,&quot;vector&quot;]</li>
+</ul>
+<p>if !os(windows)</p>
+<ul class="build-depends">
+<li>unix</li>
+</ul>
+
           </dd>
         </dl>
       </dd>

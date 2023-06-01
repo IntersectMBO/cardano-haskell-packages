@@ -105,28 +105,37 @@ This package has the following goals:
           <dt>library foundation:</dt>
           <dd>
             <ul class="build-depends">
-            <li>basement ==0.0.15</li>
-            <li>[{&quot;if&quot;:&quot;!(impl(ghc &lt;8.10) || impl(ghcjs &gt;=0))&quot;,&quot;then&quot;:[&quot;base&quot;,&quot;ghc-prim&quot;]},{&quot;if&quot;:&quot;(os(windows) &amp;&amp; !(impl(ghc &lt;8.10) || impl(ghcjs &gt;=0)))&quot;,&quot;then&quot;:[&quot;Win32&quot;]}]</li>
+            <li>[&quot;basement ==0.0.15&quot;]</li>
             </ul>
-                      </dd>
+            <p>if (!(impl(ghc &lt;8.10) || impl(ghcjs &gt;=0)) &amp;&amp; os(windows))</p>
+            <ul class="build-depends">
+            <li>Win32</li>
+            </ul>
+<p>if !(impl(ghc &lt;8.10) || impl(ghcjs &gt;=0))</p>
+            <ul class="build-depends">
+            <li>base</li>
+            <li>ghc-prim</li>
+            </ul>
+          </dd>
           <dt>test-suite bench:</dt>
           <dd>
             <ul class="build-depends">
-            </ul>
-            <p>if !(flag(minimal-deps) || impl(ghc &lt;7.10))</p>
-            <ul class="build-depends">
-            <li>base</li>
-            <li>gauge</li>
-            <li>basement</li>
-            <li>foundation</li>
-            </ul>
-<p>if (flag(bench-all) &amp;&amp; !(flag(minimal-deps) || impl(ghc &lt;7.10)))</p>
-            <ul class="build-depends">
-            <li>text</li>
-            <li>attoparsec</li>
-            <li>vector</li>
-            <li>bytestring</li>
-            </ul>
+</ul>
+<p>if (!(flag(minimal-deps) || impl(ghc &lt;7.10)) &amp;&amp; flag(bench-all))</p>
+<ul class="build-depends">
+<li>text</li>
+<li>attoparsec</li>
+<li>vector</li>
+<li>bytestring</li>
+</ul>
+<p>if !(flag(minimal-deps) || impl(ghc &lt;7.10))</p>
+<ul class="build-depends">
+<li>base</li>
+<li>gauge</li>
+<li>basement</li>
+<li>foundation</li>
+</ul>
+
           </dd>
         </dl>
       </dd>

@@ -92,413 +92,135 @@ access for real-time updates to contracts.</p>
           <dt>library marlowe-runtime:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
-            <li>base16 &gt;=0.3.2 &amp;&amp; &lt;0.4</li>
-            <li>binary &gt;=0.8.8 &amp;&amp; &lt;0.9</li>
-            <li>cardano-api ==1.35.4</li>
-            <li>bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12</li>
-            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
-            <li>marlowe-cardano ==0.1.0.3</li>
-            <li>marlowe-chain-sync ==0.0.1</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>ouroboros-network ==0.1.0.1</li>
-            <li>plutus-ledger-api ==1.0.0.1</li>
-            <li>plutus-tx ==1.0.0.0</li>
-            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
-            <li>time &gt;=1.9 &amp;&amp; &lt;2</li>
+            <li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base16 &gt;=0.3.2 &amp;&amp; &lt;0.4&quot;,&quot;binary &gt;=0.8.8 &amp;&amp; &lt;0.9&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;containers &gt;=0.6.5 &amp;&amp; &lt;0.7&quot;,&quot;marlowe-cardano ==0.1.0.3&quot;,&quot;marlowe-chain-sync ==0.0.1&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;ouroboros-network ==0.1.0.1&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;plutus-tx ==1.0.0.0&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;]</li>
             </ul>
                       </dd>
           <dt>library gen:</dt>
           <dd>
             <ul class="build-depends">
-            <li>QuickCheck &gt;=2.14 &amp;&amp; &lt;3</li>
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12</li>
-            <li>cardano-api ==1.35.4</li>
-            <li>cardano-api:gen ==1.35.4</li>
-            <li>hedgehog-quickcheck &gt;=0.1 &amp;&amp; &lt;0.2</li>
-            <li>http-media &gt;=0.8 &amp;&amp; &lt;0.9</li>
-            <li>marlowe-cardano ==0.1.0.3</li>
-            <li>marlowe-chain-sync:gen ==0.0.1</li>
-            <li>marlowe-chain-sync:plutus-compat ==0.0.1</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>marlowe-runtime:discovery-api ==0.0.1</li>
-            <li>marlowe-runtime:history-api ==0.0.1</li>
-            <li>marlowe-runtime:tx-api ==0.0.1</li>
-            <li>marlowe-test ==0.1.1.0</li>
-            <li>network-uri &gt;=2.6 &amp;&amp; &lt;3</li>
-            <li>quickcheck-instances &gt;=0.3.29 &amp;&amp; &lt;0.4</li>
-            </ul>
-                      </dd>
+<li>[&quot;QuickCheck &gt;=2.14 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;cardano-api:gen ==1.35.4&quot;,&quot;hedgehog-quickcheck &gt;=0.1 &amp;&amp; &lt;0.2&quot;,&quot;http-media &gt;=0.8 &amp;&amp; &lt;0.9&quot;,&quot;marlowe-cardano ==0.1.0.3&quot;,&quot;marlowe-chain-sync:gen ==0.0.1&quot;,&quot;marlowe-chain-sync:plutus-compat ==0.0.1&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;marlowe-runtime:discovery-api ==0.0.1&quot;,&quot;marlowe-runtime:history-api ==0.0.1&quot;,&quot;marlowe-runtime:tx-api ==0.0.1&quot;,&quot;marlowe-test ==0.1.1.0&quot;,&quot;network-uri &gt;=2.6 &amp;&amp; &lt;3&quot;,&quot;quickcheck-instances &gt;=0.3.29 &amp;&amp; &lt;0.4&quot;]</li>
+</ul>
+
+          </dd>
           <dt>library history-api:</dt>
           <dd>
             <ul class="build-depends">
-            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>binary &gt;=0.8.8 &amp;&amp; &lt;0.9</li>
-            <li>cardano-api ==1.35.4</li>
-            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
-            <li>errors &gt;=2.3 &amp;&amp; &lt;3</li>
-            <li>marlowe-cardano ==0.1.0.3</li>
-            <li>marlowe-chain-sync ==0.0.1</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>ouroboros-consensus ==0.1.0.1</li>
-            <li>ouroboros-network ==0.1.0.1</li>
-            <li>plutus-ledger-api ==1.0.0.1</li>
-            <li>transformers &gt;=0.5.6 &amp;&amp; &lt;0.6</li>
-            <li>typed-protocols ==0.1.0.0</li>
-            </ul>
-                      </dd>
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary &gt;=0.8.8 &amp;&amp; &lt;0.9&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;containers &gt;=0.6.5 &amp;&amp; &lt;0.7&quot;,&quot;errors &gt;=2.3 &amp;&amp; &lt;3&quot;,&quot;marlowe-cardano ==0.1.0.3&quot;,&quot;marlowe-chain-sync ==0.0.1&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;ouroboros-consensus ==0.1.0.1&quot;,&quot;ouroboros-network ==0.1.0.1&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;transformers &gt;=0.5.6 &amp;&amp; &lt;0.6&quot;,&quot;typed-protocols ==0.1.0.0&quot;]</li>
+</ul>
+
+          </dd>
           <dt>library indexer:</dt>
           <dd>
             <ul class="build-depends">
-            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
-            <li>async-components ==0.1.0.0</li>
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>binary &gt;=0.8.8 &amp;&amp; &lt;0.9</li>
-            <li>bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12</li>
-            <li>cardano-api ==1.35.4</li>
-            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
-            <li>eventuo11y ^&gt;=0.9 || ^&gt;=0.10</li>
-            <li>eventuo11y-extras ==0.1.0.0</li>
-            <li>hasql &gt;=1.6 &amp;&amp; &lt;2</li>
-            <li>hasql-th &gt;=0.4 &amp;&amp; &lt;0.5</li>
-            <li>hasql-transaction &gt;=1 &amp;&amp; &lt;1.1</li>
-            <li>marlowe-cardano ==0.1.0.3</li>
-            <li>marlowe-chain-sync ==0.0.1</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>marlowe-runtime:history-api ==0.0.1</li>
-            <li>mtl</li>
-            <li>nonempty-containers &gt;=0.3.4 &amp;&amp; &lt;0.4</li>
-            <li>plutus-ledger-api ==1.0.0.1</li>
-            <li>stm &gt;=2.5 &amp;&amp; &lt;2.6</li>
-            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
-            <li>time &gt;=1.9 &amp;&amp; &lt;2</li>
-            <li>transformers &gt;=0.5.6 &amp;&amp; &lt;0.6</li>
-            <li>vector &gt;=0.12.3 &amp;&amp; &lt;0.13</li>
-            <li>witherable &gt;=0.4 &amp;&amp; &lt;0.5</li>
-            </ul>
-                      </dd>
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;async-components ==0.1.0.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary &gt;=0.8.8 &amp;&amp; &lt;0.9&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;containers &gt;=0.6.5 &amp;&amp; &lt;0.7&quot;,&quot;eventuo11y ^&gt;=0.9 || ^&gt;=0.10&quot;,&quot;eventuo11y-extras ==0.1.0.0&quot;,&quot;hasql &gt;=1.6 &amp;&amp; &lt;2&quot;,&quot;hasql-th &gt;=0.4 &amp;&amp; &lt;0.5&quot;,&quot;hasql-transaction &gt;=1 &amp;&amp; &lt;1.1&quot;,&quot;marlowe-cardano ==0.1.0.3&quot;,&quot;marlowe-chain-sync ==0.0.1&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;marlowe-runtime:history-api ==0.0.1&quot;,&quot;mtl&quot;,&quot;nonempty-containers &gt;=0.3.4 &amp;&amp; &lt;0.4&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;stm &gt;=2.5 &amp;&amp; &lt;2.6&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;transformers &gt;=0.5.6 &amp;&amp; &lt;0.6&quot;,&quot;vector &gt;=0.12.3 &amp;&amp; &lt;0.13&quot;,&quot;witherable &gt;=0.4 &amp;&amp; &lt;0.5&quot;]</li>
+</ul>
+
+          </dd>
           <dt>library sync-api:</dt>
           <dd>
             <ul class="build-depends">
-            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>binary &gt;=0.8.8 &amp;&amp; &lt;0.9</li>
-            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
-            <li>lifted-async &gt;=0.10 &amp;&amp; &lt;0.12</li>
-            <li>marlowe-chain-sync ==0.0.1</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>marlowe-runtime:discovery-api ==0.0.1</li>
-            <li>monad-control &gt;=1 &amp;&amp; &lt;1.1</li>
-            <li>transformers &gt;=0.5.6 &amp;&amp; &lt;0.6</li>
-            <li>transformers-base &gt;=0.4 &amp;&amp; &lt;0.5</li>
-            <li>typed-protocols ==0.1.0.0</li>
-            </ul>
-                      </dd>
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary &gt;=0.8.8 &amp;&amp; &lt;0.9&quot;,&quot;containers &gt;=0.6.5 &amp;&amp; &lt;0.7&quot;,&quot;lifted-async &gt;=0.10 &amp;&amp; &lt;0.12&quot;,&quot;marlowe-chain-sync ==0.0.1&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;marlowe-runtime:discovery-api ==0.0.1&quot;,&quot;monad-control &gt;=1 &amp;&amp; &lt;1.1&quot;,&quot;transformers &gt;=0.5.6 &amp;&amp; &lt;0.6&quot;,&quot;transformers-base &gt;=0.4 &amp;&amp; &lt;0.5&quot;,&quot;typed-protocols ==0.1.0.0&quot;]</li>
+</ul>
+
+          </dd>
           <dt>library sync:</dt>
           <dd>
             <ul class="build-depends">
-            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
-            <li>async-components ==0.1.0.0</li>
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>binary &gt;=0.8.8 &amp;&amp; &lt;0.9</li>
-            <li>bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12</li>
-            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
-            <li>eventuo11y ^&gt;=0.9 || ^&gt;=0.10</li>
-            <li>eventuo11y-extras ==0.1.0.0</li>
-            <li>foldl &gt;=1.4 &amp;&amp; &lt;2</li>
-            <li>general-allocate ^&gt;=0.2</li>
-            <li>hasql &gt;=1.6 &amp;&amp; &lt;2</li>
-            <li>hasql-th &gt;=0.4 &amp;&amp; &lt;0.5</li>
-            <li>hasql-transaction &gt;=1 &amp;&amp; &lt;1.1</li>
-            <li>marlowe-cardano ==0.1.0.3</li>
-            <li>marlowe-chain-sync ==0.0.1</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>marlowe-runtime:discovery-api ==0.0.1</li>
-            <li>marlowe-runtime:history-api ==0.0.1</li>
-            <li>marlowe-runtime:sync-api ==0.0.1</li>
-            <li>plutus-ledger-api ==1.0.0.1</li>
-            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
-            <li>time &gt;=1.9 &amp;&amp; &lt;2</li>
-            <li>transformers &gt;=0.5.6 &amp;&amp; &lt;0.6</li>
-            <li>vector &gt;=0.12.3 &amp;&amp; &lt;0.13</li>
-            <li>witherable &gt;=0.4 &amp;&amp; &lt;0.5</li>
-            </ul>
-                      </dd>
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;async-components ==0.1.0.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary &gt;=0.8.8 &amp;&amp; &lt;0.9&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;containers &gt;=0.6.5 &amp;&amp; &lt;0.7&quot;,&quot;eventuo11y ^&gt;=0.9 || ^&gt;=0.10&quot;,&quot;eventuo11y-extras ==0.1.0.0&quot;,&quot;foldl &gt;=1.4 &amp;&amp; &lt;2&quot;,&quot;general-allocate ^&gt;=0.2&quot;,&quot;hasql &gt;=1.6 &amp;&amp; &lt;2&quot;,&quot;hasql-th &gt;=0.4 &amp;&amp; &lt;0.5&quot;,&quot;hasql-transaction &gt;=1 &amp;&amp; &lt;1.1&quot;,&quot;marlowe-cardano ==0.1.0.3&quot;,&quot;marlowe-chain-sync ==0.0.1&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;marlowe-runtime:discovery-api ==0.0.1&quot;,&quot;marlowe-runtime:history-api ==0.0.1&quot;,&quot;marlowe-runtime:sync-api ==0.0.1&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;transformers &gt;=0.5.6 &amp;&amp; &lt;0.6&quot;,&quot;vector &gt;=0.12.3 &amp;&amp; &lt;0.13&quot;,&quot;witherable &gt;=0.4 &amp;&amp; &lt;0.5&quot;]</li>
+</ul>
+
+          </dd>
           <dt>library discovery-api:</dt>
           <dd>
             <ul class="build-depends">
-            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>binary &gt;=0.8.8 &amp;&amp; &lt;0.9</li>
-            <li>marlowe-chain-sync ==0.0.1</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>typed-protocols ==0.1.0.0</li>
-            </ul>
-                      </dd>
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary &gt;=0.8.8 &amp;&amp; &lt;0.9&quot;,&quot;marlowe-chain-sync ==0.0.1&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;typed-protocols ==0.1.0.0&quot;]</li>
+</ul>
+
+          </dd>
           <dt>library tx-api:</dt>
           <dd>
             <ul class="build-depends">
-            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>binary &gt;=0.8.8 &amp;&amp; &lt;0.9</li>
-            <li>bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12</li>
-            <li>cardano-api ==1.35.4</li>
-            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
-            <li>http-media &gt;=0.8 &amp;&amp; &lt;0.9</li>
-            <li>marlowe-chain-sync ==0.0.1</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>marlowe-runtime:history-api ==0.0.1</li>
-            <li>network-uri &gt;=2.6 &amp;&amp; &lt;3</li>
-            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
-            <li>time &gt;=1.9 &amp;&amp; &lt;2</li>
-            </ul>
-                      </dd>
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary &gt;=0.8.8 &amp;&amp; &lt;0.9&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;containers &gt;=0.6.5 &amp;&amp; &lt;0.7&quot;,&quot;http-media &gt;=0.8 &amp;&amp; &lt;0.9&quot;,&quot;marlowe-chain-sync ==0.0.1&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;marlowe-runtime:history-api ==0.0.1&quot;,&quot;network-uri &gt;=2.6 &amp;&amp; &lt;3&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;]</li>
+</ul>
+
+          </dd>
           <dt>library tx:</dt>
           <dd>
             <ul class="build-depends">
-            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
-            <li>async &gt;=2.2 &amp;&amp; &lt;3</li>
-            <li>async-components ==0.1.0.0</li>
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>cardano-api ==1.35.4</li>
-            <li>cardano-ledger-core ==0.1.0.0</li>
-            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
-            <li>errors &gt;=2.3 &amp;&amp; &lt;3</li>
-            <li>eventuo11y ^&gt;=0.9 || ^&gt;=0.10</li>
-            <li>eventuo11y-extras ==0.1.0.0</li>
-            <li>marlowe-cardano ==0.1.0.3</li>
-            <li>marlowe-chain-sync ==0.0.1</li>
-            <li>marlowe-chain-sync:plutus-compat ==0.0.1</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>marlowe-runtime:history-api ==0.0.1</li>
-            <li>marlowe-runtime:plutus-scripts ==0.0.1</li>
-            <li>marlowe-runtime:tx-api ==0.0.1</li>
-            <li>ouroboros-consensus ==0.1.0.1</li>
-            <li>ouroboros-network ==0.1.0.1</li>
-            <li>plutus-ledger-api ==1.0.0.1</li>
-            <li>plutus-tx ==1.0.0.0</li>
-            <li>semialign &gt;=1.2 &amp;&amp; &lt;2</li>
-            <li>stm &gt;=2.5 &amp;&amp; &lt;2.6</li>
-            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
-            <li>time &gt;=1.9 &amp;&amp; &lt;2</li>
-            <li>transformers &gt;=0.5.6 &amp;&amp; &lt;0.6</li>
-            <li>witherable &gt;=0.4 &amp;&amp; &lt;0.5</li>
-            </ul>
-                      </dd>
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;async &gt;=2.2 &amp;&amp; &lt;3&quot;,&quot;async-components ==0.1.0.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;cardano-ledger-core ==0.1.0.0&quot;,&quot;containers &gt;=0.6.5 &amp;&amp; &lt;0.7&quot;,&quot;errors &gt;=2.3 &amp;&amp; &lt;3&quot;,&quot;eventuo11y ^&gt;=0.9 || ^&gt;=0.10&quot;,&quot;eventuo11y-extras ==0.1.0.0&quot;,&quot;marlowe-cardano ==0.1.0.3&quot;,&quot;marlowe-chain-sync ==0.0.1&quot;,&quot;marlowe-chain-sync:plutus-compat ==0.0.1&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;marlowe-runtime:history-api ==0.0.1&quot;,&quot;marlowe-runtime:plutus-scripts ==0.0.1&quot;,&quot;marlowe-runtime:tx-api ==0.0.1&quot;,&quot;ouroboros-consensus ==0.1.0.1&quot;,&quot;ouroboros-network ==0.1.0.1&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;plutus-tx ==1.0.0.0&quot;,&quot;semialign &gt;=1.2 &amp;&amp; &lt;2&quot;,&quot;stm &gt;=2.5 &amp;&amp; &lt;2.6&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;transformers &gt;=0.5.6 &amp;&amp; &lt;0.6&quot;,&quot;witherable &gt;=0.4 &amp;&amp; &lt;0.5&quot;]</li>
+</ul>
+
+          </dd>
           <dt>library proxy-api:</dt>
           <dd>
             <ul class="build-depends">
-            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>binary &gt;=0.8.8 &amp;&amp; &lt;0.9</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime:discovery-api ==0.0.1</li>
-            <li>marlowe-runtime:history-api ==0.0.1</li>
-            <li>marlowe-runtime:sync-api ==0.0.1</li>
-            <li>marlowe-runtime:tx-api ==0.0.1</li>
-            <li>typed-protocols ==0.1.0.0</li>
-            </ul>
-                      </dd>
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary &gt;=0.8.8 &amp;&amp; &lt;0.9&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime:discovery-api ==0.0.1&quot;,&quot;marlowe-runtime:history-api ==0.0.1&quot;,&quot;marlowe-runtime:sync-api ==0.0.1&quot;,&quot;marlowe-runtime:tx-api ==0.0.1&quot;,&quot;typed-protocols ==0.1.0.0&quot;]</li>
+</ul>
+
+          </dd>
           <dt>library proxy:</dt>
           <dd>
             <ul class="build-depends">
-            <li>async-components ==0.1.0.0</li>
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>exceptions &gt;=0.10 &amp;&amp; &lt;0.12</li>
-            <li>general-allocate ^&gt;=0.2</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime:discovery-api ==0.0.1</li>
-            <li>marlowe-runtime:history-api ==0.0.1</li>
-            <li>marlowe-runtime:proxy-api ==0.0.1</li>
-            <li>marlowe-runtime:sync-api ==0.0.1</li>
-            <li>marlowe-runtime:tx-api ==0.0.1</li>
-            <li>monad-control &gt;=1 &amp;&amp; &lt;1.1</li>
-            <li>resourcet &gt;=1.3 &amp;&amp; &lt;2</li>
-            <li>transformers-base &gt;=0.4 &amp;&amp; &lt;0.5</li>
-            <li>typed-protocols ==0.1.0.0</li>
-            <li>unliftio &gt;=0.2.1 &amp;&amp; &lt;0.3</li>
-            </ul>
-                      </dd>
+<li>[&quot;async-components ==0.1.0.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;exceptions &gt;=0.10 &amp;&amp; &lt;0.12&quot;,&quot;general-allocate ^&gt;=0.2&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime:discovery-api ==0.0.1&quot;,&quot;marlowe-runtime:history-api ==0.0.1&quot;,&quot;marlowe-runtime:proxy-api ==0.0.1&quot;,&quot;marlowe-runtime:sync-api ==0.0.1&quot;,&quot;marlowe-runtime:tx-api ==0.0.1&quot;,&quot;monad-control &gt;=1 &amp;&amp; &lt;1.1&quot;,&quot;resourcet &gt;=1.3 &amp;&amp; &lt;2&quot;,&quot;transformers-base &gt;=0.4 &amp;&amp; &lt;0.5&quot;,&quot;typed-protocols ==0.1.0.0&quot;,&quot;unliftio &gt;=0.2.1 &amp;&amp; &lt;0.3&quot;]</li>
+</ul>
+
+          </dd>
           <dt>library plutus-scripts:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>newtype-generics &gt;=0.6.2 &amp;&amp; &lt;0.7</li>
-            <li>plutus-ledger-api ==1.0.0.1</li>
-            <li>plutus-tx ==1.0.0.0</li>
-            <li>plutus-tx-plugin ==1.0.0.0</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;newtype-generics &gt;=0.6.2 &amp;&amp; &lt;0.7&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;plutus-tx ==1.0.0.0&quot;,&quot;plutus-tx-plugin ==1.0.0.0&quot;]</li>
+</ul>
+
+          </dd>
           <dt>library config:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>marlowe-chain-sync ==0.0.1</li>
-            <li>network &gt;=3.1 &amp;&amp; &lt;4</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>optparse-applicative &gt;=0.17 &amp;&amp; &lt;0.18</li>
-            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
-            <li>split &gt;=0.2.3 &amp;&amp; &lt;0.3</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;marlowe-chain-sync ==0.0.1&quot;,&quot;network &gt;=3.1 &amp;&amp; &lt;4&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;optparse-applicative &gt;=0.17 &amp;&amp; &lt;0.18&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;split &gt;=0.2.3 &amp;&amp; &lt;0.3&quot;]</li>
+</ul>
+
+          </dd>
           <dt>executable marlowe-indexer:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>aeson-pretty</li>
-            <li>async-components ==0.1.0.0</li>
-            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
-            <li>eventuo11y ^&gt;=0.9 || ^&gt;=0.10</li>
-            <li>eventuo11y-extras ==0.1.0.0</li>
-            <li>hasql &gt;=1.6 &amp;&amp; &lt;2</li>
-            <li>hasql-pool ^&gt;=0.8</li>
-            <li>marlowe-chain-sync ==0.0.1</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>marlowe-runtime:indexer ==0.0.1</li>
-            <li>network &gt;=3.1 &amp;&amp; &lt;4</li>
-            <li>nonempty-containers &gt;=0.3.4 &amp;&amp; &lt;0.4</li>
-            <li>optparse-applicative &gt;=0.17 &amp;&amp; &lt;0.18</li>
-            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
-            <li>uuid</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;aeson-pretty&quot;,&quot;async-components ==0.1.0.0&quot;,&quot;containers &gt;=0.6.5 &amp;&amp; &lt;0.7&quot;,&quot;eventuo11y ^&gt;=0.9 || ^&gt;=0.10&quot;,&quot;eventuo11y-extras ==0.1.0.0&quot;,&quot;hasql &gt;=1.6 &amp;&amp; &lt;2&quot;,&quot;hasql-pool ^&gt;=0.8&quot;,&quot;marlowe-chain-sync ==0.0.1&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;marlowe-runtime:indexer ==0.0.1&quot;,&quot;network &gt;=3.1 &amp;&amp; &lt;4&quot;,&quot;nonempty-containers &gt;=0.3.4 &amp;&amp; &lt;0.4&quot;,&quot;optparse-applicative &gt;=0.17 &amp;&amp; &lt;0.18&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;uuid&quot;]</li>
+</ul>
+
+          </dd>
           <dt>executable marlowe-sync:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>aeson-pretty</li>
-            <li>async-components ==0.1.0.0</li>
-            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
-            <li>eventuo11y ^&gt;=0.9 || ^&gt;=0.10</li>
-            <li>eventuo11y-extras ==0.1.0.0</li>
-            <li>hasql &gt;=1.6 &amp;&amp; &lt;2</li>
-            <li>hasql-pool ^&gt;=0.8</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>marlowe-runtime:discovery-api ==0.0.1</li>
-            <li>marlowe-runtime:history-api ==0.0.1</li>
-            <li>marlowe-runtime:sync ==0.0.1</li>
-            <li>marlowe-runtime:sync-api ==0.0.1</li>
-            <li>network &gt;=3.1 &amp;&amp; &lt;4</li>
-            <li>optparse-applicative &gt;=0.17 &amp;&amp; &lt;0.18</li>
-            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
-            <li>uuid</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;aeson-pretty&quot;,&quot;async-components ==0.1.0.0&quot;,&quot;containers &gt;=0.6.5 &amp;&amp; &lt;0.7&quot;,&quot;eventuo11y ^&gt;=0.9 || ^&gt;=0.10&quot;,&quot;eventuo11y-extras ==0.1.0.0&quot;,&quot;hasql &gt;=1.6 &amp;&amp; &lt;2&quot;,&quot;hasql-pool ^&gt;=0.8&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;marlowe-runtime:discovery-api ==0.0.1&quot;,&quot;marlowe-runtime:history-api ==0.0.1&quot;,&quot;marlowe-runtime:sync ==0.0.1&quot;,&quot;marlowe-runtime:sync-api ==0.0.1&quot;,&quot;network &gt;=3.1 &amp;&amp; &lt;4&quot;,&quot;optparse-applicative &gt;=0.17 &amp;&amp; &lt;0.18&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;uuid&quot;]</li>
+</ul>
+
+          </dd>
           <dt>executable marlowe-tx:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>aeson-pretty</li>
-            <li>async-components ==0.1.0.0</li>
-            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
-            <li>eventuo11y ^&gt;=0.9 || ^&gt;=0.10</li>
-            <li>eventuo11y-extras ==0.1.0.0</li>
-            <li>marlowe-chain-sync ==0.0.1</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>marlowe-runtime:tx ==0.0.1</li>
-            <li>marlowe-runtime:tx-api ==0.0.1</li>
-            <li>network &gt;=3.1 &amp;&amp; &lt;4</li>
-            <li>optparse-applicative &gt;=0.17 &amp;&amp; &lt;0.18</li>
-            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
-            <li>uuid</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;aeson-pretty&quot;,&quot;async-components ==0.1.0.0&quot;,&quot;containers &gt;=0.6.5 &amp;&amp; &lt;0.7&quot;,&quot;eventuo11y ^&gt;=0.9 || ^&gt;=0.10&quot;,&quot;eventuo11y-extras ==0.1.0.0&quot;,&quot;marlowe-chain-sync ==0.0.1&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;marlowe-runtime:tx ==0.0.1&quot;,&quot;marlowe-runtime:tx-api ==0.0.1&quot;,&quot;network &gt;=3.1 &amp;&amp; &lt;4&quot;,&quot;optparse-applicative &gt;=0.17 &amp;&amp; &lt;0.18&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;uuid&quot;]</li>
+</ul>
+
+          </dd>
           <dt>executable marlowe-proxy:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>aeson-pretty</li>
-            <li>async-components ==0.1.0.0</li>
-            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
-            <li>bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12</li>
-            <li>eventuo11y ^&gt;=0.9 || ^&gt;=0.10</li>
-            <li>eventuo11y-extras ==0.1.0.0</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime:config ==0.0.1</li>
-            <li>marlowe-runtime:proxy ==0.0.1</li>
-            <li>marlowe-runtime:proxy-api ==0.0.1</li>
-            <li>network &gt;=3.1 &amp;&amp; &lt;4</li>
-            <li>optparse-applicative &gt;=0.17 &amp;&amp; &lt;0.18</li>
-            <li>resourcet &gt;=1.3 &amp;&amp; &lt;2</li>
-            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
-            <li>typed-protocols ==0.1.0.0</li>
-            <li>uuid</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;aeson-pretty&quot;,&quot;async-components ==0.1.0.0&quot;,&quot;containers &gt;=0.6.5 &amp;&amp; &lt;0.7&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;eventuo11y ^&gt;=0.9 || ^&gt;=0.10&quot;,&quot;eventuo11y-extras ==0.1.0.0&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime:config ==0.0.1&quot;,&quot;marlowe-runtime:proxy ==0.0.1&quot;,&quot;marlowe-runtime:proxy-api ==0.0.1&quot;,&quot;network &gt;=3.1 &amp;&amp; &lt;4&quot;,&quot;optparse-applicative &gt;=0.17 &amp;&amp; &lt;0.18&quot;,&quot;resourcet &gt;=1.3 &amp;&amp; &lt;2&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;typed-protocols ==0.1.0.0&quot;,&quot;uuid&quot;]</li>
+</ul>
+
+          </dd>
           <dt>test-suite marlowe-runtime-test:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>aeson &gt;=2 &amp;&amp; &lt;3</li>
-            <li>bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12</li>
-            <li>cardano-api ==1.35.4</li>
-            <li>cardano-api:gen ==1.35.4</li>
-            <li>cardano-slotting</li>
-            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
-            <li>errors &gt;=2.3 &amp;&amp; &lt;3</li>
-            <li>hedgehog-quickcheck &gt;=0.1 &amp;&amp; &lt;0.2</li>
-            <li>hspec</li>
-            <li>http-media &gt;=0.8 &amp;&amp; &lt;0.9</li>
-            <li>marlowe-cardano ==0.1.0.3</li>
-            <li>marlowe-chain-sync ==0.0.1</li>
-            <li>marlowe-chain-sync:gen ==0.0.1</li>
-            <li>marlowe-chain-sync:plutus-compat ==0.0.1</li>
-            <li>marlowe-protocols ==0.1.0.0</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>marlowe-runtime:gen ==0.0.1</li>
-            <li>marlowe-runtime:discovery-api ==0.0.1</li>
-            <li>marlowe-runtime:history-api ==0.0.1</li>
-            <li>marlowe-runtime:sync-api ==0.0.1</li>
-            <li>marlowe-runtime:tx ==0.0.1</li>
-            <li>marlowe-runtime:tx-api ==0.0.1</li>
-            <li>marlowe-test ==0.1.1.0</li>
-            <li>network-uri &gt;=2.6 &amp;&amp; &lt;3</li>
-            <li>ouroboros-consensus ==0.1.0.1</li>
-            <li>plutus-tx ==1.0.0.0</li>
-            <li>plutus-ledger-api ==1.0.0.1</li>
-            <li>QuickCheck &gt;=2.14 &amp;&amp; &lt;3</li>
-            <li>quickcheck-instances &gt;=0.3.29 &amp;&amp; &lt;0.4</li>
-            <li>text &gt;=1.2.4 &amp;&amp; &lt;2</li>
-            <li>time &gt;=1.9 &amp;&amp; &lt;2</li>
-            <li>typed-protocols ==0.1.0.0</li>
-            <li>vector &gt;=0.12.3 &amp;&amp; &lt;0.13</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;cardano-api:gen ==1.35.4&quot;,&quot;cardano-slotting&quot;,&quot;containers &gt;=0.6.5 &amp;&amp; &lt;0.7&quot;,&quot;errors &gt;=2.3 &amp;&amp; &lt;3&quot;,&quot;hedgehog-quickcheck &gt;=0.1 &amp;&amp; &lt;0.2&quot;,&quot;hspec&quot;,&quot;http-media &gt;=0.8 &amp;&amp; &lt;0.9&quot;,&quot;marlowe-cardano ==0.1.0.3&quot;,&quot;marlowe-chain-sync ==0.0.1&quot;,&quot;marlowe-chain-sync:gen ==0.0.1&quot;,&quot;marlowe-chain-sync:plutus-compat ==0.0.1&quot;,&quot;marlowe-protocols ==0.1.0.0&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;marlowe-runtime:gen ==0.0.1&quot;,&quot;marlowe-runtime:discovery-api ==0.0.1&quot;,&quot;marlowe-runtime:history-api ==0.0.1&quot;,&quot;marlowe-runtime:sync-api ==0.0.1&quot;,&quot;marlowe-runtime:tx ==0.0.1&quot;,&quot;marlowe-runtime:tx-api ==0.0.1&quot;,&quot;marlowe-test ==0.1.1.0&quot;,&quot;network-uri &gt;=2.6 &amp;&amp; &lt;3&quot;,&quot;ouroboros-consensus ==0.1.0.1&quot;,&quot;plutus-tx ==1.0.0.0&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;QuickCheck &gt;=2.14 &amp;&amp; &lt;3&quot;,&quot;quickcheck-instances &gt;=0.3.29 &amp;&amp; &lt;0.4&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;typed-protocols ==0.1.0.0&quot;,&quot;vector &gt;=0.12.3 &amp;&amp; &lt;0.13&quot;]</li>
+</ul>
+
+          </dd>
           <dt>test-suite indexer-test:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.9 &amp;&amp; &lt;5</li>
-            <li>cardano-api ==1.35.4</li>
-            <li>containers &gt;=0.6.5 &amp;&amp; &lt;0.7</li>
-            <li>hspec</li>
-            <li>marlowe-cardano ==0.1.0.3</li>
-            <li>marlowe-chain-sync ==0.0.1</li>
-            <li>marlowe-chain-sync:plutus-compat ==0.0.1</li>
-            <li>marlowe-runtime ==0.0.1</li>
-            <li>marlowe-runtime:gen ==0.0.1</li>
-            <li>marlowe-runtime:history-api ==0.0.1</li>
-            <li>marlowe-runtime:indexer ==0.0.1</li>
-            <li>marlowe-test ==0.1.1.0</li>
-            <li>ouroboros-consensus ==0.1.0.1</li>
-            <li>plutus-tx ==1.0.0.0</li>
-            <li>QuickCheck &gt;=2.14 &amp;&amp; &lt;3</li>
-            <li>time &gt;=1.9 &amp;&amp; &lt;2</li>
-            <li>transformers &gt;=0.5.6 &amp;&amp; &lt;0.6</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;containers &gt;=0.6.5 &amp;&amp; &lt;0.7&quot;,&quot;hspec&quot;,&quot;marlowe-cardano ==0.1.0.3&quot;,&quot;marlowe-chain-sync ==0.0.1&quot;,&quot;marlowe-chain-sync:plutus-compat ==0.0.1&quot;,&quot;marlowe-runtime ==0.0.1&quot;,&quot;marlowe-runtime:gen ==0.0.1&quot;,&quot;marlowe-runtime:history-api ==0.0.1&quot;,&quot;marlowe-runtime:indexer ==0.0.1&quot;,&quot;marlowe-test ==0.1.1.0&quot;,&quot;ouroboros-consensus ==0.1.0.1&quot;,&quot;plutus-tx ==1.0.0.0&quot;,&quot;QuickCheck &gt;=2.14 &amp;&amp; &lt;3&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;transformers &gt;=0.5.6 &amp;&amp; &lt;0.6&quot;]</li>
+</ul>
+
+          </dd>
         </dl>
       </dd>
     </dl>

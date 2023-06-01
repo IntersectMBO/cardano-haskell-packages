@@ -89,40 +89,7 @@
           <dt>library cardano-tracer:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.15</li>
-            <li>aeson</li>
-            <li>aeson-pretty</li>
-            <li>async</li>
-            <li>async-extras</li>
-            <li>blaze-html</li>
-            <li>blaze-markup</li>
-            <li>bytestring</li>
-            <li>cardano-git-rev</li>
-            <li>cardano-node</li>
-            <li>cborg</li>
-            <li>containers</li>
-            <li>contra-tracer</li>
-            <li>directory</li>
-            <li>ekg</li>
-            <li>ekg-core</li>
-            <li>ekg-forward</li>
-            <li>extra</li>
-            <li>filepath</li>
-            <li>optparse-applicative</li>
-            <li>ouroboros-network</li>
-            <li>ouroboros-network-framework</li>
-            <li>snap-blaze</li>
-            <li>snap-core</li>
-            <li>snap-server</li>
-            <li>stm</li>
-            <li>string-qq</li>
-            <li>text</li>
-            <li>threepenny-gui</li>
-            <li>time</li>
-            <li>trace-dispatcher</li>
-            <li>trace-forward</li>
-            <li>unordered-containers</li>
-            <li>yaml</li>
+            <li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;aeson&quot;,&quot;aeson-pretty&quot;,&quot;async&quot;,&quot;async-extras&quot;,&quot;blaze-html&quot;,&quot;blaze-markup&quot;,&quot;bytestring&quot;,&quot;cardano-git-rev&quot;,&quot;cardano-node&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;directory&quot;,&quot;ekg&quot;,&quot;ekg-core&quot;,&quot;ekg-forward&quot;,&quot;extra&quot;,&quot;filepath&quot;,&quot;optparse-applicative&quot;,&quot;ouroboros-network&quot;,&quot;ouroboros-network-framework&quot;,&quot;snap-blaze&quot;,&quot;snap-core&quot;,&quot;snap-server&quot;,&quot;stm&quot;,&quot;string-qq&quot;,&quot;text&quot;,&quot;threepenny-gui&quot;,&quot;time&quot;,&quot;trace-dispatcher&quot;,&quot;trace-forward&quot;,&quot;unordered-containers&quot;,&quot;yaml&quot;]</li>
             </ul>
             <p>if !os(windows)</p>
             <ul class="build-depends">
@@ -140,71 +107,45 @@
           <dt>library demo-forwarder-lib:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.15</li>
-            <li>aeson</li>
-            <li>async</li>
-            <li>bytestring</li>
-            <li>cborg</li>
-            <li>cardano-tracer</li>
-            <li>contra-tracer</li>
-            <li>ekg-core</li>
-            <li>ekg-forward</li>
-            <li>ouroboros-network</li>
-            <li>ouroboros-network-framework</li>
-            <li>time</li>
-            <li>trace-dispatcher</li>
-            <li>trace-forward</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;aeson&quot;,&quot;async&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;cardano-tracer&quot;,&quot;contra-tracer&quot;,&quot;ekg-core&quot;,&quot;ekg-forward&quot;,&quot;ouroboros-network&quot;,&quot;ouroboros-network-framework&quot;,&quot;time&quot;,&quot;trace-dispatcher&quot;,&quot;trace-forward&quot;]</li>
+</ul>
+
+          </dd>
           <dt>library demo-acceptor-lib:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.15</li>
-            <li>async-extras</li>
-            <li>bytestring</li>
-            <li>cardano-tracer</li>
-            <li>containers</li>
-            <li>extra</li>
-            <li>stm</li>
-            <li>text</li>
-            <li>trace-forward</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;async-extras&quot;,&quot;bytestring&quot;,&quot;cardano-tracer&quot;,&quot;containers&quot;,&quot;extra&quot;,&quot;stm&quot;,&quot;text&quot;,&quot;trace-forward&quot;]</li>
+</ul>
+
+          </dd>
           <dt>executable cardano-tracer:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.15</li>
-            <li>cardano-tracer</li>
-            <li>optparse-applicative</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;cardano-tracer&quot;,&quot;optparse-applicative&quot;]</li>
+</ul>
+
+          </dd>
           <dt>executable demo-forwarder:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.15</li>
-            <li>cardano-tracer:demo-forwarder-lib</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;cardano-tracer:demo-forwarder-lib&quot;]</li>
+</ul>
+
+          </dd>
           <dt>executable demo-acceptor:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.15</li>
-            <li>cardano-tracer:demo-acceptor-lib</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;cardano-tracer:demo-acceptor-lib&quot;]</li>
+</ul>
+
+          </dd>
           <dt>test-suite cardano-tracer-bench:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.15</li>
-            <li>cardano-tracer</li>
-            <li>criterion</li>
-            <li>directory</li>
-            <li>extra</li>
-            <li>filepath</li>
-            <li>time</li>
-            <li>trace-dispatcher</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;cardano-tracer&quot;,&quot;criterion&quot;,&quot;directory&quot;,&quot;extra&quot;,&quot;filepath&quot;,&quot;time&quot;,&quot;trace-dispatcher&quot;]</li>
+</ul>
+
+          </dd>
         </dl>
       </dd>
     </dl>

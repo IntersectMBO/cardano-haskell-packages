@@ -89,36 +89,23 @@
           <dt>library cardano-data:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.17</li>
-            <li>aeson</li>
-            <li>cardano-ledger-binary &gt;=1.0</li>
-            <li>containers</li>
-            <li>deepseq</li>
-            <li>mtl</li>
-            <li>nothunks</li>
-            <li>vector</li>
+            <li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.17&quot;,&quot;aeson&quot;,&quot;cardano-ledger-binary &gt;=1.0&quot;,&quot;containers&quot;,&quot;deepseq&quot;,&quot;mtl&quot;,&quot;nothunks&quot;,&quot;vector&quot;]</li>
             </ul>
                       </dd>
           <dt>library testlib:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base</li>
-            <li>containers</li>
-            <li>hspec</li>
-            <li>QuickCheck</li>
-            </ul>
-                      </dd>
+<li>[&quot;base&quot;,&quot;containers&quot;,&quot;hspec&quot;,&quot;QuickCheck&quot;]</li>
+</ul>
+
+          </dd>
           <dt>test-suite cardano-data-tests:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base</li>
-            <li>containers</li>
-            <li>hspec</li>
-            <li>cardano-data</li>
-            <li>cardano-data:testlib</li>
-            <li>QuickCheck</li>
-            </ul>
-                      </dd>
+<li>[&quot;base&quot;,&quot;containers&quot;,&quot;hspec&quot;,&quot;cardano-data&quot;,&quot;cardano-data:testlib&quot;,&quot;QuickCheck&quot;]</li>
+</ul>
+
+          </dd>
         </dl>
       </dd>
     </dl>

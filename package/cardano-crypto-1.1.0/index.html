@@ -87,44 +87,27 @@
           <dt>library cardano-crypto:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.7 &amp;&amp; &lt;5</li>
-            <li>memory</li>
-            <li>deepseq</li>
-            <li>bytestring</li>
-            <li>basement</li>
-            <li>foundation</li>
-            <li>cryptonite &gt;=0.22</li>
-            <li>hashable</li>
-            <li>integer-gmp</li>
+            <li>[&quot;base &gt;=4.7 &amp;&amp; &lt;5&quot;,&quot;memory&quot;,&quot;deepseq&quot;,&quot;bytestring&quot;,&quot;basement&quot;,&quot;foundation&quot;,&quot;cryptonite &gt;=0.22&quot;,&quot;hashable&quot;,&quot;integer-gmp&quot;]</li>
             </ul>
                       </dd>
           <dt>executable golden-tests:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base</li>
-            <li>basement</li>
-            <li>foundation</li>
-            <li>memory</li>
-            <li>bytestring</li>
-            <li>cryptonite</li>
-            <li>cardano-crypto</li>
-            </ul>
-            <p>if flag(golden-tests-exe)</p>
-            <ul class="build-depends">
-            <li>inspector</li>
-            </ul>
+<li>[&quot;base&quot;,&quot;basement&quot;,&quot;foundation&quot;,&quot;memory&quot;,&quot;bytestring&quot;,&quot;cryptonite&quot;,&quot;cardano-crypto&quot;]</li>
+</ul>
+<p>if flag(golden-tests-exe)</p>
+<ul class="build-depends">
+<li>inspector</li>
+</ul>
+
           </dd>
           <dt>test-suite cardano-crypto-bench:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base</li>
-            <li>bytestring</li>
-            <li>memory</li>
-            <li>cryptonite</li>
-            <li>cardano-crypto</li>
-            <li>gauge</li>
-            </ul>
-                      </dd>
+<li>[&quot;base&quot;,&quot;bytestring&quot;,&quot;memory&quot;,&quot;cryptonite&quot;,&quot;cardano-crypto&quot;,&quot;gauge&quot;]</li>
+</ul>
+
+          </dd>
         </dl>
       </dd>
     </dl>

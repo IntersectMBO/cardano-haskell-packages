@@ -87,7 +87,7 @@
           <dt>library Win32-network:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.5 &amp;&amp; &lt;5</li>
+            <li>[&quot;base &gt;=4.5 &amp;&amp; &lt;5&quot;]</li>
             </ul>
             <p>if os(windows)</p>
             <ul class="build-depends">
@@ -99,36 +99,38 @@
           <dt>executable named-pipe-demo:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base</li>
-            </ul>
-            <p>if os(windows)</p>
-            <ul class="build-depends">
-            <li>binary</li>
-            <li>bytestring</li>
-            <li>Win32</li>
-            <li>Win32-network</li>
-            </ul>
+<li>[&quot;base&quot;]</li>
+</ul>
+<p>if os(windows)</p>
+<ul class="build-depends">
+<li>binary</li>
+<li>bytestring</li>
+<li>Win32</li>
+<li>Win32-network</li>
+</ul>
+
           </dd>
           <dt>test-suite test:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base</li>
-            </ul>
-            <p>if os(windows)</p>
-            <ul class="build-depends">
-            <li>async</li>
-            <li>binary</li>
-            <li>bytestring</li>
-            <li>network</li>
-            <li>stm</li>
-            <li>tasty</li>
-            <li>tasty-hunit</li>
-            <li>tasty-quickcheck</li>
-            <li>QuickCheck</li>
-            <li>quickcheck-instances</li>
-            <li>Win32</li>
-            <li>Win32-network</li>
-            </ul>
+<li>[&quot;base&quot;]</li>
+</ul>
+<p>if os(windows)</p>
+<ul class="build-depends">
+<li>async</li>
+<li>binary</li>
+<li>bytestring</li>
+<li>network</li>
+<li>stm</li>
+<li>tasty</li>
+<li>tasty-hunit</li>
+<li>tasty-quickcheck</li>
+<li>QuickCheck</li>
+<li>quickcheck-instances</li>
+<li>Win32</li>
+<li>Win32-network</li>
+</ul>
+
           </dd>
         </dl>
       </dd>

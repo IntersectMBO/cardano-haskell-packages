@@ -87,7 +87,7 @@
           <dt>library int-cast:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.7 &amp;&amp; &lt;4.17</li>
+            <li>[&quot;base &gt;=4.7 &amp;&amp; &lt;4.17&quot;]</li>
             </ul>
             <p>if !impl(ghc &gt;=7.10)</p>
             <ul class="build-depends">
@@ -97,16 +97,13 @@
           <dt>test-suite int-cast-test:</dt>
           <dd>
             <ul class="build-depends">
-            <li>int-cast</li>
-            <li>base</li>
-            <li>QuickCheck &gt;=2.14 &amp;&amp; &lt;2.15</li>
-            <li>test-framework &gt;=0.8 &amp;&amp; &lt;0.9</li>
-            <li>test-framework-quickcheck2 &gt;=0.3 &amp;&amp; &lt;0.4</li>
-            </ul>
-            <p>if !impl(ghc &gt;=7.10)</p>
-            <ul class="build-depends">
-            <li>nats</li>
-            </ul>
+<li>[&quot;int-cast&quot;,&quot;base&quot;,&quot;QuickCheck &gt;=2.14 &amp;&amp; &lt;2.15&quot;,&quot;test-framework &gt;=0.8 &amp;&amp; &lt;0.9&quot;,&quot;test-framework-quickcheck2 &gt;=0.3 &amp;&amp; &lt;0.4&quot;]</li>
+</ul>
+<p>if !impl(ghc &gt;=7.10)</p>
+<ul class="build-depends">
+<li>nats</li>
+</ul>
+
           </dd>
         </dl>
       </dd>

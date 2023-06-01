@@ -263,13 +263,7 @@ the speed of a complex program.
           <dt>library streaming:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.8 &amp;&amp; &lt;5</li>
-            <li>mtl &gt;=2.1 &amp;&amp; &lt;2.4</li>
-            <li>mmorph &gt;=1.0 &amp;&amp; &lt;1.3</li>
-            <li>transformers &gt;=0.4 &amp;&amp; &lt;0.7</li>
-            <li>transformers-base &lt;0.5</li>
-            <li>ghc-prim</li>
-            <li>containers</li>
+            <li>[&quot;base &gt;=4.8 &amp;&amp; &lt;5&quot;,&quot;mtl &gt;=2.1 &amp;&amp; &lt;2.4&quot;,&quot;mmorph &gt;=1.0 &amp;&amp; &lt;1.3&quot;,&quot;transformers &gt;=0.4 &amp;&amp; &lt;0.7&quot;,&quot;transformers-base &lt;0.5&quot;,&quot;ghc-prim&quot;,&quot;containers&quot;]</li>
             </ul>
             <p>if !impl(ghc &gt;=8.0)</p>
             <ul class="build-depends">
@@ -280,12 +274,10 @@ the speed of a complex program.
           <dt>test-suite spec:</dt>
           <dd>
             <ul class="build-depends">
-            <li>streaming</li>
-            <li>QuickCheck &gt;=2.13</li>
-            <li>hspec &gt;=2.7</li>
-            <li>base &gt;=4.8 &amp;&amp; &lt;5</li>
-            </ul>
-                      </dd>
+<li>[&quot;streaming&quot;,&quot;QuickCheck &gt;=2.13&quot;,&quot;hspec &gt;=2.7&quot;,&quot;base &gt;=4.8 &amp;&amp; &lt;5&quot;]</li>
+</ul>
+
+          </dd>
         </dl>
       </dd>
     </dl>

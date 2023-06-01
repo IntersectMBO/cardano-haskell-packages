@@ -89,60 +89,7 @@
           <dt>library cardano-cli:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.15</li>
-            <li>aeson &gt;=1.5.6.0</li>
-            <li>aeson-pretty &gt;=0.8.5</li>
-            <li>ansi-terminal</li>
-            <li>attoparsec</li>
-            <li>bech32 &gt;=1.1.0</li>
-            <li>binary</li>
-            <li>bytestring</li>
-            <li>base16-bytestring &gt;=1.0</li>
-            <li>canonical-json</li>
-            <li>cardano-api</li>
-            <li>cardano-binary</li>
-            <li>cardano-git-rev</li>
-            <li>cardano-crypto</li>
-            <li>cardano-crypto-class</li>
-            <li>cardano-crypto-wrapper</li>
-            <li>cardano-data</li>
-            <li>cardano-ledger-alonzo</li>
-            <li>cardano-ledger-byron</li>
-            <li>cardano-ledger-core</li>
-            <li>cardano-ledger-shelley-ma</li>
-            <li>cardano-prelude</li>
-            <li>cardano-protocol-tpraos</li>
-            <li>cardano-slotting</li>
-            <li>vector-map</li>
-            <li>contra-tracer</li>
-            <li>cborg &gt;=0.2.4 &amp;&amp; &lt;0.3</li>
-            <li>containers</li>
-            <li>cryptonite</li>
-            <li>directory</li>
-            <li>filepath</li>
-            <li>formatting</li>
-            <li>iproute</li>
-            <li>network</li>
-            <li>optparse-applicative-fork</li>
-            <li>ouroboros-consensus</li>
-            <li>ouroboros-consensus-byron</li>
-            <li>ouroboros-consensus-cardano</li>
-            <li>ouroboros-consensus-protocol</li>
-            <li>ouroboros-consensus-shelley</li>
-            <li>ouroboros-network</li>
-            <li>parsec</li>
-            <li>prettyprinter</li>
-            <li>cardano-ledger-shelley</li>
-            <li>set-algebra</li>
-            <li>split</li>
-            <li>strict-containers</li>
-            <li>text</li>
-            <li>time</li>
-            <li>transformers</li>
-            <li>transformers-except</li>
-            <li>utf8-string</li>
-            <li>vector</li>
-            <li>yaml</li>
+            <li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;aeson &gt;=1.5.6.0&quot;,&quot;aeson-pretty &gt;=0.8.5&quot;,&quot;ansi-terminal&quot;,&quot;attoparsec&quot;,&quot;bech32 &gt;=1.1.0&quot;,&quot;binary&quot;,&quot;bytestring&quot;,&quot;base16-bytestring &gt;=1.0&quot;,&quot;canonical-json&quot;,&quot;cardano-api&quot;,&quot;cardano-binary&quot;,&quot;cardano-git-rev&quot;,&quot;cardano-crypto&quot;,&quot;cardano-crypto-class&quot;,&quot;cardano-crypto-wrapper&quot;,&quot;cardano-data&quot;,&quot;cardano-ledger-alonzo&quot;,&quot;cardano-ledger-byron&quot;,&quot;cardano-ledger-core&quot;,&quot;cardano-ledger-shelley-ma&quot;,&quot;cardano-prelude&quot;,&quot;cardano-protocol-tpraos&quot;,&quot;cardano-slotting&quot;,&quot;vector-map&quot;,&quot;contra-tracer&quot;,&quot;cborg &gt;=0.2.4 &amp;&amp; &lt;0.3&quot;,&quot;containers&quot;,&quot;cryptonite&quot;,&quot;directory&quot;,&quot;filepath&quot;,&quot;formatting&quot;,&quot;iproute&quot;,&quot;network&quot;,&quot;optparse-applicative-fork&quot;,&quot;ouroboros-consensus&quot;,&quot;ouroboros-consensus-byron&quot;,&quot;ouroboros-consensus-cardano&quot;,&quot;ouroboros-consensus-protocol&quot;,&quot;ouroboros-consensus-shelley&quot;,&quot;ouroboros-network&quot;,&quot;parsec&quot;,&quot;prettyprinter&quot;,&quot;cardano-ledger-shelley&quot;,&quot;set-algebra&quot;,&quot;split&quot;,&quot;strict-containers&quot;,&quot;text&quot;,&quot;time&quot;,&quot;transformers&quot;,&quot;transformers-except&quot;,&quot;utf8-string&quot;,&quot;vector&quot;,&quot;yaml&quot;]</li>
             </ul>
             <p>if os(windows)</p>
             <ul class="build-depends">
@@ -152,70 +99,28 @@
           <dt>executable cardano-cli:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.15</li>
-            <li>cardano-cli</li>
-            <li>cardano-crypto-class</li>
-            <li>cardano-prelude</li>
-            <li>optparse-applicative-fork</li>
-            <li>transformers-except</li>
-            </ul>
-            <p>if !os(windows)</p>
-            <ul class="build-depends">
-            <li>unix</li>
-            </ul>
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;cardano-cli&quot;,&quot;cardano-crypto-class&quot;,&quot;cardano-prelude&quot;,&quot;optparse-applicative-fork&quot;,&quot;transformers-except&quot;]</li>
+</ul>
+<p>if !os(windows)</p>
+<ul class="build-depends">
+<li>unix</li>
+</ul>
+
           </dd>
           <dt>test-suite cardano-cli-test:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.15</li>
-            <li>aeson</li>
-            <li>bech32 &gt;=1.1.0</li>
-            <li>bytestring</li>
-            <li>base16-bytestring</li>
-            <li>cardano-api</li>
-            <li>cardano-api:gen</li>
-            <li>cardano-cli</li>
-            <li>cardano-node</li>
-            <li>cardano-prelude</li>
-            <li>cardano-slotting</li>
-            <li>containers</li>
-            <li>directory</li>
-            <li>exceptions</li>
-            <li>filepath</li>
-            <li>hedgehog</li>
-            <li>hedgehog-extras</li>
-            <li>parsec</li>
-            <li>text</li>
-            <li>time</li>
-            <li>transformers</li>
-            <li>yaml</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;aeson&quot;,&quot;bech32 &gt;=1.1.0&quot;,&quot;bytestring&quot;,&quot;base16-bytestring&quot;,&quot;cardano-api&quot;,&quot;cardano-api:gen&quot;,&quot;cardano-cli&quot;,&quot;cardano-node&quot;,&quot;cardano-prelude&quot;,&quot;cardano-slotting&quot;,&quot;containers&quot;,&quot;directory&quot;,&quot;exceptions&quot;,&quot;filepath&quot;,&quot;hedgehog&quot;,&quot;hedgehog-extras&quot;,&quot;parsec&quot;,&quot;text&quot;,&quot;time&quot;,&quot;transformers&quot;,&quot;yaml&quot;]</li>
+</ul>
+
+          </dd>
           <dt>test-suite cardano-cli-golden:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.14 &amp;&amp; &lt;4.15</li>
-            <li>aeson &gt;=1.5.6.0</li>
-            <li>base16-bytestring</li>
-            <li>bytestring</li>
-            <li>cardano-api</li>
-            <li>cardano-cli</li>
-            <li>cardano-crypto-wrapper</li>
-            <li>cardano-ledger-byron</li>
-            <li>cardano-prelude</li>
-            <li>cborg</li>
-            <li>containers</li>
-            <li>Diff</li>
-            <li>directory</li>
-            <li>exceptions</li>
-            <li>filepath</li>
-            <li>hedgehog</li>
-            <li>hedgehog-extras</li>
-            <li>text</li>
-            <li>time</li>
-            <li>unordered-containers</li>
-            </ul>
-                      </dd>
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;aeson &gt;=1.5.6.0&quot;,&quot;base16-bytestring&quot;,&quot;bytestring&quot;,&quot;cardano-api&quot;,&quot;cardano-cli&quot;,&quot;cardano-crypto-wrapper&quot;,&quot;cardano-ledger-byron&quot;,&quot;cardano-prelude&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;Diff&quot;,&quot;directory&quot;,&quot;exceptions&quot;,&quot;filepath&quot;,&quot;hedgehog&quot;,&quot;hedgehog-extras&quot;,&quot;text&quot;,&quot;time&quot;,&quot;unordered-containers&quot;]</li>
+</ul>
+
+          </dd>
         </dl>
       </dd>
     </dl>

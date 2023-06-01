@@ -89,21 +89,7 @@
           <dt>library network-mux:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base &gt;=4.9 &amp;&amp; &lt;4.15</li>
-            <li>io-classes &gt;=0.1 &amp;&amp; &lt;0.3</li>
-            <li>strict-stm &gt;=0.1 &amp;&amp; &lt;0.2</li>
-            <li>contra-tracer &gt;=0.1 &amp;&amp; &lt;0.2</li>
-            <li>monoidal-synchronisation &gt;=0.1 &amp;&amp; &lt;0.2</li>
-            <li>array &gt;=0.5 &amp;&amp; &lt;0.6</li>
-            <li>binary &gt;=0.8 &amp;&amp; &lt;0.11</li>
-            <li>bytestring &gt;=0.10 &amp;&amp; &lt;0.11</li>
-            <li>containers &gt;=0.5 &amp;&amp; &lt;0.7</li>
-            <li>network &gt;=3.1.2 &amp;&amp; &lt;3.2</li>
-            <li>process &gt;=1.6 &amp;&amp; &lt;1.7</li>
-            <li>statistics-linreg &gt;=0.3 &amp;&amp; &lt;0.4</li>
-            <li>vector &gt;=0.12 &amp;&amp; &lt;0.13</li>
-            <li>time &gt;=1.9.1 &amp;&amp; &lt;1.11</li>
-            <li>quiet</li>
+            <li>[&quot;base &gt;=4.9 &amp;&amp; &lt;4.15&quot;,&quot;io-classes &gt;=0.1 &amp;&amp; &lt;0.3&quot;,&quot;strict-stm &gt;=0.1 &amp;&amp; &lt;0.2&quot;,&quot;contra-tracer &gt;=0.1 &amp;&amp; &lt;0.2&quot;,&quot;monoidal-synchronisation &gt;=0.1 &amp;&amp; &lt;0.2&quot;,&quot;array &gt;=0.5 &amp;&amp; &lt;0.6&quot;,&quot;binary &gt;=0.8 &amp;&amp; &lt;0.11&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.11&quot;,&quot;containers &gt;=0.5 &amp;&amp; &lt;0.7&quot;,&quot;network &gt;=3.1.2 &amp;&amp; &lt;3.2&quot;,&quot;process &gt;=1.6 &amp;&amp; &lt;1.7&quot;,&quot;statistics-linreg &gt;=0.3 &amp;&amp; &lt;0.4&quot;,&quot;vector &gt;=0.12 &amp;&amp; &lt;0.13&quot;,&quot;time &gt;=1.9.1 &amp;&amp; &lt;1.11&quot;,&quot;quiet&quot;]</li>
             </ul>
             <p>if os(windows)</p>
             <ul class="build-depends">
@@ -114,69 +100,36 @@
           <dt>executable mux-demo:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base</li>
-            <li>directory</li>
-            <li>network-mux</li>
-            <li>io-classes</li>
-            <li>contra-tracer</li>
-            <li>stm</li>
-            <li>bytestring</li>
-            <li>cborg</li>
-            <li>serialise</li>
-            </ul>
-            <p>if !os(windows)</p>
-            <ul class="build-depends">
-            <li>network</li>
-            </ul>
+<li>[&quot;base&quot;,&quot;directory&quot;,&quot;network-mux&quot;,&quot;io-classes&quot;,&quot;contra-tracer&quot;,&quot;stm&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;serialise&quot;]</li>
+</ul>
+<p>if !os(windows)</p>
+<ul class="build-depends">
+<li>network</li>
+</ul>
 <p>if os(windows)</p>
-            <ul class="build-depends">
-            <li>Win32</li>
-            <li>Win32-network</li>
-            </ul>
+<ul class="build-depends">
+<li>Win32</li>
+<li>Win32-network</li>
+</ul>
+
           </dd>
           <dt>executable cardano-ping:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base</li>
-            <li>aeson</li>
-            <li>network-mux</li>
-            <li>io-classes</li>
-            <li>strict-stm</li>
-            <li>contra-tracer</li>
-            <li>bytestring</li>
-            <li>cborg</li>
-            <li>network</li>
-            <li>tdigest</li>
-            <li>text</li>
-            </ul>
-                      </dd>
+<li>[&quot;base&quot;,&quot;aeson&quot;,&quot;network-mux&quot;,&quot;io-classes&quot;,&quot;strict-stm&quot;,&quot;contra-tracer&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;network&quot;,&quot;tdigest&quot;,&quot;text&quot;]</li>
+</ul>
+
+          </dd>
           <dt>test-suite test:</dt>
           <dd>
             <ul class="build-depends">
-            <li>base</li>
-            <li>io-classes</li>
-            <li>strict-stm</li>
-            <li>io-sim &gt;=0.2 &amp;&amp; &lt;0.3</li>
-            <li>contra-tracer</li>
-            <li>network-mux</li>
-            <li>Win32-network</li>
-            <li>binary</li>
-            <li>bytestring</li>
-            <li>cborg</li>
-            <li>containers</li>
-            <li>network</li>
-            <li>process</li>
-            <li>QuickCheck</li>
-            <li>splitmix</li>
-            <li>serialise</li>
-            <li>tasty</li>
-            <li>tasty-quickcheck</li>
-            <li>time</li>
-            </ul>
-            <p>if os(windows)</p>
-            <ul class="build-depends">
-            <li>Win32 &gt;=2.5.4.1 &amp;&amp; &lt;3.0</li>
-            </ul>
+<li>[&quot;base&quot;,&quot;io-classes&quot;,&quot;strict-stm&quot;,&quot;io-sim &gt;=0.2 &amp;&amp; &lt;0.3&quot;,&quot;contra-tracer&quot;,&quot;network-mux&quot;,&quot;Win32-network&quot;,&quot;binary&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;network&quot;,&quot;process&quot;,&quot;QuickCheck&quot;,&quot;splitmix&quot;,&quot;serialise&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;,&quot;time&quot;]</li>
+</ul>
+<p>if os(windows)</p>
+<ul class="build-depends">
+<li>Win32 &gt;=2.5.4.1 &amp;&amp; &lt;3.0</li>
+</ul>
+
           </dd>
         </dl>
       </dd>
