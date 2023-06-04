@@ -3,11 +3,11 @@
     "CHaP": {
       "flake": false,
       "locked": {
-        "lastModified": 1678854831,
-        "narHash": "sha256-HzXVzCPJSnJGxatqOmbcLc23qDHvF4itTkqk4oxi3dk=",
+        "lastModified": 1685707241,
+        "narHash": "sha256-3vwY0mo8lf+0n+H6g3giXtVLQeXt/l9+FlsOpfi7CwM=",
         "owner": "input-output-hk",
         "repo": "cardano-haskell-packages",
-        "rev": "329015d09ac4dc74a97226d0aa5b1705e2c1d52f",
+        "rev": "2baceb51b8f3175e05e94fdd4780cc717aeb2a6f",
         "type": "github"
       },
       "original": {
@@ -199,11 +199,11 @@
     "hackage-nix": {
       "flake": false,
       "locked": {
-        "lastModified": 1685147209,
-        "narHash": "sha256-boeGZPjX02AjzIqTHf87K5rj7ll+yyZovU8HGWiCucA=",
+        "lastModified": 1685751906,
+        "narHash": "sha256-EesvKE6jz0lxyiumNYJhx7RbfCi5MAVBQm7JsQsJR0g=",
         "owner": "input-output-hk",
         "repo": "hackage.nix",
-        "rev": "bcf306c274ae25edde69215b07d5559bad5249e3",
+        "rev": "277ea598c9760cd3e34e49e9c5c11a4e5a438e68",
         "type": "github"
       },
       "original": {
