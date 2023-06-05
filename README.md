@@ -232,9 +232,18 @@ There is a convenience script for adding a revision to CHaP:
 $ ./scripts/add-revision.sh _repo PACKAGE_NAME PACKAGE_VERSION
 ```
 
-You need a [built package repository](#how-to-build-the-cabal-package-repository) in order to use the script.
-It will add a new revision and copy the _current_ cabal file in as the revised cabal file.
-You can then edit that file and commit the result.
+The full workflow looks like this:
+```bash
+git clone git@github.com:input-output-hk/cardano-haskell-packages.git && cd cardano-haskell-packages
+git checkout -b $USER/${PACKAGE_NAME}-rev
+curl -LO https://input-output-hk.github.io/cardano-haskell-packages/01-index.tar.gz
+mkdir -p _repo/index && tar -C _repo/index -xzf 01-index.tar.gz
+./scripts/add-revision.sh _repo $PACKAGE_NAME $PACKAGE_VERSION
+<edit>
+<commit>
+git push origin $USER/${PACKAGE_NAME}-rev
+```
+
 
 ### How to add a patched versions of a Hackage package 
 
