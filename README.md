@@ -235,7 +235,7 @@ There is a convenience script for adding a revision to CHaP:
 $ ./scripts/add-revision.sh _repo PACKAGE_NAME PACKAGE_VERSION
 ```
 
-You need a [built package repository](#how-to-build-the-cabal-package-repository) in order to use the script.
+You need a [built package repository](#how-to-get-the-built-cabal-package-repository) in order to use the script.
 It will add a new revision and copy the _current_ cabal file in as the revised cabal file.
 You can then edit that file and commit the result.
 
@@ -278,7 +278,7 @@ For most contributors this section is not going to be necessary, and you can rel
 
 However if you are making a large number of changes (e.g. many revisions), it can be useful to test your work before making a PR.
 
-### How to get the built Cabal package repository ...
+### How to get the built Cabal package repository
 
 The Cabal package repository itself is built using the tool `foliage`. 
 You can either build it yourself locally, which can be convenient or necessary if you have local changes; or fetch the latest version which is stored in git.
