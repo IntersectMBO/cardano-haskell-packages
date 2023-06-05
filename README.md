@@ -3,8 +3,11 @@
 * [All packages](https://input-output-hk.github.io/cardano-haskell-packages/all-packages/).
 * [All package versions](https://input-output-hk.github.io/cardano-haskell-packages/all-package-versions/).
 
-IMPORTANT: If you're here because you need to publish a new version of your package, you
-probably want to read the section on [adding a package from GitHub](#-from-github).
+*Top How-Tos*
+
+* [Adding a package from GitHub](#-from-github)
+* [Making a metadata revision of an already-released package version](#how-to-add-a-new-package-metadata-revision)
+* [Adding a patched version of a Hackage package](#how-to-add-a-patched-versions-of-a-hackage-package)
 
 This is a Cabal package repository ("CHaP") whose purpose is to contain all the Haskell
 packages used by the Cardano open-source project which are not on Hackage.
@@ -227,12 +230,12 @@ CHaP supports package metadata revisions just like Hackage. These allow you to p
 file for a package version. The primary use of this is to tweak the dependency bounds of a package. 
 In principle you can change other things too, but this is generally frowned upon.
 
-There is a convenience script for adding a revision to CHaP:
+This repository contains a convenience script for adding a revision to CHaP:
 ```
 $ ./scripts/add-revision.sh _repo PACKAGE_NAME PACKAGE_VERSION
 ```
 
-You need a [built package repository](#how-to-build-the-cabal-package-repository) in order to use the script.
+`_repo` needs to point to a [built package repository](#how-to-get-the-built-cabal-package-repository).
 It will add a new revision and copy the _current_ cabal file in as the revised cabal file.
 You can then edit that file and commit the result.
 
@@ -275,9 +278,26 @@ For most contributors this section is not going to be necessary, and you can rel
 
 However if you are making a large number of changes (e.g. many revisions), it can be useful to test your work before making a PR.
 
-### How to build the Cabal package repository
+### How to get the built Cabal package repository
 
-The Cabal package repository itself is built using the tool `foliage`. `foliage` is available in the Nix dev shell, which you can get into using `nix develop`.
+The Cabal package repository itself is built using the tool `foliage`. 
+You can either fetch the latest version which is stored in git; or build it yourself locally, which can be convenient or necessary if you have local changes.
+
+### ... by downloading it from Github
+
+The built repository is stored in the `repo` branch of CHaP itself.
+You can get the contents of the `repo` branch from Github at https://github.com/input-output-hk/cardano-haskell-packages/archive/refs/heads/repo.zip .
+
+Or you can check out that branch and copy the contents, e.g.
+```
+git checkout repo
+cp -aR . _repo
+git checkout -
+```
+
+#### ... by building it locally
+
+`foliage` is available in the Nix dev shell, which you can get into using `nix develop`.
 
 To build the repository, run `foliage build -j 0 --write-metadata`. This will build the repository and put it in `_repo`.
 
