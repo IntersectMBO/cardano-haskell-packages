@@ -3,8 +3,11 @@
 * [All packages](https://input-output-hk.github.io/cardano-haskell-packages/all-packages/).
 * [All package versions](https://input-output-hk.github.io/cardano-haskell-packages/all-package-versions/).
 
-IMPORTANT: If you're here because you need to publish a new version of your package, you
-probably want to read the section on [adding a package from GitHub](#-from-github).
+*Top How-Tos*
+
+* [Adding a package from GitHub](#-from-github)
+* [Making a metadata revision of an already-released package version](#how-to-add-a-new-package-metadata-revision)
+* [Adding a patched version of a Hackage package](#how-to-add-a-patched-versions-of-a-hackage-package)
 
 This is a Cabal package repository ("CHaP") whose purpose is to contain all the Haskell
 packages used by the Cardano open-source project which are not on Hackage.
