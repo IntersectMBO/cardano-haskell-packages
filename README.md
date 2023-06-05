@@ -295,7 +295,7 @@ The built repository is stored in the `repo` branch of CHaP itself.
 You can just check out that branch and copy the contents, e.g.
 ```
 git checkout repo
-cp -aR . /tmp/repo
+cp -aR . _repo
 git checkout -
 ```
 
