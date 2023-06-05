@@ -275,11 +275,30 @@ For most contributors this section is not going to be necessary, and you can rel
 
 However if you are making a large number of changes (e.g. many revisions), it can be useful to test your work before making a PR.
 
-### How to build the Cabal package repository
+### How to get the built Cabal package repository ...
 
-The Cabal package repository itself is built using the tool `foliage`. `foliage` is available in the Nix dev shell, which you can get into using `nix develop`.
+The Cabal package repository itself is built using the tool `foliage`. 
+You can either build it yourself locally, which can be convenient or necessary if you have local changes; or fetch the latest version which is stored in git.
+
+#### ... by building it locally
+
+`foliage` is available in the Nix dev shell, which you can get into using `nix develop`.
 
 To build the repository, run `foliage build -j 0 --write-metadata`. This will build the repository and put it in `_repo`.
+
+### ... by fetching it from Git
+
+The built repository is stored in the `repo` branch of CHaP itself.
+You can just check out that branch and copy the contents, e.g.
+```
+git checkout repo
+cp -aR . /tmp/repo
+git checkout -
+```
+
+### ... by downloading it from Github
+
+Alternatively, you can get the contents of the `repo` branch from Github at https://github.com/input-output-hk/cardano-haskell-packages/archive/refs/heads/repo.zip .
 
 ### How to test changes 
 
