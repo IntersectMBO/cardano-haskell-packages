@@ -15,7 +15,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v3
         with:
           extra-conf: |
-            accept-flake-config=true
+            accept-flake-config = true
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v19
         with:
