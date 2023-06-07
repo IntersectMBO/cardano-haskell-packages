@@ -5,7 +5,7 @@ set -o pipefail
 SCRIPT_DIR=$(dirname "$(which "$0")")
 
 function usage {
-  echo "Usage $(basename "$0") BUILT_REPO PKG_NAME PKG_VERSION"
+  echo "Usage $(basename "$0") PKG_NAME PKG_VERSION"
   echo "  Adds a new revision with the existing cabal file for that package"
   echo "  version. Requires a built repository. Does not commit."
   exit
@@ -28,14 +28,17 @@ done
 
 shift $((OPTIND - 1))
 
-BUILT_REPO=$1
-PKG_NAME=$2
-PKG_VERSION=$3
+PKG_NAME=$1
+PKG_VERSION=$2
 
-if ! shift 3; then
+if ! shift 2; then
   usage
   exit 1
 fi
+
+BUILT_REPO=$(mktemp -d)
+mkdir -p $BUILT_REPO/index
+curl -L https://input-output-hk.github.io/cardano-haskell-packages/01-index.tar.gz | tar -C $BUILT_REPO/index -xz
 
 META_DIR="_sources/$PKG_NAME/$PKG_VERSION"
 META_FILE="$META_DIR/meta.toml"
@@ -63,10 +66,11 @@ else
   LATEST_REVISION=$(echo "$CURRENT_REVISIONS" | sort | tail -n1)
   LATEST_REVISION_NUMBER=$(basename "$LATEST_REVISION" | cut -f 1 -d '.')
   NEW_REVISION_NUMBER=$((LATEST_REVISION_NUMBER+1))
+  CURRENT_CABAL_FILE="$REVISIONS_DIR/$LATEST_REVISION_NUMBER.cabal"
 fi
 
 NEW_CABAL_FILE="$REVISIONS_DIR/$NEW_REVISION_NUMBER.cabal"
-echo "Moving $CURRENT_CABAL_FILE to $NEW_CABAL_FILE"
+echo "Copying $CURRENT_CABAL_FILE to $NEW_CABAL_FILE"
 
 mkdir -p "$REVISIONS_DIR"
 cp "$CURRENT_CABAL_FILE" "$NEW_CABAL_FILE"
