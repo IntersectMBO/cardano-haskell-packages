@@ -1,0 +1,3 @@
+timestamp = 2023-06-07T12:32:55Z
+github = { repo = "input-output-hk/cardano-node", rev = "6b601db8c7fcd3b55e78244c21aca2d17ca3aeaa" }
+subdir = 'bench/plutus-scripts-bench'
