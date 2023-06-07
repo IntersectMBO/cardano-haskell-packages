@@ -232,11 +232,9 @@ In principle you can change other things too, but this is generally frowned upon
 
 This repository contains a convenience script for adding a revision to CHaP:
 ```
-$ ./scripts/add-revision.sh _repo PACKAGE_NAME PACKAGE_VERSION
+$ ./scripts/add-revision.sh PACKAGE_NAME PACKAGE_VERSION
 ```
 
-`_repo` needs to point to a [built package repository](#how-to-get-the-built-cabal-package-repository).
-It will add a new revision and copy the _current_ cabal file in as the revised cabal file.
 You can then edit that file and commit the result.
 
 ### How to add a patched versions of a Hackage package 
