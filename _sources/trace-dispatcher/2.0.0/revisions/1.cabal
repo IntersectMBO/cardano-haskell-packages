@@ -56,7 +56,7 @@ library
                       , hostname
                       , network
                       , optparse-applicative-fork
-                      , ouroboros-network ^>= 0.8.1.0
+                      , ouroboros-network <0.7
                       , ouroboros-network-api
                       , ouroboros-network-framework
                       , serialise
