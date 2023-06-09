@@ -12,6 +12,7 @@ on:
 
 env:
   NIX_CONFIG: accept-flake-config = true
+  token: ${{ secrets.NIXBUILD_TOKEN }}
 
 jobs:
   check:
@@ -117,10 +118,17 @@ jobs:
         # The > is the "YAML folded string" marker, which replaces 
         # newlines with spaces, since the usual bash idiom of \ 
         # doesn't work for some reason
+        # 
+        # See https://github.com/nixbuild/feedback/issues/14 for
+        # why some of these options are here
         run: >
           nix build .#allSmokeTestPackages
           -L 
           --override-input CHaP path:_repo 
+          --eval-store auto
+          --store ssh-ng://eu.nixbuild.net 
+          --max-jobs 2
+          --builders ""
           --show-trace
 
   build-new-packages:
@@ -162,6 +170,10 @@ jobs:
           nix build .#allPackages
           -L 
           --override-input CHaP path:_repo 
+          --eval-store auto 
+          --store ssh-ng://eu.nixbuild.net 
+          --max-jobs 2
+          --builders ""
           --show-trace
 
   deploy-check:
