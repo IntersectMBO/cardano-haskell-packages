@@ -196,7 +196,7 @@ jobs:
 
   deploy:
     # This job is fine to run on GitHub provided (free) runners.
-    runs-on: ubunutu-latest
+    runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: 
       - check
