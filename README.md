@@ -426,4 +426,30 @@ There are some scripts for dealing with this:
 An easy way to run `update-timestamps-and-fixup` on a multi-commit PR is to run `git rebase main --exec "./scripts/update-timestamps-and-fixup.sh HEAD"`.
 This will run the script at every step of the rebase on `HEAD` (i.e. the commit you have reached).
 
+### Debugging solver issues
+
+Sometimes you may hit issues that are related to cabal's constraint solver making strange choices.
+For example, you are making a PR to release `foo-X`, which depends on `bar` via `baz`. 
+But when the CI builds the package, instead of using the newest `bar-Y`, cabal inexplicably decides to build a very old verison of `bar` that either a) leads to solver errors; or b) leads to compilation errors.
+
+The root cause is usually that the solver can't pick the version of `bar` that you want because it conflicts with your dependencies in some way, but it is often not obvious why.
+It's tricky to diagnose, since you'll sometimes want to rebuild the repository to add revisions while you're working.
+
+The easiest way is to build the package in question [with nix](#-by-building-packages-with-nix), i.e. something like this:
+```
+# repeat this whenever you change the repository, e.g. by adding a revision
+> foliage build -j 0 --write-metadata
+> nix build 
+  --override-input CHaP /home/user/cardano-haskell-packages/_repo
+  .#"ghc926/foo/X"
+```
+
+There are then two ways to make progress:
+1. Add a constraint to force the good case. If you are expecting to build with `bar-Y`, you can add a `bar == Y` constraint and the solver should tell you why it's impossible! You can either add this to the `cabal.project` specified in `nix/builder.nix`, or add `.addConstraint "bar == Y"` to the nix invocation.
+2. Make a revision to rule out the bad case. If your build fails because `baz-Z` can't build with `bar-P`, then `baz-Z` _should_ have a constraint that excludes `bar-P`. You can add this constraint by making a revision to `baz-Z` and try again.
+
+Both of these should get you to a _different_ error. 
+The advantage of adding constraints is that it tends to more directly reveal the problem as it focusses on what you want to happen.
+The advantage of the revision is that it permanently records the incompatibility information, which is useful for future people.
+
 [`hackage.nix`]: https://github.com/input-output-hk/hackage.nix
