@@ -195,7 +195,8 @@ jobs:
           ./src/scripts/check-archive-extension.sh repo/01-index.tar built-repo/01-index.tar
 
   deploy:
-    runs-on: nixos
+    # This job is fine to run on GitHub provided (free) runners.
+    runs-on: ubunutu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: 
       - check
