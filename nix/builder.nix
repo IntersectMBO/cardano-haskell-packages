@@ -44,17 +44,6 @@ let
             secure: True
 
           extra-packages: ${package-id}
-
-          -- crypton 0.31 (first release) cannot be linked into
-          -- a project alongside cryptonite (https://github.com/kazu-yamamoto/crypton/issues/6)
-          --
-          -- This can be removed once a new release is cut including
-          -- https://github.com/kazu-yamamoto/crypton/pull/8
-          source-repository-package
-            type: git
-            location: https://github.com/kazu-yamamoto/crypton
-            tag: 419121ec6fcd450f62f2b71f975517d4b337d1b7
-            --sha256: 11bv2fkk4l44sffb0k7w8zkh9vrisafnrjy2akhc3pn4zc9z7gnv
         '';
       });
 
