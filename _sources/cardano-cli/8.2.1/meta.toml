@@ -1,0 +1,3 @@
+timestamp = 2023-06-23T17:51:49Z
+github = { repo = "input-output-hk/cardano-cli", rev = "d3bbfa41341221789a3a0d0fd471908e5eeb0fb9" }
+subdir = 'cardano-cli'
