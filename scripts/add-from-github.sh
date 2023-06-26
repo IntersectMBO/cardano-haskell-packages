@@ -6,7 +6,7 @@ set -o pipefail
 SCRIPT_DIR=$(dirname "$(which "$0")")
 
 function usage {
-  echo "Usage $(basename "$0") [-r REVISION] [-v VERSION] REPO_URL REV [SUBDIRS...]"
+  echo "Usage $(basename "$0") [-r REVISION] [-v VERSION] REPO_URL COMMIT-SHA [SUBDIRS...]"
   echo
   echo "        -r REVISION     adds .0.0.0.0.REVISION to the package version"
   echo "        -v VERSION      uses VERSION as the package version"

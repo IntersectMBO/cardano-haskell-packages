@@ -208,10 +208,16 @@ adding a package from a GitHub repository.
 
 ```console
 $ ./scripts/add-from-github.sh
-Usage add-from-github.sh [-r REVISION] [-v VERSION] REPO_URL REV [SUBDIRS...]
+Usage add-from-github.sh [-r REVISION] [-v VERSION] REPO_URL COMMIT-SHA [SUBDIRS...]
 
         -r REVISION     adds .0.0.0.0.REVISION to the package version
         -v VERSION      uses VERSION as the package version
+```
+
+For example, to add version `1.8.0.0` from `plutus` from commit `75267027f157f1312964e7126280920d1245c52d`, run 
+
+```console
+./scripts/add-from-github.sh -v 1.8.0.0 https://github.com/input-output-hk/plutus 75267027f157f1312964e7126280920d1245c52d
 ```
 
 The script will:
