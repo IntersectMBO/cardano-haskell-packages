@@ -212,12 +212,15 @@ Usage add-from-github.sh [-r REVISION] [-v VERSION] REPO_URL COMMIT-SHA [SUBDIRS
 
         -r REVISION     adds .0.0.0.0.REVISION to the package version
         -v VERSION      uses VERSION as the package version
+        REPO_URL        the repository's Github URL
+        COMMIT_SHA      the commit SHA that corresponds to the revision/version
+        SUBDIRS         the list of relevant sub-directories
 ```
 
-For example, to add version `1.8.0.0` from `plutus` from commit `75267027f157f1312964e7126280920d1245c52d`, run 
+For example, to add a new version from `plutus`'s `plutus-core` and `plutus-ledger-api`, etc from commit `75267027f157f1312964e7126280920d1245c52d`, run 
 
 ```console
-./scripts/add-from-github.sh -v 1.8.0.0 https://github.com/input-output-hk/plutus 75267027f157f1312964e7126280920d1245c52d
+./scripts/add-from-github.sh "https://github.com/input-output-hk/plutus" 75267027f157f1312964e7126280920d1245c52d plutus-core plutus-ledger-api plutus-tx plutus-tx-plugin prettyprinter-configurable
 ```
 
 The script will:
