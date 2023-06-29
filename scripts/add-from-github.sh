@@ -6,10 +6,13 @@ set -o pipefail
 SCRIPT_DIR=$(dirname "$(which "$0")")
 
 function usage {
-  echo "Usage $(basename "$0") [-r REVISION] [-v VERSION] REPO_URL REV [SUBDIRS...]"
+  echo "Usage $(basename "$0") [-r REVISION] [-v VERSION] REPO_URL COMMIT-SHA [SUBDIRS...]"
   echo
   echo "        -r REVISION     adds .0.0.0.0.REVISION to the package version"
   echo "        -v VERSION      uses VERSION as the package version"
+  echo "        REPO_URL        the repository's Github URL"
+  echo "        COMMIT_SHA      the commit SHA that corresponds to the revision/version"
+  echo "        SUBDIRS         the list of relevant sub-directories"
   exit
 }
 
