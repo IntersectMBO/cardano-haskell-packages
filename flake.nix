@@ -146,7 +146,9 @@
           # The standard checks: build all the smoke test packages
           checks = flake-utils.lib.flattenTree smokeTestPackages;
 
-          hydraJobs = checks;
+          hydraJobs = lib.optionalAttrs (!builtins.elem system [
+            "aarch64-linux" # not supported by our Hydra instance
+          ]) checks;
         });
 
   nixConfig = {
