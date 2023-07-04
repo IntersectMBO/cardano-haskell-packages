@@ -5,3 +5,7 @@ subdir = 'eras/byron/chain/executable-spec'
 [[revisions]]
 number = 1
 timestamp = 2023-03-21T14:36:05Z
+
+[[revisions]]
+number = 2
+timestamp = 2023-07-04T07:18:29Z
