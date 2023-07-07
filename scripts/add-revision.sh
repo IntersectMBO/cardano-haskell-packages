@@ -45,7 +45,7 @@ if [[ ! -f "$META_FILE" ]]; then
 	exit 1
 fi
 
-CURRENT_CABAL_FILE="$BUILT_REPO/index/$PKG_NAME/$PKG_VERSION/$PKG_NAME.cabal"
+CURRENT_CABAL_FILE="$BUILT_REPO/package/$PKG_NAME-$PKG_VERSION/$PKG_NAME.cabal"
 
 if [[ ! -f "$CURRENT_CABAL_FILE" ]]; then
 	echo "Current cabal file $CURRENT_CABAL_FILE does not exist."
