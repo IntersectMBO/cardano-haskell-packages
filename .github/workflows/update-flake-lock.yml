@@ -1,4 +1,4 @@
-name: Bump hackage.nix
+name: Bump package indices
 
 on:
   workflow_dispatch: # allows manual triggering
