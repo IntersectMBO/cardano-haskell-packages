@@ -1,0 +1,3 @@
+timestamp = 2023-07-20T22:17:39Z
+github = { repo = "input-output-hk/cardano-ledger", rev = "fb85fbeedffe60258612e39cd786ce1cdc87fc9c" }
+subdir = 'eras/shelley/impl'
