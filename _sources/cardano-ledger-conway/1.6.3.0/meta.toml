@@ -1,0 +1,3 @@
+timestamp = 2023-07-24T21:05:16Z
+github = { repo = "input-output-hk/cardano-ledger", rev = "60070f8fdbb2f30f77c3a5efb4e10503853f1073" }
+subdir = 'eras/conway/impl'
