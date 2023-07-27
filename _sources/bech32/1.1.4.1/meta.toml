@@ -1,0 +1,4 @@
+timestamp = 2023-07-27T09:34:22Z
+github = { repo = "input-output-hk/bech32", rev = "c938472efd2b72ecbbb1e323993142b6d360566a" }
+subdir = 'bech32'
+force-version = true
