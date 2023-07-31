@@ -1,4 +1,4 @@
-# Anything that isn't explicitly owned by a team 
+# Anything that isn't explicitly owned by a team
 # needs approval from the admins
 * @input-output-hk/cardano-haskell-packages-trustees
 
@@ -52,6 +52,7 @@ _sources/cardano-ledger-shelley-ma-test @input-output-hk/cardano-ledger
 ## Network
 _sources/io-sim                             @input-output-hk/ouroboros-networking
 _sources/io-classes                         @input-output-hk/ouroboros-networking
+_sources/strict-checked-vars                @input-output-hk/ouroboros-networking
 _sources/strict-stm                         @input-output-hk/ouroboros-networking
 _sources/strict-mvar                        @input-output-hk/ouroboros-networking
 _sources/si-timers                          @input-output-hk/ouroboros-networking
