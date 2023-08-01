@@ -1,0 +1,3 @@
+timestamp = 2023-08-01T11:25:26Z
+github = { repo = "input-output-hk/cardano-ledger", rev = "ecdb9c76a3252e1e6fbb8ed743796bf44cc83dbc" }
+subdir = 'libs/small-steps-test'
