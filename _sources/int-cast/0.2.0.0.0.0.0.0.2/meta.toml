@@ -1,0 +1,3 @@
+timestamp = 2023-08-02T12:17:24Z
+github = { repo = "input-output-hk/int-cast", rev = "a95a5eb8d3a4633a2230dd058b38b7ae82dd19a2" }
+force-version = true
