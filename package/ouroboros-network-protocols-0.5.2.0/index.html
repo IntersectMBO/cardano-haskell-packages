@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    ouroboros-network-protocols-0.5.2.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      ouroboros-network-protocols-0.5.2.0
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Ouroboros Network Protocols</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Ouroboros Network Protocols.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Alexander Vieth, Marcin Szamotulski, Duncan Coutts</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>marcin.szamotulski@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/ouroboros-network/tree/cd8ceb8d89feac5603952db70dff644f12b0db64/ouroboros-network-protocols">https://github.com/input-output-hk/ouroboros-network</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>cd8ceb8d89feac5603952db70dff644f12b0db64</dd>
+          <dt>Subdir</dt>
+          <dd>ouroboros-network-protocols</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2023-08-10T19:35:47Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library ouroboros-network-protocols:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.19&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.12&quot;,&quot;cborg &gt;=0.2.1 &amp;&amp; &lt;0.3&quot;,&quot;io-classes ^&gt;=1.2&quot;,&quot;si-timers&quot;,&quot;ouroboros-network-api ^&gt;=0.5.1&quot;,&quot;serialise&quot;,&quot;typed-protocols &gt;=0.1.0.4 &amp;&amp; &lt;1.0&quot;,&quot;typed-protocols-cborg &gt;=0.1 &amp;&amp; &lt;1.0&quot;]</li>
+            </ul>
+                      </dd>
+          <dt>library testlib:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.19&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;pipes&quot;,&quot;QuickCheck&quot;,&quot;quickcheck-instances&quot;,&quot;serialise&quot;,&quot;cardano-strict-containers&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;,&quot;text&quot;,&quot;contra-tracer&quot;,&quot;io-classes&quot;,&quot;io-sim&quot;,&quot;network-mux&quot;,&quot;ouroboros-network-api&quot;,&quot;ouroboros-network-framework&quot;,&quot;ouroboros-network-mock&quot;,&quot;ouroboros-network-protocols&quot;,&quot;si-timers&quot;,&quot;strict-stm&quot;,&quot;typed-protocols&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite test:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.19&quot;,&quot;QuickCheck&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;,&quot;ouroboros-network-api&quot;,&quot;ouroboros-network-mock&quot;,&quot;ouroboros-network-protocols:testlib&quot;,&quot;ouroboros-network-testing ^&gt;=0.3&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite cddl:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.19&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;directory&quot;,&quot;filepath&quot;,&quot;mtl&quot;,&quot;process-extras&quot;,&quot;serialise&quot;,&quot;text&quot;,&quot;temporary&quot;,&quot;network&quot;,&quot;QuickCheck&quot;,&quot;quickcheck-instances&quot;,&quot;tasty&quot;,&quot;tasty-hunit&quot;,&quot;tasty-quickcheck&quot;,&quot;typed-protocols&quot;,&quot;ouroboros-network-api&quot;,&quot;ouroboros-network-framework&quot;,&quot;ouroboros-network-mock&quot;,&quot;ouroboros-network-protocols&quot;,&quot;ouroboros-network-protocols:testlib&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
