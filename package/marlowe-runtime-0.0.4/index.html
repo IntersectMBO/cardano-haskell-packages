@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    marlowe-runtime-0.0.4
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      marlowe-runtime-0.0.4
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Runtime system for running Marlowe financial contracts on the Cardano Computation Layer</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Runtime system for running and monitoring Marlowe financial contracts on
+Cardano. It provides query access to search for and inspect contracts,
+command access for creating and interacting with contracts, and streaming
+access for real-time updates to contracts.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Jamie Bertram</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>jamie.bertram@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/marlowe-cardano/tree/addc170fecf45c48a9e728b791217879969d0876/marlowe-runtime">https://github.com/input-output-hk/marlowe-cardano</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>addc170fecf45c48a9e728b791217879969d0876</dd>
+          <dt>Subdir</dt>
+          <dd>marlowe-runtime</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2023-08-14T16:15:22Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library marlowe-runtime:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;base16 ^&gt;=0.3.2&quot;,&quot;binary ^&gt;=0.8.8&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;marlowe-cardano ==0.1.2.0&quot;,&quot;marlowe-chain-sync ==0.0.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;ouroboros-network ==0.1.0.1&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;plutus-tx ==1.0.0.0&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;]</li>
+            </ul>
+                      </dd>
+          <dt>library gen:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;cardano-api:{cardano-api, gen} ==1.35.4&quot;,&quot;hedgehog-quickcheck ^&gt;=0.1&quot;,&quot;http-media ^&gt;=0.8&quot;,&quot;marlowe-cardano ==0.1.2.0&quot;,&quot;marlowe-chain-sync:{gen, plutus-compat} ==0.0.4&quot;,&quot;marlowe-runtime:{marlowe-runtime, discovery-api, history-api, tx-api} ==0.0.4&quot;,&quot;marlowe-test ==0.1.3.0&quot;,&quot;network-uri &gt;=2.6 &amp;&amp; &lt;3&quot;,&quot;QuickCheck &gt;=2.14 &amp;&amp; &lt;3&quot;,&quot;quickcheck-instances ^&gt;=0.3.29&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library history-api:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary ^&gt;=0.8.8&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;errors &gt;=2.3 &amp;&amp; &lt;3&quot;,&quot;hs-opentelemetry-api ==0.0.3.6&quot;,&quot;marlowe-cardano ==0.1.2.0&quot;,&quot;marlowe-chain-sync ==0.0.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime ==0.0.4&quot;,&quot;ouroboros-consensus ==0.1.0.1&quot;,&quot;ouroboros-network ==0.1.0.1&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;transformers ^&gt;=0.5.6&quot;,&quot;typed-protocols ==0.1.0.0&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library indexer:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary ^&gt;=0.8.8&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;co-log &gt;=0.5.0.0 &amp;&amp; &lt;0.6.0.0&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;eventuo11y &gt;=0.9 &amp;&amp; &lt;0.11&quot;,&quot;eventuo11y-extras ==0.1.1.0&quot;,&quot;eventuo11y-otel ^&gt;=0.1&quot;,&quot;hasql &gt;=1.6 &amp;&amp; &lt;2&quot;,&quot;hasql-pool ^&gt;=0.8&quot;,&quot;hasql-th ^&gt;=0.4&quot;,&quot;hasql-transaction ^&gt;=1&quot;,&quot;hs-opentelemetry-api ==0.0.3.6&quot;,&quot;marlowe-cardano ==0.1.2.0&quot;,&quot;marlowe-chain-sync ==0.0.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{marlowe-runtime, history-api} ==0.0.4&quot;,&quot;mtl &gt;=2.2 &amp;&amp; &lt;3&quot;,&quot;nonempty-containers ^&gt;=0.3.4&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;stm ^&gt;=2.5&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;transformers ^&gt;=0.5.6&quot;,&quot;unliftio ^&gt;=0.2.1&quot;,&quot;vector ^&gt;=0.12.3&quot;,&quot;witherable ^&gt;=0.4&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library sync-api:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary ^&gt;=0.8.8&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;marlowe-chain-sync ==0.0.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{marlowe-runtime, discovery-api} ==0.0.4&quot;,&quot;ouroboros-consensus ==0.1.0.1&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;unliftio ^&gt;=0.2.1&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library contract-api:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary ^&gt;=0.8.8&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;hs-opentelemetry-api ==0.0.3.6&quot;,&quot;marlowe-cardano ==0.1.2.0&quot;,&quot;marlowe-chain-sync ==0.0.4&quot;,&quot;marlowe-object ==0.1.0.0&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime ==0.0.4&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;typed-protocols ==0.1.0.0&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library contract:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary ^&gt;=0.8.8&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;dlist ^&gt;=1.0&quot;,&quot;eventuo11y &gt;=0.9 &amp;&amp; &lt;0.11&quot;,&quot;eventuo11y-extras ==0.1.1.0&quot;,&quot;eventuo11y-otel ^&gt;=0.1&quot;,&quot;exceptions ^&gt;=0.10&quot;,&quot;filepath ^&gt;=1.4&quot;,&quot;hs-opentelemetry-api ==0.0.3.6&quot;,&quot;lock-file ^&gt;=0.7&quot;,&quot;marlowe-cardano ==0.1.2.0&quot;,&quot;marlowe-chain-sync ==0.0.4&quot;,&quot;marlowe-object ==0.1.0.0&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{marlowe-runtime, contract-api} ==0.0.4&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;resourcet &gt;=1.3 &amp;&amp; &lt;2&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;transformers ^&gt;=0.5.6&quot;,&quot;typed-protocols ==0.1.0.0&quot;,&quot;unliftio ^&gt;=0.2.1&quot;,&quot;unordered-containers ^&gt;=0.2.19&quot;,&quot;uuid &gt;=1.3 &amp;&amp; &lt;2&quot;,&quot;zlib ^&gt;=0.6.3&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library sync:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary ^&gt;=0.8.8&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;eventuo11y &gt;=0.9 &amp;&amp; &lt;0.11&quot;,&quot;eventuo11y-extras ==0.1.1.0&quot;,&quot;eventuo11y-otel ^&gt;=0.1&quot;,&quot;foldl &gt;=1.4 &amp;&amp; &lt;2&quot;,&quot;hasql &gt;=1.6 &amp;&amp; &lt;2&quot;,&quot;hasql-th ^&gt;=0.4&quot;,&quot;hasql-transaction ^&gt;=1&quot;,&quot;hs-opentelemetry-api ==0.0.3.6&quot;,&quot;marlowe-cardano ==0.1.2.0&quot;,&quot;marlowe-chain-sync ==0.0.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{marlowe-runtime, discovery-api, history-api, sync-api} ==0.0.4&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;transformers ^&gt;=0.5.6&quot;,&quot;unliftio ^&gt;=0.2.1&quot;,&quot;vector ^&gt;=0.12.3&quot;,&quot;witherable ^&gt;=0.4&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library discovery-api:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary ^&gt;=0.8.8&quot;,&quot;hs-opentelemetry-api ==0.0.3.6&quot;,&quot;marlowe-chain-sync ==0.0.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime ==0.0.4&quot;,&quot;typed-protocols ==0.1.0.0&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library tx-api:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary ^&gt;=0.8.8&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;http-media ^&gt;=0.8&quot;,&quot;marlowe-cardano ==0.1.2.0&quot;,&quot;marlowe-chain-sync ==0.0.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{marlowe-runtime, history-api} ==0.0.4&quot;,&quot;network-uri &gt;=2.6 &amp;&amp; &lt;3&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library tx:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;async&quot;,&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;cardano-ledger-core ==0.1.0.0&quot;,&quot;co-log &gt;=0.5.0.0 &amp;&amp; &lt;0.6.0.0&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;errors &gt;=2.3 &amp;&amp; &lt;3&quot;,&quot;eventuo11y &gt;=0.9 &amp;&amp; &lt;0.11&quot;,&quot;eventuo11y-extras ==0.1.1.0&quot;,&quot;eventuo11y-otel ^&gt;=0.1&quot;,&quot;hs-opentelemetry-api ==0.0.3.6&quot;,&quot;marlowe-cardano ==0.1.2.0&quot;,&quot;marlowe-chain-sync:{marlowe-chain-sync, plutus-compat} ==0.0.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{marlowe-runtime, contract-api, history-api, plutus-scripts, tx-api} ==0.0.4&quot;,&quot;ouroboros-consensus ==0.1.0.1&quot;,&quot;ouroboros-network ==0.1.0.1&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;plutus-tx ==1.0.0.0&quot;,&quot;retry ^&gt;=0.9.3&quot;,&quot;semialign &gt;=1.2 &amp;&amp; &lt;2&quot;,&quot;stm ^&gt;=2.5&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;transformers ^&gt;=0.5.6&quot;,&quot;unliftio ^&gt;=0.2.1&quot;,&quot;witherable ^&gt;=0.4&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library proxy-api:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;binary ^&gt;=0.8.8&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{contract-api, discovery-api, history-api, sync-api, tx-api} ==0.0.4&quot;,&quot;typed-protocols ==0.1.0.0&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library proxy:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;eventuo11y &gt;=0.9 &amp;&amp; &lt;0.11&quot;,&quot;eventuo11y-extras ==0.1.1.0&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{contract-api, discovery-api, history-api, proxy-api, sync-api, tx-api} ==0.0.4&quot;,&quot;resourcet &gt;=1.3 &amp;&amp; &lt;2&quot;,&quot;transformers ^&gt;=0.5.6&quot;,&quot;typed-protocols ==0.1.0.0&quot;,&quot;unliftio ^&gt;=0.2.1&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library runtime:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;co-log &gt;=0.5.0.0 &amp;&amp; &lt;0.6.0.0&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;eventuo11y-extras ==0.1.1.0&quot;,&quot;marlowe-chain-sync:{marlowe-chain-sync, chain-indexer, libchainsync} ==0.0.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{marlowe-runtime, contract, indexer, proxy, proxy-api, sync, tx} ==0.0.4&quot;,&quot;nonempty-containers ^&gt;=0.3.4&quot;,&quot;random ^&gt;=1.2.1&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;typed-protocols ==0.1.0.0&quot;,&quot;unliftio ^&gt;=0.2.1&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library plutus-scripts:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;newtype-generics ^&gt;=0.6.2&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;plutus-tx ==1.0.0.0&quot;,&quot;plutus-tx-plugin ==1.0.0.0&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library config:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;marlowe-chain-sync ==0.0.4&quot;,&quot;marlowe-runtime ==0.0.4&quot;,&quot;network &gt;=3.1 &amp;&amp; &lt;4&quot;,&quot;optparse-applicative ^&gt;=0.17&quot;,&quot;split ^&gt;=0.2.3&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable marlowe-indexer:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;eventuo11y &gt;=0.9 &amp;&amp; &lt;0.11&quot;,&quot;eventuo11y-extras ==0.1.1.0&quot;,&quot;eventuo11y-otel ^&gt;=0.1&quot;,&quot;hasql &gt;=1.6 &amp;&amp; &lt;2&quot;,&quot;hasql-pool ^&gt;=0.8&quot;,&quot;hs-opentelemetry-api ==0.0.3.6&quot;,&quot;hs-opentelemetry-sdk ==0.0.3.4&quot;,&quot;marlowe-chain-sync ==0.0.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{marlowe-runtime, indexer} ==0.0.4&quot;,&quot;mtl &gt;=2.2 &amp;&amp; &lt;3&quot;,&quot;network &gt;=3.1 &amp;&amp; &lt;4&quot;,&quot;nonempty-containers ^&gt;=0.3.4&quot;,&quot;optparse-applicative ^&gt;=0.17&quot;,&quot;postgresql-libpq ^&gt;=0.9&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;unliftio ^&gt;=0.2.1&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable marlowe-sync:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;eventuo11y &gt;=0.9 &amp;&amp; &lt;0.11&quot;,&quot;eventuo11y-extras ==0.1.1.0&quot;,&quot;eventuo11y-otel ^&gt;=0.1&quot;,&quot;hasql &gt;=1.6 &amp;&amp; &lt;2&quot;,&quot;hasql-pool ^&gt;=0.8&quot;,&quot;hs-opentelemetry-api ==0.0.3.6&quot;,&quot;hs-opentelemetry-sdk ==0.0.3.4&quot;,&quot;marlowe-chain-sync ==0.0.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{discovery-api, history-api, sync, sync-api} ==0.0.4&quot;,&quot;mtl &gt;=2.2 &amp;&amp; &lt;3&quot;,&quot;network &gt;=3.1 &amp;&amp; &lt;4&quot;,&quot;optparse-applicative ^&gt;=0.17&quot;,&quot;postgresql-libpq ^&gt;=0.9&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;unliftio ^&gt;=0.2.1&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable marlowe-tx:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;eventuo11y &gt;=0.9 &amp;&amp; &lt;0.11&quot;,&quot;eventuo11y-extras ==0.1.1.0&quot;,&quot;eventuo11y-otel ^&gt;=0.1&quot;,&quot;hs-opentelemetry-api ==0.0.3.6&quot;,&quot;hs-opentelemetry-sdk ==0.0.3.4&quot;,&quot;marlowe-chain-sync ==0.0.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{marlowe-runtime, contract-api, tx, tx-api} ==0.0.4&quot;,&quot;network &gt;=3.1 &amp;&amp; &lt;4&quot;,&quot;optparse-applicative ^&gt;=0.17&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;time&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable marlowe-contract:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;eventuo11y &gt;=0.9 &amp;&amp; &lt;0.11&quot;,&quot;eventuo11y-extras ==0.1.1.0&quot;,&quot;eventuo11y-otel ^&gt;=0.1&quot;,&quot;hs-opentelemetry-api ==0.0.3.6&quot;,&quot;hs-opentelemetry-sdk ==0.0.3.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{contract, contract-api} ==0.0.4&quot;,&quot;network &gt;=3.1 &amp;&amp; &lt;4&quot;,&quot;optparse-applicative ^&gt;=0.17&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;typed-protocols ==0.1.0.0&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable marlowe-proxy:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;eventuo11y &gt;=0.9 &amp;&amp; &lt;0.11&quot;,&quot;eventuo11y-extras ==0.1.1.0&quot;,&quot;eventuo11y-otel ^&gt;=0.1&quot;,&quot;hs-opentelemetry-api ==0.0.3.6&quot;,&quot;hs-opentelemetry-sdk ==0.0.3.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{config, contract-api, discovery-api, history-api, proxy, proxy-api, sync-api, tx-api} ==0.0.4&quot;,&quot;network &gt;=3.1 &amp;&amp; &lt;4&quot;,&quot;optparse-applicative ^&gt;=0.17&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable marlowe-runtime:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;cardano-crypto-wrapper ==1.3.0&quot;,&quot;cardano-ledger-byron ==0.1.0.0&quot;,&quot;eventuo11y &gt;=0.9 &amp;&amp; &lt;0.11&quot;,&quot;eventuo11y-extras ==0.1.1.0&quot;,&quot;eventuo11y-otel ^&gt;=0.1&quot;,&quot;hasql &gt;=1.6 &amp;&amp; &lt;2&quot;,&quot;hasql-pool ^&gt;=0.8&quot;,&quot;hs-opentelemetry-api ==0.0.3.6&quot;,&quot;hs-opentelemetry-sdk &gt;=0.0.3 &amp;&amp; &lt;0.0.4&quot;,&quot;marlowe-chain-sync:{marlowe-chain-sync, chain-indexer, libchainsync} ==0.0.4&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{marlowe-runtime, contract, indexer, proxy-api, runtime, sync, tx} ==0.0.4&quot;,&quot;mtl &gt;=2.2 &amp;&amp; &lt;3&quot;,&quot;network &gt;=3.1 &amp;&amp; &lt;4&quot;,&quot;nonempty-containers ^&gt;=0.3.4&quot;,&quot;optparse-applicative ^&gt;=0.17&quot;,&quot;ouroboros-network ==0.1.0.1&quot;,&quot;postgresql-libpq ^&gt;=0.9&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;transformers ^&gt;=0.5.6&quot;,&quot;typed-protocols ==0.1.0.0&quot;,&quot;unliftio ^&gt;=0.2.1&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite marlowe-runtime-test:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;cardano-api:{cardano-api, gen} ==1.35.4&quot;,&quot;cardano-slotting&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;errors &gt;=2.3 &amp;&amp; &lt;3&quot;,&quot;hedgehog-quickcheck ^&gt;=0.1&quot;,&quot;hspec&quot;,&quot;http-media ^&gt;=0.8&quot;,&quot;marlowe-cardano ==0.1.2.0&quot;,&quot;marlowe-chain-sync:{marlowe-chain-sync, gen, plutus-compat} ==0.0.4&quot;,&quot;marlowe-object:gen&quot;,&quot;marlowe-protocols ==0.2.0.0&quot;,&quot;marlowe-runtime:{marlowe-runtime, contract-api, discovery-api, gen, history-api, sync-api, tx, tx-api} ==0.0.4&quot;,&quot;marlowe-test ==0.1.3.0&quot;,&quot;network-uri &gt;=2.6 &amp;&amp; &lt;3&quot;,&quot;ouroboros-consensus ==0.1.0.1&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;plutus-tx ==1.0.0.0&quot;,&quot;QuickCheck &gt;=2.14 &amp;&amp; &lt;3&quot;,&quot;quickcheck-instances ^&gt;=0.3.29&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;transformers ^&gt;=0.5.6&quot;,&quot;typed-protocols ==0.1.0.0&quot;,&quot;vector ^&gt;=0.12.3&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite indexer-test:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;hspec&quot;,&quot;marlowe-cardano ==0.1.2.0&quot;,&quot;marlowe-chain-sync:{marlowe-chain-sync, plutus-compat} ==0.0.4&quot;,&quot;marlowe-runtime:{marlowe-runtime, gen, history-api, indexer} ==0.0.4&quot;,&quot;marlowe-test ==0.1.3.0&quot;,&quot;ouroboros-consensus ==0.1.0.1&quot;,&quot;plutus-tx ==1.0.0.0&quot;,&quot;QuickCheck &gt;=2.14 &amp;&amp; &lt;3&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;transformers ^&gt;=0.5.6&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>

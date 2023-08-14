@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    marlowe-test-0.1.3.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      marlowe-test-0.1.3.0
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Tests for Marlowe semantics and validators on Cardano</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Unit and integration tests for Marlowe semantics, serialization, and Plutus
+validators on the Cardano blockchain.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>B W Bush &lt;brian.bush@iokk.io&gt;</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>B W Bush &lt;brian.bush@iokk.io&gt;</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/marlowe-cardano/tree/addc170fecf45c48a9e728b791217879969d0876/marlowe-test">https://github.com/input-output-hk/marlowe-cardano</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>addc170fecf45c48a9e728b791217879969d0876</dd>
+          <dt>Subdir</dt>
+          <dd>marlowe-test</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2023-08-14T16:15:22Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library marlowe-test:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;cardano-api ==1.35.4&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;data-default ^&gt;=0.7.1&quot;,&quot;directory ^&gt;=1.3&quot;,&quot;filepath ^&gt;=1.4&quot;,&quot;hint ^&gt;=0.9&quot;,&quot;ilist ==0.4.0.1&quot;,&quot;lens &gt;=5.2 &amp;&amp; &lt;6&quot;,&quot;marlowe-cardano ==0.1.2.0&quot;,&quot;marlowe-spec-test ==0.1.0.0&quot;,&quot;mtl &gt;=2.2 &amp;&amp; &lt;3&quot;,&quot;plutus-ledger ^&gt;=1.2&quot;,&quot;plutus-ledger-api ==1.0.0.1&quot;,&quot;plutus-script-utils ==1.2.0.0&quot;,&quot;plutus-tx ==1.0.0.0&quot;,&quot;QuickCheck &gt;=2.14 &amp;&amp; &lt;3&quot;,&quot;quickcheck-instances ^&gt;=0.3.29&quot;,&quot;sbv &gt;=8.4&quot;,&quot;serialise ^&gt;=0.2.6&quot;,&quot;tasty ^&gt;=1.4.2&quot;,&quot;tasty-hunit ^&gt;=0.10&quot;,&quot;tasty-quickcheck ^&gt;=0.10&quot;,&quot;text &gt;=1.2.4 &amp;&amp; &lt;2&quot;,&quot;these &gt;=1.1 &amp;&amp; &lt;2&quot;,&quot;type-iso ==1.0.1.0&quot;]</li>
+            </ul>
+                      </dd>
+          <dt>executable marlowe-spec-client:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;bytestring&quot;,&quot;marlowe-test&quot;,&quot;split&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable marlowe-reference:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;directory&quot;,&quot;filepath&quot;,&quot;marlowe-test&quot;,&quot;mtl&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite marlowe-test:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;marlowe-test&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
