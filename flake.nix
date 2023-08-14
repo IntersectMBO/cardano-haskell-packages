@@ -81,6 +81,7 @@
                 (lib.setAttrByPath [ "ghc927" "marlowe-runtime" ] null)
                 (lib.setAttrByPath [ "ghc927" "marlowe-runtime-web" ] null)
                 (lib.setAttrByPath [ "ghc927" "marlowe-test" ] null)
+                (lib.setAttrByPath [ "ghc927" "marlowe-object" ] null)
                 (lib.setAttrByPath [ "ghc927" "quickcheck-contractmodel" ] null)
               ];
               filtered = builtins.foldl' lib.recursiveUpdate perCompilerDerivations toRemove;
