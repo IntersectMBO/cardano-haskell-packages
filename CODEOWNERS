@@ -140,6 +140,7 @@ _sources/eventuo11y-extras   @input-output-hk/marlowe
 _sources/marlowe-cardano     @input-output-hk/marlowe
 _sources/marlowe-chain-sync  @input-output-hk/marlowe
 _sources/marlowe-client      @input-output-hk/marlowe
+_sources/marlowe-object      @input-output-hk/marlowe
 _sources/marlowe-protocols   @input-output-hk/marlowe
 _sources/marlowe-runtime     @input-output-hk/marlowe
 _sources/marlowe-runtime-web @input-output-hk/marlowe
