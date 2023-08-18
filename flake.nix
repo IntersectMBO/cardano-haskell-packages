@@ -71,8 +71,6 @@
               # cardano-node/cardano-api can't build on 9.2 yet
               # TODO: work out a better way of doing these exclusions
               toRemove = [
-                (lib.setAttrByPath [ "ghc92" "cardano-api" ] null)
-                (lib.setAttrByPath [ "ghc92" "cardano-node" ] null)
                 (lib.setAttrByPath [ "ghc92" "plutus-ledger" ] null)
                 (lib.setAttrByPath [ "ghc92" "marlowe-cardano" ] null)
                 (lib.setAttrByPath [ "ghc92" "marlowe-chain-sync" ] null)
