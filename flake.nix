@@ -53,7 +53,7 @@
 
           # type CompilerName = String
           # compilers :: [CompilerName]
-          compilers = [ "ghc8107" "ghc927" ];
+          compilers = [ "ghc810" "ghc92" ];
 
           builder = import ./nix/builder.nix { inherit pkgs CHaP; };
           chap-meta = import ./nix/chap-meta.nix { inherit pkgs CHaP; };
@@ -71,18 +71,18 @@
               # cardano-node/cardano-api can't build on 9.2 yet
               # TODO: work out a better way of doing these exclusions
               toRemove = [
-                (lib.setAttrByPath [ "ghc927" "cardano-api" ] null)
-                (lib.setAttrByPath [ "ghc927" "cardano-node" ] null)
-                (lib.setAttrByPath [ "ghc927" "plutus-ledger" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-cardano" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-chain-sync" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-client" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-protocols" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-runtime" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-runtime-web" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-test" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-object" ] null)
-                (lib.setAttrByPath [ "ghc927" "quickcheck-contractmodel" ] null)
+                (lib.setAttrByPath [ "ghc92" "cardano-api" ] null)
+                (lib.setAttrByPath [ "ghc92" "cardano-node" ] null)
+                (lib.setAttrByPath [ "ghc92" "plutus-ledger" ] null)
+                (lib.setAttrByPath [ "ghc92" "marlowe-cardano" ] null)
+                (lib.setAttrByPath [ "ghc92" "marlowe-chain-sync" ] null)
+                (lib.setAttrByPath [ "ghc92" "marlowe-client" ] null)
+                (lib.setAttrByPath [ "ghc92" "marlowe-protocols" ] null)
+                (lib.setAttrByPath [ "ghc92" "marlowe-runtime" ] null)
+                (lib.setAttrByPath [ "ghc92" "marlowe-runtime-web" ] null)
+                (lib.setAttrByPath [ "ghc92" "marlowe-test" ] null)
+                (lib.setAttrByPath [ "ghc92" "marlowe-object" ] null)
+                (lib.setAttrByPath [ "ghc92" "quickcheck-contractmodel" ] null)
               ];
               filtered = builtins.foldl' lib.recursiveUpdate perCompilerDerivations toRemove;
             in
