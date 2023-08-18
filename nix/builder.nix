@@ -43,6 +43,8 @@ let
             url: file:${CHaP}
             secure: True
 
+          documentation: True
+
           extra-packages: ${package-id}
         '';
       });
@@ -64,10 +66,14 @@ let
         pkgs.releaseTools.aggregate
           {
             name = package-id;
-            # Note that this does *not* include the derivations from 'checks' which
-            # actually run tests: CHaP will not check that your tests pass (neither
-            # does Hackage).
-            constituents = haskellLib.getAllComponents project.hsPkgs.${package-name};
+            constituents = let 
+              # Note that this does *not* include the derivations from 'checks' which
+              # actually run tests: CHaP will not check that your tests pass (neither
+              # does Hackage).
+              components = haskellLib.getAllComponents project.hsPkgs.${package-name};
+              # haddock derivations for any components that have them
+              doc = builtins.filter (d : d != null) (builtins.map (c : c.doc or null) components);
+            in components ++ doc;
           } // {
           passthru = {
             # pass through the project for debugging purposes
