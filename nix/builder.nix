@@ -47,6 +47,20 @@ let
         '';
       });
 
+      tweak =
+        if lib.hasPrefix "ouroboros-consensus" package-name
+        # otherwise, certain sublibraries (used for test suites) are marked as
+        # hidden and cause build failures (as they depend on each other)
+        then a: a.passthru.addCabalProject ''
+          package ouroboros-consensus
+            flags: +expose-sublibs
+          package ouroboros-consensus-protocol
+            flags: +expose-sublibs
+          package ouroboros-consensus-diffusion
+            flags: +expose-sublibs
+        ''
+        else a: a;
+
       # Wrapper around all package components
       #
       # The wrapper also provides shortcuts to quickly manipulate the cabal project.
@@ -85,6 +99,6 @@ let
           };
         };
     in
-    aggregate project;
+    tweak (aggregate project);
 in
 build-chap-package
