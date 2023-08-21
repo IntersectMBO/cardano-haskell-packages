@@ -55,8 +55,18 @@
           # compilers :: [CompilerName]
           compilers = [ "ghc810" "ghc92" ];
 
-          builder = import ./nix/builder.nix { inherit pkgs CHaP; };
+          builder = import ./nix/builder.nix { inherit pkgs CHaP extraConfig; };
           chap-meta = import ./nix/chap-meta.nix { inherit pkgs CHaP; };
+
+          extraConfig = compiler: 
+            [
+              {
+                # packages that depend on the plutus-tx plugin have broken haddock
+                packages = {
+                  plutus-ledger.doHaddock = false;
+                };
+              }
+            ];
 
           # type PkgSet = Map CompilerName (Map PkgName (Map PkgVerison Derivation))
           # pkgVersionsToPkgSet :: PkgVersions -> PkgSet

@@ -1,4 +1,4 @@
-{ pkgs, CHaP }:
+{ pkgs, CHaP, extraConfig }:
 compiler-nix-name:
 let
   inherit (pkgs) lib;
@@ -47,6 +47,8 @@ let
 
           extra-packages: ${package-id}
         '';
+
+        modules = extraConfig compiler-nix-name;
       });
 
       # Wrapper around all package components
