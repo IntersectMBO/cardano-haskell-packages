@@ -1,7 +1,6 @@
 { pkgs, CHaP, extraConfig }:
 compiler-nix-name:
 let
-  inherit (pkgs) lib;
   inherit (pkgs.haskell-nix) haskellLib;
 
   # Build all the derivations that we care about for a package-version.
@@ -48,7 +47,14 @@ let
           extra-packages: ${package-id}
         '';
 
-        modules = extraConfig compiler-nix-name;
+        modules =
+          extraConfig compiler-nix-name
+          ++ [{
+            postHaddock = ''
+              mkdir $doc/nix-support
+              echo "doc haddock $docdir" >> $doc/nix-support/hydra-build-products
+            '';
+          }];
       });
 
       # Wrapper around all package components
@@ -68,14 +74,16 @@ let
         pkgs.releaseTools.aggregate
           {
             name = package-id;
-            constituents = let 
-              # Note that this does *not* include the derivations from 'checks' which
-              # actually run tests: CHaP will not check that your tests pass (neither
-              # does Hackage).
-              components = haskellLib.getAllComponents project.hsPkgs.${package-name};
-              # haddock derivations for any components that have them
-              doc = builtins.filter (d : d != null) (builtins.map (c : c.doc or null) components);
-            in components ++ doc;
+            constituents =
+              let
+                # Note that this does *not* include the derivations from 'checks' which
+                # actually run tests: CHaP will not check that your tests pass (neither
+                # does Hackage).
+                components = haskellLib.getAllComponents project.hsPkgs.${package-name};
+                # haddock derivations for any components that have them
+                doc = pkgs.lib.catAttrs "doc" components;
+              in
+              components ++ doc;
           } // {
           passthru = {
             # pass through the project for debugging purposes
