@@ -71,57 +71,35 @@ let
       # has already a `cabalProjectLocal` this might not give the intended
       # result.
       aggregate = project:
-        let
-          constituents =
-            let
-              # Note that this does *not* include the derivations from 'checks' which
-              # actually run tests: CHaP will not check that your tests pass (neither
-              # does Hackage).
-              components = haskellLib.getAllComponents project.hsPkgs.${package-name};
-              # haddock derivations for any components that have them
-              doc = pkgs.lib.catAttrs "doc" components;
-            in
-            components ++ doc;
-
-          meta.description = "All components of ${package-name}";
-        in
-
-        pkgs.runCommand package-id
+        pkgs.releaseTools.aggregate
           {
-            inherit constituents meta;
-            preferLocalBuild = true;
-            _hydraAggregate = true;
-            passthru = {
-              # pass through the project for debugging purposes
-              inherit project;
-              # Shortcuts to manipulate the project, see above
-              addCabalProject = cabalProjectLocal: aggregate (
-                project.appendModule { inherit cabalProjectLocal; }
-              );
-              addConstraint = constraint: aggregate (
-                project.appendModule { cabalProjectLocal = "constraints: ${constraint}"; }
-              );
-              allowNewer = allow-newer: aggregate (
-                project.appendModule { cabalProjectLocal = "allow-newer: ${allow-newer}"; }
-              );
-            };
-          }
-          ''
-            mkdir -p $out/nix-support
-            touch $out/nix-support/hydra-build-products
-            echo $constituents > $out/nix-support/hydra-aggregate-constituents
-
-            for i in $constituents; do
-              # Propagate build failures.
-              if [ -e $i/nix-support/failed ]; then
-                touch $out/nix-support/failed
-              fi
-              # Propagate build products
-              if [ -e $i/nix-support/hydra-build-products ]; then
-                cat $i/nix-support/hydra-build-products >> $out/nix-support/hydra-build-products
-              fi
-            done
-          '';
+            name = package-id;
+            constituents =
+              let
+                # Note that this does *not* include the derivations from 'checks' which
+                # actually run tests: CHaP will not check that your tests pass (neither
+                # does Hackage).
+                components = haskellLib.getAllComponents project.hsPkgs.${package-name};
+                # haddock derivations for any components that have them
+                doc = pkgs.lib.catAttrs "doc" components;
+              in
+              components ++ doc;
+          } // {
+          passthru = {
+            # pass through the project for debugging purposes
+            inherit project;
+            # Shortcuts to manipulate the project, see above
+            addCabalProject = cabalProjectLocal: aggregate (
+              project.appendModule { inherit cabalProjectLocal; }
+            );
+            addConstraint = constraint: aggregate (
+              project.appendModule { cabalProjectLocal = "constraints: ${constraint}"; }
+            );
+            allowNewer = allow-newer: aggregate (
+              project.appendModule { cabalProjectLocal = "allow-newer: ${allow-newer}"; }
+            );
+          };
+        };
     in
     aggregate project;
 in
