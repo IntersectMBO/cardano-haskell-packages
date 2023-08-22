@@ -2,13 +2,32 @@
 # needs approval from the admins
 * @input-output-hk/cardano-haskell-packages-trustees
 
+# no specific team
+_sources/cardano-api                @input-output-hk/core-tech-release
+_sources/cardano-api-gen            @input-output-hk/core-tech-release
+_sources/cardano-cli                @input-output-hk/core-tech-release
+_sources/cardano-client-demo        @input-output-hk/core-tech-release
+_sources/bech32                     @input-output-hk/core-tech-release
+_sources/cardano-crypto             @input-output-hk/core-tech-release
+_sources/cardano-crypto-class       @input-output-hk/core-tech-release
+_sources/cardano-crypto-praos       @input-output-hk/core-tech-release
+_sources/measures                   @input-output-hk/core-tech-release
+_sources/cardano-slotting           @input-output-hk/core-tech-release
+_sources/cardano-mempool            @input-output-hk/core-tech-release
+_sources/heapwords                  @input-output-hk/core-tech-release
+_sources/cardano-binary             @input-output-hk/core-tech-release
+_sources/cardano-binary-test        @input-output-hk/core-tech-release
+_sources/base-deriving-via          @input-output-hk/core-tech-release
+_sources/orphans-deriving-via       @input-output-hk/core-tech-release
+_sources/cardano-strict-containers  @input-output-hk/core-tech-release
+
 # cardano-node
-_sources/cardano-api                @input-output-hk/release
-_sources/cardano-cli                @input-output-hk/release
-_sources/cardano-client-demo        @input-output-hk/release
-_sources/cardano-node               @input-output-hk/release
-_sources/cardano-submit-api         @input-output-hk/release
-_sources/cardano-testnet            @input-output-hk/release
+_sources/cardano-node               @input-output-hk/cardano-node
+_sources/cardano-git-rev            @input-output-hk/cardano-node
+_sources/cardano-capi               @input-output-hk/cardano-node
+_sources/cardano-node-chairman      @input-output-hk/cardano-node
+_sources/cardano-submit-api         @input-output-hk/cardano-node
+_sources/cardano-testnet            @input-output-hk/cardano-node
 _sources/optparse-applicative-fork  @input-output-hk/cardano-node
 
 # cardano-ledger
@@ -30,6 +49,7 @@ _sources/plutus-preprocessor     @input-output-hk/cardano-ledger
 _sources/set-algebra             @input-output-hk/cardano-ledger
 _sources/small-steps             @input-output-hk/cardano-ledger
 _sources/small-steps-test        @input-output-hk/cardano-ledger
+_sources/vector-map              @input-output-hk/cardano-ledger
 
 ## Eras
 _sources/cardano-ledger-allegra         @input-output-hk/cardano-ledger
