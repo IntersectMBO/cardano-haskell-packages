@@ -37,11 +37,48 @@
   outputs = { self, nixpkgs, flake-utils, foliage, haskell-nix, CHaP, iohk-nix, ... }:
     let
       inherit (nixpkgs) lib;
-      chap-meta = import ./nix/chap-meta.nix { inherit lib CHaP; };
+      inherit (import ./nix/chap-meta.nix { inherit lib CHaP; }) chap-package-latest-versions chap-package-versions chap-package-meta;
+
+      allPkgVersions = chap-package-versions chap-package-meta;
+
+      smokeTestPackages = [
+        "plutus-ledger-api"
+        "cardano-ledger-api"
+        "ouroboros-network"
+        "ouroboros-consensus-cardano"
+        "cardano-api"
+        "cardano-node"
+        # from plutus-apps
+        "plutus-ledger"
+      ];
+
+      # using intersectAttrs like this is a cheap way to throw away everything with keys not in
+      # smokeTestPackages
+      smokeTestPkgVersions =
+        builtins.intersectAttrs
+          (lib.genAttrs smokeTestPackages (pkg: { }))
+          (chap-package-latest-versions chap-package-meta);
+
+      # type CompilerName = String
+      # compilers :: [CompilerName]
+      compilers = [ "ghc810" "ghc92" ];
+
+      toRemove = [
+        (lib.setAttrByPath [ "ghc92" "plutus-ledger" ] null)
+        (lib.setAttrByPath [ "ghc92" "marlowe-cardano" ] null)
+        (lib.setAttrByPath [ "ghc92" "marlowe-chain-sync" ] null)
+        (lib.setAttrByPath [ "ghc92" "marlowe-client" ] null)
+        (lib.setAttrByPath [ "ghc92" "marlowe-protocols" ] null)
+        (lib.setAttrByPath [ "ghc92" "marlowe-runtime" ] null)
+        (lib.setAttrByPath [ "ghc92" "marlowe-runtime-web" ] null)
+        (lib.setAttrByPath [ "ghc92" "marlowe-test" ] null)
+        (lib.setAttrByPath [ "ghc92" "marlowe-object" ] null)
+        (lib.setAttrByPath [ "ghc92" "quickcheck-contractmodel" ] null)
+      ];
     in
     # The foliage flake only works on linux, so the other systems won't actually work
-    # until https://github.com/andreabedini/foliage/issues/53 is fixed, but we might
-    # as well leave the more general code in here.
+      # until https://github.com/andreabedini/foliage/issues/53 is fixed, but we might
+      # as well leave the more general code in here.
     flake-utils.lib.eachDefaultSystem
       (system:
         let
@@ -54,13 +91,9 @@
             ];
           };
 
-          # type CompilerName = String
-          # compilers :: [CompilerName]
-          compilers = [ "ghc810" "ghc92" ];
-
           builder = import ./nix/builder.nix { inherit pkgs CHaP extraConfig; };
 
-          extraConfig = compiler: 
+          extraConfig = compiler:
             [
               {
                 # packages that depend on the plutus-tx plugin have broken haddock
@@ -82,41 +115,9 @@
               perCompilerDerivations = lib.recurseIntoAttrs (lib.genAttrs compilers derivations);
               # cardano-node/cardano-api can't build on 9.2 yet
               # TODO: work out a better way of doing these exclusions
-              toRemove = [
-                (lib.setAttrByPath [ "ghc92" "plutus-ledger" ] null)
-                (lib.setAttrByPath [ "ghc92" "marlowe-cardano" ] null)
-                (lib.setAttrByPath [ "ghc92" "marlowe-chain-sync" ] null)
-                (lib.setAttrByPath [ "ghc92" "marlowe-client" ] null)
-                (lib.setAttrByPath [ "ghc92" "marlowe-protocols" ] null)
-                (lib.setAttrByPath [ "ghc92" "marlowe-runtime" ] null)
-                (lib.setAttrByPath [ "ghc92" "marlowe-runtime-web" ] null)
-                (lib.setAttrByPath [ "ghc92" "marlowe-test" ] null)
-                (lib.setAttrByPath [ "ghc92" "marlowe-object" ] null)
-                (lib.setAttrByPath [ "ghc92" "quickcheck-contractmodel" ] null)
-              ];
               filtered = builtins.foldl' lib.recursiveUpdate perCompilerDerivations toRemove;
             in
             filtered;
-
-          allPkgVersions = chap-meta.chap-package-versions chap-meta.chap-package-meta;
-
-          smokeTestPackages = [
-            "plutus-ledger-api"
-            "cardano-ledger-api"
-            "ouroboros-network"
-            "ouroboros-consensus-cardano"
-            "cardano-api"
-            "cardano-node"
-            # from plutus-apps
-            "plutus-ledger"
-          ];
-
-          # using intersectAttrs like this is a cheap way to throw away everything with keys not in
-          # smokeTestPackages
-          smokeTestPkgVersions =
-            builtins.intersectAttrs
-              (lib.genAttrs smokeTestPackages (pkg: { }))
-              (chap-meta.chap-package-latest-versions chap-meta.chap-package-meta);
 
           # use a self + path reference to ensure this runs in the context of the
           # whole flake source, so can see the other scripts
