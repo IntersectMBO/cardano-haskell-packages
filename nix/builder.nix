@@ -52,7 +52,7 @@ let
           ++ [{
             postHaddock = ''
               mkdir $doc/nix-support
-              echo "doc haddock $docdir" >> $doc/nix-support/hydra-build-products
+              echo "doc haddock $docdir/html/index.html" >> $doc/nix-support/hydra-build-products
             '';
           }];
       });
