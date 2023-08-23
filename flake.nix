@@ -35,6 +35,10 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, foliage, haskell-nix, CHaP, iohk-nix, ... }:
+    let
+      inherit (nixpkgs) lib;
+      chap-meta = import ./nix/chap-meta.nix { inherit lib CHaP; };
+    in
     # The foliage flake only works on linux, so the other systems won't actually work
     # until https://github.com/andreabedini/foliage/issues/53 is fixed, but we might
     # as well leave the more general code in here.
@@ -49,14 +53,12 @@
               iohk-nix.overlays.crypto
             ];
           };
-          inherit (pkgs) lib;
 
           # type CompilerName = String
           # compilers :: [CompilerName]
           compilers = [ "ghc810" "ghc92" ];
 
           builder = import ./nix/builder.nix { inherit pkgs CHaP extraConfig; };
-          chap-meta = import ./nix/chap-meta.nix { inherit pkgs CHaP; };
 
           extraConfig = compiler: 
             [

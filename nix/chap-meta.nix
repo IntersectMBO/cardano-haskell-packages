@@ -1,8 +1,5 @@
-{ pkgs, CHaP }:
+{ lib, CHaP }:
 let
-  inherit (pkgs) lib;
-  inherit (pkgs.haskell-nix) haskellLib;
-
   # type PkgName = String
   # type PkgVersion = String
   # data ChapPkgMeta = ChapPkgMeta { name :: PkgName, version :: PkgVersion }
