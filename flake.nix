@@ -150,10 +150,14 @@
           };
 
           haskellPackages =
-            mkCompilerPackageTreeWith builder chap-package-versions;
+            mkCompilerPackageTreeWith
+              (compiler: name: version: (builder compiler name version).aggregate)
+              chap-package-versions;
 
           smokeTestPackages =
-            mkCompilerPackageTreeWith builder smoke-test-package-versions;
+            mkCompilerPackageTreeWith
+              (compiler: name: version: (builder compiler name version).aggregate)
+              smoke-test-package-versions;
 
           packages = flattenTree haskellPackages // {
             inherit update-chap-deps;
@@ -172,9 +176,9 @@
           # The standard checks: build all the smoke test packages
           checks = flattenTree smokeTestPackages;
 
-          hydraJobs = lib.optionalAttrs (!builtins.elem system [
-            "aarch64-linux" # not supported by our Hydra instance
-          ]) checks;
+          hydraJobs =
+            lib.optionalAttrs (system != "aarch64-linux")
+              (mkCompilerPackageTreeWith builder smoke-test-package-versions);
         });
 
   nixConfig = {

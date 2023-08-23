@@ -57,7 +57,7 @@ let
           }];
       });
 
-      # Wrapper around all package components
+      # Expose selected package derivations
       #
       # The wrapper also provides shortcuts to quickly manipulate the cabal project.
       #
@@ -70,37 +70,45 @@ let
       # rather than appended. I think this is haskell.nix bug. If the project
       # has already a `cabalProjectLocal` this might not give the intended
       # result.
-      aggregate = project:
-        pkgs.releaseTools.aggregate
-          {
+      mkJob = project:
+        let
+          # package components
+          components =
+            haskellLib.mkFlakePackages
+              { ${package-name} = project.hsPkgs.${package-name}; };
+
+          # package components documentation
+          docs = pkgs.lib.concatMapAttrs
+            (cn: c: pkgs.lib.optionalAttrs (c ? doc) {
+              "${cn}:haddock" = c.doc;
+            })
+            components;
+        in
+        components
+        // docs
+        // {
+          aggregate = (pkgs.releaseTools.aggregate {
             name = package-id;
-            constituents =
-              let
-                # Note that this does *not* include the derivations from 'checks' which
-                # actually run tests: CHaP will not check that your tests pass (neither
-                # does Hackage).
-                components = haskellLib.getAllComponents project.hsPkgs.${package-name};
-                # haddock derivations for any components that have them
-                doc = pkgs.lib.catAttrs "doc" components;
-              in
-              components ++ doc;
-          } // {
-          passthru = {
-            # pass through the project for debugging purposes
-            inherit project;
-            # Shortcuts to manipulate the project, see above
-            addCabalProject = cabalProjectLocal: aggregate (
-              project.appendModule { inherit cabalProjectLocal; }
-            );
-            addConstraint = constraint: aggregate (
-              project.appendModule { cabalProjectLocal = "constraints: ${constraint}"; }
-            );
-            allowNewer = allow-newer: aggregate (
-              project.appendModule { cabalProjectLocal = "allow-newer: ${allow-newer}"; }
-            );
+            constituents = builtins.attrValues components ++ builtins.attrValues docs;
+          }) // {
+            passthru = {
+              # pass through the project for debugging purposes
+              inherit project;
+              # Shortcuts to manipulate the project, see above
+              addCabalProject = cabalProjectLocal: mkJob (
+                project.appendModule { inherit cabalProjectLocal; }
+              );
+              addConstraint = constraint: mkJob (
+                project.appendModule { cabalProjectLocal = "constraints: ${constraint}"; }
+              );
+              allowNewer = allow-newer: mkJob (
+                project.appendModule { cabalProjectLocal = "allow-newer: ${allow-newer}"; }
+              );
+            };
           };
-        };
+        }
+      ;
     in
-    aggregate project;
+    mkJob project;
 in
 build-chap-package
