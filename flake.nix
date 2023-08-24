@@ -35,9 +35,94 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, foliage, haskell-nix, CHaP, iohk-nix, ... }:
-    # The foliage flake only works on linux, so the other systems won't actually work
-    # until https://github.com/andreabedini/foliage/issues/53 is fixed, but we might
-    # as well leave the more general code in here.
+    let
+      inherit (nixpkgs) lib;
+      inherit (import ./nix/chap-meta.nix { inherit lib CHaP; }) chap-package-latest-versions chap-package-versions mkPackageTreeWith;
+
+      smokeTestPackages = [
+        "plutus-ledger-api"
+        "cardano-ledger-api"
+        "ouroboros-network"
+        "ouroboros-consensus-cardano"
+        "cardano-api"
+        "cardano-node"
+        # from plutus-apps
+        "plutus-ledger"
+      ];
+
+      # Using intersectAttrs like this is a cheap way to throw away everything
+      # with keys not in smokeTestPackages
+      smoke-test-package-versions =
+        builtins.intersectAttrs
+          (lib.genAttrs smokeTestPackages (pkg: { }))
+          chap-package-latest-versions;
+
+      # type CompilerName = String
+      # compilers :: [CompilerName]
+      compilers = [ "ghc810" "ghc92" ];
+
+      # Add exceptions to the CI here.
+      #
+      # Currently the following attributes are supported:
+      #
+      # - <compiler-nix-name>.enabled = false
+      #   Excludes compiling a package with <compiler-nix-name>. By default all
+      #   compilers (defined above) are included.
+      #
+      exceptions = {
+        plutus-ledger.ghc92.enabled = false;
+        marlowe-cardano.ghc92.enabled = false;
+        marlowe-chain-sync.ghc92.enabled = false;
+        marlowe-client.ghc92.enabled = false;
+        marlowe-protocols.ghc92.enabled = false;
+        marlowe-runtime.ghc92.enabled = false;
+        marlowe-runtime-web.ghc92.enabled = false;
+        marlowe-test.ghc92.enabled = false;
+        marlowe-object.ghc92.enabled = false;
+        quickcheck-contractmodel.ghc92.enabled = false;
+      };
+
+      # Extra configurations (possibly compiler dependend) to add to all projects.
+      extraConfig = compiler:
+        {
+          modules = [
+            {
+              # packages that depend on the plutus-tx plugin have broken haddock
+              packages = {
+                plutus-ledger.doHaddock = false;
+              };
+            }
+          ];
+        };
+
+      # mkCompilerPackageTreeWith
+      # :: (Compiler -> PkgName -> PkgVersions -> a)
+      # -> PkgVersions
+      # -> Map Compiler (Map PkgName (Map PkgVersion a))
+      mkCompilerPackageTreeWith = f: pkg-versions:
+        lib.genAttrs compilers (compiler:
+          let
+            filtered-pkgs-versions =
+              lib.filterAttrs
+                (name: _v:
+                  lib.attrByPath
+                    [ name compiler "enabled" ]
+                    true
+                    exceptions)
+                pkg-versions;
+          in
+          mkPackageTreeWith (f compiler) filtered-pkgs-versions);
+
+      # flattenTree
+      # :: Map Compiler (Map PackageName (Map PackageVersion a))
+      # -> Map String a
+      flattenTree =
+        lib.concatMapAttrs (compiler:
+          lib.concatMapAttrs (name:
+            lib.concatMapAttrs (version:
+              value: { "${compiler}/${name}/${version}" = value; }
+            )));
+    in
     flake-utils.lib.eachDefaultSystem
       (system:
         let
@@ -49,64 +134,8 @@
               iohk-nix.overlays.crypto
             ];
           };
-          inherit (pkgs) lib;
 
-          # type CompilerName = String
-          # compilers :: [CompilerName]
-          compilers = [ "ghc8107" "ghc927" ];
-
-          builder = import ./nix/builder.nix { inherit pkgs CHaP; };
-          chap-meta = import ./nix/chap-meta.nix { inherit pkgs CHaP; };
-
-          # type PkgSet = Map CompilerName (Map PkgName (Map PkgVerison Derivation))
-          # pkgVersionsToPkgSet :: PkgVersions -> PkgSet
-          pkgVersionsToPkgSet = pkg-versions:
-            # We use recurseIntoAttrs so flattenTree will flatten it back out again.
-            let
-              derivations = compiler: lib.recurseIntoAttrs (lib.mapAttrs
-                (name: versions: (lib.recurseIntoAttrs (lib.genAttrs versions (version: builder compiler name version))))
-                pkg-versions);
-              # A nested tree of derivations containing all the packages for all the compiler versions
-              perCompilerDerivations = lib.recurseIntoAttrs (lib.genAttrs compilers derivations);
-              # cardano-node/cardano-api can't build on 9.2 yet
-              # TODO: work out a better way of doing these exclusions
-              toRemove = [
-                (lib.setAttrByPath [ "ghc927" "cardano-api" ] null)
-                (lib.setAttrByPath [ "ghc927" "cardano-node" ] null)
-                (lib.setAttrByPath [ "ghc927" "plutus-ledger" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-cardano" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-chain-sync" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-client" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-protocols" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-runtime" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-runtime-web" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-test" ] null)
-                (lib.setAttrByPath [ "ghc927" "marlowe-object" ] null)
-                (lib.setAttrByPath [ "ghc927" "quickcheck-contractmodel" ] null)
-              ];
-              filtered = builtins.foldl' lib.recursiveUpdate perCompilerDerivations toRemove;
-            in
-            filtered;
-
-          allPkgVersions = chap-meta.chap-package-versions chap-meta.chap-package-meta;
-
-          smokeTestPackages = [
-            "plutus-ledger-api"
-            "cardano-ledger-api"
-            "ouroboros-network"
-            "ouroboros-consensus-cardano"
-            "cardano-api"
-            "cardano-node"
-            # from plutus-apps
-            "plutus-ledger"
-          ];
-
-          # using intersectAttrs like this is a cheap way to throw away everything with keys not in
-          # smokeTestPackages
-          smokeTestPkgVersions =
-            builtins.intersectAttrs
-              (lib.genAttrs smokeTestPackages (pkg: { }))
-              (chap-meta.chap-package-latest-versions chap-meta.chap-package-meta);
+          builder = import ./nix/builder.nix { inherit pkgs CHaP extraConfig; };
 
           # use a self + path reference to ensure this runs in the context of the
           # whole flake source, so can see the other scripts
@@ -127,29 +156,36 @@
             ];
           };
 
-          haskellPackages = pkgVersionsToPkgSet allPkgVersions;
-          smokeTestPackages = pkgVersionsToPkgSet smokeTestPkgVersions;
+          haskellPackages =
+            mkCompilerPackageTreeWith
+              (compiler: name: version: (builder compiler name version).aggregate)
+              chap-package-versions;
 
-          packages = flake-utils.lib.flattenTree haskellPackages // {
+          smokeTestPackages =
+            mkCompilerPackageTreeWith
+              (compiler: name: version: (builder compiler name version).aggregate)
+              smoke-test-package-versions;
+
+          packages = flattenTree haskellPackages // {
             inherit update-chap-deps;
 
             allPackages = pkgs.releaseTools.aggregate {
               name = "all-packages";
-              constituents = builtins.attrValues (flake-utils.lib.flattenTree haskellPackages);
+              constituents = builtins.attrValues (flattenTree haskellPackages);
             };
 
             allSmokeTestPackages = pkgs.releaseTools.aggregate {
               name = "all-smoke-test-packages";
-              constituents = builtins.attrValues (flake-utils.lib.flattenTree smokeTestPackages);
+              constituents = builtins.attrValues (flattenTree smokeTestPackages);
             };
           };
 
           # The standard checks: build all the smoke test packages
-          checks = flake-utils.lib.flattenTree smokeTestPackages;
+          checks = flattenTree smokeTestPackages;
 
-          hydraJobs = lib.optionalAttrs (!builtins.elem system [
-            "aarch64-linux" # not supported by our Hydra instance
-          ]) checks;
+          hydraJobs =
+            lib.optionalAttrs (system != "aarch64-linux")
+              (mkCompilerPackageTreeWith builder smoke-test-package-versions);
         });
 
   nixConfig = {
