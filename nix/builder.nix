@@ -20,35 +20,34 @@ let
   # - haskell.nix will automatically use the latest known one for hackage
   # - we want the very latest state for CHaP so it includes anything from
   #   e.g. a PR being tested
-  project = pkgs.haskell-nix.cabalProject' {
-    inherit compiler-nix-name;
+  project = pkgs.haskell-nix.cabalProject' [
+    {
+      inherit compiler-nix-name;
 
-    name = package-id;
-    src = ./empty;
+      name = package-id;
+      src = ./empty;
 
-    # Note that we do not set tests or benchmarks to True, so we won't
-    # build them by default. This is the same as what happens on Hackage,
-    # for example, and they can't be depended on by downstream packages
-    # anyway.
-    cabalProject = ''
-      repository cardano-haskell-packages
-        url: file:${CHaP}
-        secure: True
+      # Note that we do not set tests or benchmarks to True, so we won't
+      # build them by default. This is the same as what happens on Hackage,
+      # for example, and they can't be depended on by downstream packages
+      # anyway.
+      cabalProject = ''
+        repository cardano-haskell-packages
+          url: file:${CHaP}
+          secure: True
 
-      documentation: True
+        extra-packages: ${package-id}
+      '';
 
-      extra-packages: ${package-id}
-    '';
-
-    modules =
-      extraConfig compiler-nix-name
-      ++ [{
+      modules = [{
         postHaddock = ''
           mkdir $doc/nix-support
           echo "doc haddock $docdir/html/index.html" >> $doc/nix-support/hydra-build-products
         '';
       }];
-  };
+    }
+    (extraConfig compiler-nix-name)
+  ];
 
   # Expose selected package derivations
   #

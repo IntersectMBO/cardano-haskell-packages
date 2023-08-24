@@ -61,27 +61,39 @@
       # compilers :: [CompilerName]
       compilers = [ "ghc810" "ghc92" ];
 
-      # Add a package name here to exclude the CI from building it with a
-      # specific compiler version
-      compilerBlacklist = {
-        ghc92 = [
-          "plutus-ledger"
-          "marlowe-cardano"
-          "marlowe-chain-sync"
-          "marlowe-client"
-          "marlowe-protocols"
-          "marlowe-runtime"
-          "marlowe-runtime-web"
-          "marlowe-test"
-          "marlowe-object"
-          "quickcheck-contractmodel"
-        ];
+      # Add exceptions to the CI here.
+      #
+      # Currently the following attributes are supported:
+      #
+      # - <compiler-nix-name>.enabled = false
+      #   Excludes compiling a package with <compiler-nix-name>. By default all
+      #   compilers (defined above) are included.
+      #
+      exceptions = {
+        plutus-ledger.ghc92.enabled = false;
+        marlowe-cardano.ghc92.enabled = false;
+        marlowe-chain-sync.ghc92.enabled = false;
+        marlowe-client.ghc92.enabled = false;
+        marlowe-protocols.ghc92.enabled = false;
+        marlowe-runtime.ghc92.enabled = false;
+        marlowe-runtime-web.ghc92.enabled = false;
+        marlowe-test.ghc92.enabled = false;
+        marlowe-object.ghc92.enabled = false;
+        quickcheck-contractmodel.ghc92.enabled = false;
       };
 
-      # isPackageExcluded
-      # :: Compiler -> PackageName -> Bool
-      isPackageExcluded = compiler: name:
-        !builtins.elem name compilerBlacklist.${compiler} or [ ];
+      # Extra configurations (possibly compiler dependend) to add to all projects.
+      extraConfig = compiler:
+        {
+          modules = [
+            {
+              # packages that depend on the plutus-tx plugin have broken haddock
+              packages = {
+                plutus-ledger.doHaddock = false;
+              };
+            }
+          ];
+        };
 
       # mkCompilerPackageTreeWith
       # :: (Compiler -> PkgName -> PkgVersions -> a)
@@ -89,12 +101,17 @@
       # -> Map Compiler (Map PkgName (Map PkgVersion a))
       mkCompilerPackageTreeWith = f: pkg-versions:
         lib.genAttrs compilers (compiler:
-          mkPackageTreeWith
-            (f compiler)
-            (lib.filterAttrs
-              (name: _v: isPackageExcluded compiler name)
-              pkg-versions)
-        );
+          let
+            filtered-pkgs-versions =
+              lib.filterAttrs
+                (name: _v:
+                  lib.attrByPath
+                    [ name compiler "enabled" ]
+                    true
+                    exceptions)
+                pkg-versions;
+          in
+          mkPackageTreeWith (f compiler) filtered-pkgs-versions);
 
       # flattenTree
       # :: Map Compiler (Map PackageName (Map PackageVersion a))
@@ -119,16 +136,6 @@
           };
 
           builder = import ./nix/builder.nix { inherit pkgs CHaP extraConfig; };
-
-          extraConfig = compiler:
-            [
-              {
-                # packages that depend on the plutus-tx plugin have broken haddock
-                packages = {
-                  plutus-ledger.doHaddock = false;
-                };
-              }
-            ];
 
           # use a self + path reference to ensure this runs in the context of the
           # whole flake source, so can see the other scripts
