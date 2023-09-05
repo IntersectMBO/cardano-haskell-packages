@@ -3,6 +3,7 @@
 # Use gnu-tar and gnu-date regardless of whether the OS is Linux
 # or BSD-based.  The correct command will be assigned to TAR and DATE
 # variables.
+# shellcheck disable=SC1091
 source "$(dirname "$(which "$0")")/use-gnu-tar.sh"
 
 # for some reason you can't just put a heredoc in a variable...
@@ -36,10 +37,14 @@ NEW_INDEX_TAR=$2
 # so to compare the whole content of the old index, we compare up to the length
 # minus the zero blocks.
 
-OLD_INDEX_BYTES=$(wc -c < $OLD_INDEX_TAR)
-OLD_INDEX_BYTES_TRIMMED="$(($OLD_INDEX_BYTES-1024))"
+OLD_INDEX_BYTES=$(wc -c < "$OLD_INDEX_TAR")
+OLD_INDEX_BYTES_TRIMMED=$(("$OLD_INDEX_BYTES"-1024))
 BYTE_DIFF=$(cmp -n "$OLD_INDEX_BYTES_TRIMMED" "$OLD_INDEX_TAR" "$NEW_INDEX_TAR")
 
+# Shellcheck suggets doing an inline test of the error code from the above command
+# but that is not possible because we are capturing the stdout of the command in
+# a variable.
+# shellcheck disable=SC2181
 if [ $? = 0 ]
 then
   echo "Old archive is a byte-wise prefix of the new archive"
@@ -57,6 +62,8 @@ NEW_LISTING=$("$TAR" -tvf "$NEW_INDEX_TAR" | sort -k4,5)
 
 DIFF=$(diff <(echo "$OLD_LISTING") <(echo "$NEW_LISTING"))
 
+# See explanation on previous instance above.
+# shellcheck disable=SC2181
 if [ $? = 0 ]
 then
   echo "Archive listings are identical"
@@ -66,7 +73,7 @@ fi
 NEW_INDEX_ONLY=$(echo "$DIFF" | grep -P "^>")
 OLD_INDEX_ONLY=$(echo "$DIFF" | grep -P "^<")
 
-if [[ ! -z "$OLD_INDEX_ONLY" ]]; then
+if [[ -n "$OLD_INDEX_ONLY" ]]; then
   echo "ERROR: some entries exist only in the old index"
   echo "$OLD_INDEX_ONLY"
   exit 1
@@ -76,7 +83,7 @@ else
 fi
 
 LAST_OLD_ENTRY=$(echo "$OLD_LISTING" | tail -n1)
-# Take the first thing that appears only in the new, cut out the ">" marker 
+# Take the first thing that appears only in the new, cut out the ">" marker
 # Note: this cannot be empty since:
 # 1. The diff was not empty
 # 2. The diff on the old side was empty
@@ -100,7 +107,7 @@ if [[ $LAST_OLD_DATE > $FIRST_ACTUALLY_NEW_DATE ]]; then
   echo "First new entry:"
   echo "$FIRST_ACTUALLY_NEW_ENTRY"
   exit 1
-elif [[ $LAST_OLD_DATE = $FIRST_ACTUALLY_NEW_DATE ]]; then
+elif [[ $LAST_OLD_DATE = "$FIRST_ACTUALLY_NEW_DATE" ]]; then
   echo "The first new entry has the same timestamp as the last old entry"
   echo "This may mean that they are not ordered correctly since foliage sorts by timestamp only"
   echo "Last old entry:"
@@ -108,7 +115,7 @@ elif [[ $LAST_OLD_DATE = $FIRST_ACTUALLY_NEW_DATE ]]; then
   echo "First new entry:"
   echo "$FIRST_ACTUALLY_NEW_ENTRY"
   exit 1
-else 
+else
   echo "All new entries are strictly newer than the last old entry"
 fi
 

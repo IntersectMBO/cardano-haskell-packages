@@ -8,7 +8,7 @@ SCRIPT_DIR=$(dirname "$(which "$0")")
 
 REPO=$1
 shift
-BLACKLIST=$@
+BLACKLIST=("$@")
 
 update_package_bounds () {
   local PACKAGE=$1
@@ -23,7 +23,7 @@ update_package_bounds () {
     # This is a complicated regex:
     # - Begin capture group
     # - Start by matching the beginning of the line, and insist that the content before the package name
-    #   does not include '-'. This is intended to rule out comment lines, which often mention packages. 
+    #   does not include '-'. This is intended to rule out comment lines, which often mention packages.
     #   It's a bit too strong (won't handle 'foo-bar < 1, baz < 2' because of the dash in 'foo-bar'), but
     #   mostly does the job.
     # - Then match the package name
@@ -41,10 +41,10 @@ update_package_bounds () {
   fi
 }
 
-$SCRIPT_DIR/list-latest-package-versions.sh "$REPO" | while read -r PACKAGE VERSION; do
-  if [[ " ${BLACKLIST[*]} " =~ " ${PACKAGE} " ]]; then
+"$SCRIPT_DIR"/list-latest-package-versions.sh "$REPO" | while read -r PACKAGE VERSION; do
+  if [[ " ${BLACKLIST[*]} " =~ ${PACKAGE} ]]; then
     echo "Skipping package $PACKAGE as it is blacklisted"
   else
-    update_package_bounds $PACKAGE $VERSION
+    update_package_bounds "$PACKAGE" "$VERSION"
   fi
 done

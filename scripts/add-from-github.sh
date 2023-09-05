@@ -64,12 +64,12 @@ if [[ ${#SUBDIRS[@]} -gt 1 && (-n $VERSION || -n $REVISION) ]]; then
   exit 1
 fi
 
-if [[ ! "$REPO_URL" =~ "https://github.com/" ]]; then
+if [[ ! "$REPO_URL" =~ https://github.com/ ]]; then
   echo "Provided url is not a github url: $REPO_URL"
   exit 1
 fi
 
-TIMESTAMP=$($SCRIPT_DIR/current-timestamp.sh)
+TIMESTAMP=$("$SCRIPT_DIR"/current-timestamp.sh)
 
 render_meta() {
   local TIMESTAMP=$1
@@ -145,7 +145,7 @@ do_package() {
   git commit -m"Added $PKG_ID" -m "From $REPO_URL at $REPO_REV"
 }
 
-WORKDIR=$($SCRIPT_DIR/fetch-github-cabal-files.sh $REPO_URL $REPO_REV)
+WORKDIR=$("$SCRIPT_DIR"/fetch-github-cabal-files.sh "$REPO_URL" "$REPO_REV")
 
 if [[ ${#SUBDIRS[@]} -eq 0 ]]; then
   do_package "$REPO_URL" "$REPO_REV" "" "$WORKDIR"
