@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run shellcheck on scripts/*.sh
-        run: nix-shell -p shellcheck --run 'shellcheck scripts/*.sh'
+        run: nix-shell -I nixpkgs=https://github.com/nixos/nixpkgs/archive/release-23.05.tar.gz -p shellcheck --run 'shellcheck scripts/*.sh'
         
   check:
     runs-on: nixos
