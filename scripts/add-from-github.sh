@@ -6,31 +6,26 @@ set -o pipefail
 SCRIPT_DIR=$(dirname "$(which "$0")")
 
 function usage {
-  echo "Usage $(basename "$0") [-r REVISION] [-v VERSION] REPO_URL COMMIT-SHA [SUBDIRS...]"
+  echo "Usage $(basename "$0") [-f OVERWRITE_VERSION] REPO_URL COMMIT-SHA [SUBDIRS...]"
   echo
-  echo "        -r REVISION     adds .0.0.0.0.REVISION to the package version"
-  echo "        -v VERSION      uses VERSION as the package version"
-  echo "        REPO_URL        the repository's Github URL"
-  echo "        COMMIT_SHA      the commit SHA that corresponds to the revision/version"
-  echo "        SUBDIRS         the list of relevant sub-directories"
+  echo "        -f OVERWRITE_VERSION      (DANGEROUS) uses OVERWRITE_VERSION as the package version instead of the one from the tarball"
+  echo "        REPO_URL                  the repository's Github URL"
+  echo "        COMMIT_SHA                the commit SHA for the package source"
+  echo "        SUBDIRS                   the list of relevant sub-directories"
   exit
 }
 
 optstring=":hr:v:"
 
-REVISION=
-VERSION=
+OVERWRITE_VERSION=
 
 while getopts ${optstring} arg; do
   case ${arg} in
     h)
       usage
       ;;
-    r)
-      REVISION="${OPTARG}"
-      ;;
-    v)
-      VERSION="${OPTARG}"
+    f)
+      OVERWRITE_VERSION="${OPTARG}"
       ;;
     :)
       echo "$0: Must supply an argument to -$OPTARG." >&2
@@ -43,11 +38,6 @@ while getopts ${optstring} arg; do
   esac
 done
 
-if [[ -n $VERSION && -n $REVISION ]]; then
-  echo "You can either use -r or -v but not both at the same time"
-  exit 1
-fi
-
 shift $((OPTIND - 1))
 
 REPO_URL="$1" # e.g. https://github.com/input-output-hk/optparse-applicative
@@ -59,17 +49,17 @@ fi
 
 SUBDIRS=("$@")
 
-if [[ ${#SUBDIRS[@]} -gt 1 && (-n $VERSION || -n $REVISION) ]]; then
-  echo "You can use -r or -v only with a single package"
+if [[ ${#SUBDIRS[@]} -gt 1 && (-n $OVERWRITE_VERSION) ]]; then
+  echo "You can use -f only with a single package"
   exit 1
 fi
 
-if [[ ! "$REPO_URL" =~ "https://github.com/" ]]; then
+if [[ ! "$REPO_URL" =~ https://github.com/ ]]; then
   echo "Provided url is not a github url: $REPO_URL"
   exit 1
 fi
 
-TIMESTAMP=$($SCRIPT_DIR/current-timestamp.sh)
+TIMESTAMP=$("$SCRIPT_DIR"/current-timestamp.sh)
 
 render_meta() {
   local TIMESTAMP=$1
@@ -113,10 +103,8 @@ do_package() {
   local PKG_VERSION
   PKG_VERSION=$(awk -v IGNORECASE=1 '/^version/ { print $2 }' "$CABAL_FILE")
 
-  if [[ -n $VERSION ]]; then
-    PKG_VERSION="$VERSION"
-  elif [[ -n $REVISION ]]; then
-    PKG_VERSION="${PKG_VERSION}.0.0.0.0.${REVISION}"
+  if [[ -n $OVERWRITE_VERSION ]]; then
+    PKG_VERSION="$OVERWRITE_VERSION"
   fi
 
   local PKG_ID="$PKG_NAME-$PKG_VERSION"
@@ -138,14 +126,14 @@ do_package() {
   fi
 
   mkdir -p "$(dirname "$METAFILE")"
-  render_meta "$TIMESTAMP" "$REPO_URL" "$REPO_REV" "$SUBDIR" "$REVISION$VERSION" > "$METAFILE"
+  render_meta "$TIMESTAMP" "$REPO_URL" "$REPO_REV" "$SUBDIR" "$OVERWRITE_VERSION" > "$METAFILE"
   log "Written $METAFILE"
 
   git add "$METAFILE"
   git commit -m"Added $PKG_ID" -m "From $REPO_URL at $REPO_REV"
 }
 
-WORKDIR=$($SCRIPT_DIR/fetch-github-cabal-files.sh $REPO_URL $REPO_REV)
+WORKDIR=$("$SCRIPT_DIR"/fetch-github-cabal-files.sh "$REPO_URL" "$REPO_REV")
 
 if [[ ${#SUBDIRS[@]} -eq 0 ]]; then
   do_package "$REPO_URL" "$REPO_REV" "" "$WORKDIR"

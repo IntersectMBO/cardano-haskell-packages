@@ -2,3 +2,7 @@ timestamp = 2023-08-01T12:27:43Z
 github = { repo = "input-output-hk/anti-diffs", rev = "fa51ada9fbb03279e7a4bcfbf9c6f83b97b41f4e" }
 subdir = 'diff-containers'
 force-version = true
+
+[[deprecations]]
+timestamp = 2023-09-04T11:07:22Z
+deprecated = true
