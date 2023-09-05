@@ -10,6 +10,7 @@ SCRIPT_DIR=$(dirname "$(which "$0")")
 # Use gnu-tar and gnu-date regardless of whether the OS is Linux
 # or BSD-based.  The correct command will be assigned to TAR and DATE
 # variables.
+# shellcheck disable=SC1091
 source "$SCRIPT_DIR/use-gnu-tar.sh"
 
 log() {
@@ -24,6 +25,7 @@ REPO_URL=$1
 REPO_REV=$2
 TAR_URL="$REPO_URL/tarball/$REPO_REV"
 
+# shellcheck disable=SC2076
 if [[ ! "$REPO_URL" =~ "https://github.com/" ]]; then
   echo "Provided url is not a github url: $REPO_URL"
   exit 1
@@ -41,4 +43,4 @@ fi
 
 "$TAR" xzf ./* --strip-component=1 --wildcards '**/*.cabal'
 popd > /dev/null
-echo $WORKDIR
+echo "$WORKDIR"
