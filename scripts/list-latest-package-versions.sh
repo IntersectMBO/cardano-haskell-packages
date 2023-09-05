@@ -4,4 +4,4 @@
 
 REPO=$1
 
-cat "$REPO/foliage/packages.json" | jq -r 'group_by(."pkg-name") | .[] | max_by(."pkg-version") | [."pkg-name", ."pkg-version"] | @tsv' 
+jq -r 'group_by(."pkg-name") | .[] | max_by(."pkg-version") | [."pkg-name", ."pkg-version"] | @tsv' < "$REPO/foliage/packages.json"
