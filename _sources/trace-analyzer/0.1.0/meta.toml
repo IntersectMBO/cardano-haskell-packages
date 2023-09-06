@@ -1,0 +1,3 @@
+timestamp = 2023-09-06T17:11:48Z
+github = { repo = "input-output-hk/cardano-node/", rev = "8.3.0-pre" }
+subdir = 'bench/trace-analyzer'
