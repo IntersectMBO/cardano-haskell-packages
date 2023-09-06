@@ -90,6 +90,7 @@
               # packages that depend on the plutus-tx plugin have broken haddock
               packages = {
                 plutus-ledger.doHaddock = false;
+                plutus-scripts-bench.doHaddock = false;
                 cardano-ledger-alonzo.doHaddock = false;
                 cardano-ledger-conway.doHaddock = false;
                 cardano-ledger-babbage.doHaddock = false;
