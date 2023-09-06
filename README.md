@@ -21,7 +21,7 @@ contains the metadata specifying all the package versions. The package repositor
 
 If you have trouble, open an issue, or contact the trustees: @input-output-hk/cardano-haskell-packages-trustees
 
-## Background 
+## Background
 
 This section explains some concepts that are useful for understanding and working with CHaP.
 
@@ -70,7 +70,7 @@ repository cardano-haskell-packages
 The package repository will be understood by cabal, and can be updated with `cabal update`.
 You must run `cabal update` at least once so cabal can download the package index!
 
-The `index-state` for the package repository can also be pinned as usual. 
+The `index-state` for the package repository can also be pinned as usual.
 You can either just use a single `index-state` for both Hackage and CHaP:
 
 ```
@@ -151,12 +151,12 @@ that you don't want to update (e.g. because you know that the update will break 
 If you just want to test changes to CHaP, you should make a
 fork. If you want to replicate the setup from scratch you can clone [this template](https://github.com/andreabedini/foliage-template).
 
-## Contributing packages and revisions 
+## Contributing packages and revisions
 
 This section explains how to contribute to the main content of CHaP: packages and revisions.
 The contribution itself should be [made in a PR](#making-changes).
 
-### Requirements for including a package 
+### Requirements for including a package
 
 #### Monotonically increasing timestamps
 
@@ -185,9 +185,9 @@ Typical examples of this are anything that you add in `cabal.project`:
 - `allow-newer`
 - `source-repository-package`
 
-This is enforced by the CI, which will build newly added packages in PRs. 
+This is enforced by the CI, which will build newly added packages in PRs.
 
-### How to add a new package version 
+### How to add a new package version
 
 Package versions are defined using metadata files `_sources/$pkg_name/$pkg_version/meta.toml`,
 which you can create directly. The metadata files have the following format:
@@ -208,16 +208,15 @@ adding a package from a GitHub repository.
 
 ```console
 $ ./scripts/add-from-github.sh
-Usage add-from-github.sh [-r REVISION] [-v VERSION] REPO_URL COMMIT-SHA [SUBDIRS...]
+Usage add-from-github.sh [-f OVERWRITE_VERSION] REPO_URL COMMIT-SHA [SUBDIRS...]
 
-        -r REVISION     adds .0.0.0.0.REVISION to the package version
-        -v VERSION      uses VERSION as the package version
-        REPO_URL        the repository's Github URL
-        COMMIT_SHA      the commit SHA that corresponds to the revision/version
-        SUBDIRS         the list of relevant sub-directories
+        -f OVERWRITE_VERSION      (DANGEROUS) uses OVERWRITE_VERSION as the package version instead of the one from the tarball
+        REPO_URL                  the repository's Github URL
+        COMMIT_SHA                the commit SHA for the package source
+        SUBDIRS                   the list of relevant sub-directories
 ```
 
-For example, to add a new version from `plutus`'s `plutus-core` and `plutus-ledger-api`, etc from commit `75267027f157f1312964e7126280920d1245c52d`, run 
+For example, to add a new version from `plutus`'s `plutus-core` and `plutus-ledger-api`, etc from commit `75267027f157f1312964e7126280920d1245c52d`, run
 
 ```console
 ./scripts/add-from-github.sh "https://github.com/input-output-hk/plutus" 75267027f157f1312964e7126280920d1245c52d plutus-core plutus-ledger-api plutus-tx plutus-tx-plugin prettyprinter-configurable
@@ -233,10 +232,10 @@ The script will:
 You can tell the script to override the package version either by passing
 the version explicitly or by adding a "revision number" (see below).
 
-### How to add a new package metadata revision 
+### How to add a new package metadata revision
 
-CHaP supports package metadata revisions just like Hackage. These allow you to provide an edited cabal 
-file for a package version. The primary use of this is to tweak the dependency bounds of a package. 
+CHaP supports package metadata revisions just like Hackage. These allow you to provide an edited cabal
+file for a package version. The primary use of this is to tweak the dependency bounds of a package.
 In principle you can change other things too, but this is generally frowned upon.
 
 This repository contains a convenience script for adding a revision to CHaP:
@@ -248,7 +247,7 @@ $ ./scripts/add-revision.sh _repo PACKAGE_NAME PACKAGE_VERSION
 It will add a new revision and copy the _current_ cabal file in as the revised cabal file.
 You can then edit that file and commit the result.
 
-### How to add a patched versions of a Hackage package 
+### How to add a patched versions of a Hackage package
 
 CHaP should mostly contain versions of packages which are _not_ on Hackage.
 
@@ -283,13 +282,13 @@ For example, if CHaP contains `X-1.0` and `X-1.1`, then the first Hackage releas
 
 ## Building and testing CHaP
 
-For most contributors this section is not going to be necessary, and you can rely on the CI. 
+For most contributors this section is not going to be necessary, and you can rely on the CI.
 
 However if you are making a large number of changes (e.g. many revisions), it can be useful to test your work before making a PR.
 
 ### How to get the built Cabal package repository
 
-The Cabal package repository itself is built using the tool `foliage`. 
+The Cabal package repository itself is built using the tool `foliage`.
 You can either fetch the latest version which is stored in git; or build it yourself locally, which can be convenient or necessary if you have local changes.
 
 ### ... by downloading it from Github
@@ -310,13 +309,13 @@ git checkout -
 
 To build the repository, run `foliage build -j 0 --write-metadata`. This will build the repository and put it in `_repo`.
 
-### How to test changes 
+### How to test changes
 
 Sometimes it is useful to test in advance how a new package or a cabal file
 revision affects things.
 
 First of all, [build the repository](#how-to-build-the-cabal-package-repository).
-For the rest of this section we will assume the built repository is in 
+For the rest of this section we will assume the built repository is in
 `/home/user/cardano-haskell-packages/_repo`.
 
 #### ... by building packages with `cabal`
@@ -325,7 +324,7 @@ You can test a locally built CHaP with a small test project consisting of just a
 `cabal.project` file:
 
 ```
--- Give it a different name to avoid cabal confusing it with the 
+-- Give it a different name to avoid cabal confusing it with the
 -- real CHaP
 repository cardano-haskell-packages-local
   -- Point this to the *built* repository
@@ -334,7 +333,7 @@ repository cardano-haskell-packages-local
   -- You can skip the root-keys field
 
 -- Add all the packages you want to try building
-extra-packages: 
+extra-packages:
   , cardano-prelude-0.1.0.0
 ```
 
@@ -355,21 +354,21 @@ You can troubleshoot a failed build plan using the cabal flags `--constraint`, `
 You can build packages from CHaP using Nix like this:
 
 ```
-nix build 
+nix build
   --override-input CHaP /home/user/cardano-haskell-packages/_repo
   .#"ghc92/plutus-core/1.1.0.0"
 ```
 
 This will build all the components of that package version that CHaP cares about, namely libraries and executables (test suites and benchmarks are not built).
 
-We need to use `--override-input` because the CHaP flake relies on a built repository. 
-By default it points to a built repository on the main CHaP `repo` branch. 
+We need to use `--override-input` because the CHaP flake relies on a built repository.
+By default it points to a built repository on the main CHaP `repo` branch.
 But if you have just produced your own built repository (see above) then you want to
 use that instead, and `--override-input` will let you do that.
 
 #### ... by testing against a haskell.nix project
 
-If you want to test a locally built CHaP against a project that uses CHaP 
+If you want to test a locally built CHaP against a project that uses CHaP
 via haskell.nix, you can build the project while overriding CHaP
 with your local version.
 
@@ -377,8 +376,8 @@ with your local version.
 $ nix build --override-input CHaP path:/home/user/cardano-haskell-packages/_repo
 ```
 
-Note that you will need to change the `index-state` for `cardano-haskell-packages` 
-to be newer than the repository you just built, otherwise cabal will ignore your 
+Note that you will need to change the `index-state` for `cardano-haskell-packages`
+to be newer than the repository you just built, otherwise cabal will ignore your
 new package versions!
 
 Also, you you can examine the build plan without completing the build:
@@ -391,13 +390,13 @@ $ nix build .#project.plan-nix.json \
 This is useful if you just want to see whether cabal is able to successfully
 resolve dependencies and see what versions it picked.
 
-## Making changes 
+## Making changes
 
 Changes to CHaP should simply be made using PRs.
 
-### Access control 
+### Access control
 
-CHaP uses `CODEOWNERS` to determine whose approval is needed to release a package. 
+CHaP uses `CODEOWNERS` to determine whose approval is needed to release a package.
 The general rules are:
 
 - If a package is clearly owned by a particular team, then set that team as the CODEOWNER.
@@ -406,7 +405,7 @@ The general rules are:
 
 Generally, use your judgement about what's appropriate.
 
-### CI 
+### CI
 
 The CI for CHaP does the following things:
 
@@ -438,7 +437,7 @@ This will run the script at every step of the rebase on `HEAD` (i.e. the commit 
 ### Debugging solver issues
 
 Sometimes you may hit issues that are related to cabal's constraint solver making strange choices.
-For example, you are making a PR to release `foo-X`, which depends on `bar` via `baz`. 
+For example, you are making a PR to release `foo-X`, which depends on `bar` via `baz`.
 But when the CI builds the package, instead of using the newest `bar-Y`, cabal inexplicably decides to build a very old verison of `bar` that either a) leads to solver errors; or b) leads to compilation errors.
 
 The root cause is usually that the solver can't pick the version of `bar` that you want because it conflicts with your dependencies in some way, but it is often not obvious why.
@@ -448,7 +447,7 @@ The easiest way is to build the package in question [with nix](#-by-building-pac
 ```
 # repeat this whenever you change the repository, e.g. by adding a revision
 > foliage build -j 0 --write-metadata
-> nix build 
+> nix build
   --override-input CHaP /home/user/cardano-haskell-packages/_repo
   .#"ghc92/foo/X"
 ```
@@ -457,7 +456,7 @@ There are then two ways to make progress:
 1. Add a constraint to force the good case. If you are expecting to build with `bar-Y`, you can add a `bar == Y` constraint and the solver should tell you why it's impossible! You can either add this to the `cabal.project` specified in `nix/builder.nix`, or add `.addConstraint "bar == Y"` to the nix invocation.
 2. Make a revision to rule out the bad case. If your build fails because `baz-Z` can't build with `bar-P`, then `baz-Z` _should_ have a constraint that excludes `bar-P`. You can add this constraint by making a revision to `baz-Z` and try again.
 
-Both of these should get you to a _different_ error. 
+Both of these should get you to a _different_ error.
 The advantage of adding constraints is that it tends to more directly reveal the problem as it focusses on what you want to happen.
 The advantage of the revision is that it permanently records the incompatibility information, which is useful for future people.
 
