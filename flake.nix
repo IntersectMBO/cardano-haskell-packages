@@ -59,7 +59,7 @@
 
       # type CompilerName = String
       # compilers :: [CompilerName]
-      compilers = [ "ghc810" "ghc92" ];
+      compilers = [ "ghc810" "ghc92" "ghc96" ];
 
       # Add exceptions to the CI here.
       #
@@ -70,16 +70,49 @@
       #   compilers (defined above) are included.
       #
       exceptions = {
-        plutus-ledger.ghc92.enabled = false;
-        marlowe-cardano.ghc92.enabled = false;
-        marlowe-chain-sync.ghc92.enabled = false;
-        marlowe-client.ghc92.enabled = false;
-        marlowe-protocols.ghc92.enabled = false;
-        marlowe-runtime.ghc92.enabled = false;
-        marlowe-runtime-web.ghc92.enabled = false;
-        marlowe-test.ghc92.enabled = false;
-        marlowe-object.ghc92.enabled = false;
-        quickcheck-contractmodel.ghc92.enabled = false;
+        cardano-node = {
+          ghc96.enabled = false;
+        };
+        plutus-ledger = {
+          ghc92.enabled = false;
+          ghc96.enabled = false;
+        };
+        marlowe-cardano = {
+          ghc92.enabled = false;
+          ghc96.enabled = false;
+        };
+        marlowe-chain-sync = {
+          ghc92.enabled = false;
+          ghc96.enabled = false;
+        };
+        marlowe-client = {
+          ghc92.enabled = false;
+          ghc96.enabled = false;
+        };
+        marlowe-protocols = {
+          ghc92.enabled = false;
+          ghc96.enabled = false;
+        };
+        marlowe-runtime = {
+          ghc92.enabled = false;
+          ghc96.enabled = false;
+        };
+        marlowe-runtime-web = {
+          ghc92.enabled = false;
+          ghc96.enabled = false;
+        };
+        marlowe-test = {
+          ghc92.enabled = false;
+          ghc96.enabled = false;
+        };
+        marlowe-object = {
+          ghc92.enabled = false;
+          ghc96.enabled = false;
+        };
+        quickcheck-contractmodel = {
+          ghc92.enabled = false;
+          ghc96.enabled = false;
+        };
       };
 
       # Extra configurations (possibly compiler-dependent) to add to all projects.
