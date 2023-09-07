@@ -1,3 +1,7 @@
 timestamp = 2023-08-21T16:55:07Z
 github = { repo = "input-output-hk/ouroboros-consensus", rev = "42dbbf4b5daed4c6d3cc047690535c5bdcf6ff81" }
 subdir = 'ouroboros-consensus-protocol'
+
+[[revisions]]
+number = 1
+timestamp = 2023-09-07T15:40:32Z
