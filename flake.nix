@@ -82,14 +82,20 @@
         quickcheck-contractmodel.ghc92.enabled = false;
       };
 
-      # Extra configurations (possibly compiler dependend) to add to all projects.
+      # Extra configurations (possibly compiler-dependent) to add to all projects.
       extraConfig = compiler:
         {
           modules = [
             {
-              # packages that depend on the plutus-tx plugin have broken haddock
+              # Packages that depend on the plutus-tx plugin have broken haddock
               packages = {
                 plutus-ledger.doHaddock = false;
+              };
+            }
+            {
+              # Packages that have haddock that is broken on 8.10
+              # See https://github.com/input-output-hk/cardano-haskell-packages/issues/482
+              packages = lib.mkIf (compiler == "ghc810") {
                 cardano-ledger-alonzo.doHaddock = false;
                 cardano-ledger-conway.doHaddock = false;
                 cardano-ledger-babbage.doHaddock = false;
