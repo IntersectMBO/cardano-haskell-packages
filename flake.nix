@@ -70,9 +70,6 @@
       #   compilers (defined above) are included.
       #
       exceptions = {
-        cardano-node = {
-          ghc96.enabled = false;
-        };
         plutus-ledger = {
           ghc92.enabled = false;
           ghc96.enabled = false;
