@@ -415,7 +415,9 @@ Along with requiring linear history, this ensures that package repository that w
 - Builds a small set of packages using the newly built repository.
     - We build with all the major GHC versions we expect to be in use.
     - At the moment we don't build all the packages in the repository, only the latest versions of a fixed set.
+    - This happens twice, without Haddock and with Haddock.
 - Builds any newly added packages using the newly built repository.
+    - This happens twice, without Haddock and with Haddock.
 - If on the master branch, deploys the package repository to the `repo` branch, along with some static web content.
 
 #### Troubleshooting CI / GitHub Actions
