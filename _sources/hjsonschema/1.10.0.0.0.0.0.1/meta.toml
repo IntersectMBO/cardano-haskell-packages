@@ -1,0 +1,2 @@
+timestamp = 2023-09-12T01:01:08Z
+github = { repo = "input-output-hk/hjsonschema", rev = "8ce704c4c4f2e5f2f9699e48e8587a4f85c3b4c7" }
