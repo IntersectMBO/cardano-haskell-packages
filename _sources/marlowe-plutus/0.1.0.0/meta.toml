@@ -1,0 +1,3 @@
+timestamp = 2023-09-14T13:12:25Z
+github = { repo = "input-output-hk/marlowe-plutus", rev = "b7639be1239a589f8965828519c97542f60ecf99" }
+subdir = 'marlowe-plutus'

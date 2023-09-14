@@ -106,6 +106,10 @@
           ghc92.enabled = false;
           ghc96.enabled = false;
         };
+        marlowe-plutus = {
+          ghc92.enabled = false;
+          ghc96.enabled = false;
+        };
         quickcheck-contractmodel = {
           ghc92.enabled = false;
           ghc96.enabled = false;
