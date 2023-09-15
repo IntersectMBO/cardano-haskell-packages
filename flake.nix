@@ -48,6 +48,8 @@
         "cardano-node"
         # from plutus-apps
         "plutus-ledger"
+        # from marlowe-cardano
+        "marlowe-runtime"
       ];
 
       # Using intersectAttrs like this is a cheap way to throw away everything
