@@ -113,7 +113,9 @@
           ghc96.enabled = false;
         };
         quickcheck-contractmodel = {
-          ghc92.enabled = false;
+          ghc96.enabled = false;
+        };
+        quickcheck-threatmodel = {
           ghc96.enabled = false;
         };
       };
