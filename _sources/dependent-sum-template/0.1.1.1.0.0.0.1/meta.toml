@@ -1,0 +1,3 @@
+timestamp = 2023-09-26T01:42:03Z
+github = { repo = "input-output-hk/dependent-sum-template", rev = "adb6550fbde9b5b0613d71c65f23bd0fbb46d761" }
+force-version = true
