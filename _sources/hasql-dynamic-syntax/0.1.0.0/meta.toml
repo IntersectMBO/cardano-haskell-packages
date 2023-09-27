@@ -1,0 +1,3 @@
+timestamp = 2023-09-27T14:03:24Z
+github = { repo = "input-output-hk/marlowe-cardano", rev = "c724b1e890f4b57d3a0689aa9294cef84a78eabd" }
+subdir = 'hasql-dynamic-syntax'
