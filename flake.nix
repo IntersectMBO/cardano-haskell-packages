@@ -76,36 +76,40 @@
           ghc92.enabled = false;
           ghc96.enabled = false;
         };
+        hasql-dynamic-syntax = {
+          ghc810.enabled = false;
+          ghc96.enabled = false;
+        };
         marlowe-cardano = {
-          ghc92.enabled = false;
+          ghc810.enabled = false;
           ghc96.enabled = false;
         };
         marlowe-chain-sync = {
-          ghc92.enabled = false;
+          ghc810.enabled = false;
           ghc96.enabled = false;
         };
         marlowe-client = {
-          ghc92.enabled = false;
+          ghc810.enabled = false;
           ghc96.enabled = false;
         };
         marlowe-protocols = {
-          ghc92.enabled = false;
+          ghc810.enabled = false;
           ghc96.enabled = false;
         };
         marlowe-runtime = {
-          ghc92.enabled = false;
+          ghc810.enabled = false;
           ghc96.enabled = false;
         };
         marlowe-runtime-web = {
-          ghc92.enabled = false;
+          ghc810.enabled = false;
           ghc96.enabled = false;
         };
         marlowe-test = {
-          ghc92.enabled = false;
+          ghc810.enabled = false;
           ghc96.enabled = false;
         };
         marlowe-object = {
-          ghc92.enabled = false;
+          ghc810.enabled = false;
           ghc96.enabled = false;
         };
         marlowe-plutus = {
