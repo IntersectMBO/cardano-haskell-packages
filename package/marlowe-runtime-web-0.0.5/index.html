@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    marlowe-runtime-web-0.0.5
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      marlowe-runtime-web-0.0.5
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Web server for Marlowe Runtime on Cardano.</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p></p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Jamie Bertram</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>jamie.bertram@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/marlowe-cardano/tree/8d771bf962230534300a39c6b5704eecee55f6f4/marlowe-runtime-web">https://github.com/input-output-hk/marlowe-cardano</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>8d771bf962230534300a39c6b5704eecee55f6f4</dd>
+          <dt>Subdir</dt>
+          <dd>marlowe-runtime-web</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2023-09-27T14:04:15Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library marlowe-runtime-web:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;base16 ^&gt;=0.3.2&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;http-media ^&gt;=0.8&quot;,&quot;lens &gt;=5.2 &amp;&amp; &lt;6&quot;,&quot;marlowe-cardano ==0.2.0.0&quot;,&quot;marlowe-object ==0.2.0.0&quot;,&quot;mtl &gt;=2.2 &amp;&amp; &lt;3&quot;,&quot;network-uri &gt;=2.6 &amp;&amp; &lt;3&quot;,&quot;openapi3 &gt;=3.2 &amp;&amp; &lt;4&quot;,&quot;parsec ^&gt;=3.1.14&quot;,&quot;pipes ^&gt;=4.3.16&quot;,&quot;plutus-ledger-api ^&gt;=1.5&quot;,&quot;servant ^&gt;=0.19&quot;,&quot;servant-client ^&gt;=0.19&quot;,&quot;servant-client-core ^&gt;=0.19&quot;,&quot;servant-openapi3 ^&gt;=2.0&quot;,&quot;servant-pagination &gt;=2.5 &amp;&amp; &lt;3&quot;,&quot;servant-pipes ^&gt;=0.15.3&quot;,&quot;servant-server ^&gt;=0.19&quot;,&quot;text ^&gt;=1.2&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;wai &gt;=3.2 &amp;&amp; &lt;4&quot;]</li>
+            </ul>
+                      </dd>
+          <dt>library server:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;async &gt;=2.2 &amp;&amp; &lt;3&quot;,&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;cardano-api ^&gt;=8.2&quot;,&quot;cardano-ledger-alonzo ^&gt;=1.2&quot;,&quot;cardano-ledger-binary ^&gt;=1.1&quot;,&quot;cardano-ledger-core ^&gt;=1.2&quot;,&quot;cardano-ledger-shelley ^&gt;=1.2&quot;,&quot;co-log &gt;=0.5.0.0 &amp;&amp; &lt;0.6.0.0&quot;,&quot;containers ^&gt;=0.6.5&quot;,&quot;errors &gt;=2.3 &amp;&amp; &lt;3&quot;,&quot;eventuo11y &gt;=0.9 &amp;&amp; &lt;0.11&quot;,&quot;eventuo11y-extras ==0.1.1.0&quot;,&quot;exceptions &gt;=0.10 &amp;&amp; &lt;0.12&quot;,&quot;http-media ^&gt;=0.8&quot;,&quot;lens &gt;=5.2 &amp;&amp; &lt;6&quot;,&quot;lens-aeson ^&gt;=1.2&quot;,&quot;marlowe-cardano ==0.2.0.0&quot;,&quot;marlowe-chain-sync ==0.0.5&quot;,&quot;marlowe-client ==0.0.5&quot;,&quot;marlowe-object ==0.2.0.0&quot;,&quot;marlowe-protocols ==0.2.1.0&quot;,&quot;marlowe-runtime-web ==0.0.5&quot;,&quot;marlowe-runtime:{marlowe-runtime, contract-api, discovery-api, proxy-api, sync-api, tx-api} ==0.0.5&quot;,&quot;monad-control ^&gt;=1&quot;,&quot;mtl &gt;=2.2 &amp;&amp; &lt;3&quot;,&quot;openapi3 &gt;=3.2 &amp;&amp; &lt;4&quot;,&quot;pipes ^&gt;=4.3.16&quot;,&quot;plutus-ledger-api ^&gt;=1.5&quot;,&quot;servant ^&gt;=0.19&quot;,&quot;servant-openapi3 ^&gt;=2.0&quot;,&quot;servant-pagination &gt;=2.5 &amp;&amp; &lt;3&quot;,&quot;servant-pipes ^&gt;=0.15.3&quot;,&quot;servant-server ^&gt;=0.19&quot;,&quot;stm ^&gt;=2.5&quot;,&quot;stm-delay ^&gt;=0.1.1&quot;,&quot;string-conversions ^&gt;=0.4&quot;,&quot;text ^&gt;=1.2&quot;,&quot;time &gt;=1.9 &amp;&amp; &lt;2&quot;,&quot;transformers-base ^&gt;=0.4&quot;,&quot;unliftio-core ^&gt;=0.2&quot;,&quot;wai &gt;=3.2 &amp;&amp; &lt;4&quot;,&quot;wai-cors ^&gt;=0.2&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable marlowe-web-server:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;async-components ==0.1.1.0&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;co-log &gt;=0.5.0.0 &amp;&amp; &lt;0.6.0.0&quot;,&quot;eventuo11y &gt;=0.9 &amp;&amp; &lt;0.11&quot;,&quot;eventuo11y-otel ^&gt;=0.1&quot;,&quot;hs-opentelemetry-sdk ==0.0.3.4&quot;,&quot;http-types&quot;,&quot;marlowe-client&quot;,&quot;marlowe-protocols&quot;,&quot;marlowe-runtime-web:server&quot;,&quot;marlowe-runtime:config&quot;,&quot;mtl &gt;=2.2 &amp;&amp; &lt;3&quot;,&quot;network&quot;,&quot;optparse-applicative&quot;,&quot;text ^&gt;=1.2&quot;,&quot;unliftio ^&gt;=0.2.1&quot;,&quot;wai &gt;=3.2 &amp;&amp; &lt;4&quot;,&quot;warp&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite marlowe-runtime-web-test:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson &gt;=2 &amp;&amp; &lt;3&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;bytestring &gt;=0.10.12 &amp;&amp; &lt;0.12&quot;,&quot;hspec&quot;,&quot;marlowe-cardano ==0.2.0.0&quot;,&quot;marlowe-object:gen&quot;,&quot;marlowe-runtime-web&quot;,&quot;marlowe-runtime:gen&quot;,&quot;marlowe-test&quot;,&quot;openapi3 &gt;=3.2 &amp;&amp; &lt;4&quot;,&quot;QuickCheck&quot;,&quot;quickcheck-instances&quot;,&quot;regex-posix&quot;,&quot;servant&quot;,&quot;servant-openapi3&quot;,&quot;text ^&gt;=1.2&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
