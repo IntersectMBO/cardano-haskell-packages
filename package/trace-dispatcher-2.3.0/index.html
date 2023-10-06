@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    trace-dispatcher-2.3.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      trace-dispatcher-2.3.0
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Tracers for Cardano</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Package for development of simple and efficient tracers
+based on the arrow based contra-tracer package</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Juergen Nicklisch-Franken</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>operations@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/cardano-node/tree/f1ce770834bf7150ca29cb647065c9e62d39be1a/trace-dispatcher">https://github.com/input-output-hk/cardano-node</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>f1ce770834bf7150ca29cb647065c9e62d39be1a</dd>
+          <dt>Subdir</dt>
+          <dd>trace-dispatcher</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2023-10-06T00:47:56Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library trace-dispatcher:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;base &gt;=4.12 &amp;&amp; &lt;5&quot;,&quot;aeson &gt;=2.1.0.0&quot;,&quot;async&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;deepseq&quot;,&quot;ekg&quot;,&quot;ekg-core&quot;,&quot;ekg-forward &gt;=0.4&quot;,&quot;hostname&quot;,&quot;network&quot;,&quot;optparse-applicative-fork&quot;,&quot;ouroboros-network ^&gt;=0.9.1&quot;,&quot;ouroboros-network-api&quot;,&quot;ouroboros-network-framework&quot;,&quot;serialise&quot;,&quot;stm&quot;,&quot;text&quot;,&quot;time&quot;,&quot;trace-forward&quot;,&quot;unagi-chan &gt;=0.4.1.4&quot;,&quot;unliftio&quot;,&quot;unliftio-core&quot;,&quot;unordered-containers&quot;,&quot;yaml&quot;]</li>
+            </ul>
+            <p>if !os(windows)</p>
+            <ul class="build-depends">
+            <li>unix</li>
+            </ul>
+<p>if os(windows)</p>
+            <ul class="build-depends">
+            <li>Win32</li>
+            </ul>
+          </dd>
+          <dt>executable trace-dispatcher-examples:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.12 &amp;&amp; &lt;5&quot;,&quot;aeson&quot;,&quot;bytestring&quot;,&quot;containers&quot;,&quot;deepseq&quot;,&quot;ekg&quot;,&quot;ekg-core&quot;,&quot;hostname&quot;,&quot;stm&quot;,&quot;text&quot;,&quot;trace-dispatcher&quot;,&quot;trace-forward&quot;,&quot;time&quot;,&quot;unagi-chan&quot;,&quot;unliftio&quot;,&quot;unliftio-core&quot;,&quot;unordered-containers&quot;,&quot;utf8-string&quot;,&quot;yaml&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite trace-dispatcher-bench:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.12 &amp;&amp; &lt;5&quot;,&quot;aeson&quot;,&quot;containers&quot;,&quot;criterion&quot;,&quot;ekg&quot;,&quot;text&quot;,&quot;time&quot;,&quot;trace-dispatcher&quot;,&quot;QuickCheck&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
