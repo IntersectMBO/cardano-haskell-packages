@@ -1,0 +1,3 @@
+timestamp = 2023-10-06T00:47:56Z
+github = { repo = "input-output-hk/cardano-node", rev = "f1ce770834bf7150ca29cb647065c9e62d39be1a" }
+subdir = 'trace-dispatcher'
