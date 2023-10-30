@@ -87,7 +87,8 @@ jobs:
     if: github.event_name == 'pull'
     runs-on: nixos
     needs:
-      - build-repos
+      - build-repo-base
+      - build-repo-head
     steps:
       - name: Download built repository (base)
         uses: actions/download-artifact@v3
@@ -131,7 +132,8 @@ jobs:
     name: build-package ${{ matrix.name }}
     runs-on: nixos
     needs:
-      - build-repos
+      - build-repo-base
+      - build-repo-head
       - generate-smoke-tests
     strategy:
       fail-fast: false
@@ -200,7 +202,7 @@ jobs:
     runs-on: nixos
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
-      - build-repos
+      - build-repo-head
     steps:
       - uses: actions/checkout@v3
         with:
