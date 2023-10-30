@@ -238,7 +238,7 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - check
-      - build-repos
+      - build-repo-head
       - deploy-check
 
     concurrency:
