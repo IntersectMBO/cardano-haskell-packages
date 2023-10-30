@@ -17,7 +17,7 @@ jobs:
   check:
     runs-on: nixos
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # the check script below needs the whole history
 
@@ -90,6 +90,8 @@ jobs:
       - build-repo-base
       - build-repo-head
     steps:
+      - uses: actions/checkout@v4
+
       - name: Download built repository (base)
         uses: actions/download-artifact@v3
         with:
@@ -204,11 +206,11 @@ jobs:
     needs:
       - build-repo-head
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: src
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: repo
           ref: repo
