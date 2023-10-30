@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.follows = "haskell-nix/nixpkgs";
-    flake-utils.follows = "haskell-nix/flake-utils";
+    flake-utils.url = "github:numtide/flake-utils";
 
     foliage = {
       url = "github:input-output-hk/foliage";
@@ -37,7 +37,7 @@
   outputs = { self, nixpkgs, flake-utils, foliage, haskell-nix, CHaP, iohk-nix, ... }:
     let
       inherit (nixpkgs) lib;
-      inherit (import ./nix/chap-meta.nix { inherit lib CHaP; }) chap-package-latest-versions chap-package-versions mkPackageTreeWith;
+      inherit (import ./nix/chap-meta.nix { inherit lib CHaP; }) chapPackageLatestVersion chapPackageVersions mkPackageTreeWith;
 
       smokeTestPackages = [
         "plutus-ledger-api"
@@ -52,12 +52,8 @@
         "marlowe-runtime"
       ];
 
-      # Using intersectAttrs like this is a cheap way to throw away everything
-      # with keys not in smokeTestPackages
-      smoke-test-package-versions =
-        builtins.intersectAttrs
-          (lib.genAttrs smokeTestPackages (pkg: { }))
-          chap-package-latest-versions;
+      smokeTestPackageVersions =
+        lib.getAttrs smokeTestPackages chapPackageLatestVersion;
 
       # type CompilerName = String
       # compilers :: [CompilerName]
@@ -148,8 +144,8 @@
         };
 
       # mkCompilerPackageTreeWith
-      # :: (Compiler -> PkgName -> PkgVersions -> a)
-      # -> PkgVersions
+      # :: (Compiler -> PkgName -> PkgVersion -> a)
+      # -> Either PkgVersion [PkgVersion]
       # -> Map Compiler (Map PkgName (Map PkgVersion a))
       mkCompilerPackageTreeWith = f: pkg-versions:
         lib.genAttrs compilers (compiler:
@@ -205,30 +201,41 @@
               gitMinimal
               gnutar
               foliage.packages.${system}.default
+              (pkgs.haskell-nix.tool "ghc947" "cabal-plan" "latest")
             ];
           };
 
           haskellPackages =
+            lib.warn "the attribute haskellPackages is deprecated, use chapPackages instead" chapPackages;
+
+          chapPackages =
             mkCompilerPackageTreeWith
               (compiler: name: version: (builder compiler name version).aggregate)
-              chap-package-versions;
+              chapPackageVersions;
 
           smokeTestPackages =
             mkCompilerPackageTreeWith
               (compiler: name: version: (builder compiler name version).aggregate)
-              smoke-test-package-versions;
+              smokeTestPackageVersions;
 
-          packages = flattenTree haskellPackages // {
+          packages = flattenTree chapPackages // {
             inherit update-chap-deps;
 
             allPackages = pkgs.releaseTools.aggregate {
               name = "all-packages";
-              constituents = builtins.attrValues (flattenTree haskellPackages);
+              constituents = builtins.attrValues (flattenTree chapPackages);
             };
 
             allSmokeTestPackages = pkgs.releaseTools.aggregate {
               name = "all-smoke-test-packages";
               constituents = builtins.attrValues (flattenTree smokeTestPackages);
+            };
+
+            ghaMatrix = {
+              include =
+                lib.mapAttrsToList
+                  (name: _value: { inherit name; })
+                  (flattenTree smokeTestPackages);
             };
           };
 
@@ -237,7 +244,7 @@
 
           hydraJobs =
             lib.optionalAttrs (system != "aarch64-linux")
-              (mkCompilerPackageTreeWith builder smoke-test-package-versions);
+              (mkCompilerPackageTreeWith builder smokeTestPackageVersions);
         });
 
   nixConfig = {

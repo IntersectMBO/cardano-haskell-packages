@@ -1,0 +1,33 @@
+name: Build repository
+inputs:
+  ref:
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Checkout ${{ inputs.ref }}
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.ref }}
+
+    - name: Unpack keys
+      env:
+        KEYS: ${{ secrets.KEYS }}
+      run: |
+        if [[ -z "$KEYS" ]]; then
+          echo "Could not access repository secret keys (PR is coming from a fork?)"
+          echo "Generating fresh keys for this run"
+          nix develop -c foliage create-keys
+        else
+          mkdir _keys
+          echo "$KEYS" | base64 -d | tar xvz -C _keys
+        fi
+
+    - name: Build repository
+      run: nix develop --command foliage build -j 0  --write-metadata
+
+    - name: Copy static web assets
+      run: |
+        cp static/index.html _repo
+        cp README.md _repo
+

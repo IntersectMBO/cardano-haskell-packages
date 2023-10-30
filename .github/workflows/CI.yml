@@ -14,16 +14,8 @@ env:
   NIX_CONFIG: accept-flake-config = true
 
 jobs:
-  shellcheck:
-    runs-on: nixos
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run shellcheck on scripts/*.sh
-        run: nix-shell -I nixpkgs=https://github.com/nixos/nixpkgs/archive/release-23.05.tar.gz -p shellcheck --run 'shellcheck scripts/*.sh'
-        
   check:
     runs-on: nixos
-
     steps:
       - uses: actions/checkout@v3
         with:
@@ -32,165 +24,186 @@ jobs:
       - name: Run checks
         run: nix develop -c ./scripts/check.sh
 
-  build-repo:
+  # If this is a pull request, we have a base ref to compare against
+  build-repo-base:
+    if: github.event_name == 'pull'
     runs-on: nixos
-
     steps:
-      - name: Checkout main 
-        uses: actions/checkout@v3
+      # We don't need to build the repos more than once, we can deal with
+      # transient issues by wiping the broken cache (e.g. `gh cache delete`)
+      - name: Fetch cache
+        id: cache
+        uses: actions/cache@v3
         with:
-          ref: main
+          path: _repo
+          key: built-repo-${{ github.event.pull_request.base.sha }}
 
-      - uses: actions/cache@v3
+      - if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        name: Build repository
+        uses: ./.github/actions/build-repo
         with:
-          path: _cache
-          key: 1 # bump to refresh
-
-      - name: Unpack keys
-        env:
-          KEYS: ${{ secrets.KEYS }}
-        run: |
-          if [[ -z "$KEYS" ]]; then
-            echo "Could not access repository secret keys (PR is coming from a fork?)"
-            echo "Generating fresh keys for this run"
-            nix develop -c foliage create-keys
-          else 
-            mkdir _keys
-            echo "$KEYS" | base64 -d | tar xvz -C _keys
-          fi
-
-      - name: Build repository (main)
-        run: |
-          nix develop -c foliage build -j 0  --write-metadata
-          mv _repo _repo-main
-          cp _repo-main/foliage/packages.json packages-old.json
-
-      - name: Checkout tip commit
-        uses: actions/checkout@v3
-        with:
-          clean: false
-
-      - name: Build repository (tip)
-        run: |
-          nix develop -c foliage build -j 0 --write-metadata
-          cp _repo/foliage/packages.json packages-new.json
-
-      - name: Copy static web assets
-        run: |
-          cp static/index.html _repo
-          cp README.md _repo
+          ref: ${{ github.event.pull_request.base.ref }}
 
       # See https://github.com/actions/upload-artifact/issues/36
       - name: Pack repository in a tar archive
         run: tar cf _repo.tar -C _repo .
 
-      # Do this before the check, useful to have the artifact in case the 
-      # check fails!
       - name: Upload built repository
         uses: actions/upload-artifact@v3
         with:
-          name: built-repo
+          name: built-repo-base
           path: _repo.tar
 
-      - name: Upload package metadata
+  build-repo-head:
+    runs-on: nixos
+    steps:
+      # We don't need to build the repos more than once, we can deal with
+      # transient issues by wiping the broken cache (e.g. `gh cache delete`)
+      - name: Fetch cache
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: _repo
+          key: built-repo-${{ github.sha }}
+
+      - if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        name: Build repository
+        uses: ./.github/actions/build-repo
+        with:
+          ref: ${{ github.ref }}
+
+      # See https://github.com/actions/upload-artifact/issues/36
+      - name: Pack repository in a tar archive
+        run: tar cf _repo.tar -C _repo .
+
+      - name: Upload built repository
         uses: actions/upload-artifact@v3
         with:
-          name: package-metadata
-          path: |
-            packages-old.json
-            packages-new.json
+          name: built-repo-head
+          path: _repo.tar
 
-      # Note: we use the check script from the tip so we pick up changes 
-      # to the script from the PR itself.
+  # If this is a pull request, we have a base ref to compare against
+  check-append-only:
+    if: github.event_name == 'pull'
+    runs-on: nixos
+    needs:
+      - build-repos
+    steps:
+      - name: Download built repository (base)
+        uses: actions/download-artifact@v3
+        with:
+          name: built-repo-base
+          path: built-repo-base
+
+      - name: Unpack built repository (base)
+        run: |
+          mkdir _repo-base
+          tar xf built-repo-base/_repo.tar -C _repo-base
+
+      - name: Download built repository (head)
+        uses: actions/download-artifact@v3
+        with:
+          name: built-repo-head
+          path: built-repo-head
+
+      - name: Unpack built repository (head)
+        run: |
+          mkdir _repo-head
+          tar xf built-repo-head/_repo.tar -C _repo-head
+
       - name: Check new index is an extension of the old index
         run: |
           echo "If this check failed because 'some entries only exist in the old index'"
           echo "then you may need to update your branch.\n"
           echo "If it failed because 'the last old entry is newer than the first new entry'"
           echo "then you may need to update the timestamps in your new packages to be newer than those in main."
-          ./scripts/check-archive-extension.sh _repo-main/01-index.tar _repo/01-index.tar
+          ./scripts/check-archive-extension.sh _repo-base/01-index.tar _repo-head/01-index.tar
+
+  generate-smoke-tests:
+    runs-on: nixos
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        run: nix eval --json github:${{ github.repository }}/${{ github.ref }}#ghaMatrix >> "$GITHUB_OUTPUT"
 
   build-packages:
+    name: build-package ${{ matrix.name }}
     runs-on: nixos
     needs:
-      - build-repo
-
+      - build-repos
+      - generate-smoke-tests
+    strategy:
+      fail-fast: false
+      # The step generate-smoke-tests produces a list of derivations to build
+      # include:
+      #  - name: ghc96/cardano-node/8.5.0
+      #  ...
+      matrix: ${{ fromJSON(needs.generate-smoke-tests.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Download built repository
+      - name: Download built repository (base)
+        if: github.event_name == 'pull'
         uses: actions/download-artifact@v3
         with:
-          name: built-repo
+          name: built-repo-base
+          path: built-repo-base
 
-      - name: Unpack built repository
+      - name: Unpack built repository (base)
+        if: github.event_name == 'pull'
         run: |
-          mkdir _repo
-          tar xf _repo.tar -C _repo
+          mkdir _repo-base
+          tar xf built-repo-base/_repo.tar -C _repo-base
 
-      - name: Build smoke test packages
-        # The > is the "YAML folded string" marker, which replaces 
-        # newlines with spaces, since the usual bash idiom of \ 
-        # doesn't work for some reason
+      - name: Download built repository (head)
+        uses: actions/download-artifact@v3
+        with:
+          name: built-repo-head
+          path: built-repo-head
+
+      - name: Unpack built repository (head)
+        run: |
+          mkdir _repo-head
+          tar xf built-repo-head/_repo.tar -C _repo-head
+
+      - name: Old install plan
+        if: github.event_name == 'pull'
+        id: build
         run: >
-          nix build .#allSmokeTestPackages
-          -L 
-          --override-input CHaP path:_repo
-          --show-trace
+          nix build
+          'github:${{ github.repository }}/${{ github.ref }}#"${{ matrix.name }}".passthru.project.plan-nix.json'
+          --out-link plan-base
+          --override-input CHaP path:_repo-base
 
-  build-new-packages:
-    runs-on: nixos
-
-    needs:
-      - build-repo
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Download built repository
-        uses: actions/download-artifact@v3
-        with:
-          name: built-repo
-
-      - name: Unpack built repository
-        run: |
-          mkdir _repo
-          tar xf _repo.tar -C _repo
-
-      - name: Download package metadata
-        uses: actions/download-artifact@v3
-        with:
-          name: package-metadata
-          path: .
-
-      # This is a bit of a hack: to build the newly added packages, we:
-      # 1. compute the packages.json that just contains the new pacakge-versions
-      # 2. overwrite the built repository's packages.json with the computed one
-      # 3. build "all the packages" which now means "the new packages"
-      #
-      # This avoids us having to do other complicated tricks to make the flake
-      # take the set of packages to build as an argument.
-      - name: Adjust repository metadata
-        run: |
-          scripts/compare-package-metadata.sh packages-old.json packages-new.json > packages-diff.json
-          echo "Newly added packages:"
-          cat packages-diff.json
-          mv -f packages-diff.json _repo/foliage/packages.json
-
-      - name: Build all newly added packages
+      - name: New install plan
+        id: build
         run: >
-          nix build .#allPackages
-          -L
-          --override-input CHaP path:_repo
+          nix build
+          'github:${{ github.repository }}/${{ github.ref }}#"${{ matrix.name }}".passthru.project.plan-nix.json'
+          --out-link plan-head
+          --override-input CHaP path:_repo-head
+
+      - name: Compute difference between install plans
+        if: github.event_name == 'pull'
+        run: >
+          nix develop --command
+          cabal-plan diff --plan-json plan-base-json --plan-json plan-head-json
+
+      - name: Build package
+        # The > is the "YAML folded string" marker, which replaces newlines
+        # with spaces, since the usual bash idiom of \ doesn't work for some
+        # reason
+        id: build
+        run: >
+          nix build 'github:${{ github.repository }}/${{ github.ref }}#"${{ matrix.name }}"'
+          --print-build-logs
+          --override-input CHaP path:_repo-head
           --show-trace
 
   deploy-check:
     runs-on: nixos
-
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: 
-      - build-repo
-
+    needs:
+      - build-repos
     steps:
       - uses: actions/checkout@v3
         with:
@@ -201,15 +214,16 @@ jobs:
           path: repo
           ref: repo
 
-      - name: Download built repository
+      - name: Download built repository (head)
         uses: actions/download-artifact@v3
         with:
-          name: built-repo
+          name: built-repo-head
+          path: built-repo-head
 
-      - name: Unpack built repository
+      - name: Unpack built repository (head)
         run: |
-          mkdir built-repo
-          tar xf _repo.tar -C built-repo
+          mkdir _repo-head
+          tar xf built-repo-head/_repo.tar -C _repo-head
 
       # This is meaningfully different to the check in 'build': that checks the repository
       # built from main and from the PR tip, but that's not _actually_ the repository
@@ -217,15 +231,15 @@ jobs:
       # against the thing that's actually deployed before we deploy.
       - name: Check new index is an extension of the old index
         run: |
-          ./src/scripts/check-archive-extension.sh repo/01-index.tar built-repo/01-index.tar
+          ./src/scripts/check-archive-extension.sh repo/01-index.tar _repo-head/01-index.tar
 
   deploy:
     # This job is fine to run on GitHub provided (free) runners.
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: 
+    needs:
       - check
-      - build-repo
+      - build-repos
       - deploy-check
 
     concurrency:
@@ -244,12 +258,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - uses: actions/checkout@v3
-
       - name: Download built repository
         uses: actions/download-artifact@v3
         with:
-          name: built-repo
+          name: built-repo-head
 
       - name: Unpack built repository
         run: |
