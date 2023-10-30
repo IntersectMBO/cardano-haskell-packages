@@ -167,7 +167,6 @@ jobs:
 
       - name: Old install plan
         if: github.event_name == 'pull'
-        id: build
         run: >
           nix build
           'github:${{ github.repository }}/${{ github.ref }}#"${{ matrix.name }}".passthru.project.plan-nix.json'
@@ -175,7 +174,6 @@ jobs:
           --override-input CHaP path:_repo-base
 
       - name: New install plan
-        id: build
         run: >
           nix build
           'github:${{ github.repository }}/${{ github.ref }}#"${{ matrix.name }}".passthru.project.plan-nix.json'
@@ -192,7 +190,6 @@ jobs:
         # The > is the "YAML folded string" marker, which replaces newlines
         # with spaces, since the usual bash idiom of \ doesn't work for some
         # reason
-        id: build
         run: >
           nix build 'github:${{ github.repository }}/${{ github.ref }}#"${{ matrix.name }}"'
           --print-build-logs
