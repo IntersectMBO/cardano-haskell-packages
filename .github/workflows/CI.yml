@@ -29,6 +29,8 @@ jobs:
     if: github.event_name == 'pull'
     runs-on: nixos
     steps:
+      - uses: actions/checkout@v4
+
       # We don't need to build the repos more than once, we can deal with
       # transient issues by wiping the broken cache (e.g. `gh cache delete`)
       - name: Fetch cache
@@ -57,6 +59,8 @@ jobs:
   build-repo-head:
     runs-on: nixos
     steps:
+      - uses: actions/checkout@v4
+
       # We don't need to build the repos more than once, we can deal with
       # transient issues by wiping the broken cache (e.g. `gh cache delete`)
       - name: Fetch cache
@@ -90,8 +94,6 @@ jobs:
       - build-repo-base
       - build-repo-head
     steps:
-      - uses: actions/checkout@v4
-
       - name: Download built repository (base)
         uses: actions/download-artifact@v3
         with:
