@@ -132,6 +132,7 @@
               # Packages that depend on the plutus-tx plugin have broken haddock
               packages = {
                 plutus-ledger.doHaddock = false;
+                plutus-scripts-bench.doHaddock = false;
               };
             }
             {
