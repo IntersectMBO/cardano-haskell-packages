@@ -130,7 +130,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - id: set-matrix
-        run: nix eval --json github:${{ github.repository }}/${{ github.ref }}#ghaMatrix >> "$GITHUB_OUTPUT"
+        run: echo "matrix=$(nix eval --json github:${{ github.repository }}/${{ github.ref }}#ghaMatrix)" >> "$GITHUB_OUTPUT"
 
   build-packages:
     name: build-package ${{ matrix.name }}
