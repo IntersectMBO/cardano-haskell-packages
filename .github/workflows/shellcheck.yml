@@ -1,0 +1,22 @@
+name: shellcheck
+
+on:
+  # Following https://github.com/orgs/community/discussions/26276
+  # to get builds on PRs and pushes to main but not double
+  # builds on PRs.
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+env:
+  NIX_CONFIG: accept-flake-config = true
+
+jobs:
+  shellcheck:
+    runs-on: nixos
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run shellcheck on scripts/*.sh
+        run: nix-shell -I nixpkgs=https://github.com/nixos/nixpkgs/archive/release-23.05.tar.gz -p shellcheck --run 'shellcheck scripts/*.sh'
