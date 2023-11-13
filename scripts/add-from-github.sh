@@ -15,7 +15,7 @@ function usage {
   exit
 }
 
-optstring=":hr:v:"
+optstring=":hf:"
 
 OVERWRITE_VERSION=
 
