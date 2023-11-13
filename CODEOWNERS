@@ -139,6 +139,8 @@ _sources/hydra-* @input-output-hk/hydra-engineering
 # performance-tracing
 _sources/cardano-topology               @input-output-hk/performance-tracing
 _sources/cardano-tracer                 @input-output-hk/performance-tracing
+_sources/ekg                            @input-output-hk/performance-tracing
+_sources/ekg-core                       @input-output-hk/performance-tracing
 _sources/ekg-forward                    @input-output-hk/performance-tracing
 _sources/ekg-json                       @input-output-hk/performance-tracing
 _sources/iohk-monitoring                @input-output-hk/performance-tracing
