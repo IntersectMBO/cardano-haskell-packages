@@ -4,3 +4,7 @@ github = { repo = "input-output-hk/ekg-forward", rev = "5f5423b1b498a8bf0d33d869
 [[revisions]]
 number = 1
 timestamp = 2023-09-05T08:50:43Z
+
+[[revisions]]
+number = 2
+timestamp = 2023-11-15T14:43:10Z
