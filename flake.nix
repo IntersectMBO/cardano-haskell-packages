@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.follows = "haskell-nix/nixpkgs";
-    flake-utils.follows = "haskell-nix/flake-utils";
+    flake-utils = { url = "github:numtide/flake-utils"; };
 
     foliage = {
       url = "github:input-output-hk/foliage";
@@ -61,7 +61,9 @@
 
       # type CompilerName = String
       # compilers :: [CompilerName]
-      compilers = [ "ghc810" "ghc92" "ghc96" ];
+      compilers = [ "ghc810" "ghc96" "ghc98" ];
+      # compilers which we don't build for by default
+      experimental-compilers = [ "ghc98" ];
 
       # Add exceptions to the CI here.
       #
@@ -72,8 +74,10 @@
       #   compilers (defined above) are included.
       #
       exceptions = {
+        cardano-prelude = {
+          ghc98.enabled = true;
+        };
         plutus-ledger = {
-          ghc92.enabled = false;
           ghc96.enabled = false;
         };
         hasql-dynamic-syntax = {
@@ -113,7 +117,6 @@
           ghc96.enabled = false;
         };
         marlowe-plutus = {
-          ghc92.enabled = false;
           ghc96.enabled = false;
         };
         quickcheck-contractmodel = {
@@ -160,7 +163,10 @@
                 (name: _v:
                   lib.attrByPath
                     [ name compiler "enabled" ]
-                    true
+                    # the default setting depends on whether or not the compiler is
+                    # experimental. Experimental compilers are disabled by default,
+                    # non-experimental compilers are enabled by default
+                    (!(builtins.elem compiler experimental-compilers))
                     exceptions)
                 pkg-versions;
           in
