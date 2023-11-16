@@ -1,3 +1,7 @@
 timestamp = 2023-08-01T16:16:49Z
 github = { repo = "input-output-hk/fs-sim", rev = "f4a471dd5eb5598530c03d76acb040ce456cd338" }
 subdir = 'fs-api'
+
+[[revisions]]
+number = 1
+timestamp = 2023-11-16T12:44:10Z
