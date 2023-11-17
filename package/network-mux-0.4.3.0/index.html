@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    network-mux-0.4.3.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      network-mux-0.4.3.0
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Multiplexing library</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Multiplexing library.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Duncan Coutts, Marc Fontaine, Karl Knutsson, Marcin Szamotulski, Alexander Vieth, Neil Davies</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>marcin.szamotulski@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/ouroboros-network/tree/37d43255dff0d66fec3be487b23fea3759a37fb3/network-mux">https://github.com/input-output-hk/ouroboros-network</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>37d43255dff0d66fec3be487b23fea3759a37fb3</dd>
+          <dt>Subdir</dt>
+          <dd>network-mux</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2023-11-17T11:03:15Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library network-mux:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.19&quot;,&quot;io-classes ^&gt;=1.3&quot;,&quot;strict-stm&quot;,&quot;si-timers&quot;,&quot;contra-tracer &gt;=0.1 &amp;&amp; &lt;0.2&quot;,&quot;monoidal-synchronisation &gt;=0.1 &amp;&amp; &lt;0.2&quot;,&quot;array &gt;=0.5 &amp;&amp; &lt;0.6&quot;,&quot;binary &gt;=0.8 &amp;&amp; &lt;0.11&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.12&quot;,&quot;containers &gt;=0.5 &amp;&amp; &lt;0.7&quot;,&quot;network &gt;=3.1.2.2 &amp;&amp; &lt;3.2&quot;,&quot;process &gt;=1.6 &amp;&amp; &lt;1.7&quot;,&quot;statistics-linreg &gt;=0.3 &amp;&amp; &lt;0.4&quot;,&quot;vector &gt;=0.12 &amp;&amp; &lt;0.14&quot;,&quot;time &gt;=1.9.1 &amp;&amp; &lt;1.14&quot;,&quot;quiet&quot;]</li>
+            </ul>
+            <p>if os(windows)</p>
+            <ul class="build-depends">
+            <li>Win32 &gt;=2.5.4.1 &amp;&amp; &lt;3.0</li>
+            <li>Win32-network &gt;=0.1 &amp;&amp; &lt;0.2</li>
+            </ul>
+          </dd>
+          <dt>executable mux-demo:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.19&quot;,&quot;network-mux&quot;,&quot;io-classes&quot;,&quot;contra-tracer&quot;,&quot;stm&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;serialise&quot;]</li>
+</ul>
+<p>if !os(windows)</p>
+<ul class="build-depends">
+<li>directory</li>
+<li>network</li>
+</ul>
+<p>if os(windows)</p>
+<ul class="build-depends">
+<li>Win32</li>
+<li>Win32-network</li>
+</ul>
+
+          </dd>
+          <dt>test-suite test:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.19&quot;,&quot;io-classes&quot;,&quot;si-timers&quot;,&quot;strict-stm&quot;,&quot;io-sim&quot;,&quot;contra-tracer&quot;,&quot;network-mux&quot;,&quot;Win32-network&quot;,&quot;binary&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;network&quot;,&quot;QuickCheck&quot;,&quot;splitmix&quot;,&quot;serialise&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;]</li>
+</ul>
+<p>if !os(windows)</p>
+<ul class="build-depends">
+<li>process</li>
+</ul>
+<p>if os(windows)</p>
+<ul class="build-depends">
+<li>Win32 &gt;=2.5.4.1 &amp;&amp; &lt;3.0</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
