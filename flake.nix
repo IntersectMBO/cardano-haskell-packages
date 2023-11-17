@@ -61,7 +61,7 @@
 
       # type CompilerName = String
       # compilers :: [CompilerName]
-      compilers = [ "ghc810" "ghc96" "ghc98" ];
+      compilers = [ "ghc810" "ghc92" "ghc96" "ghc98" ];
       # compilers which we don't build for by default
       experimental-compilers = [ "ghc98" ];
 
@@ -78,6 +78,7 @@
           ghc98.enabled = true;
         };
         plutus-ledger = {
+          ghc92.enabled = false;
           ghc96.enabled = false;
         };
         hasql-dynamic-syntax = {
@@ -117,6 +118,7 @@
           ghc96.enabled = false;
         };
         marlowe-plutus = {
+          ghc92.enabled = false;
           ghc96.enabled = false;
         };
         quickcheck-contractmodel = {
