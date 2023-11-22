@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    cardano-tracer-0.2.1
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      cardano-tracer-0.2.1
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>A service for logging and monitoring over Cardano nodes</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>A service for logging and monitoring over Cardano nodes.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>IOHK</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>operations@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/cardano-node/tree/34d89af65439db92293b88967c299c20692abc1c/cardano-tracer">https://github.com/input-output-hk/cardano-node</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>34d89af65439db92293b88967c299c20692abc1c</dd>
+          <dt>Subdir</dt>
+          <dd>cardano-tracer</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2023-11-22T07:14:14Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library cardano-tracer:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;base &gt;=4.14 &amp;&amp; &lt;5&quot;,&quot;aeson&quot;,&quot;async&quot;,&quot;async-extras&quot;,&quot;bimap &gt;=0.4.0&quot;,&quot;blaze-html&quot;,&quot;bytestring&quot;,&quot;cardano-git-rev&quot;,&quot;cardano-node&quot;,&quot;cassava&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;cryptonite&quot;,&quot;directory&quot;,&quot;ekg&quot;,&quot;ekg-core&quot;,&quot;ekg-forward ^&gt;=0.4&quot;,&quot;extra&quot;,&quot;filepath&quot;,&quot;mime-mail&quot;,&quot;optparse-applicative&quot;,&quot;ouroboros-network ^&gt;=0.10&quot;,&quot;ouroboros-network-api&quot;,&quot;ouroboros-network-framework&quot;,&quot;signal&quot;,&quot;smtp-mail ==0.3.0.0&quot;,&quot;snap-blaze&quot;,&quot;snap-core&quot;,&quot;snap-server&quot;,&quot;stm&quot;,&quot;string-qq&quot;,&quot;text&quot;,&quot;threepenny-gui&quot;,&quot;time&quot;,&quot;trace-dispatcher&quot;,&quot;trace-forward&quot;,&quot;unordered-containers&quot;,&quot;vector&quot;,&quot;yaml&quot;]</li>
+            </ul>
+            <p>if !os(windows)</p>
+            <ul class="build-depends">
+            <li>unix</li>
+            </ul>
+<p>if os(windows)</p>
+            <ul class="build-depends">
+            <li>Win32</li>
+            </ul>
+<p>if os(linux)</p>
+            <ul class="build-depends">
+            <li>libsystemd-journal &gt;=1.4.4</li>
+            </ul>
+          </dd>
+          <dt>library demo-forwarder-lib:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;5&quot;,&quot;aeson&quot;,&quot;async&quot;,&quot;bytestring&quot;,&quot;cardano-tracer&quot;,&quot;cborg&quot;,&quot;contra-tracer&quot;,&quot;deepseq&quot;,&quot;directory&quot;,&quot;ekg-core&quot;,&quot;ekg-forward&quot;,&quot;extra&quot;,&quot;filepath&quot;,&quot;generic-data&quot;,&quot;optparse-applicative-fork&quot;,&quot;ouroboros-network-api&quot;,&quot;ouroboros-network-framework&quot;,&quot;tasty-quickcheck&quot;,&quot;time&quot;,&quot;trace-dispatcher&quot;,&quot;trace-forward&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library demo-acceptor-lib:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;5&quot;,&quot;async-extras&quot;,&quot;bytestring&quot;,&quot;cardano-tracer&quot;,&quot;containers&quot;,&quot;extra&quot;,&quot;filepath&quot;,&quot;generic-data&quot;,&quot;optparse-applicative-fork&quot;,&quot;ouroboros-network-api&quot;,&quot;stm&quot;,&quot;text&quot;,&quot;tasty-quickcheck&quot;,&quot;trace-forward&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable cardano-tracer:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;5&quot;,&quot;cardano-tracer&quot;,&quot;optparse-applicative&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable demo-forwarder:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;5&quot;,&quot;cardano-tracer:demo-forwarder-lib&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable demo-acceptor:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;5&quot;,&quot;cardano-tracer:demo-acceptor-lib&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite cardano-tracer-bench:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;5&quot;,&quot;cardano-tracer&quot;,&quot;criterion&quot;,&quot;directory&quot;,&quot;extra&quot;,&quot;filepath&quot;,&quot;stm&quot;,&quot;time&quot;,&quot;trace-dispatcher&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
