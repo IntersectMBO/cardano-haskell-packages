@@ -1,0 +1,3 @@
+timestamp = 2023-11-23T14:19:04Z
+github = { repo = "input-output-hk/plutus", rev = "e974b48e52ee44ae6c8b3f50332bde2036ec7979" }
+subdir = 'prettyprinter-configurable'
