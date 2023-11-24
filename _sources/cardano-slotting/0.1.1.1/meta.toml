@@ -5,3 +5,7 @@ subdir = 'cardano-slotting'
 [[revisions]]
 number = 1
 timestamp = 2023-11-22T22:19:44Z
+
+[[revisions]]
+number = 2
+timestamp = 2023-11-24T05:14:14Z
