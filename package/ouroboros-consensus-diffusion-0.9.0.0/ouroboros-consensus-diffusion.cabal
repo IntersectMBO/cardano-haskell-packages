@@ -74,20 +74,23 @@ library
     , filepath
     , fs-api                       ^>=0.2
     , hashable
-    , io-classes                   >=1.2     && <1.4
+    , io-classes                   ^>=1.3
     , mtl
-    , ouroboros-consensus          ^>=0.13
+    , ouroboros-consensus          >=0.13 && <0.15
     , ouroboros-network            ^>=0.10.0
     , ouroboros-network-api        ^>=0.6.0
     , ouroboros-network-framework  ^>=0.10
     , ouroboros-network-protocols  ^>=0.6.0
     , random
     , serialise                    ^>=0.2
-    , si-timers                    >=1.2     && <1.4
-    , text                         ^>=2.0
+    , si-timers                    ^>=1.3
     , time
     , transformers
     , typed-protocols
+
+  -- GHC 8.10.7 on aarch64-darwin cannot use text-2
+  build-depends:
+    , text                         >=1.2.5.0  && <2.2
 
 library unstable-diffusion-testlib
   import:          common-lib
