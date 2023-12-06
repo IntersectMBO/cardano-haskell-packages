@@ -1,0 +1,3 @@
+timestamp = 2023-12-07T10:49:23Z
+github = { repo = "input-output-hk/hydra", rev = "2baae13fdfb7dec6071501ed5290f7a54a86315f" }
+subdir = 'hydra-plutus-extras'
