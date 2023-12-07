@@ -77,6 +77,30 @@
         cardano-prelude = {
           ghc98.enabled = true;
         };
+        hydra-prelude = {
+          ghc810.enabled = false;
+        };
+        hydra-cardano-api = {
+          ghc810.enabled = false;
+        };
+        hydra-plutus = {
+          ghc810.enabled = false;
+        };
+        hydra-plutus-extras = {
+          ghc810.enabled = false;
+        };
+        hydra-chain-observer = {
+          ghc810.enabled = false;
+        };
+        hydra-node = {
+          ghc810.enabled = false;
+        };
+        hydra-tui = {
+          ghc810.enabled = false;
+        };
+        hydra-test-utils = {
+          ghc810.enabled = false;
+        };
         plutus-ledger = {
           ghc92.enabled = false;
           ghc96.enabled = false;
