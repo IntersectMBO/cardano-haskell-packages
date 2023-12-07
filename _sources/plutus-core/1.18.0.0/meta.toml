@@ -1,0 +1,3 @@
+timestamp = 2023-12-07T13:21:43Z
+github = { repo = "input-output-hk/plutus", rev = "42989c4a1e78acf23ead0f8efc04910cdb1e7959" }
+subdir = 'plutus-core'
