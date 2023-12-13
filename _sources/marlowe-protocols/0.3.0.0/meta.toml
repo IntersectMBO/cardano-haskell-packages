@@ -1,0 +1,3 @@
+timestamp = 2023-12-13T17:06:19Z
+github = { repo = "input-output-hk/marlowe-cardano", rev = "1a8fb91d09499e9b91a99d4a5434a5521c7ecc36" }
+subdir = 'marlowe-protocols'
