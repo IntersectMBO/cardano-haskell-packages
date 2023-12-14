@@ -1,3 +1,7 @@
 timestamp = 2023-12-14T20:14:46Z
 github = { repo = "input-output-hk/ouroboros-network", rev = "b467291cce90139d788326323beb1ff7ac6dafd2" }
 subdir = 'ouroboros-network'
+
+[[deprecations]]
+timestamp = 2023-12-14T23:45:10Z
+deprecated = true
