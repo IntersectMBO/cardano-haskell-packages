@@ -5,3 +5,7 @@ subdir = 'ouroboros-network'
 [[deprecations]]
 timestamp = 2023-12-14T23:45:10Z
 deprecated = true
+
+[[revisions]]
+number = 1
+timestamp = 2023-12-15T12:36:02Z
