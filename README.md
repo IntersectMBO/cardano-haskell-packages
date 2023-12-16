@@ -1,7 +1,7 @@
 # Cardano Haskell package repository ("CHaP")
 
-* [All packages](https://input-output-hk.github.io/cardano-haskell-packages/all-packages/).
-* [All package versions](https://input-output-hk.github.io/cardano-haskell-packages/all-package-versions/).
+* [All packages](https://chap.intersectmbo.org/all-packages/).
+* [All package versions](https://chap.intersectmbo.org/all-package-versions/).
 
 *Top How-Tos*
 
@@ -12,14 +12,14 @@
 This is a Cabal package repository ("CHaP") whose purpose is to contain all the Haskell
 packages used by the Cardano open-source project which are not on Hackage.
 
-The package repository itself is available [here](https://input-output-hk.github.io/cardano-haskell-packages).
-It is built from a [git repository](https://github.com/input-output-hk/cardano-haskell-packages) which
+The package repository itself is available [here](https://chap.intersectmbo.org).
+It is built from a [git repository](https://github.com/intersectmbo/cardano-haskell-packages) which
 contains the metadata specifying all the package versions. The package repository is built using
 [`foliage`](https://github.com/andreabedini/foliage).
 
 ## Help!
 
-If you have trouble, open an issue, or contact the trustees: @input-output-hk/cardano-haskell-packages-trustees
+If you have trouble, open an issue, or contact the trustees: @intersectmbo/cardano-haskell-packages-trustees
 
 ## Background
 
@@ -56,7 +56,7 @@ To use CHaP with cabal, add the following lines to your
 
 ```
 repository cardano-haskell-packages
-  url: https://input-output-hk.github.io/cardano-haskell-packages
+  url: https://chap.intersectmbo.org
   secure: True
   root-keys:
     3e0cce471cf09815f930210f7827266fd09045445d65923e6d0238a6cd15126f
@@ -102,7 +102,7 @@ To use CHaP with `haskell.nix`, do the following:
 2. Setup a fetcher for the package repository. The easiest way is to use a flake input, such as:
 ```
 inputs.CHaP = {
-  url = "github:input-output-hk/cardano-haskell-packages?ref=repo";
+  url = "github:intersectmbo/cardano-haskell-packages?ref=repo";
   flake = false;
 };
 ```
@@ -110,7 +110,7 @@ inputs.CHaP = {
 ```
 cabalProject {
   ...
-  inputMap = { "https://input-output-hk.github.io/cardano-haskell-packages" = CHaP; };
+  inputMap = { "https://chap.intersectmbo.org" = CHaP; };
 }
 ```
 
@@ -142,7 +142,7 @@ index-state:
 If you have a Haskell project which has bounds on CHaP packages, we provide a script which will update all of those bounds to
 pin the latest major version of each that is released to CHaP.
 
-You can run it like so: `nix run --update-input CHaP --no-write-lock-file "github:input-output-hk/cardano-haskell-packages#update-chap-deps" pkgA pkgB`.
+You can run it like so: `nix run --update-input CHaP --no-write-lock-file "github:intersectmbo/cardano-haskell-packages#update-chap-deps" pkgA pkgB`.
 This will update the bounds for everything from CHaP, except for those on `pkgA` or `pkgB`. This lets you blacklist packages
 that you don't want to update (e.g. because you know that the update will break you, or it's your own package!).
 
@@ -196,7 +196,7 @@ which you can create directly. The metadata files have the following format:
 # REQUIRED timestamp at which the package appears in the index
 timestamp = 2022-03-29T06:19:50+00:00
 # REQUIRED URL pointing to the source code tarball (not necessarily a sdist)
-url = 'https://github.com/input-output-hk/ouroboros-network/tarball/fa10cb4eef1e7d3e095cec3c2bb1210774b7e5fa'
+url = 'https://github.com/intersectmbo/ouroboros-network/tarball/fa10cb4eef1e7d3e095cec3c2bb1210774b7e5fa'
 # OPTIONAL subdirectory inside the tarball where the package is located
 subdir = 'typed-protocols'
 ```
@@ -219,7 +219,7 @@ Usage add-from-github.sh [-f OVERWRITE_VERSION] REPO_URL COMMIT-SHA [SUBDIRS...]
 For example, to add a new version from `plutus`'s `plutus-core` and `plutus-ledger-api`, etc from commit `75267027f157f1312964e7126280920d1245c52d`, run
 
 ```console
-./scripts/add-from-github.sh "https://github.com/input-output-hk/plutus" 75267027f157f1312964e7126280920d1245c52d plutus-core plutus-ledger-api plutus-tx plutus-tx-plugin prettyprinter-configurable
+./scripts/add-from-github.sh "https://github.com/intersectmbo/plutus" 75267027f157f1312964e7126280920d1245c52d plutus-core plutus-ledger-api plutus-tx plutus-tx-plugin prettyprinter-configurable
 ```
 
 The script will:
@@ -294,7 +294,7 @@ You can either fetch the latest version which is stored in git; or build it your
 ### ... by downloading it from Github
 
 The built repository is stored in the `repo` branch of CHaP itself.
-You can get the contents of the `repo` branch from Github at https://github.com/input-output-hk/cardano-haskell-packages/archive/refs/heads/repo.zip .
+You can get the contents of the `repo` branch from Github at https://github.com/intersectmbo/cardano-haskell-packages/archive/refs/heads/repo.zip .
 
 Or you can check out that branch and copy the contents, e.g.
 ```
