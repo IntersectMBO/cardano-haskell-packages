@@ -1,7 +1,7 @@
 # Cardano Haskell package repository ("CHaP")
 
-* [All packages](https://input-output-hk.github.io/cardano-haskell-packages/all-packages/).
-* [All package versions](https://input-output-hk.github.io/cardano-haskell-packages/all-package-versions/).
+* [All packages](https://chap.intersectmbo.org/all-packages/).
+* [All package versions](https://chap.intersectmbo.org/all-package-versions/).
 
 *Top How-Tos*
 
@@ -12,7 +12,7 @@
 This is a Cabal package repository ("CHaP") whose purpose is to contain all the Haskell
 packages used by the Cardano open-source project which are not on Hackage.
 
-The package repository itself is available [here](https://input-output-hk.github.io/cardano-haskell-packages).
+The package repository itself is available [here](https://chap.intersectmbo.org).
 It is built from a [git repository](https://github.com/input-output-hk/cardano-haskell-packages) which
 contains the metadata specifying all the package versions. The package repository is built using
 [`foliage`](https://github.com/andreabedini/foliage).
@@ -56,7 +56,7 @@ To use CHaP with cabal, add the following lines to your
 
 ```
 repository cardano-haskell-packages
-  url: https://input-output-hk.github.io/cardano-haskell-packages
+  url: https://chap.intersectmbo.org
   secure: True
   root-keys:
     3e0cce471cf09815f930210f7827266fd09045445d65923e6d0238a6cd15126f
@@ -110,7 +110,7 @@ inputs.CHaP = {
 ```
 cabalProject {
   ...
-  inputMap = { "https://input-output-hk.github.io/cardano-haskell-packages" = CHaP; };
+  inputMap = { "https://chap.intersectmbo.org" = CHaP; };
 }
 ```
 
