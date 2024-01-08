@@ -181,7 +181,9 @@
             {
               # Packages that depend on the plutus-tx plugin have broken haddock
               packages = {
+                cardano-node-emulator.doHaddock = false;
                 plutus-ledger.doHaddock = false;
+                plutus-script-utils.doHaddock = false;
                 plutus-scripts-bench.doHaddock = false;
               };
             }
