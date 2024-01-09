@@ -17,7 +17,7 @@ jobs:
   shellcheck:
     runs-on: nixos
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Run shellcheck on scripts/*.sh
         run: nix-shell -I nixpkgs=https://github.com/nixos/nixpkgs/archive/release-23.05.tar.gz -p shellcheck --run 'shellcheck scripts/*.sh'
         
@@ -25,7 +25,7 @@ jobs:
     runs-on: nixos
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # the check script below needs the whole history
 
@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: Checkout main 
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: main
 
@@ -66,7 +66,7 @@ jobs:
           cp _repo-main/foliage/packages.json packages-old.json
 
       - name: Checkout tip commit
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           clean: false
 
@@ -116,7 +116,7 @@ jobs:
       - build-repo
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Download built repository
         uses: actions/download-artifact@v3
@@ -145,7 +145,7 @@ jobs:
       - build-repo
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Download built repository
         uses: actions/download-artifact@v3
@@ -192,11 +192,11 @@ jobs:
       - build-repo
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: src
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: repo
           ref: repo
@@ -244,7 +244,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Download built repository
         uses: actions/download-artifact@v3
