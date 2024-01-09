@@ -41,7 +41,7 @@ jobs:
         with:
           ref: main
 
-      - uses: actions/cache@v3
+      - uses: kbdharun/cache@8070854e57d983bdd2887b0a708ad985f77398ab
         with:
           path: _cache
           key: 1 # bump to refresh
