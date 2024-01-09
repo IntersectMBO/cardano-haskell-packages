@@ -87,13 +87,13 @@ jobs:
       # Do this before the check, useful to have the artifact in case the 
       # check fails!
       - name: Upload built repository
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: built-repo
           path: _repo.tar
 
       - name: Upload package metadata
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: package-metadata
           path: |
@@ -119,7 +119,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Download built repository
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: built-repo
 
@@ -148,7 +148,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Download built repository
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: built-repo
 
@@ -158,7 +158,7 @@ jobs:
           tar xf _repo.tar -C _repo
 
       - name: Download package metadata
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: package-metadata
           path: .
@@ -202,7 +202,7 @@ jobs:
           ref: repo
 
       - name: Download built repository
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: built-repo
 
@@ -247,7 +247,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Download built repository
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: built-repo
 
