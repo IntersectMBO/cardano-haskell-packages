@@ -141,9 +141,18 @@
           ghc92.enabled = false;
           ghc96.enabled = false;
         };
+        plutus-core = {
+          ghc98.enabled = true;
+        };
+        plutus-tx = {
+          ghc98.enabled = true;
+        };
         plutus-ledger = {
           ghc92.enabled = false;
           ghc96.enabled = false;
+        };
+        plutus-ledger-api = {
+          ghc98.enabled = true;
         };
         quickcheck-contractmodel = {
           ghc96.enabled = false;
