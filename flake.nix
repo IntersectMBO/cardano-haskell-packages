@@ -77,6 +77,10 @@
         cardano-prelude = {
           ghc98.enabled = true;
         };
+        hasql-dynamic-syntax = {
+          ghc810.enabled = false;
+          ghc96.enabled = false;
+        };
         hydra-prelude = {
           ghc810.enabled = false;
         };
@@ -100,14 +104,6 @@
         };
         hydra-test-utils = {
           ghc810.enabled = false;
-        };
-        plutus-ledger = {
-          ghc92.enabled = false;
-          ghc96.enabled = false;
-        };
-        hasql-dynamic-syntax = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
         };
         marlowe-cardano = {
           ghc810.enabled = false;
@@ -142,6 +138,10 @@
           ghc96.enabled = false;
         };
         marlowe-plutus = {
+          ghc92.enabled = false;
+          ghc96.enabled = false;
+        };
+        plutus-ledger = {
           ghc92.enabled = false;
           ghc96.enabled = false;
         };
