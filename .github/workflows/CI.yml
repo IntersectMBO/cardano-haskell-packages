@@ -41,6 +41,8 @@ jobs:
         with:
           ref: main
 
+      # See https://github.com/actions/cache/pull/1231
+      # Astonishingly, this simple bump is not merged and released yet
       - uses: kbdharun/cache@8070854e57d983bdd2887b0a708ad985f77398ab
         with:
           path: _cache
