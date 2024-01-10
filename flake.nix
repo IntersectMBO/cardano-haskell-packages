@@ -69,96 +69,108 @@
       #
       # Currently the following attributes are supported:
       #
-      # - <compiler-nix-name>.enabled = false
+      # - <compiler-nix-name>.enabled = <predicate>
       #   Excludes compiling a package with <compiler-nix-name>. By default all
       #   compilers (defined above) are included.
       #
       exceptions = {
         cardano-prelude = {
-          ghc98.enabled = true;
+          ghc98.enabled = v : true;
+        };
+        cardano-node-emulator = {
+          ghc810.enabled = v : false;
+        };
+        cardano-node-socket-emulator = {
+          ghc810.enabled = v : false;
         };
         hasql-dynamic-syntax = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
         };
         hydra-prelude = {
-          ghc810.enabled = false;
+          ghc810.enabled = v : false;
         };
         hydra-cardano-api = {
-          ghc810.enabled = false;
+          ghc810.enabled = v : false;
         };
         hydra-plutus = {
-          ghc810.enabled = false;
+          ghc810.enabled = v : false;
         };
         hydra-plutus-extras = {
-          ghc810.enabled = false;
+          ghc810.enabled = v : false;
         };
         hydra-chain-observer = {
-          ghc810.enabled = false;
+          ghc810.enabled = v : false;
         };
         hydra-node = {
-          ghc810.enabled = false;
+          ghc810.enabled = v : false;
         };
         hydra-tui = {
-          ghc810.enabled = false;
+          ghc810.enabled = v : false;
         };
         hydra-test-utils = {
-          ghc810.enabled = false;
+          ghc810.enabled = v : false;
         };
         marlowe-cardano = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
         };
         marlowe-chain-sync = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
         };
         marlowe-client = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
         };
         marlowe-protocols = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
         };
         marlowe-runtime = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
         };
         marlowe-runtime-web = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
         };
         marlowe-test = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
         };
         marlowe-object = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
         };
         marlowe-plutus = {
-          ghc92.enabled = false;
-          ghc96.enabled = false;
+          ghc92.enabled = v : false;
+          ghc96.enabled = v : false;
         };
         plutus-core = {
-          ghc98.enabled = true;
+          ghc98.enabled = v : true;
         };
         plutus-tx = {
-          ghc98.enabled = true;
+          ghc98.enabled = v : true;
         };
         plutus-ledger = {
-          ghc92.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : builtins.compareVersions v "1.3.0.0" < 0;
+          ghc92.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
+          ghc96.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
         };
         plutus-ledger-api = {
-          ghc98.enabled = true;
+          ghc98.enabled = v : true;
+        };
+        plutus-script-utils = {
+          ghc810.enabled = v : builtins.compareVersions v "1.3.0.0" < 0;
+          ghc92.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
+          ghc96.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
         };
         quickcheck-contractmodel = {
-          ghc96.enabled = false;
+          ghc96.enabled = v : false;
         };
         quickcheck-threatmodel = {
-          ghc96.enabled = false;
+          ghc96.enabled = v : false;
         };
       };
 
@@ -169,7 +181,9 @@
             {
               # Packages that depend on the plutus-tx plugin have broken haddock
               packages = {
+                cardano-node-emulator.doHaddock = false;
                 plutus-ledger.doHaddock = false;
+                plutus-script-utils.doHaddock = false;
                 plutus-scripts-bench.doHaddock = false;
               };
             }
@@ -194,15 +208,16 @@
         lib.genAttrs compilers (compiler:
           let
             filtered-pkgs-versions =
-              lib.filterAttrs
-                (name: _v:
-                  lib.attrByPath
+              lib.mapAttrs
+                (name: versions:
+                  let predicate = lib.attrByPath
                     [ name compiler "enabled" ]
                     # the default setting depends on whether or not the compiler is
                     # experimental. Experimental compilers are disabled by default,
                     # non-experimental compilers are enabled by default
-                    (!(builtins.elem compiler experimental-compilers))
-                    exceptions)
+                    (v : !(builtins.elem compiler experimental-compilers))
+                    exceptions;
+                  in builtins.filter predicate versions)
                 pkg-versions;
           in
           mkPackageTreeWith (f compiler) filtered-pkgs-versions);
