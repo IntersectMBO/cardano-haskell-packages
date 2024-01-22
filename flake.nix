@@ -77,6 +77,36 @@
         cardano-prelude = {
           ghc98.enabled = v : true;
         };
+        ntp-client = {
+          ghc98.enabled = v : true;
+        };
+        network-mux = {
+          ghc98.enabled = v : true;
+        };
+        monoidal-synchronisation = {
+          ghc98.enabled = v : true;
+        };
+        ouroboros-network-api = {
+          ghc98.enabled = v : true;
+        };
+        ouroboros-network-mock = {
+          ghc98.enabled = v : true;
+        };
+        ouroboros-network-framework = {
+          ghc98.enabled = v : true;
+        };
+        ouroboros-network-protocols = {
+          ghc98.enabled = v : true;
+        };
+        ouroboros-network = {
+          ghc98.enabled = v : true;
+        };
+        cardano-ping = {
+          ghc98.enabled = v : true;
+        };
+        cardano-client = {
+          ghc98.enabled = v : true;
+        };
         cardano-node-emulator = {
           ghc810.enabled = v : false;
         };
