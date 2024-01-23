@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    ouroboros-network-0.11.0.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      ouroboros-network-0.11.0.0
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>A networking layer for the Ouroboros blockchain protocol</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>A networking layer for the Ouroboros blockchain protocol.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Alexander Vieth, Marcin Szamotulski, Duncan Coutts</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>marcin.szamotulski@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/intersectmbo/ouroboros-network/tree/5618742c1e15ed1256fc62794eec7560040d8c0a/ouroboros-network">https://github.com/intersectmbo/ouroboros-network</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>5618742c1e15ed1256fc62794eec7560040d8c0a</dd>
+          <dt>Subdir</dt>
+          <dd>ouroboros-network</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2024-01-23T08:57:40Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library ouroboros-network:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.20&quot;,&quot;async &gt;=2.2 &amp;&amp; &lt;2.3&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.13&quot;,&quot;cborg &gt;=0.2.1 &amp;&amp; &lt;0.3&quot;,&quot;containers&quot;,&quot;deepseq&quot;,&quot;dns&quot;,&quot;hashable&quot;,&quot;iproute&quot;,&quot;mtl&quot;,&quot;network ^&gt;=3.1.4&quot;,&quot;nothunks&quot;,&quot;psqueues &gt;=0.2.3 &amp;&amp; &lt;0.3&quot;,&quot;random&quot;,&quot;cardano-prelude&quot;,&quot;cardano-slotting&quot;,&quot;cardano-strict-containers&quot;,&quot;contra-tracer&quot;,&quot;monoidal-synchronisation&quot;,&quot;strict-checked-vars ^&gt;=0.2&quot;,&quot;io-classes ^&gt;=1.3.1&quot;,&quot;io-classes-mtl ^&gt;=0.1&quot;,&quot;network-mux&quot;,&quot;si-timers&quot;,&quot;ouroboros-network-api ^&gt;=0.6.3&quot;,&quot;ouroboros-network-framework ^&gt;=0.11&quot;,&quot;ouroboros-network-protocols ^&gt;=0.7&quot;,&quot;strict-stm&quot;,&quot;typed-protocols ^&gt;=0.1.1&quot;]</li>
+            </ul>
+            <p>if !os(windows)</p>
+            <ul class="build-depends">
+            <li>directory</li>
+            <li>unix</li>
+            </ul>
+          </dd>
+          <dt>library sim-tests-lib:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.20&quot;,&quot;bytestring&quot;,&quot;QuickCheck&quot;,&quot;aeson&quot;,&quot;array&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;deepseq&quot;,&quot;dns&quot;,&quot;hashable&quot;,&quot;iproute&quot;,&quot;mtl&quot;,&quot;network&quot;,&quot;pipes&quot;,&quot;pretty-simple&quot;,&quot;psqueues&quot;,&quot;random&quot;,&quot;serialise&quot;,&quot;tasty&quot;,&quot;tasty-hunit&quot;,&quot;tasty-quickcheck&quot;,&quot;text&quot;,&quot;time&quot;,&quot;cardano-prelude&quot;,&quot;cardano-slotting&quot;,&quot;contra-tracer&quot;,&quot;nothunks&quot;,&quot;io-classes&quot;,&quot;io-sim&quot;,&quot;monoidal-synchronisation&quot;,&quot;network-mux&quot;,&quot;ouroboros-network&quot;,&quot;ouroboros-network-api&quot;,&quot;ouroboros-network-framework&quot;,&quot;ouroboros-network-mock&quot;,&quot;ouroboros-network-protocols&quot;,&quot;ouroboros-network-protocols:testlib&quot;,&quot;ouroboros-network-framework:testlib&quot;,&quot;ouroboros-network-testing ^&gt;=0.5&quot;,&quot;si-timers&quot;,&quot;strict-stm&quot;,&quot;typed-protocols&quot;,&quot;typed-protocols-examples&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable demo-chain-sync:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.20&quot;,&quot;async&quot;,&quot;bytestring&quot;,&quot;containers&quot;,&quot;directory&quot;,&quot;infinite-list&quot;,&quot;optparse-applicative&quot;,&quot;random&quot;,&quot;serialise&quot;,&quot;stm&quot;,&quot;contra-tracer&quot;,&quot;typed-protocols&quot;,&quot;strict-stm&quot;,&quot;ouroboros-network-api&quot;,&quot;ouroboros-network-framework&quot;,&quot;ouroboros-network-mock&quot;,&quot;ouroboros-network-protocols&quot;,&quot;ouroboros-network&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite sim-benchmarks:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base&quot;,&quot;tasty-bench &gt;=0.3.5&quot;,&quot;ouroboros-network:sim-tests-lib&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
