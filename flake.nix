@@ -224,9 +224,12 @@
               # Packages that have haddock that is broken on 8.10
               # See https://github.com/input-output-hk/cardano-haskell-packages/issues/482
               packages = lib.mkIf (compiler == "ghc810") {
+                cardano-ledger-allegra.doHaddock = false;
                 cardano-ledger-alonzo.doHaddock = false;
+                cardano-ledger-api.doHaddock = false;
                 cardano-ledger-conway.doHaddock = false;
                 cardano-ledger-babbage.doHaddock = false;
+                cardano-ledger-shelley.doHaddock = false;
                 cardano-protocol-tpraos.doHaddock = false;
               };
             }
