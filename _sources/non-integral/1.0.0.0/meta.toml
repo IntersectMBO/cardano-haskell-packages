@@ -5,3 +5,7 @@ subdir = 'libs/non-integral'
 [[revisions]]
 number = 1
 timestamp = 2023-08-02T11:20:00Z
+
+[[revisions]]
+number = 2
+timestamp = 2024-01-28T20:24:54Z
