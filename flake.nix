@@ -119,6 +119,7 @@
         hasql-dynamic-syntax = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         hydra-prelude = {
           ghc810.enabled = v : false;
@@ -147,38 +148,57 @@
         marlowe-cardano = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-chain-sync = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-client = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-protocols = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-runtime = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-runtime-web = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-test = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-object = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
+        };
+        marlowe-spec-test = {
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
+        };
+        marlowe = {
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-plutus = {
           ghc92.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         plutus-core = {
           ghc98.enabled = v : true;
