@@ -119,6 +119,7 @@
         hasql-dynamic-syntax = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         hydra-prelude = {
           ghc810.enabled = v : false;
@@ -147,38 +148,57 @@
         marlowe-cardano = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-chain-sync = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-client = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-protocols = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-runtime = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-runtime-web = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-test = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-object = {
           ghc810.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
+        };
+        marlowe-spec-test = {
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
+        };
+        marlowe = {
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-plutus = {
           ghc92.enabled = v : false;
           ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         plutus-core = {
           ghc98.enabled = v : true;
@@ -337,7 +357,6 @@
     extra-substituters = [
       "https://cache.iog.io"
       "https://foliage.cachix.org"
-      "https://cache.zw3rk.com"
     ];
     extra-trusted-substituters = [
       # If you have a nixbuild.net SSH key set up, you can pull builds from there
@@ -348,7 +367,6 @@
     extra-trusted-public-keys = [
       "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
       "foliage.cachix.org-1:kAFyYLnk8JcRURWReWZCatM9v3Rk24F5wNMpEj14Q/g="
-      "loony-tools:pr9m4BkM/5/eSTZlkQyRt57Jz7OMBxNSUiMC4FkcNfk="
       "nixbuild.net/smart.contracts@iohk.io-1:s2PhQXWwsZo1y5IxFcx2D/i2yfvgtEnRBOZavlA8Bog="
     ];
     allow-import-from-derivation = true;
