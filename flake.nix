@@ -337,7 +337,6 @@
     extra-substituters = [
       "https://cache.iog.io"
       "https://foliage.cachix.org"
-      "https://cache.zw3rk.com"
     ];
     extra-trusted-substituters = [
       # If you have a nixbuild.net SSH key set up, you can pull builds from there
@@ -348,7 +347,6 @@
     extra-trusted-public-keys = [
       "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
       "foliage.cachix.org-1:kAFyYLnk8JcRURWReWZCatM9v3Rk24F5wNMpEj14Q/g="
-      "loony-tools:pr9m4BkM/5/eSTZlkQyRt57Jz7OMBxNSUiMC4FkcNfk="
       "nixbuild.net/smart.contracts@iohk.io-1:s2PhQXWwsZo1y5IxFcx2D/i2yfvgtEnRBOZavlA8Bog="
     ];
     allow-import-from-derivation = true;
