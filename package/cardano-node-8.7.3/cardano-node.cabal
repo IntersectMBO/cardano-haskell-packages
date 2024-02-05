@@ -172,7 +172,9 @@ library
                       , generic-data
                       , hostname
                       , io-classes >= 0.3
-                      , iohk-monitoring
+                      --Temporary
+                      , iohk-monitoring == 0.1.11.3
+
                       , iproute
                       , lobemo-backend-aggregation
                       , lobemo-backend-ekg
