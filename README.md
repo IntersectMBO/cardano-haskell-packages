@@ -114,6 +114,8 @@ cabalProject {
 }
 ```
 
+To build some of the pacakges from CHaP, some C libraries will need to be installed. If you don't have those libraries installed cabal may pick an older library version that might not compile. An easy way to add those libraries is using the overlays provided by [iohk-nix](https://github.com/input-output-hk/iohk-nix). For example `plutus-core==1.21.0.0` depends on `libblst`, `haskell-nix-crypto` and `crypto` are the two overlays that would make it available during the build.
+
 When you want to update the state of CHaP, you can simply update the flake input
 (in the example above you would run `nix flake lock --update-input CHaP`).
 
