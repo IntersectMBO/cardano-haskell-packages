@@ -357,7 +357,7 @@ You can build packages from CHaP using Nix like this:
 
 ```
 nix build
-  --override-input CHaP /home/user/cardano-haskell-packages/_repo
+  --override-input CHaP path:/home/user/cardano-haskell-packages/_repo
   .#"ghc92/plutus-core/1.1.0.0"
 ```
 
@@ -452,12 +452,16 @@ The easiest way is to build the package in question [with nix](#-by-building-pac
 # repeat this whenever you change the repository, e.g. by adding a revision
 > foliage build -j 0 --write-metadata
 > nix build
-  --override-input CHaP /home/user/cardano-haskell-packages/_repo
+  --override-input CHaP path:/home/user/cardano-haskell-packages/_repo
   .#"ghc92/foo/X"
 ```
 
 There are then two ways to make progress:
-1. Add a constraint to force the good case. If you are expecting to build with `bar-Y`, you can add a `bar == Y` constraint and the solver should tell you why it's impossible! You can either add this to the `cabal.project` specified in `nix/builder.nix`, or add `.addConstraint "bar == Y"` to the nix invocation.
+1. Add a constraint to force the good case. If you are expecting to build with `bar-Y`, you can add a `bar == Y` constraint and the solver should tell you why it's impossible! You can either add this to the `cabal.project` specified in `nix/builder.nix`, or add `.addConstraint "bar == Y"` to the nix invocation. For example: 
+```bash
+nix build $(nix eval --raw '.#"ghc8107/cardano-ledger-core/0.1.0.0"' \
+    --apply 'd: (d.passthru.addConstraint "cardano-crypto-class <2.0.0.1, cardano-binary<1.5.0.1").drvPath')
+```
 2. Make a revision to rule out the bad case. If your build fails because `baz-Z` can't build with `bar-P`, then `baz-Z` _should_ have a constraint that excludes `bar-P`. You can add this constraint by making a revision to `baz-Z` and try again.
 
 Both of these should get you to a _different_ error.
