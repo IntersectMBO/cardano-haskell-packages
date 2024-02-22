@@ -1,0 +1,3 @@
+timestamp = 2024-01-29T16:45:19Z
+github = { repo = "input-output-hk/marlowe", rev = "feb91efdee08342ed07ee6bee004bd3aedd07e67" }
+subdir = 'isabelle'

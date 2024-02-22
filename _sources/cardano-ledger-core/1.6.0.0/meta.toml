@@ -1,3 +1,7 @@
 timestamp = 2023-09-05T08:50:43Z
 github = { repo = "input-output-hk/cardano-ledger", rev = "9e2f8151e3b9a0dde9faeb29a7dd2456e854427c" }
 subdir = 'libs/cardano-ledger-core'
+
+[[revisions]]
+number = 1
+timestamp = 2024-01-25T14:10:44Z

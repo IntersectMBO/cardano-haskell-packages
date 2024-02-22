@@ -1,0 +1,3 @@
+timestamp = 2024-01-05T13:49:07Z
+github = { repo = "input-output-hk/cardano-node-emulator", rev = "ad1960f47c0886110d23b9c454d41e11cddfa779" }
+subdir = 'freer-extras'

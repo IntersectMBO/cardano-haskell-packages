@@ -69,87 +69,161 @@
       #
       # Currently the following attributes are supported:
       #
-      # - <compiler-nix-name>.enabled = false
+      # - <compiler-nix-name>.enabled = <predicate>
       #   Excludes compiling a package with <compiler-nix-name>. By default all
       #   compilers (defined above) are included.
       #
       exceptions = {
         cardano-prelude = {
-          ghc98.enabled = true;
+          ghc98.enabled = v : true;
         };
-        hydra-prelude = {
-          ghc810.enabled = false;
+        ntp-client = {
+          ghc98.enabled = v : builtins.compareVersions v "0.0.1.4" >= 0;
         };
-        hydra-cardano-api = {
-          ghc810.enabled = false;
+        network-mux = {
+          ghc98.enabled = v : builtins.compareVersions v "0.4.5.0" >= 0;
         };
-        hydra-plutus = {
-          ghc810.enabled = false;
+        monoidal-synchronisation = {
+          ghc98.enabled = v : builtins.compareVersions v "0.1.0.5" >= 0;
         };
-        hydra-plutus-extras = {
-          ghc810.enabled = false;
+        ouroboros-network-api = {
+          ghc98.enabled = v : builtins.compareVersions v "0.6.3.0" >= 0;
         };
-        hydra-chain-observer = {
-          ghc810.enabled = false;
+        ouroboros-network-mock = {
+          ghc98.enabled = v : builtins.compareVersions v "0.1.1.1" >= 0;
         };
-        hydra-node = {
-          ghc810.enabled = false;
+        ouroboros-network-framework = {
+          ghc98.enabled = v : builtins.compareVersions v "0.11.0.0" >= 0;
         };
-        hydra-tui = {
-          ghc810.enabled = false;
+        ouroboros-network-protocols = {
+          ghc98.enabled = v : builtins.compareVersions v "0.7.0.0" >= 0;
         };
-        hydra-test-utils = {
-          ghc810.enabled = false;
+        ouroboros-network-testing = {
+          ghc98.enabled = v : builtins.compareVersions v "0.5.0.0" >= 0;
         };
-        plutus-ledger = {
-          ghc92.enabled = false;
-          ghc96.enabled = false;
+        ouroboros-network = {
+          ghc98.enabled = v : builtins.compareVersions v "0.11.0.0" >= 0;
+        };
+        cardano-ping = {
+          ghc98.enabled = v : builtins.compareVersions v "0.2.0.11" >= 0;
+        };
+        cardano-client = {
+          ghc98.enabled = v : builtins.compareVersions v "0.3.1.0" >= 0;
+        };
+        cardano-node-emulator = {
+          ghc810.enabled = v : false;
+        };
+        cardano-node-socket-emulator = {
+          ghc810.enabled = v : false;
         };
         hasql-dynamic-syntax = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
+        };
+        hydra-prelude = {
+          ghc810.enabled = v : false;
+        };
+        hydra-cardano-api = {
+          ghc810.enabled = v : false;
+        };
+        hydra-plutus = {
+          ghc810.enabled = v : false;
+        };
+        hydra-plutus-extras = {
+          ghc810.enabled = v : false;
+        };
+        hydra-chain-observer = {
+          ghc810.enabled = v : false;
+        };
+        hydra-node = {
+          ghc810.enabled = v : false;
+        };
+        hydra-tui = {
+          ghc810.enabled = v : false;
+        };
+        hydra-test-utils = {
+          ghc810.enabled = v : false;
         };
         marlowe-cardano = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-chain-sync = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-client = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-protocols = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-runtime = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-runtime-web = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-test = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-object = {
-          ghc810.enabled = false;
-          ghc96.enabled = false;
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
+        };
+        marlowe-spec-test = {
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
+        };
+        marlowe = {
+          ghc810.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
         };
         marlowe-plutus = {
-          ghc92.enabled = false;
-          ghc96.enabled = false;
+          ghc92.enabled = v : false;
+          ghc96.enabled = v : false;
+          ghc98.enabled = v : false;
+        };
+        plutus-core = {
+          ghc98.enabled = v : true;
+        };
+        plutus-tx = {
+          ghc98.enabled = v : true;
+        };
+        plutus-ledger = {
+          ghc810.enabled = v : builtins.compareVersions v "1.3.0.0" < 0;
+          ghc92.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
+          ghc96.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
+        };
+        plutus-ledger-api = {
+          ghc98.enabled = v : true;
+        };
+        plutus-script-utils = {
+          ghc810.enabled = v : builtins.compareVersions v "1.3.0.0" < 0;
+          ghc92.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
+          ghc96.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
         };
         quickcheck-contractmodel = {
-          ghc96.enabled = false;
+          ghc96.enabled = v : false;
         };
         quickcheck-threatmodel = {
-          ghc96.enabled = false;
+          ghc96.enabled = v : false;
         };
       };
 
@@ -160,7 +234,9 @@
             {
               # Packages that depend on the plutus-tx plugin have broken haddock
               packages = {
+                cardano-node-emulator.doHaddock = false;
                 plutus-ledger.doHaddock = false;
+                plutus-script-utils.doHaddock = false;
                 plutus-scripts-bench.doHaddock = false;
               };
             }
@@ -168,9 +244,12 @@
               # Packages that have haddock that is broken on 8.10
               # See https://github.com/input-output-hk/cardano-haskell-packages/issues/482
               packages = lib.mkIf (compiler == "ghc810") {
+                cardano-ledger-allegra.doHaddock = false;
                 cardano-ledger-alonzo.doHaddock = false;
+                cardano-ledger-api.doHaddock = false;
                 cardano-ledger-conway.doHaddock = false;
                 cardano-ledger-babbage.doHaddock = false;
+                cardano-ledger-shelley.doHaddock = false;
                 cardano-protocol-tpraos.doHaddock = false;
               };
             }
@@ -185,15 +264,16 @@
         lib.genAttrs compilers (compiler:
           let
             filtered-pkgs-versions =
-              lib.filterAttrs
-                (name: _v:
-                  lib.attrByPath
+              lib.mapAttrs
+                (name: versions:
+                  let predicate = lib.attrByPath
                     [ name compiler "enabled" ]
                     # the default setting depends on whether or not the compiler is
                     # experimental. Experimental compilers are disabled by default,
                     # non-experimental compilers are enabled by default
-                    (!(builtins.elem compiler experimental-compilers))
-                    exceptions)
+                    (v : !(builtins.elem compiler experimental-compilers))
+                    exceptions;
+                  in builtins.filter predicate versions)
                 pkg-versions;
           in
           mkPackageTreeWith (f compiler) filtered-pkgs-versions);
@@ -277,7 +357,6 @@
     extra-substituters = [
       "https://cache.iog.io"
       "https://foliage.cachix.org"
-      "https://cache.zw3rk.com"
     ];
     extra-trusted-substituters = [
       # If you have a nixbuild.net SSH key set up, you can pull builds from there
@@ -288,7 +367,6 @@
     extra-trusted-public-keys = [
       "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
       "foliage.cachix.org-1:kAFyYLnk8JcRURWReWZCatM9v3Rk24F5wNMpEj14Q/g="
-      "loony-tools:pr9m4BkM/5/eSTZlkQyRt57Jz7OMBxNSUiMC4FkcNfk="
       "nixbuild.net/smart.contracts@iohk.io-1:s2PhQXWwsZo1y5IxFcx2D/i2yfvgtEnRBOZavlA8Bog="
     ];
     allow-import-from-derivation = true;
