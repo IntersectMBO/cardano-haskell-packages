@@ -12,7 +12,7 @@ BASE_DIR=$(dirname "$SCRIPT_DIR")
 versions() {
   jq -r '
       ."install-plan"[]
-      | select(."pkg-src".repo.uri == "https://input-output-hk.github.io/cardano-haskell-packages")
+      | select(."pkg-src".repo.uri == "https://chap.intersectmbo.org")
       | {"pkg-name": ."pkg-name", "pkg-version": ."pkg-version"}
       | @base64' < dist-newstyle/cache/plan.json \
     | sort \
