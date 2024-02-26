@@ -249,6 +249,14 @@ $ ./scripts/add-revision.sh _repo PACKAGE_NAME PACKAGE_VERSION
 It will add a new revision and copy the _current_ cabal file in as the revised cabal file.
 You can then edit that file and commit the result.
 
+### How to deprecate a pacakge
+
+CHaP supports package version deprecations just like Hackage. 
+These allow you to make a package "not-preferred" by the cabal solver (note that the solver will still pick a deprecated package version if it cannot pick a non-deprecated one).
+
+There is not currently a script for adding a deprecation, but you can find examples by serarching for "deprecations" in the repository.
+Deprecations must include a timestamp (like all events) and indicate the new deprecation state (so package versions can also be un-deprecated).
+
 ### How to add a patched versions of a Hackage package
 
 CHaP should mostly contain versions of packages which are _not_ on Hackage.
