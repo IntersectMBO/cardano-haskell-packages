@@ -1,0 +1,3 @@
+timestamp = 2024-02-26T10:31:01Z
+github = { repo = "intersectmbo/plutus", rev = "79cb92bbc82c0b4a08585e170dc381cb1c3ba24c" }
+subdir = 'prettyprinter-configurable'
