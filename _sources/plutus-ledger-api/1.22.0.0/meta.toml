@@ -1,3 +1,7 @@
 timestamp = 2024-02-22T17:04:08Z
 github = { repo = "intersectmbo/plutus", rev = "c4e6e771a6052847a72571b59c9a462d79945dbe" }
 subdir = 'plutus-ledger-api'
+
+[[deprecations]]
+timestamp = 2024-02-26T13:00:00Z
+deprecated = true
