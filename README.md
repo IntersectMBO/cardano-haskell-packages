@@ -366,7 +366,7 @@ You can build packages from CHaP using Nix like this:
 ```
 nix build
   --override-input CHaP path:/home/user/cardano-haskell-packages/_repo
-  `.#"ghc92/plutus-core/1.1.0.0"`
+  '.#"ghc92/plutus-core/1.1.0.0"'
 ```
 (Note the added quotes around `.#"ghc92/plutus-core/1.1.0.0"`.
 For other shells than `bash` this is required to make sure that the above command works.
@@ -465,7 +465,7 @@ The easiest way is to build the package in question [with nix](#-by-building-pac
 > foliage build -j 0 --write-metadata
 > nix build
   --override-input CHaP path:/home/user/cardano-haskell-packages/_repo
-  `.#"ghc92/foo/X"`
+  '.#"ghc92/foo/X"'
 ```
 
 There are then two ways to make progress:
