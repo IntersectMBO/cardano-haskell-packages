@@ -316,6 +316,7 @@
               coreutils
               curlMinimal.bin
               gitMinimal
+              gh                  # GitHub CLI tool
               gnutar
               foliage.packages.${system}.default
             ];
