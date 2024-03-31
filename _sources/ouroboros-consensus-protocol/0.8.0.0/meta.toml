@@ -1,0 +1,3 @@
+timestamp = 2024-03-31T03:54:17Z
+github = { repo = "input-output-hk/ouroboros-consensus", rev = "0a1925206d4532cc7b189bc7ca6719571982b6cc" }
+subdir = 'ouroboros-consensus-protocol'
