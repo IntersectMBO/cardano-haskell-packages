@@ -1,0 +1,3 @@
+timestamp = 2024-04-04T02:48:26Z
+github = { repo = "intersectmbo/cardano-ledger", rev = "2b816e58cb714061176d888e6d4c8e57bcc848b2" }
+subdir = 'eras/conway/impl'
