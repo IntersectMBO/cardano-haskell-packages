@@ -301,7 +301,7 @@ However if you are making a large number of changes (e.g. many revisions), it ca
 The Cabal package repository itself is built using the tool `foliage`.
 You can either fetch the latest version which is stored in git; or build it yourself locally, which can be convenient or necessary if you have local changes.
 
-### ... by downloading it from Github
+#### ... by downloading it from Github
 
 The built repository is stored in the `repo` branch of CHaP itself.
 You can get the contents of the `repo` branch from Github at https://github.com/intersectmbo/cardano-haskell-packages/archive/refs/heads/repo.zip .
@@ -312,6 +312,14 @@ git checkout repo
 cp -aR . _repo
 git checkout -
 ```
+
+You can also check it out as a worktree:
+
+```
+git worktree add _repo repo
+```
+
+When using this later, remember to pull before creating a revision.
 
 #### ... by building it locally
 
