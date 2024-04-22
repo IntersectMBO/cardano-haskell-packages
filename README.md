@@ -126,19 +126,6 @@ of the packages in CHaP. Then cabal will rebuild them both. If this becomes a pr
 you can consider adding the patched package to CHaP itself,
 see [below](#how-do-i-add-a-patched-versions-of-a-hackage-package-to-chap).
 
-Warning: Haskell.nix cannot parse the `index-state` syntax with multiple
-repositories (see [haskell.nix#1869](https://github.com/input-output-hk/haskell.nix/issues/1869)).
-You can use the following workaround to appease both Haskell.nix and cabal.
-
-```
--- haskell.nix will parse this (https://github.com/input-output-hk/haskell.nix/issues/1869)
-index-state: 2022-12-31T00:00:00Z
--- cabal will overwrite the above with this
-index-state:
-  , hackage.haskell.org      2022-12-31T00:00:00Z
-  , cardano-haskell-packages 2022-08-25T00:00:00Z
-```
-
 ### Updating dependencies from CHaP
 
 If you have a Haskell project which has bounds on CHaP packages, we provide a script which will update all of those bounds to
