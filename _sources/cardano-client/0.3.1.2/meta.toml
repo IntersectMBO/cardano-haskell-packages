@@ -5,3 +5,7 @@ subdir = 'cardano-client'
 [[revisions]]
 number = 1
 timestamp = 2024-04-04T19:10:59Z
+
+[[revisions]]
+number = 2
+timestamp = 2024-05-07T17:14:58Z
