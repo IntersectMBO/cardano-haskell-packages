@@ -1,0 +1,3 @@
+timestamp = 2024-05-14T10:00:00Z
+github = { repo = "input-output-hk/iohk-monitoring-framework", rev = "998ce323a6eb585d0b4f6e5a664f213474b5160f" }
+subdir = 'plugins/backend-ekg'
