@@ -37,6 +37,10 @@ let
           secure: True
 
         extra-packages: ${package-id}
+        if impl(ghc <9.9)
+          extra-packages: Cabal <3.11
+        else
+          extra-packages: Cabal
       '';
 
       modules = [{
