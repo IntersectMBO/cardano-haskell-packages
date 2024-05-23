@@ -37,6 +37,7 @@ let
           secure: True
 
         extra-packages: ${package-id}
+        allow-boot-library-installs: True
       '';
 
       modules = [{
