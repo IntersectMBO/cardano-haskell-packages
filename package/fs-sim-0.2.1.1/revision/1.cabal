@@ -38,10 +38,10 @@ library
     , bytestring         >=0.10 && <0.13
     , containers         >=0.5  && <0.7
     , fs-api             ^>=0.2
-    , io-classes         >=0.3  && <1.5
+    , io-classes         >=0.3  && <1.6
     , mtl
     , QuickCheck
-    , strict-stm         >=0.3  && <1.5
+    , strict-stm         >=0.3  && <1.6
     , text               >=1.2  && <2.2
 
   ghc-options:
