@@ -248,6 +248,7 @@
                 cardano-ledger-alonzo.doHaddock = false;
                 cardano-ledger-api.doHaddock = false;
                 cardano-ledger-conway.doHaddock = false;
+                cardano-ledger-core.doHaddock = false;
                 cardano-ledger-babbage.doHaddock = false;
                 cardano-ledger-shelley.doHaddock = false;
                 cardano-protocol-tpraos.doHaddock = false;
