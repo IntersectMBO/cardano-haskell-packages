@@ -253,6 +253,7 @@
                 cardano-ledger-shelley.doHaddock = false;
                 cardano-protocol-tpraos.doHaddock = false;
                 ouroboros-network.doHaddock = false;
+                ouroboros-consensus.doHaddock = false;
                 ouroboros-consensus-cardano.doHaddock = false;
               };
             }
