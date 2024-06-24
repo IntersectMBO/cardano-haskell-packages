@@ -42,6 +42,7 @@ _sources/cardano-ledger-core     @input-output-hk/cardano-ledger
 _sources/cardano-ledger-pretty   @input-output-hk/cardano-ledger
 _sources/cardano-ledger-test     @input-output-hk/cardano-ledger
 _sources/cardano-protocol-tpraos @input-output-hk/cardano-ledger
+_sources/cuddle                  @input-output-hk/cardano-ledger
 _sources/ledger-state            @input-output-hk/cardano-ledger
 _sources/moo                     @input-output-hk/cardano-ledger
 _sources/non-integral            @input-output-hk/cardano-ledger
