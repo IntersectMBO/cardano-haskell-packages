@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    cardano-ledger-conway-1.15.1.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      cardano-ledger-conway-1.15.1.0
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Cardano ledger with an updated on-chain governance system.</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>This package builds upon the Babbage ledger with an updated on-chain governance system.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>IOHK</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>operations@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/IntersectMBO/cardano-ledger/tree/23258c210a73e9e14be8aa3a46ed74d7bc9145e0/eras/conway/impl">https://github.com/IntersectMBO/cardano-ledger</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>23258c210a73e9e14be8aa3a46ed74d7bc9145e0</dd>
+          <dt>Subdir</dt>
+          <dd>eras/conway/impl</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2024-06-26T21:39:58Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library cardano-ledger-conway:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;base &gt;=4.14 &amp;&amp; &lt;5&quot;,&quot;aeson &gt;=2.2&quot;,&quot;data-default-class&quot;,&quot;cardano-crypto-class&quot;,&quot;cardano-data &gt;=1.2.1&quot;,&quot;cardano-ledger-binary &gt;=1.3.2&quot;,&quot;cardano-ledger-allegra ^&gt;=1.5&quot;,&quot;cardano-ledger-alonzo ^&gt;=1.9&quot;,&quot;cardano-ledger-babbage ^&gt;=1.8&quot;,&quot;cardano-ledger-core ^&gt;=1.13&quot;,&quot;cardano-ledger-mary ^&gt;=1.6&quot;,&quot;cardano-ledger-shelley ^&gt;=1.12.1&quot;,&quot;cardano-slotting&quot;,&quot;cardano-strict-containers&quot;,&quot;containers&quot;,&quot;deepseq&quot;,&quot;microlens&quot;,&quot;nothunks&quot;,&quot;plutus-ledger-api ^&gt;=1.30&quot;,&quot;set-algebra&quot;,&quot;small-steps &gt;=1.1&quot;,&quot;text&quot;,&quot;transformers&quot;,&quot;validation-selective&quot;]</li>
+            </ul>
+                      </dd>
+          <dt>library testlib:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base&quot;,&quot;bytestring&quot;,&quot;cardano-data:{cardano-data, testlib}&quot;,&quot;containers&quot;,&quot;plutus-ledger-api&quot;,&quot;deepseq&quot;,&quot;microlens&quot;,&quot;cardano-crypto-class&quot;,&quot;cardano-ledger-allegra&quot;,&quot;cardano-ledger-alonzo:{cardano-ledger-alonzo, testlib}&quot;,&quot;cardano-ledger-binary&quot;,&quot;cardano-ledger-babbage:{cardano-ledger-babbage, testlib}&quot;,&quot;cardano-ledger-conway&quot;,&quot;cardano-ledger-core:{cardano-ledger-core, testlib}&quot;,&quot;cardano-ledger-mary&quot;,&quot;cardano-ledger-shelley&quot;,&quot;cardano-strict-containers&quot;,&quot;data-default-class&quot;,&quot;generic-random&quot;,&quot;microlens-mtl&quot;,&quot;mtl&quot;,&quot;text&quot;,&quot;small-steps &gt;=1.1&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite tests:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson&quot;,&quot;base&quot;,&quot;cardano-ledger-core:testlib&quot;,&quot;cardano-ledger-allegra&quot;,&quot;cardano-ledger-alonzo:testlib&quot;,&quot;cardano-ledger-alonzo&quot;,&quot;cardano-ledger-babbage&quot;,&quot;cardano-ledger-conway&quot;,&quot;cardano-ledger-shelley:testlib&quot;,&quot;cardano-ledger-core&quot;,&quot;cardano-ledger-binary:testlib&quot;,&quot;cardano-slotting:testlib&quot;,&quot;cardano-strict-containers&quot;,&quot;containers&quot;,&quot;data-default-class&quot;,&quot;microlens&quot;,&quot;cardano-ledger-conway:testlib&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
