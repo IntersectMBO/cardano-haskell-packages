@@ -48,7 +48,7 @@ library
                      , transformers >= 0.5
                      , QuickCheck
                      -- IOHK deps
-                     , small-steps
+                     , small-steps ^>= 0.1
                      , cardano-strict-containers
   hs-source-dirs:      src
 
