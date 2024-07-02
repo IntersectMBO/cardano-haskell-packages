@@ -167,6 +167,7 @@
         };
         marlowe-runtime = {
           ghc810.enabled = v : false;
+          ghc92.enabled = v : false;
           ghc96.enabled = v : false;
           ghc98.enabled = v : false;
         };
