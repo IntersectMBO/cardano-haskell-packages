@@ -24,5 +24,3 @@ jobs:
           pr-labels: |
             dependencies
             automated
-      - name: Print PR number
-        run: echo Opened pull request ${{ steps.update.outputs.pull-request-number }}.
