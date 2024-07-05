@@ -5,3 +5,7 @@ subdir = 'typed-protocols-cborg'
 [[revisions]]
 number = 1
 timestamp = 2023-11-08T10:10:42Z
+
+[[revisions]]
+number = 2
+timestamp = 2024-07-05T05:05:48Z
