@@ -165,7 +165,7 @@ executable mux-demo
   hs-source-dirs:      demo, test
   main-is:             mux-demo.hs
   other-modules:       Test.Mux.ReqResp
-  build-depends:       base >=4.14 && <4.20,
+  build-depends:       base >=4.14 && <4.21,
                        network-mux,
                        io-classes,
                        contra-tracer,
