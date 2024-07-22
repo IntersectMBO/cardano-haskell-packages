@@ -236,7 +236,7 @@ $ ./scripts/add-revision.sh _repo PACKAGE_NAME PACKAGE_VERSION
 It will add a new revision and copy the _current_ cabal file in as the revised cabal file.
 You can then edit that file and commit the result.
 
-### How to deprecate a pacakge
+### How to deprecate a package
 
 CHaP supports package version deprecations just like Hackage. 
 These allow you to make a package "not-preferred" by the cabal solver (note that the solver will still pick a deprecated package version if it cannot pick a non-deprecated one).
