@@ -36,7 +36,7 @@ library
     , base               >=4.14 && <4.21
     , base16-bytestring
     , bytestring         >=0.10 && <0.13
-    , containers         >=0.5  && <0.7
+    , containers         >=0.5  && <0.8
     , fs-api             ^>=0.2
     , io-classes         >=0.3  && <1.6
     , mtl
