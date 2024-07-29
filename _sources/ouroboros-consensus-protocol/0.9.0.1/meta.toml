@@ -5,3 +5,7 @@ subdir = 'ouroboros-consensus-protocol'
 [[revisions]]
 number = 1
 timestamp = 2024-07-02T13:26:59Z
+
+[[revisions]]
+number = 2
+timestamp = 2024-07-29T21:40:57Z
