@@ -296,6 +296,7 @@ You can get the contents of the `repo` branch from Github at https://github.com/
 Or you can check out that branch and copy the contents, e.g.
 ```
 git checkout repo
+git merge --ff-only
 cp -aR . _repo
 git checkout -
 ```
