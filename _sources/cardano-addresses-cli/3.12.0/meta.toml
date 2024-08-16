@@ -1,0 +1,3 @@
+timestamp = 2024-08-16T19:00:17Z
+github = { repo = "IntersectMBO/cardano-addresses", rev = "dc0bfdcccf0ff2c3ea1d5db7855d4414a0cd888b" }
+subdir = 'command-line'
