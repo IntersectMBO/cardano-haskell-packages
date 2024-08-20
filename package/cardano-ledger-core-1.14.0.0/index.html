@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    cardano-ledger-core-1.14.0.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      cardano-ledger-core-1.14.0.0
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Core components of Cardano ledgers from the Shelley release on.</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Cardano ledgers from the Shelley release onwards share a core basis rooted in
+the Shelley ledger specification. This package abstracts a number of components
+which we expect to be shared amongst all future ledgers implemented around this base.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>IOHK</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>operations@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/intersectmbo/cardano-ledger/tree/068c7a6ff43b154219fb73834f7f0c6ee7d752b1/libs/cardano-ledger-core">https://github.com/intersectmbo/cardano-ledger</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>068c7a6ff43b154219fb73834f7f0c6ee7d752b1</dd>
+          <dt>Subdir</dt>
+          <dd>libs/cardano-ledger-core</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2024-08-20T20:11:05Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library cardano-ledger-core:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;base &gt;=4.14 &amp;&amp; &lt;5&quot;,&quot;aeson &gt;=2&quot;,&quot;base16-bytestring&quot;,&quot;base64-bytestring&quot;,&quot;base-deriving-via&quot;,&quot;binary&quot;,&quot;bytestring&quot;,&quot;cardano-ledger-binary ^&gt;=1.3&quot;,&quot;cardano-crypto&quot;,&quot;cardano-crypto-class&quot;,&quot;cardano-crypto-praos&quot;,&quot;cardano-crypto-wrapper&quot;,&quot;cardano-data ^&gt;=1.2&quot;,&quot;cardano-ledger-byron&quot;,&quot;cardano-prelude&quot;,&quot;cardano-slotting&quot;,&quot;containers&quot;,&quot;data-default-class&quot;,&quot;deepseq&quot;,&quot;FailT&quot;,&quot;groups&quot;,&quot;heapwords&quot;,&quot;iproute&quot;,&quot;mtl&quot;,&quot;measures&quot;,&quot;microlens&quot;,&quot;network&quot;,&quot;nothunks &gt;=0.1.5 &amp;&amp; &lt;0.3&quot;,&quot;partial-order&quot;,&quot;plutus-core&quot;,&quot;plutus-ledger-api&quot;,&quot;prettyprinter&quot;,&quot;random&quot;,&quot;quiet&quot;,&quot;serialise&quot;,&quot;scientific&quot;,&quot;non-integral &gt;=1.0&quot;,&quot;primitive&quot;,&quot;small-steps &gt;=1.1&quot;,&quot;cardano-strict-containers&quot;,&quot;text&quot;,&quot;time&quot;,&quot;transformers&quot;,&quot;utf8-string&quot;,&quot;validation-selective&quot;,&quot;vector-map ^&gt;=1.1&quot;]</li>
+            </ul>
+                      </dd>
+          <dt>library testlib:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson&quot;,&quot;aeson-pretty&quot;,&quot;base&quot;,&quot;base16-bytestring&quot;,&quot;binary&quot;,&quot;bytestring&quot;,&quot;cardano-crypto-class&quot;,&quot;cardano-crypto-test&quot;,&quot;cardano-crypto-wrapper&quot;,&quot;cardano-ledger-core&quot;,&quot;cardano-ledger-binary:{cardano-ledger-binary, testlib} ^&gt;=1.3.3&quot;,&quot;cardano-ledger-byron&quot;,&quot;cardano-ledger-byron-test&quot;,&quot;containers&quot;,&quot;data-default-class&quot;,&quot;deepseq&quot;,&quot;FailT&quot;,&quot;generic-random&quot;,&quot;genvalidity&quot;,&quot;hspec&quot;,&quot;hedgehog-quickcheck&quot;,&quot;HUnit&quot;,&quot;mtl&quot;,&quot;nothunks&quot;,&quot;primitive&quot;,&quot;QuickCheck&quot;,&quot;quickcheck-transformer&quot;,&quot;plutus-ledger-api:{plutus-ledger-api, plutus-ledger-api-testlib}&quot;,&quot;random &gt;=1.2&quot;,&quot;text&quot;,&quot;tree-diff&quot;,&quot;vector-map:{vector-map, testlib}&quot;,&quot;time&quot;,&quot;cardano-slotting&quot;,&quot;unliftio&quot;,&quot;small-steps &gt;=1.1&quot;,&quot;quickcheck-instances&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable plutus-debug:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;5&quot;,&quot;cardano-ledger-core&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite umap:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base&quot;,&quot;cardano-ledger-core&quot;,&quot;cardano-ledger-core:testlib&quot;,&quot;containers&quot;,&quot;criterion&quot;,&quot;QuickCheck&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite addr:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base&quot;,&quot;bytestring&quot;,&quot;cardano-ledger-core&quot;,&quot;cardano-ledger-core:testlib&quot;,&quot;criterion&quot;,&quot;QuickCheck&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
