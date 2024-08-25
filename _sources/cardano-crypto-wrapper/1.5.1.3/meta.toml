@@ -1,0 +1,3 @@
+timestamp = 2024-08-25T15:05:06Z
+github = { repo = "IntersectMBO/cardano-ledger", rev = "d82ac6915424df5e151d5fa12ff6346ce814e7c3" }
+subdir = 'eras/byron/crypto'
