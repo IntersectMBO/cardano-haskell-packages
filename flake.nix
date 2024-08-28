@@ -61,7 +61,7 @@
 
       # type CompilerName = String
       # compilers :: [CompilerName]
-      compilers = [ "ghc810" "ghc92" "ghc96" "ghc98" ];
+      compilers = [ "ghc810" "ghc96" "ghc98" ];
       # compilers which we don't build for by default
       experimental-compilers = [ "ghc98" ];
 
