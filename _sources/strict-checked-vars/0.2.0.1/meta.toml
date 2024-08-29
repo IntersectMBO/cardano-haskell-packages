@@ -1,0 +1,3 @@
+timestamp = 2024-08-29T09:20:45Z
+github = { repo = "input-output-hk/cardano-base", rev = "173ca7c6add96c968120bf464c9f353659cfc1f8" }
+subdir = 'strict-checked-vars'
