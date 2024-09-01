@@ -1,0 +1,3 @@
+timestamp = 2024-09-01T03:49:37Z
+github = { repo = "IntersectMBO/cardano-ledger", rev = "01ce1d8e377f5ee6d24879f2afa933f7874b8db4" }
+subdir = 'eras/shelley/impl'
