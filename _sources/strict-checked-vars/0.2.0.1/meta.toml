@@ -1,0 +1,3 @@
+timestamp = 2024-09-06T03:51:49Z
+github = { repo = "IntersectMBO/cardano-base", rev = "6f9c20abdd3010e5a25356580cc968ba430101ad" }
+subdir = 'strict-checked-vars'
