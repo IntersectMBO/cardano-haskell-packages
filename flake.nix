@@ -232,7 +232,7 @@
       extraConfig = compiler:
         {
           modules = [
-            {
+            ({pkgs, ...}: pkgs.haskell-nix.haskellLib.addPackageKeys {
               # Packages that depend on the plutus-tx plugin have broken haddock
               packages = {
                 cardano-node-emulator.doHaddock = false;
@@ -240,8 +240,8 @@
                 plutus-script-utils.doHaddock = false;
                 plutus-scripts-bench.doHaddock = false;
               };
-            }
-            {
+            })
+            ({pkgs, ...}: pkgs.haskell-nix.haskellLib.addPackageKeys {
               # Packages that have haddock that is broken on 8.10
               # See https://github.com/input-output-hk/cardano-haskell-packages/issues/482
               packages = lib.mkIf (compiler == "ghc810") {
@@ -257,7 +257,7 @@
                 ouroboros-consensus.doHaddock = false;
                 ouroboros-consensus-cardano.doHaddock = false;
               };
-            }
+            })
           ];
         };
 
