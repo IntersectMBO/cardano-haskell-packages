@@ -230,9 +230,10 @@
 
       # Extra configurations (possibly compiler-dependent) to add to all projects.
       extraConfig = compiler:
-        {
+        let addPackageKeys = x: x // { package-keys = builtins.attrNames x.packages; };
+        in {
           modules = [
-            {
+            (addPackageKeys {
               # Packages that depend on the plutus-tx plugin have broken haddock
               packages = {
                 cardano-node-emulator.doHaddock = false;
@@ -240,24 +241,24 @@
                 plutus-script-utils.doHaddock = false;
                 plutus-scripts-bench.doHaddock = false;
               };
-            }
-            {
+            })
+            (addPackageKeys {
               # Packages that have haddock that is broken on 8.10
               # See https://github.com/input-output-hk/cardano-haskell-packages/issues/482
-              packages = lib.mkIf (compiler == "ghc810") {
-                cardano-ledger-allegra.doHaddock = false;
-                cardano-ledger-alonzo.doHaddock = false;
-                cardano-ledger-api.doHaddock = false;
-                cardano-ledger-conway.doHaddock = false;
-                cardano-ledger-core.doHaddock = false;
-                cardano-ledger-babbage.doHaddock = false;
-                cardano-ledger-shelley.doHaddock = false;
-                cardano-protocol-tpraos.doHaddock = false;
-                ouroboros-network.doHaddock = false;
-                ouroboros-consensus.doHaddock = false;
-                ouroboros-consensus-cardano.doHaddock = false;
+              packages = {
+                cardano-ledger-allegra.doHaddock = compiler != "ghc810";
+                cardano-ledger-alonzo.doHaddock = compiler != "ghc810";
+                cardano-ledger-api.doHaddock = compiler != "ghc810";
+                cardano-ledger-conway.doHaddock = compiler != "ghc810";
+                cardano-ledger-core.doHaddock = compiler != "ghc810";
+                cardano-ledger-babbage.doHaddock = compiler != "ghc810";
+                cardano-ledger-shelley.doHaddock = compiler != "ghc810";
+                cardano-protocol-tpraos.doHaddock = compiler != "ghc810";
+                ouroboros-network.doHaddock = compiler != "ghc810";
+                ouroboros-consensus.doHaddock = compiler != "ghc810";
+                ouroboros-consensus-cardano.doHaddock = compiler != "ghc810";
               };
-            }
+            })
           ];
         };
 
