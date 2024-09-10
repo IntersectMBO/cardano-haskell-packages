@@ -253,9 +253,10 @@
                 cardano-ledger-babbage.doHaddock = false;
                 cardano-ledger-shelley.doHaddock = false;
                 cardano-protocol-tpraos.doHaddock = false;
-                ouroboros-network.doHaddock = false;
-                ouroboros-consensus.doHaddock = false;
                 ouroboros-consensus-cardano.doHaddock = false;
+                ouroboros-consensus.doHaddock = false;
+                ouroboros-network.doHaddock = false;
+                plutus-ledger-api.doHaddock = false;
               };
             }
           ];
