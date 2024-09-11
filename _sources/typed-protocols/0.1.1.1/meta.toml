@@ -5,3 +5,7 @@ subdir = 'typed-protocols'
 [[revisions]]
 number = 1
 timestamp = 2024-08-28T17:27:21Z
+
+[[revisions]]
+number = 2
+timestamp = 2024-09-20T09:00:00Z
