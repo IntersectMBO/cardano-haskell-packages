@@ -1,0 +1,2 @@
+timestamp = 2024-10-03T15:13:19Z
+github = { repo = "input-output-hk/haskell-lmdb", rev = "8725dfcbb31cf55aa2acafb6dc5a07c986626a27" }
