@@ -1,0 +1,2 @@
+timestamp = 2024-10-04T09:54:45Z
+github = { repo = "input-output-hk/lmdb-simple", rev = "eae65e9caa1329f25ecdc97daf1fc8b96faafc5d" }
