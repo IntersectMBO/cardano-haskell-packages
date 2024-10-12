@@ -40,6 +40,13 @@ let
   mkPackageTreeWith = f:
     builtins.mapAttrs (name: versions: lib.genAttrs versions (f name));
 
+  # addPackageKeys :: AttrSet -> AttrSet
+  #
+  # Add a `package-keys` attribute listing the keys used in the packages attribute.
+  # Needed since haskell.nix:61fbe408c01b6d61d010e6fb8e78bd19b5b025cc
+  #
+  addPackageKeys = x:
+    x // { package-keys = builtins.attrNames (if x.packages._type or "" == "if" then x.packages.content else x.packages); };
 in
 {
   inherit
@@ -47,5 +54,6 @@ in
     chap-package-versions
     chap-package-latest-versions
     mkPackageTreeWith
+    addPackageKeys
     ;
 }
