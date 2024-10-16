@@ -1,0 +1,123 @@
+cabal-version:      3.4
+name:               marlowe-apps
+version:            1.0.0
+synopsis:           Marlowe Runtimee applications
+license:            Apache-2.0
+license-file:       LICENSE
+author:             Brian W Bush <brian.bush@iohk.io>
+maintainer:         Brian W Bush <brian.bush@iohk.io>
+category:           Network
+build-type:         Simple
+extra-source-files: ReadMe.md
+
+library
+  exposed-modules:
+    Language.Marlowe.Runtime.App
+    Language.Marlowe.Runtime.App.Build
+    Language.Marlowe.Runtime.App.Channel
+    Language.Marlowe.Runtime.App.List
+    Language.Marlowe.Runtime.App.Parser
+    Language.Marlowe.Runtime.App.Run
+    Language.Marlowe.Runtime.App.Sign
+    Language.Marlowe.Runtime.App.Stream
+    Language.Marlowe.Runtime.App.Submit
+    Language.Marlowe.Runtime.App.Transact
+    Language.Marlowe.Runtime.App.Types
+
+  hs-source-dirs:   src
+  build-depends:
+    , aeson
+    , async
+    , base >=4.9 && <5
+    , bytestring
+    , cardano-api ^>=8.39.2.0
+    , containers
+    , data-default
+    , eventuo11y >=0.9 && <0.11
+    , eventuo11y-dsl ^>=0.2
+    , eventuo11y-json ^>=0.3.0.3
+    , marlowe-cardano
+    , marlowe-chain-sync
+    , marlowe-client
+    , marlowe-protocols
+    , marlowe-runtime:{marlowe-runtime, config, sync-api, tx-api}
+    , mtl
+    , network
+    , optparse-applicative
+    , random
+    , stm
+    , text
+    , time
+    , time-units
+
+  ghc-options:
+    -Wall -Wnoncanonical-monad-instances -Wincomplete-uni-patterns
+    -Wincomplete-record-updates -Wredundant-constraints -Widentities
+    -Wunused-packages
+
+  default-language: Haskell2010
+
+executable marlowe-pipe
+  main-is:          Main.hs
+  hs-source-dirs:   pipe
+  build-depends:
+    , aeson
+    , base >=4.9 && <5
+    , bytestring
+    , eventuo11y >=0.9 && <0.11
+    , eventuo11y-dsl ^>=0.2
+    , eventuo11y-json ^>=0.3.0.3
+    , marlowe-apps
+    , mtl
+    , optparse-applicative
+    , text
+
+  ghc-options:
+    -Wall -Wnoncanonical-monad-instances -Wincomplete-uni-patterns
+    -Wincomplete-record-updates -Wredundant-constraints -Widentities
+    -Wunused-packages
+
+  default-language: Haskell2010
+
+executable marlowe-oracle
+  main-is:          Main.hs
+  hs-source-dirs:   oracle
+  other-modules:
+    Language.Marlowe.Oracle.Detect
+    Language.Marlowe.Oracle.Process
+    Language.Marlowe.Oracle.Types
+    Network.Oracle
+    Network.Oracle.CoinGecko
+    Network.Oracle.Random
+    Network.Oracle.Sofr
+
+  build-depends:
+    , aeson
+    , base >=4.9 && <5
+    , base16-aeson
+    , bytestring
+    , cardano-api ^>=8.39.2.0
+    , eventuo11y >=0.9 && <0.11
+    , eventuo11y-dsl ^>=0.2
+    , eventuo11y-json ^>=0.3.0.3
+    , http-client
+    , http-client-tls
+    , marlowe-apps
+    , marlowe-cardano
+    , marlowe-chain-sync
+    , marlowe-runtime
+    , mtl
+    , optparse-applicative
+    , plutus-ledger-api ^>=1.21
+    , process
+    , servant
+    , servant-client
+    , text
+    , time-units
+
+  ghc-options:
+    -Wall -Wnoncanonical-monad-instances -Wincomplete-uni-patterns
+    -Wincomplete-record-updates -Wredundant-constraints -Widentities
+    -Wunused-packages
+
+  default-language: Haskell2010
