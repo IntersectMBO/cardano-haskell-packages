@@ -226,6 +226,30 @@
         quickcheck-threatmodel = {
           ghc96.enabled = v : false;
         };
+        hydra-prelude = {
+          ghc96.enabled = false;
+        };
+        hydra-plutus = {
+          ghc96.enabled = false;
+        };
+        hydra-plutus-extras = {
+          ghc96.enabled = false;
+        };
+        hydra-cardano-api = {
+          ghc96.enabled = false;
+        };
+        hydra-node = {
+          ghc96.enabled = false;
+        };
+        hydra-tui = {
+          ghc96.enabled = false;
+        };
+        hydra-test-utils = {
+          ghc96.enabled = false;
+        };
+        hydra-cluster = {
+          ghc96.enabled = false;
+        };
       };
 
       # Extra configurations (possibly compiler-dependent) to add to all projects.
