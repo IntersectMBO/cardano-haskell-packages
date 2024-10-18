@@ -1,0 +1,3 @@
+timestamp = 2024-10-18T17:09:27Z
+github = { repo = "IntersectMBO/cardano-node", rev = "1abdd4748301349ece9c8f3a015aedd4e13c3a86" }
+subdir = 'trace-dispatcher'
