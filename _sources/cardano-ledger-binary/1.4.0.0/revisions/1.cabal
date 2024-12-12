@@ -124,7 +124,7 @@ library testlib
         prettyprinter-ansi-terminal,
         primitive,
         QuickCheck,
-        quickcheck-instances,
+        quickcheck-instances <0.3.32,
         tasty-hunit,
         random >=1.2,
         text,
