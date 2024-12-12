@@ -88,6 +88,7 @@ library
         cardano-prelude,
         cardano-slotting,
         containers,
+        data-default <0.8,
         data-default-class <0.2,
         deepseq,
         groups,
