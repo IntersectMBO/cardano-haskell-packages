@@ -5,3 +5,7 @@ subdir = 'libs/cardano-ledger-binary'
 [[revisions]]
 number = 1
 timestamp = 2023-04-14T12:36:46Z
+
+[[revisions]]
+number = 2
+timestamp = 2024-12-11T19:54:27Z

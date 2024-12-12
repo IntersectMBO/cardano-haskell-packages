@@ -1,3 +1,7 @@
 timestamp = 2024-09-23T21:46:49Z
 github = { repo = "IntersectMBO/cardano-ledger", rev = "052d07325dcc4bf8a004bcad2c58d7fc7ce65d92" }
 subdir = 'libs/cardano-ledger-core'
+
+[[revisions]]
+number = 1
+timestamp = 2024-12-12T00:23:02Z
