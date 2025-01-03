@@ -1,0 +1,3 @@
+timestamp = 2024-12-19T15:39:34Z
+github = { repo = "cardano-foundation/cardano-wallet", rev = "9eb5f59c328163ca061a20f47519686b6f118d74" }
+subdir = 'lib/delta-types'
