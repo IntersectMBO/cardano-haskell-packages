@@ -5,3 +5,7 @@ subdir = 'plutus-ledger'
 [[revisions]]
 number = 1
 timestamp = 2024-02-06T15:13:44Z
+
+[[revisions]]
+number = 2
+timestamp = 2025-01-22T04:18:31Z
