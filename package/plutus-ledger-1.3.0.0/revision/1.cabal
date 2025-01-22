@@ -107,7 +107,7 @@ library
   build-depends:
     , cardano-api:{cardano-api, internal} ^>=8.37
     , cardano-binary
-    , cardano-crypto
+    , cardano-crypto                      ^>=1.1
     , cardano-ledger-alonzo
     , cardano-ledger-babbage
     , cardano-ledger-byron
