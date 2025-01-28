@@ -213,7 +213,7 @@
           ghc96.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
         };
         plutus-ledger-api = {
-          ghc98.enabled = v : true;
+          ghc98.enabled = v : false;
         };
         plutus-script-utils = {
           ghc810.enabled = v : builtins.compareVersions v "1.3.0.0" < 0;
