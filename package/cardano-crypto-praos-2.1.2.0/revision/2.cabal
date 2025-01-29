@@ -67,7 +67,7 @@ library
   build-depends:        base
                       , bytestring
                       , cardano-binary
-                      , cardano-crypto-class >= 2.1.1
+                      , cardano-crypto-class >= 2.1.1 && <2.2
                       , deepseq
                       , nothunks
 
