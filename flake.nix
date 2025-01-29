@@ -207,6 +207,11 @@
         plutus-tx = {
           ghc98.enabled = v : true;
         };
+        plutus-tx-plugin = {
+          ghc810.enabled = v : false;
+          ghc92.enabled = v : false;
+          ghc98.enabled = v : false;
+        };
         plutus-ledger = {
           ghc810.enabled = v : builtins.compareVersions v "1.3.0.0" < 0;
           ghc92.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
