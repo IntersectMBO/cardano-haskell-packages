@@ -1,0 +1,3 @@
+timestamp = 2025-02-11T16:02:25Z
+github = { repo = "cardano-foundation/cardano-wallet-agda", rev = "099b4fb3c672d94c31979fe8d436eadc6fd7ed15" }
+subdir = 'lib/cardano-wallet-read'
