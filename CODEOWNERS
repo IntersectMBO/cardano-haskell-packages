@@ -173,3 +173,6 @@ _sources/marlowe-runtime      @input-output-hk/marlowe
 _sources/marlowe-runtime-web  @input-output-hk/marlowe
 _sources/marlowe-spec-test    @input-output-hk/marlowe
 _sources/marlowe-test         @input-output-hk/marlowe
+
+# HAL team
+_sources/cardano-wallet-read      @cardano-foundation/cf-hal-team
