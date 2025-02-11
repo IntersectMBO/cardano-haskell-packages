@@ -77,6 +77,9 @@
         cardano-prelude = {
           ghc98.enabled = v : true;
         };
+        cardano-wallet-read = {
+          ghc810.enabled = v : false;
+        };
         ntp-client = {
           ghc98.enabled = v : builtins.compareVersions v "0.0.1.4" >= 0;
         };
