@@ -1,3 +1,7 @@
 timestamp = 2024-08-07T16:51:08Z
 github = { repo = "intersectmbo/ouroboros-network", rev = "fd1d8bd7725474d15b4722232b6c999b203c0e37" }
 subdir = 'ntp-client'
+
+[[revisions]]
+number = 1
+timestamp = 2025-02-25T16:59:55Z
