@@ -1,0 +1,3 @@
+timestamp = 2025-02-26T16:38:31Z
+github = { repo = "intersectmbo/ouroboros-network", rev = "588130b5f0494a42c19da3bd44211ff7607b5831" }
+subdir = 'ouroboros-network-api'
