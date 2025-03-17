@@ -1,3 +1,7 @@
 timestamp = 2024-10-14T16:44:38Z
 github = { repo = "IntersectMBO/ouroboros-consensus", rev = "358305b09f8fa1a85f076b20a51b4af03e827071" }
 subdir = 'ouroboros-consensus'
+
+[[revisions]]
+number = 1
+timestamp = 2025-03-17T22:31:28Z
