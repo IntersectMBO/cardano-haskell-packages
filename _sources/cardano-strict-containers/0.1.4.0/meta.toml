@@ -1,0 +1,3 @@
+timestamp = 2025-03-18T17:41:11Z
+github = { repo = "intersectmbo/cardano-base", rev = "af32361b8e3cfd6988de3b5014cf129168395768" }
+subdir = 'cardano-strict-containers'
