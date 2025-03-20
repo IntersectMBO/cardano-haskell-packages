@@ -205,9 +205,11 @@
           ghc98.enabled = v : false;
         };
         plutus-core = {
+          ghc810.enabled = v : false;
           ghc98.enabled = v : true;
         };
         plutus-tx = {
+          ghc810.enabled = v : false;
           ghc98.enabled = v : true;
         };
         plutus-tx-plugin = {
@@ -216,15 +218,16 @@
           ghc98.enabled = v : false;
         };
         plutus-ledger = {
-          ghc810.enabled = v : builtins.compareVersions v "1.3.0.0" < 0;
+          ghc810.enabled = v : false; 
           ghc92.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
           ghc96.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
         };
         plutus-ledger-api = {
+          ghc810.enabled = v : false; 
           ghc98.enabled = v : true;
         };
         plutus-script-utils = {
-          ghc810.enabled = v : builtins.compareVersions v "1.3.0.0" < 0;
+          ghc810.enabled = v : false; 
           ghc92.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
           ghc96.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
         };
