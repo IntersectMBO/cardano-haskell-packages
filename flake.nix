@@ -60,8 +60,12 @@
           chap-package-latest-versions;
 
       # type CompilerName = String
-      # compilers :: [CompilerName]
-      compilers = [ "ghc810" "ghc96" "ghc98" ];
+      # type System = String
+      # compilersForSystem :: System -> [CompilerName]
+      compilersForSystem = system:
+        if builtins.elem system [ "aarch64-darwin" "x86_64-darwin" ]
+        then [ "ghc96" "ghc98" ] # See https://gitlab.haskell.org/ghc/ghc/-/issues/25608
+        else [ "ghc810" "ghc96" "ghc98" ];
       # compilers which we don't build for by default
       experimental-compilers = [ "ghc98" ];
 
@@ -274,9 +278,10 @@
       # mkCompilerPackageTreeWith
       # :: (Compiler -> PkgName -> PkgVersions -> a)
       # -> PkgVersions
+      # -> System
       # -> Map Compiler (Map PkgName (Map PkgVersion a))
-      mkCompilerPackageTreeWith = f: pkg-versions:
-        lib.genAttrs compilers (compiler:
+      mkCompilerPackageTreeWith = f: pkg-versions: system:
+        lib.genAttrs (compilersForSystem system) (compiler:
           let
             filtered-pkgs-versions =
               lib.mapAttrs
@@ -339,12 +344,14 @@
           haskellPackages =
             mkCompilerPackageTreeWith
               (compiler: name: version: (builder compiler name version).aggregate)
-              chap-package-versions;
+              chap-package-versions
+              system;
 
           smokeTestPackages =
             mkCompilerPackageTreeWith
               (compiler: name: version: (builder compiler name version).aggregate)
-              smoke-test-package-versions;
+              smoke-test-package-versions
+              system;
 
           packages = flattenTree haskellPackages // {
             inherit update-chap-deps;
@@ -365,7 +372,7 @@
 
           hydraJobs =
             lib.optionalAttrs (system != "aarch64-linux")
-              (mkCompilerPackageTreeWith builder smoke-test-package-versions);
+              (mkCompilerPackageTreeWith builder smoke-test-package-versions system);
         });
 
   nixConfig = {
