@@ -1,0 +1,3 @@
+timestamp = 2025-04-08T10:03:51Z
+github = { repo = "input-output-hk/anti-diffs", rev = "bf3dd52b3a85fb075194e92b7851e5ccb3025290" }
+subdir = 'fingertree-rm'
