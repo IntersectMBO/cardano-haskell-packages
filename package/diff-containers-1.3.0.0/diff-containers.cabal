@@ -17,7 +17,8 @@ author:          Joris Dral
 maintainer:      operations@iohk.io, Joris Dral (joris@well-typed.com)
 category:        Data Structures
 build-type:      Simple
-tested-with:     GHC ==8.10 || ==9.2 || ==9.4 || ==9.6 || ==9.8 || ==9.10
+tested-with:
+  GHC ==8.10 || ==9.2 || ==9.4 || ==9.6 || ==9.8 || ==9.10 || ==9.12
 
 source-repository head
   type:     git
@@ -47,7 +48,7 @@ library
 
   other-modules:   Data.Sequence.NonEmpty.Extra
   build-depends:
-    , base                 >=4.9 && <4.21
+    , base                 >=4.9 && <4.22
     , containers
     , monoid-subclasses
     , nonempty-containers
@@ -64,7 +65,7 @@ test-suite test
     Test.Util
 
   build-depends:
-    , base                          >=4.9 && <4.21
+    , base                          >=4.9 && <4.22
     , containers
     , diff-containers
     , nonempty-containers
