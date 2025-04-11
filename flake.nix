@@ -270,6 +270,7 @@
                 ouroboros-consensus.doHaddock = compiler != "ghc810";
                 ouroboros-network.doHaddock = compiler != "ghc810";
                 plutus-ledger-api.doHaddock = compiler != "ghc810";
+                cardano-node.doHaddock = compiler != "ghc810";
               };
             })
           ];
