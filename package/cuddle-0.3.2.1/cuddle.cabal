@@ -72,7 +72,7 @@ library
         , optics-core
         , parser-combinators
         , prettyprinter
-        , random
+        , random  <1.3
         , text
 
     hs-source-dirs:   src
