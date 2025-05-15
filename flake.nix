@@ -63,9 +63,8 @@
       # type System = String
       # compilersForSystem :: System -> [CompilerName]
       compilersForSystem = system:
-        if builtins.elem system [ "aarch64-darwin" "x86_64-darwin" ]
-        then [ "ghc96" "ghc98" ] # See https://gitlab.haskell.org/ghc/ghc/-/issues/25608
-        else [ "ghc810" "ghc96" "ghc98" ];
+        # Any specific system overrides go here. Currently, there are none
+        [ "ghc96" "ghc98" ];
       # compilers which we don't build for by default
       experimental-compilers = [ "ghc98" ];
 
@@ -80,9 +79,6 @@
       exceptions = {
         cardano-prelude = {
           ghc98.enabled = v : true;
-        };
-        cardano-wallet-read = {
-          ghc810.enabled = v : false;
         };
         ntp-client = {
           ghc98.enabled = v : builtins.compareVersions v "0.0.1.4" >= 0;
@@ -117,89 +113,48 @@
         cardano-client = {
           ghc98.enabled = v : builtins.compareVersions v "0.3.1.0" >= 0;
         };
-        cardano-node-emulator = {
-          ghc810.enabled = v : false;
-        };
-        cardano-node-socket-emulator = {
-          ghc810.enabled = v : false;
-        };
         hasql-dynamic-syntax = {
-          ghc810.enabled = v : false;
           ghc96.enabled = v : false;
           ghc98.enabled = v : false;
         };
-        hydra-prelude = {
-          ghc810.enabled = v : false;
-        };
-        hydra-cardano-api = {
-          ghc810.enabled = v : false;
-        };
-        hydra-plutus = {
-          ghc810.enabled = v : false;
-        };
-        hydra-plutus-extras = {
-          ghc810.enabled = v : false;
-        };
-        hydra-chain-observer = {
-          ghc810.enabled = v : false;
-        };
-        hydra-node = {
-          ghc810.enabled = v : false;
-        };
-        hydra-tui = {
-          ghc810.enabled = v : false;
-        };
-        hydra-test-utils = {
-          ghc810.enabled = v : false;
-        };
         marlowe-cardano = {
-          ghc810.enabled = v : false;
           ghc96.enabled = v : false;
           ghc98.enabled = v : false;
         };
         marlowe-chain-sync = {
-          ghc810.enabled = v : false;
           ghc96.enabled = v : false;
           ghc98.enabled = v : false;
         };
         marlowe-client = {
-          ghc810.enabled = v : false;
           ghc96.enabled = v : false;
           ghc98.enabled = v : false;
         };
         marlowe-protocols = {
-          ghc810.enabled = v : false;
           ghc96.enabled = v : false;
           ghc98.enabled = v : false;
         };
         marlowe-runtime = {
-          ghc810.enabled = v : false;
           ghc92.enabled = v : false;
           ghc96.enabled = v : false;
           ghc98.enabled = v : false;
         };
         marlowe-runtime-web = {
-          ghc810.enabled = v : false;
           ghc96.enabled = v : false;
           ghc98.enabled = v : false;
         };
         marlowe-test = {
-          ghc810.enabled = v : false;
           ghc96.enabled = v : false;
           ghc98.enabled = v : false;
         };
         marlowe-object = {
-          ghc810.enabled = v : false;
           ghc96.enabled = v : false;
           ghc98.enabled = v : false;
         };
         marlowe-spec-test = {
-          ghc810.enabled = v : false;
           ghc96.enabled = v : false;
           ghc98.enabled = v : false;
         };
         marlowe = {
-          ghc810.enabled = v : false;
           ghc96.enabled = v : false;
           ghc98.enabled = v : false;
         };
@@ -209,29 +164,23 @@
           ghc98.enabled = v : false;
         };
         plutus-core = {
-          ghc810.enabled = v : builtins.compareVersions v "1.46.0.0" < 0;
           ghc98.enabled = v : true;
         };
         plutus-tx = {
-          ghc810.enabled = v : builtins.compareVersions v "1.46.0.0" < 0;
           ghc98.enabled = v : true;
         };
         plutus-tx-plugin = {
-          ghc810.enabled = v : false;
           ghc92.enabled = v : false;
           ghc98.enabled = v : false;
         };
         plutus-ledger = {
-          ghc810.enabled = v : builtins.compareVersions v "1.3.0.0" < 0;
           ghc92.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
           ghc96.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
         };
         plutus-ledger-api = {
-          ghc810.enabled = v : builtins.compareVersions v "1.46.0.0" < 0;
           ghc98.enabled = v : true;
         };
         plutus-script-utils = {
-          ghc810.enabled = v : builtins.compareVersions v "1.3.0.0" < 0;
           ghc92.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
           ghc96.enabled = v : builtins.compareVersions v "1.3.0.0" >= 0;
         };
@@ -255,25 +204,6 @@
                 plutus-ledger.doHaddock = false;
                 plutus-script-utils.doHaddock = false;
                 plutus-scripts-bench.doHaddock = false;
-              };
-            })
-            (addPackageKeys {
-              # Packages that have haddock that is broken on 8.10
-              # See https://github.com/input-output-hk/cardano-haskell-packages/issues/482
-              packages = {
-                cardano-ledger-allegra.doHaddock = compiler != "ghc810";
-                cardano-ledger-alonzo.doHaddock = compiler != "ghc810";
-                cardano-ledger-api.doHaddock = compiler != "ghc810";
-                cardano-ledger-conway.doHaddock = compiler != "ghc810";
-                cardano-ledger-core.doHaddock = compiler != "ghc810";
-                cardano-ledger-babbage.doHaddock = compiler != "ghc810";
-                cardano-ledger-shelley.doHaddock = compiler != "ghc810";
-                cardano-protocol-tpraos.doHaddock = compiler != "ghc810";
-                ouroboros-consensus-cardano.doHaddock = compiler != "ghc810";
-                ouroboros-consensus.doHaddock = compiler != "ghc810";
-                ouroboros-network.doHaddock = compiler != "ghc810";
-                plutus-ledger-api.doHaddock = compiler != "ghc810";
-                cardano-node.doHaddock = compiler != "ghc810";
               };
             })
           ];
