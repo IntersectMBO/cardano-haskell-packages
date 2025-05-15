@@ -238,7 +238,7 @@ You can then edit that file and commit the result.
 
 ### How to deprecate a package
 
-CHaP supports package version deprecations just like Hackage. 
+CHaP supports package version deprecations just like Hackage.
 These allow you to make a package "not-preferred" by the cabal solver (note that the solver will still pick a deprecated package version if it cannot pick a non-deprecated one).
 
 There is not currently a script for adding a deprecation, but you can find examples by serarching for "deprecations" in the repository.
@@ -393,8 +393,8 @@ new package versions!
 Also, you you can examine the build plan without completing the build:
 ```bash
 $ nix build .#project.plan-nix.json \
-	--out-link plan.json \
-	--override-input CHaP path:/home/user/cardano-haskell-packages/_repo
+    --out-link plan.json \
+    --override-input CHaP path:/home/user/cardano-haskell-packages/_repo
 ```
 
 This is useful if you just want to see whether cabal is able to successfully
@@ -465,10 +465,10 @@ The easiest way is to build the package in question [with nix](#-by-building-pac
 ```
 
 There are then two ways to make progress:
-1. Add a constraint to force the good case. If you are expecting to build with `bar-Y`, you can add a `bar == Y` constraint and the solver should tell you why it's impossible! You can either add this to the `cabal.project` specified in `nix/builder.nix`, or add `.addConstraint "bar == Y"` to the nix invocation. For example: 
+1. Add a constraint to force the good case. If you are expecting to build with `bar-Y`, you can add a `bar == Y` constraint and the solver should tell you why it's impossible! You can either add this to the `cabal.project` specified in `nix/builder.nix`, or add `.addConstraint "bar == Y"` to the nix invocation. For example:
 ```bash
-nix build $(nix eval --raw '.#"ghc8107/cardano-ledger-core/0.1.0.0"' \
-    --apply 'd: (d.passthru.addConstraint "cardano-crypto-class <2.0.0.1, cardano-binary<1.5.0.1").drvPath')
+nix build $(nix eval --raw '.#"ghc96/cardano-ledger-core/0.16.0.1"' \
+    --apply 'd: (d.passthru.addConstraint "cardano-crypto-class >=2.0.0.1").drvPath')
 ```
 2. Make a revision to rule out the bad case. If your build fails because `baz-Z` can't build with `bar-P`, then `baz-Z` _should_ have a constraint that excludes `bar-P`. You can add this constraint by making a revision to `baz-Z` and try again.
 
