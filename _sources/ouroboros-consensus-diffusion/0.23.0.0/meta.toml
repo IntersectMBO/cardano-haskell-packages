@@ -1,0 +1,3 @@
+timestamp = 2025-05-15T11:03:46Z
+github = { repo = "IntersectMBO/ouroboros-consensus", rev = "8e3afe103e49c0b1ba66ce0ece5a24dc87e34e26" }
+subdir = 'ouroboros-consensus-diffusion'
