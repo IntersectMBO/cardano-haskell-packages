@@ -1,0 +1,3 @@
+timestamp = 2025-05-23T09:45:00Z
+github = { repo = "input-output-hk/iohk-monitoring-framework/", rev = "dfce33976a1b82e84f582187b7db5aeb4d8d55a5" }
+subdir = 'iohk-monitoring'
