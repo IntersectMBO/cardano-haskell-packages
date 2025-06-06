@@ -1,0 +1,3 @@
+timestamp = 2023-10-11T12:35:06Z
+github = { repo = "input-output-hk/hydra", rev = "9f1027e0fdff6765f5233f19c4639fdaa3558bfa" }
+subdir = 'hydra-tui'
