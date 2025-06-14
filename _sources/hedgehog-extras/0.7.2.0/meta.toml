@@ -1,2 +1,6 @@
 timestamp = 2025-06-07T03:18:32Z
 github = { repo = "input-output-hk/hedgehog-extras", rev = "b813e9d68d4cd9e7f91c662f75a8c4f003cb3aa3" }
+
+[[deprecations]]
+timestamp = 2025-06-27T08:20:45Z
+deprecated = true
