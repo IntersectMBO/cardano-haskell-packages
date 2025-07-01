@@ -306,8 +306,9 @@
 
           hydraJobs =
             lib.optionalAttrs (system != "aarch64-linux")
-              ((mkCompilerPackageTreeWith builder smoke-test-package-versions system) //
-              { inherit devShells; });
+              (mkCompilerPackageTreeWith builder smoke-test-package-versions system) //
+            lib.optionalAttrs (system == "x86_64-linux")
+              { inherit devShells; };
         });
 
   nixConfig = {
