@@ -78,7 +78,7 @@ library
         base16-bytestring,
         binary,
         bytestring,
-        cardano-ledger-binary <1.5,
+        cardano-ledger-binary,
         cardano-crypto,
         cardano-crypto-class <2.2,
         cardano-crypto-praos,

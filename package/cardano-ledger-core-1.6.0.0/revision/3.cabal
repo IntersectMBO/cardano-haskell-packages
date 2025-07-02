@@ -85,7 +85,7 @@ library
         bytestring,
         cardano-ledger-binary >=1.1.1,
         cardano-crypto,
-        cardano-crypto-class <2.2,
+        cardano-crypto-class,
         cardano-crypto-praos,
         cardano-crypto-wrapper,
         cardano-data >=1.0 && <1.2,
@@ -93,8 +93,7 @@ library
         cardano-prelude,
         cardano-slotting,
         containers,
-        data-default <0.8,
-        data-default-class <0.2,
+        data-default-class,
         deepseq,
         FailT,
         groups,
@@ -157,7 +156,7 @@ library testlib
         nothunks,
         primitive,
         QuickCheck,
-        random ^>=1.2,
+        random >=1.2,
         text,
         vector-map
 

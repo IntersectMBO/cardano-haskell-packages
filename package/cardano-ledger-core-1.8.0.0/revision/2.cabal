@@ -160,7 +160,7 @@ library testlib
         nothunks,
         primitive,
         QuickCheck,
-        random ^>=1.2,
+        random >=1.2,
         text,
         vector-map,
         time,

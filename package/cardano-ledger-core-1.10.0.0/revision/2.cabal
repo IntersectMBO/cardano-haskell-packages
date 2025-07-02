@@ -188,7 +188,7 @@ library testlib
         primitive,
         QuickCheck,
         plutus-ledger-api:{plutus-ledger-api, plutus-ledger-api-testlib},
-        random ^>=1.2,
+        random >=1.2,
         text,
         tree-diff,
         vector-map:{vector-map, testlib},

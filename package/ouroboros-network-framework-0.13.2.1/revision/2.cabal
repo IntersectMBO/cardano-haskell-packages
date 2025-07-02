@@ -78,6 +78,7 @@ library
                      , iproute         >=1.7   && < 1.8
                      , hashable
                      , mtl
+                     , nothunks
                      , random
                      , stm
                      , text
@@ -90,7 +91,7 @@ library
                      , si-timers
                      , strict-stm
 
-                     , nothunks       ^>=0.1.4 || ^>=0.2
+                     , nothunks       ^>=0.1.4
                      , psqueues
                      -- ^ only to derive nothunk instances
 
