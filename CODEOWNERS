@@ -135,6 +135,7 @@ _sources/int-cast @input-output-hk/plutus-core
 _sources/quickcheck-contractmodel @input-output-hk/plutus-tools
 
 # hydra
+_sources/cardano-api-latest @input-output-hk/hydra-engineering
 _sources/hydra-* @input-output-hk/hydra-engineering
 
 # performance-tracing
