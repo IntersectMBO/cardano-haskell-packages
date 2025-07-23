@@ -46,8 +46,19 @@
         "ouroboros-consensus-cardano"
         "cardano-api"
         "cardano-node"
-        # from plutus-apps
-        "plutus-ledger"
+
+        # from cardano-node-emulator
+        # "plutus-ledger"
+        # ^ disabled as it depends on outdated versions of `cardano-api` and
+        # `plutus-tx-plugin` which are not compatible with the latest
+        # `plutus-ledger-api` and `plutus-tx` versions.
+        # See: https://chap.intersectmbo.org/package/plutus-ledger-1.3.0.0/
+        # ─ plutus-ledger-1.3.0.0
+        #   └─ plutus-script-utils-1.3.0.0
+        #      ├─ cardano-api-8.36.1.1 ┄┄
+        #      └─ plutus-tx-plugin-1.15.0.1
+        #         └─ plutus-tx-1.15.0.1 ┄┄
+
         # from marlowe-cardano
         "marlowe-runtime"
       ];
