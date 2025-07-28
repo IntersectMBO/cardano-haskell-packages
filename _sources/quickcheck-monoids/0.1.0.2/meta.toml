@@ -1,0 +1,3 @@
+timestamp = 2025-07-28T12:45:44Z
+github = { repo = "intersectmbo/ouroboros-network", rev = "7dadb41904d383cc3831721ea2d37411691834eb" }
+subdir = 'quickcheck-monoids'
