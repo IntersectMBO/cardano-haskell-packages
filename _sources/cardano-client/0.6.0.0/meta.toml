@@ -1,3 +1,7 @@
 timestamp = 2025-07-02T14:54:30Z
 github = { repo = "intersectmbo/ouroboros-network", rev = "2f1daf917c1a8969b747dcfaddcf4775274d734e" }
 subdir = 'cardano-client'
+
+[[revisions]]
+number = 1
+timestamp = 2025-07-28T12:49:59Z
