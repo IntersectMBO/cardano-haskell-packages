@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    kes-agent-0.1.0.1
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      kes-agent-0.1.0.1
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>KES agent library and binaries</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>KES agent provides a solution for storing KES keys
+in-process, in order to allow them to be erased securely and
+enable forward security in the Cardano blockchain.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Tobias Dammers</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>tobias@well-typed.com</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/kes-agent/tree/acf929d108e4f3f98477bc218d1901910d20b8c6/kes-agent">https://github.com/input-output-hk/kes-agent</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>acf929d108e4f3f98477bc218d1901910d20b8c6</dd>
+          <dt>Subdir</dt>
+          <dd>kes-agent</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2025-08-06T09:39:20Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library kes-agent:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;base &gt;=4.14.0.0 &amp;&amp; &lt;4.22.0.0&quot;,&quot;async&quot;,&quot;aeson &gt;=2.0&quot;,&quot;base16-bytestring&quot;,&quot;binary&quot;,&quot;blaze-html &gt;=0.9 &amp;&amp; &lt;0.10&quot;,&quot;bytestring &gt;=0.11&quot;,&quot;cardano-crypto-class&quot;,&quot;cardano-binary&quot;,&quot;contra-tracer ==0.1.0.1&quot;,&quot;containers &gt;=0.6.5.1 &amp;&amp; &lt;0.9&quot;,&quot;casing &gt;=0.1.4.1 &amp;&amp; &lt;0.2&quot;,&quot;extra &gt;=1.7.12 &amp;&amp; &lt;1.9&quot;,&quot;formatting&quot;,&quot;ghc-prim&quot;,&quot;io-classes &gt;=1.8.0.0&quot;,&quot;mtl&quot;,&quot;network&quot;,&quot;network-mux&quot;,&quot;nothunks&quot;,&quot;ouroboros-network-framework&quot;,&quot;process &gt;=1.6 &amp;&amp; &lt;1.7&quot;,&quot;quiet&quot;,&quot;serdoc-core&quot;,&quot;socket &gt;=0.8.3 &amp;&amp; &lt;0.9&quot;,&quot;stm &gt;=2.5 &amp;&amp; &lt;2.6&quot;,&quot;text&quot;,&quot;template-haskell &gt;=2.18.0.0&quot;,&quot;time &gt;=1.10&quot;,&quot;typed-protocols ^&gt;=1.0&quot;]</li>
+            </ul>
+            <p>if !os(windows)</p>
+            <ul class="build-depends">
+            <li>hsyslog</li>
+            </ul>
+          </dd>
+          <dt>executable kes-agent:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14.0.0 &amp;&amp; &lt;4.22.0.0&quot;,&quot;kes-agent&quot;,&quot;async&quot;,&quot;bytestring&quot;,&quot;cardano-crypto-class&quot;,&quot;contra-tracer&quot;,&quot;containers&quot;,&quot;directory&quot;,&quot;filepath&quot;,&quot;io-classes&quot;,&quot;network&quot;,&quot;ouroboros-network-framework&quot;,&quot;optparse-applicative&quot;,&quot;serdoc-core&quot;,&quot;text&quot;,&quot;time&quot;,&quot;tomland&quot;,&quot;typed-protocols&quot;,&quot;Win32-network&quot;]</li>
+</ul>
+<p>if !os(windows)</p>
+<ul class="build-depends">
+<li>unix</li>
+<li>hdaemonize</li>
+<li>hsyslog</li>
+</ul>
+
+          </dd>
+          <dt>executable kes-service-client-demo:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14.0.0 &amp;&amp; &lt;4.22.0.0&quot;,&quot;kes-agent&quot;,&quot;bytestring&quot;,&quot;cardano-crypto-class&quot;,&quot;contra-tracer&quot;,&quot;io-classes&quot;,&quot;network&quot;,&quot;ouroboros-network-framework&quot;,&quot;optparse-applicative&quot;,&quot;text&quot;,&quot;time&quot;,&quot;typed-protocols&quot;,&quot;Win32-network&quot;]</li>
+</ul>
+<p>if !os(windows)</p>
+<ul class="build-depends">
+<li>hsyslog</li>
+</ul>
+
+          </dd>
+          <dt>executable kes-agent-control:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14.0.0 &amp;&amp; &lt;4.22.0.0&quot;,&quot;kes-agent&quot;,&quot;aeson &gt;=2.0&quot;,&quot;bytestring&quot;,&quot;cardano-crypto-class&quot;,&quot;contra-tracer&quot;,&quot;extra &gt;=1.7.12 &amp;&amp; &lt;1.9&quot;,&quot;io-classes&quot;,&quot;network&quot;,&quot;ouroboros-network-framework&quot;,&quot;optparse-applicative&quot;,&quot;serdoc-core&quot;,&quot;text&quot;,&quot;time&quot;,&quot;typed-protocols&quot;,&quot;Win32-network&quot;]</li>
+</ul>
+<p>if !os(windows)</p>
+<ul class="build-depends">
+<li>hsyslog</li>
+</ul>
+
+          </dd>
+          <dt>test-suite kes-agent-tests:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14.0.0 &amp;&amp; &lt;4.22.0.0&quot;,&quot;kes-agent&quot;,&quot;aeson &gt;=2.0&quot;,&quot;async&quot;,&quot;bytestring&quot;,&quot;cardano-binary&quot;,&quot;cardano-crypto-class&quot;,&quot;cardano-crypto-tests&quot;,&quot;contra-tracer&quot;,&quot;containers&quot;,&quot;directory &gt;=1.3.6.1 &amp;&amp; &lt;1.4.0.0&quot;,&quot;filepath &gt;=1.4.2 &amp;&amp; &lt;1.5&quot;,&quot;ghc-prim&quot;,&quot;io-classes&quot;,&quot;io-sim &gt;=1.5.0&quot;,&quot;network&quot;,&quot;network-mux&quot;,&quot;ouroboros-network-framework&quot;,&quot;ouroboros-network-testing &gt;=0.8&quot;,&quot;primitive &gt;=0.7.4 &amp;&amp; &lt;0.10&quot;,&quot;process&quot;,&quot;QuickCheck&quot;,&quot;random &gt;=1.2.1 &amp;&amp; &lt;1.3&quot;,&quot;serdoc-core&quot;,&quot;tasty&quot;,&quot;tasty-hunit&quot;,&quot;tasty-quickcheck&quot;,&quot;temporary &gt;=1.3 &amp;&amp; &lt;1.4&quot;,&quot;text &gt;=1.2.5&quot;,&quot;time &gt;=1.10&quot;,&quot;Win32-network&quot;]</li>
+</ul>
+<p>if !os(windows)</p>
+<ul class="build-depends">
+<li>socket-unix &gt;=0.2.0.0 &amp;&amp; &lt;0.3.0.0</li>
+<li>unix</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
