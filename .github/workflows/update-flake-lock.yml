@@ -17,7 +17,7 @@ jobs:
           extra-conf: |
             accept-flake-config = true
       - name: Update flake.lock
-        uses: DeterminateSystems/update-flake-lock@v23
+        uses: DeterminateSystems/update-flake-lock@v24
         with:
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
           inputs: hackage-nix CHaP
