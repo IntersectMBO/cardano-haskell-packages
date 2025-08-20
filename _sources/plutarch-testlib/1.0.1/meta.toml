@@ -1,0 +1,3 @@
+timestamp = 2025-08-20T22:34:19Z
+github = { repo = "Plutonomicon/plutarch-plutus", rev = "427e49b0cbfd2ff97cdc91522a09e06edd7a7fa6" }
+subdir = 'plutarch-testlib'
