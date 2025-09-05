@@ -1,3 +1,7 @@
 timestamp = 2025-09-04T13:46:00Z
 github = { repo = "IntersectMBO/plutus", rev = "3d886f497f7533448fa01a44b38aa06ac647f548" }
 subdir = 'plutus-core'
+
+[[revisions]]
+number = 1
+timestamp = 2025-09-04T13:47:00Z
