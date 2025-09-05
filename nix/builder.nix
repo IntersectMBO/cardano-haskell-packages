@@ -39,14 +39,6 @@ let
         extra-packages: ${package-id}
         constraints: ghc source
         allow-newer: ghc:Cabal
-        -- QuickCheck-2.16
-        allow-newer: aeson:QuickCheck,
-                     tree-diff:QuickCheck,
-                     quickcheck-instances:QuickCheck,
-                     ral:QuickCheck,
-                     fin:QuickCheck,
-                     bin:QuickCheck,
-                     hedgehog-quickcheck:QuickCheck
       '';
       configureArgs = "--allow-boot-library-installs";
 
