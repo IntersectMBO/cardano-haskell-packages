@@ -120,7 +120,7 @@ library testlib
         QuickCheck,
         quickcheck-instances <0.3.32,
         tasty-hunit,
-        random >=1.2,
+        random ^>=1.2,
         text,
         vector,
         vector-map
