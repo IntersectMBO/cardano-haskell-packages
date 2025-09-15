@@ -39,6 +39,13 @@ let
         extra-packages: ${package-id}
         constraints: ghc source
         allow-newer: ghc:Cabal
+
+        source-repository-package
+          type: git
+          location: https://github.com/input-output-hk/kes-agent
+          tag: ebf8c0e480adf7b3ccd68bc7dd5b57f781f369ea
+          --sha256: sha256-QIb6qgcwtO7aB9PUhZTHyKw50GV3ViXOakQvnR3HFIY=
+          subdir: kes-agent-crypto
       '';
       configureArgs = "--allow-boot-library-installs";
 
