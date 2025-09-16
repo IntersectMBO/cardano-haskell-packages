@@ -1,0 +1,67 @@
+cabal-version:      2.4
+name:               digest
+version:            0.0.2.1.0.0.0.1
+copyright:          (c) 2009 Eugene Kirpichov
+license:            BSD-2-Clause
+license-file:       LICENSE
+author:             Eugene Kirpichov <ekirpichov@gmail.com>
+maintainer:         Eugene Kirpichov <ekirpichov@gmail.com>
+category:           Cryptography
+synopsis:           CRC32 and Adler32 hashes for bytestrings
+description:
+  This package provides efficient hash implementations for
+  strict and lazy bytestrings. For now, CRC32 and Adler32 are supported;
+  they are implemented as FFI bindings to efficient code from zlib.
+
+stability:          provisional
+build-type:         Simple
+tested-with:        GHC ==8.10.7 || ==9.0.2 || ==9.2.8 || ==9.4.8 || ==9.6.3 || ==9.8.1
+extra-source-files:
+  CHANGELOG.md
+  testing/trivial-reference.c
+  testing/trivial.expected
+  testing/trivial.hs
+
+flag pkg-config
+  default:     True
+  manual:      False
+  description: Use @pkg-config(1)@ to locate @zlib@ library.
+
+source-repository head
+  type:     git
+  location: https://github.com/TeofilC/digest
+
+library
+  -- This patched version of the digest depends on crc32c, but we only need this
+  -- for cross-compilation to Windows via Haskell.nix. See
+  -- https://github.com/TeofilC/digest/pull/24.
+  --
+  -- We include this conditional to force Linux to keep using the Hackage version.
+  if !os(windows)
+    buildable: False
+
+  exposed-modules:
+    Data.Digest.Adler32
+    Data.Digest.CRC32
+
+  default-extensions:
+    CPP
+    ForeignFunctionInterface
+    PackageImports
+
+  default-language:   Haskell2010
+  build-depends:
+    , base        >=4.12 && <5
+    , bytestring  >=0.10 && <0.13
+
+  includes:           zlib.h
+
+  ghc-options:        -Wall
+
+  if impl(ghcjs) || os(ghcjs) || arch(wasm32) || (!flag(pkg-config) && os(windows))
+    build-depends: zlib-clib < 2
+  else
+    if flag(pkg-config)
+      pkgconfig-depends: zlib
+    else
+      extra-libraries: z
