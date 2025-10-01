@@ -113,7 +113,7 @@ library
     io-classes >=1.4.1,
     memory,
     memory-pool,
-    mempack,
+    mempack ^>=0.1,
     mtl,
     nothunks,
     primitive >=0.8,
