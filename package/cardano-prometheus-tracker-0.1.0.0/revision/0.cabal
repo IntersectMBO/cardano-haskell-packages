@@ -1,0 +1,66 @@
+cabal-version:          3.8
+
+name:                   cardano-prometheus-tracker
+version:                0.1.0.0
+category:               Web
+
+copyright:              2025 Input Output Global Inc (IOG).
+license:                Apache-2.0
+license-files:          LICENSE
+                        NOTICE
+author:                 Michael Karg
+maintainer:             michael.karg@iohk.io
+
+build-type:             Simple
+extra-doc-files:        CHANGELOG.md
+
+common project-config
+  default-language:     Haskell2010
+  ghc-options:          -Werror
+                        -Wall
+                        -Wcompat
+                        -Wpartial-fields
+                        -Wredundant-constraints
+                        -Wunused-packages
+
+  if impl(ghc >= 9.8)
+    ghc-options:        -Wno-x-partial
+
+library
+  import:               project-config
+  exposed-modules:      Network.HTTP.PrometheusTracker
+                        Network.HTTP.PrometheusTracker.Summary
+                        Network.HTTP.PrometheusTracker.Types
+                        Network.HTTP.PrometheusTracker.Utils
+
+  default-extensions:   LambdaCase
+
+  build-depends:        base >= 4.18
+                      , aeson
+                      , aeson-pretty
+                      , bytestring
+                      , containers
+                      , directory
+                      , filepath
+                      , http-client
+                      , text
+                      , text-metrics
+                      , time
+  hs-source-dirs:       src
+  ghc-options:          -O2
+
+executable cardano-prometheus-tracker
+  import:               project-config
+  main-is:              Main.hs
+  other-modules:        CLI
+
+  default-extensions:   LambdaCase
+
+  build-depends:        base >= 4.18
+                      , http-client
+                      , optparse-applicative
+                      , cardano-prometheus-tracker
+
+  hs-source-dirs:       app
+  ghc-options:          -O2
+
