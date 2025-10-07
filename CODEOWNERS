@@ -136,6 +136,7 @@ _sources/quickcheck-contractmodel @input-output-hk/plutus-tools
 
 # hydra
 _sources/hydra-* @input-output-hk/hydra-engineering
+_sources/haskell-accumulator @cardano-scaling/team-hydra
 
 # performance-tracing
 _sources/cardano-topology               @input-output-hk/performance-tracing
