@@ -1,0 +1,40 @@
+cabal-version:      3.8
+name:               hydra-invoices
+version:            0.0.1.0
+synopsis:           Invoice types and functions for Hydra lightning payments.
+description:        Invoice types and functions for Hydra lightning payments.
+category:           Cardano
+author:             IOG
+copyright:          IOG 2025
+license:            Apache-2.0
+license-file:       LICENSE
+build-type:         Simple
+extra-source-files:
+  ChangeLog.md
+  README.md
+
+source-repository head
+  type:     git
+  location: <url>
+
+common lang
+  build-depends:      base >=4.18 && <5
+  default-language:   GHC2021
+  default-extensions: DerivingStrategies
+  ghc-options:
+    -Weverything -Wno-all-missed-specialisations -Wno-implicit-prelude
+    -Wno-missing-safe-haskell-mode -Wno-prepositive-qualified-module
+    -Wno-safe -Wno-unsafe
+
+library
+  import:          lang
+  build-depends:
+    , bytestring
+    , cardano-api
+    , cardano-binary
+    , cardano-crypto-class
+    , random
+    , time
+
+  exposed-modules: Hydra.Invoice
+  hs-source-dirs:  src
