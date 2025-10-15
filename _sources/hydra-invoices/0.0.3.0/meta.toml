@@ -1,0 +1,3 @@
+timestamp = 2025-10-15T09:36:07Z
+github = { repo = "cardano-scaling/hydra-invoices", rev = "dc2ab6076e18fab964b479fb92d81b4f4f38eeca" }
+subdir = 'hydra-invoices'
