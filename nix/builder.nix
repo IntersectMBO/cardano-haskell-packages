@@ -48,6 +48,7 @@ let
           echo "doc haddock $docdir/html" >> $doc/nix-support/hydra-build-products
         '';
       }];
+
     }
     (extraConfig compiler-nix-name)
   ];
