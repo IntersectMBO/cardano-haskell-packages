@@ -51,3 +51,12 @@ for rev in $(git rev-list --reverse HEAD); do
     latest_timestamp=${latest_timestamp:-$highest}
   fi
 done
+
+curr_date=$("$DATE" +"%Y-%m-%dT%H:%M:%SZ" -u)
+a=$(convert_timestamp_to_unix_time "$curr_date")
+b=$(convert_timestamp_to_unix_time "$highest")
+if [[ $a -le $b ]]; then
+    echo "ERROR: The latest timestamp $highest is beyond the current time $curr_date."
+    echo "Please use the script \`./scripts/add-from-github.sh\` or \`./scripts/add-revision.sh\` to automatically set the timestamp to an appropriate value when you add a package"
+    exit 1
+fi
