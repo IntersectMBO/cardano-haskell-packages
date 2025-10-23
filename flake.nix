@@ -9,7 +9,6 @@
       url = "github:input-output-hk/foliage";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.haskell-nix.follows = "haskell-nix";
-      inputs.hackage-nix.follows = "hackage-nix";
       inputs.flake-utils.follows = "flake-utils";
     };
 
