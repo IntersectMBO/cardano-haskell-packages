@@ -222,6 +222,16 @@
                 plutus-scripts-bench.doHaddock = false;
               };
             })
+            (
+              { pkgs, ... }:
+              {
+                package-keys = ["proto-lens-protobuf-types" "proto-lens-etcd"];
+                packages = {
+                  "proto-lens-protobuf-types".components.library.build-tools = [ pkgs.protobuf ];
+                  "proto-lens-etcd".components.library.build-tools = [ pkgs.protobuf ];
+                };
+              }
+            )
           ];
         };
 
