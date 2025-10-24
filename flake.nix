@@ -9,7 +9,6 @@
       url = "github:input-output-hk/foliage";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.haskell-nix.follows = "haskell-nix";
-      inputs.hackage-nix.follows = "hackage-nix";
       inputs.flake-utils.follows = "flake-utils";
     };
 
@@ -24,7 +23,7 @@
     };
 
     CHaP = {
-      url = "github:input-output-hk/cardano-haskell-packages?ref=repo";
+      url = "github:IntersectMBO/cardano-haskell-packages?ref=repo";
       flake = false;
     };
 
@@ -223,6 +222,16 @@
                 plutus-scripts-bench.doHaddock = false;
               };
             })
+            (
+              { pkgs, ... }:
+              {
+                package-keys = ["proto-lens-protobuf-types" "proto-lens-etcd"];
+                packages = {
+                  "proto-lens-protobuf-types".components.library.build-tools = [ pkgs.protobuf ];
+                  "proto-lens-etcd".components.library.build-tools = [ pkgs.protobuf ];
+                };
+              }
+            )
           ];
         };
 
