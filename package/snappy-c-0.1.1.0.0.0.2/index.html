@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    snappy-c-0.1.1.0.0.0.2
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      snappy-c-0.1.1.0.0.0.2
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Bindings to Google&#39;s Snappy: A fast compression library</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>[Snappy](https://github.com/google/snappy) is a fast
+(de)compression library. It is written in C++, but a basic
+set of C bindings is also provided. Although the C bindings
+only support the &quot;raw&quot; Snappy format, this package provides
+support for the Snappy &quot;frame&quot; format on top of the raw C
+API, enabling extremely fast (de)compression of lazy
+(streamed) data.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Finley McIlwaine, Edsko de Vries</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>finley@well-typed.com</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>BSD-3-Clause</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/carbolymer/snappy-c/tree/0eb8491d1a340d1b3332a20921c9765d4984ef7c">https://github.com/carbolymer/snappy-c</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>0eb8491d1a340d1b3332a20921c9765d4984ef7c</dd>
+                  </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2025-11-03T22:36:59Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library snappy-c:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.22&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.13&quot;,&quot;data-default &gt;=0.7 &amp;&amp; &lt;0.9&quot;,&quot;crc32c &gt;=0.2.2 &amp;&amp; &lt;0.3&quot;,&quot;mtl &gt;=2.2.2 &amp;&amp; &lt;2.4&quot;]</li>
+            </ul>
+                      </dd>
+          <dt>executable snappy-cli:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.22&quot;,&quot;snappy-c&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.13&quot;,&quot;conduit &gt;=1.3.5 &amp;&amp; &lt;1.4&quot;,&quot;data-default &gt;=0.7 &amp;&amp; &lt;0.9&quot;,&quot;optparse-applicative &gt;=0.18 &amp;&amp; &lt;0.20&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite bench-snappy-c:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.22&quot;,&quot;snappy-c&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.13&quot;,&quot;criterion &gt;=1.6.3 &amp;&amp; &lt;1.7&quot;,&quot;deepseq &gt;=1.4 &amp;&amp; &lt;1.6&quot;,&quot;random &gt;=1.2.1 &amp;&amp; &lt;1.4&quot;,&quot;snappy-lazy &gt;=0.1 &amp;&amp; &lt;0.2&quot;,&quot;zlib &gt;=0.6.3 &amp;&amp; &lt;0.8&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
