@@ -1,0 +1,153 @@
+cabal-version:      3.0
+name:               snappy-c
+version:            0.1.1.0.0.0.1
+synopsis:           Bindings to Google's Snappy: A fast compression library
+description:        [Snappy](https://github.com/google/snappy) is a fast
+                    (de)compression library. It is written in C++, but a basic
+                    set of C bindings is also provided. Although the C bindings
+                    only support the "raw" Snappy format, this package provides
+                    support for the Snappy "frame" format on top of the raw C
+                    API, enabling extremely fast (de)compression of lazy
+                    (streamed) data.
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             Finley McIlwaine, Edsko de Vries
+maintainer:         finley@well-typed.com
+category:           Codec
+build-type:         Simple
+extra-source-files: README.md
+extra-doc-files:    CHANGELOG.md
+tested-with:        GHC==8.10.7
+                  , GHC==9.2.8
+                  , GHC==9.4.8
+                  , GHC==9.6.4
+                  , GHC==9.8.2
+                  , GHC==9.10.1
+                  , GHC==9.12.1
+
+source-repository head
+  type:     git
+  location: https://github.com/well-typed/snappy-c
+
+common lang
+  ghc-options:
+      -Wall
+      -Wunused-packages
+      -Wprepositive-qualified-module
+      -Widentities
+  build-depends:
+      base >= 4.14 && < 4.22
+  default-language:
+      Haskell2010
+  default-extensions:
+      BangPatterns
+      DataKinds
+      DeriveAnyClass
+      DeriveFunctor
+      DerivingStrategies
+      DerivingVia
+      GADTs
+      GeneralizedNewtypeDeriving
+      ImportQualifiedPost
+      InstanceSigs
+      KindSignatures
+      LambdaCase
+      MultiParamTypeClasses
+      NumericUnderscores
+      OverloadedStrings
+      PolyKinds
+      RankNTypes
+      RecordWildCards
+      ScopedTypeVariables
+      StandaloneDeriving
+      TupleSections
+      TypeApplications
+      TypeFamilies
+
+library
+  import:
+      lang
+  hs-source-dirs:
+      src
+  exposed-modules:
+      Codec.Compression.SnappyC.Raw
+      Codec.Compression.SnappyC.Framed
+  other-modules:
+      Codec.Compression.SnappyC.Internal.Buffer
+      Codec.Compression.SnappyC.Internal.C
+      Codec.Compression.SnappyC.Internal.Checksum
+      Codec.Compression.SnappyC.Internal.FrameFormat
+      Codec.Compression.SnappyC.Internal.Util
+  build-depends:
+    , bytestring   >= 0.10  && < 0.13
+    , data-default >= 0.7   && < 0.9
+    , crc32c       >= 0.2.2 && < 0.3
+    , mtl          >= 2.2.2 && < 2.4
+  extra-libraries:
+    , snappy
+
+executable snappy-cli
+  import:
+      lang
+  hs-source-dirs:
+      snappy-cli
+  main-is:
+      Main.hs
+  build-depends:
+      snappy-c
+
+    , bytestring           >= 0.10  && < 0.13
+    , conduit              >= 1.3.5 && < 1.4
+    , data-default         >= 0.7   && < 0.9
+    , optparse-applicative >= 0.18  && < 0.19
+  ghc-options:
+      -threaded
+      -rtsopts
+
+test-suite test-snappy-c
+  import:
+      lang
+  type:
+      exitcode-stdio-1.0
+  hs-source-dirs:
+      test
+  main-is:
+      Main.hs
+  other-modules:
+    , Test.Prop.Orphans
+    , Test.Prop.RoundTrip
+  build-depends:
+      -- Internal dependencies
+    , snappy-c
+  build-depends:
+      -- External dependencies
+    , bytestring       >= 0.10 && < 0.13
+    , tasty            >= 1.5  && < 1.6
+    , tasty-hunit      >= 0.10 && < 0.11
+    , tasty-quickcheck >= 0.10 && < 0.12
+  ghc-options:
+      -threaded
+      -rtsopts
+
+benchmark bench-snappy-c
+  import:
+      lang
+  type:
+      exitcode-stdio-1.0
+  main-is:
+      bench/Main.hs
+  build-depends:
+    -- internal
+    , snappy-c
+
+    -- external
+    , bytestring  >= 0.10  && < 0.13
+    , criterion   >= 1.6.3 && < 1.7
+    , deepseq     >= 1.4   && < 1.6
+    , random      >= 1.2.1 && < 1.4
+    , snappy-lazy >= 0.1   && < 0.2
+    , zlib        >= 0.6.3 && < 0.8
+
+  ghc-options:
+      -threaded
+      -rtsopts
