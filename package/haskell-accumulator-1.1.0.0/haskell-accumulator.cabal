@@ -1,0 +1,43 @@
+cabal-version: 3.0
+name:          haskell-accumulator
+version:       1.1.0.0
+license:       Apache-2.0
+author:        Thomas Vellekoop
+maintainer:    thomas.vellekoop@iohk.io
+synopsis:      "Haskell bindings for the rust accumulator lib via C"
+build-type:    Simple
+
+library
+  exposed-modules:
+    Accumulator
+    Bindings
+    Bindings.Internal
+    Field
+
+  hs-source-dirs:    lib
+  default-language:  Haskell2010
+  build-depends:
+    , base >=4.2 && <5
+    , bytestring
+    , cardano-crypto-class
+    , containers
+    , plutus-core
+    , plutus-tx
+
+  pkgconfig-depends: librust_accumulator
+
+test-suite bindings-test
+  type:             exitcode-stdio-1.0
+  hs-source-dirs:   test
+  default-language: Haskell2010
+  main-is:          Main.hs
+  build-depends:
+    , base >=4.2 && <5
+    , bytestring
+    , cardano-crypto-class
+    , containers
+    , criterion
+    , haskell-accumulator
+    , plutus-core
+    , plutus-tx
+    , random
