@@ -32,9 +32,15 @@
       url = "github:input-output-hk/iohk-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Required by haskell-accumulator
+    rust-accumulator = {
+      url = "github:cardano-scaling/rust-accumulator";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils, foliage, haskell-nix, CHaP, iohk-nix, ... }:
+  outputs = { self, nixpkgs, flake-utils, foliage, haskell-nix, CHaP, iohk-nix, rust-accumulator, ... }:
     let
       inherit (nixpkgs) lib;
       inherit (import ./nix/chap-meta.nix { inherit lib CHaP; }) chap-package-latest-versions chap-package-versions mkPackageTreeWith;
@@ -260,8 +266,20 @@
             inherit system;
             inherit (haskell-nix) config;
             overlays = [
-              haskell-nix.overlay
               iohk-nix.overlays.crypto
+              haskell-nix.overlay
+              iohk-nix.overlays.haskell-nix-crypto
+
+              # Required by haskell-accumulator
+              (final: prev: {
+                librust_accumulator = rust-accumulator.defaultPackage.${final.system};
+                haskell-nix = prev.haskell-nix // {
+                  extraPkgconfigMappings = prev.haskell-nix.extraPkgconfigMappings or { } // {
+                    "librust_accumulator" = [ "librust_accumulator" ];
+                  };
+                };
+              })
+
             ];
           };
 
