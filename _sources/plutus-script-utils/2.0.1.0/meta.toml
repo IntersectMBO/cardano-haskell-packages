@@ -1,0 +1,3 @@
+timestamp = 2025-12-11T14:47:04Z
+github = { repo = "IntersectMBO/cardano-node-emulator", rev = "a265da66259245cdb96e23959de575400ea99400" }
+subdir = 'plutus-script-utils'
