@@ -1,0 +1,3 @@
+timestamp = 2026-02-13T00:00:03Z
+github = { repo = "IntersectMBO/cardano-node-emulator", rev = "89da41437682d4e4a0a74cc70646ca403eeebc6e" }
+subdir = 'cardano-node-socket-emulator'
