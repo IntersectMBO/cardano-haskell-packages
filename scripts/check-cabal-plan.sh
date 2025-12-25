@@ -32,8 +32,8 @@ with-header()
 
 jq -r '
   ."install-plan"[]
-  | select(."pkg-src".repo.uri // "" | match("^https://chap.intersectmbo.org"; "i"))
-  | "\(."pkg-name")/\(."pkg-version")"
+  | select(.type == "configured" and .style != "local")
+  | "\(."pkg-name")/\(."pkg-version")/\(."pkg-src".repo.uri // "")"
 ' "$PLAN" |
   LANG=C sort -t/ -k1,1 -u -o "$PLAN_VERSIONS"
 
@@ -43,7 +43,7 @@ curl -sSL https://chap.intersectmbo.org/01-index.tar.gz |
   LANG=C sort -t/ -k1,1 -k2,2Vr |
   LANG=C sort -t/ -k1,1 -u -o "$CHAP_VERSIONS"
 
-LANG=C join -t/ -j1 "$PLAN_VERSIONS" "$CHAP_VERSIONS" |
+LANG=C join -t/ -j1 -o 1.1,1.2,2.2,1.5 "$PLAN_VERSIONS" "$CHAP_VERSIONS" |
   awk -F/ '$2 != $3 {print}' |
   with-header "Package/Plan/CHaP" |
   column -t -s/
