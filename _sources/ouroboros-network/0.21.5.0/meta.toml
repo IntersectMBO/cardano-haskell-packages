@@ -1,0 +1,7 @@
+timestamp = 2025-12-23T11:48:33Z
+github = { repo = "intersectmbo/ouroboros-network", rev = "418308504b01913034c0b6ec2f99546ed93d5b46" }
+subdir = 'ouroboros-network'
+
+[[deprecations]]
+timestamp = 2026-01-02T09:17:25Z
+deprecated = true
