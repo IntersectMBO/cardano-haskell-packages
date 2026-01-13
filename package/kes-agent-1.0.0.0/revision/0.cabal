@@ -1,0 +1,285 @@
+cabal-version: 3.0
+name: kes-agent
+version: 1.0.0.0
+
+synopsis: KES agent library and binaries
+description: KES agent provides a solution for storing KES keys
+                    in-process, in order to allow them to be erased securely and
+                    enable forward security in the Cardano blockchain.
+
+license: Apache-2.0
+license-files:
+  LICENSE
+  NOTICE
+author: Tobias Dammers
+maintainer: tobias@well-typed.com
+
+copyright: INTERSECT 2024-2025.
+category: Network
+
+data-files: fixtures/*.vkey
+          , fixtures/*.skey
+          , fixtures/opcert.cert
+          , fixtures/opcert.counter
+          , fixtures/mainnet-shelley-genesis.json
+
+common project-config
+     if !arch(wasm32)
+         ghc-options:
+             -threaded
+             -rtsopts=all
+     ghc-options:
+         -haddock
+         -Wunused-imports
+
+common base-dependencies
+    build-depends: base >=4.14.0.0 && <4.22.0.0
+
+library
+    import: project-config
+    import: base-dependencies
+    exposed-modules:
+                   Cardano.KESAgent.Priority
+                   Cardano.KESAgent.Processes.Agent
+                   Cardano.KESAgent.Processes.Agent.Type
+                   Cardano.KESAgent.Processes.Agent.Context
+                   Cardano.KESAgent.Processes.Agent.ControlActions
+                   Cardano.KESAgent.Processes.Agent.CommonActions
+                   Cardano.KESAgent.Processes.Agent.ControlDrivers
+                   Cardano.KESAgent.Processes.Agent.Monad
+                   Cardano.KESAgent.Processes.Agent.ServiceDrivers
+                   Cardano.KESAgent.Processes.ControlClient
+                   Cardano.KESAgent.Processes.ServiceClient
+                   Cardano.KESAgent.Serialization.CBOR
+                   Cardano.KESAgent.Serialization.TextEnvelope
+                   Cardano.KESAgent.Serialization.RawUtil
+                   Cardano.KESAgent.Serialization.DirectCodec
+                   Cardano.KESAgent.Protocols.Types
+                   Cardano.KESAgent.Protocols.AgentInfo
+                   Cardano.KESAgent.Protocols.BearerUtil
+
+                   Cardano.KESAgent.Protocols.VersionHandshake.Driver
+                   Cardano.KESAgent.Protocols.VersionHandshake.Peers
+                   Cardano.KESAgent.Protocols.VersionHandshake.Protocol
+
+                   Cardano.KESAgent.Protocols.Service.V0.Driver
+                   Cardano.KESAgent.Protocols.Service.V0.Peers
+                   Cardano.KESAgent.Protocols.Service.V0.Protocol
+                   Cardano.KESAgent.Protocols.Service.V1.Driver
+                   Cardano.KESAgent.Protocols.Service.V1.Peers
+                   Cardano.KESAgent.Protocols.Service.V1.Protocol
+                   Cardano.KESAgent.Protocols.Service.V2.Driver
+                   Cardano.KESAgent.Protocols.Service.V2.Peers
+                   Cardano.KESAgent.Protocols.Service.V2.Protocol
+
+                   Cardano.KESAgent.Protocols.Control.V0.Driver
+                   Cardano.KESAgent.Protocols.Control.V0.Peers
+                   Cardano.KESAgent.Protocols.Control.V0.Protocol
+                   Cardano.KESAgent.Protocols.Control.V1.Driver
+                   Cardano.KESAgent.Protocols.Control.V1.Peers
+                   Cardano.KESAgent.Protocols.Control.V1.Protocol
+                   Cardano.KESAgent.Protocols.Control.V2.Driver
+                   Cardano.KESAgent.Protocols.Control.V2.Peers
+                   Cardano.KESAgent.Protocols.Control.V2.Protocol
+                   Cardano.KESAgent.Protocols.Control.V3.Driver
+                   Cardano.KESAgent.Protocols.Control.V3.Peers
+                   Cardano.KESAgent.Protocols.Control.V3.Protocol
+
+                   Cardano.KESAgent.Protocols.RecvResult
+                   Cardano.KESAgent.Util.Formatting
+                   Cardano.KESAgent.Util.RetrySocket
+                   Cardano.KESAgent.Util.PlatformPoison
+                   Cardano.KESAgent.Util.ColoredOutput
+                   Cardano.KESAgent.Util.Version
+                   Cardano.KESAgent.Util.GetVersion
+
+                   Paths_kes_agent
+    autogen-modules:
+                   Paths_kes_agent
+
+    build-depends: async
+                 , aeson >=2.0
+                 , base16-bytestring
+                 , binary
+                 , blaze-html >=0.9 && <0.10
+                 , bytestring >=0.11
+                 , cardano-crypto-class ^>=2.2.3.2
+                 , cardano-binary
+                   -- We need to pin this down to this exact version, because
+                   -- there are two independent packages named contra-tracer:
+                   -- one in CHaP (which is the one we will use), and one in
+                   -- Hackage (which we cannot use due to other cardano
+                   -- packages depending on the one in CHaP). Since the two
+                   -- packages have the same name, we can only disambiguate
+                   -- them by demanding a version that only one of them has.
+                 , contra-tracer ==0.1.0.1 || ==0.1.0.2
+                 , containers >=0.6.5.1 && <0.9
+                 , casing >=0.1.4.1 && <0.2
+                 , extra >=1.7.12 && <1.9
+                 , formatting
+                 , ghc-prim
+                 , io-classes >=1.8.0.0
+                 , kes-agent-crypto >=1.0.0.0 && <2
+                 , mtl
+                 , nothunks
+                 , ouroboros-network-framework
+                 , process >=1.6 && <1.7
+                 , quiet
+                 , serdoc-core
+                 , stm>=2.5 && <2.6
+                 , text
+                 , template-haskell >=2.18.0.0
+                 , time >=1.10
+                 , typed-protocols ^>=1.0 || ^>=1.1
+                 -- , typed-protocols-doc
+    if !arch(wasm32)
+        build-depends: socket >= 0.8.3 && <0.9
+                     , network
+                     , network-mux
+
+    hs-source-dirs: src
+    default-language: Haskell2010
+    if os(windows) || arch(wasm32)
+    else
+        build-depends: hsyslog
+
+
+executable kes-agent
+    import: project-config
+    import: base-dependencies
+    default-language: Haskell2010
+    hs-source-dirs: cli
+    main-is: AgentMain.hs
+    build-depends: kes-agent
+                 , kes-agent-crypto
+                 , async
+                 , bytestring
+                 , cardano-crypto-class
+                 , contra-tracer
+                 , containers
+                 , directory
+                 , filepath
+                 , io-classes
+                 , ouroboros-network-framework
+                 , optparse-applicative
+                 , serdoc-core
+                 , text
+                 , time
+                 , tomland
+                 , typed-protocols
+                 , Win32-network
+                 , network
+    if arch(wasm32)
+        buildable: False
+    if os(windows)
+    else
+        build-depends: unix
+                     , hdaemonize
+                     , hsyslog
+
+executable kes-service-client-demo
+    import: project-config
+    import: base-dependencies
+    default-language: Haskell2010
+    hs-source-dirs: cli
+    main-is: ServiceDemoMain.hs
+    build-depends: kes-agent
+                 , kes-agent-crypto
+                 , bytestring
+                 , cardano-crypto-class
+                 , contra-tracer
+                 , io-classes
+                 , network
+                 , ouroboros-network-framework
+                 , optparse-applicative
+                 , text
+                 , time
+                 , typed-protocols
+                 , Win32-network
+    if arch(wasm32)
+        buildable: False
+    if os(windows)
+    else
+        build-depends: hsyslog
+
+executable kes-agent-control
+    import: project-config
+    import: base-dependencies
+    default-language: Haskell2010
+    hs-source-dirs: cli
+    main-is: ControlMain.hs
+    build-depends: kes-agent
+                 , kes-agent-crypto
+                 , aeson >=2.0
+                 , bytestring
+                 , cardano-crypto-class
+                 , contra-tracer
+                 , extra >=1.7.12 && <1.9
+                 , io-classes
+                 , network
+                 , ouroboros-network-framework
+                 , optparse-applicative
+                 , serdoc-core
+                 , text
+                 , time
+                 , typed-protocols
+                 , Win32-network
+    if arch(wasm32)
+        buildable: False
+    if os(windows)
+    else
+        build-depends: hsyslog
+
+test-suite kes-agent-tests
+    import: project-config
+    import: base-dependencies
+    type: exitcode-stdio-1.0
+    default-language: Haskell2010
+    hs-source-dirs: test
+    main-is: Main.hs
+    other-modules: Cardano.KESAgent.Tests.Simulation
+                 , Cardano.KESAgent.Tests.RefCounting
+                 , Cardano.KESAgent.Tests.OCert
+                 , Cardano.KESAgent.Tests.Serialization
+                 , Cardano.KESAgent.Tests.EndToEnd
+                 , Paths_kes_agent
+    build-tool-depends: kes-agent:kes-agent
+                      , kes-agent:kes-agent-control
+                      , kes-agent:kes-service-client-demo
+    build-depends: kes-agent
+                 , kes-agent-crypto
+                 , aeson >=2.0
+                 , async
+                 , bytestring
+                 , cardano-binary
+                 , cardano-crypto-class
+                 , cardano-crypto-tests
+                 , contra-tracer
+                 , containers
+                 , directory >=1.3.6.1 && <1.4.0.0
+                 , filepath >= 1.4.2 && <1.5
+                 , ghc-prim
+                 , io-classes
+                 , io-sim >=1.5.0
+                 , network
+                 , network-mux
+                 , ouroboros-network-framework
+                 , ouroboros-network-testing >=0.8
+                 , primitive >=0.7.4 && <0.10
+                 , process
+                 , QuickCheck
+                 , random >=1.2.1 && <1.3
+                 , serdoc-core
+                 , tasty
+                 , tasty-hunit
+                 , tasty-quickcheck
+                 , temporary >=1.3 && <1.4
+                 , text >=1.2.5
+                 , time >=1.10
+                 , Win32-network
+    if arch(wasm32)
+        buildable: False
+    if os(windows)
+    else
+        build-depends: socket-unix >=0.2.0.0 && <0.3.0.0
+        build-depends: unix
