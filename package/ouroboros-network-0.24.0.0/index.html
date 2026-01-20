@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    ouroboros-network-0.24.0.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      ouroboros-network-0.24.0.0
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>A networking layer for the Ouroboros blockchain protocol</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>A networking layer for the Ouroboros blockchain protocol.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Alexander Vieth, Marcin Szamotulski, Duncan Coutts</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>marcin.szamotulski@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/intersectmbo/ouroboros-network/tree/a705108748417b3b0a127c415188f0571eee6023/ouroboros-network">https://github.com/intersectmbo/ouroboros-network</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>a705108748417b3b0a127c415188f0571eee6023</dd>
+          <dt>Subdir</dt>
+          <dd>ouroboros-network</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2026-01-20T18:32:46Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library ouroboros-network:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.13&quot;,&quot;cardano-prelude&quot;,&quot;cardano-strict-containers &gt;=0.1.4&quot;,&quot;cborg &gt;=0.2.1 &amp;&amp; &lt;0.3&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;deepseq&quot;,&quot;dlist&quot;,&quot;dns&quot;,&quot;hashable&quot;,&quot;io-classes:{io-classes, mtl, si-timers, strict-mvar, strict-stm} ^&gt;=1.8.0.1&quot;,&quot;iproute&quot;,&quot;monoidal-synchronisation&quot;,&quot;mtl&quot;,&quot;network ^&gt;=3.2.7&quot;,&quot;network-mux&quot;,&quot;nothunks&quot;,&quot;ouroboros-network:{api, framework, protocols}&quot;,&quot;psqueues &gt;=0.2.3 &amp;&amp; &lt;0.3&quot;,&quot;random&quot;,&quot;strict-checked-vars ^&gt;=0.2&quot;,&quot;transformers&quot;,&quot;typed-protocols ^&gt;=1.1&quot;]</li>
+            </ul>
+            <p>if !os(windows)</p>
+            <ul class="build-depends">
+            <li>directory</li>
+            </ul>
+          </dd>
+          <dt>library api:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;base16-bytestring&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.13&quot;,&quot;cardano-binary&quot;,&quot;cardano-slotting&quot;,&quot;cardano-strict-containers&quot;,&quot;cborg &gt;=0.2.1 &amp;&amp; &lt;0.3&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;deepseq&quot;,&quot;dns&quot;,&quot;io-classes:{io-classes, si-timers, strict-stm} ^&gt;=1.8.0.1&quot;,&quot;iproute ^&gt;=1.7.15&quot;,&quot;measures&quot;,&quot;network ^&gt;=3.2.7&quot;,&quot;network-mux ^&gt;=0.10&quot;,&quot;nothunks&quot;,&quot;quiet&quot;,&quot;random&quot;,&quot;serialise &gt;=0.2 &amp;&amp; &lt;0.3&quot;,&quot;text &gt;=1.2 &amp;&amp; &lt;2.2&quot;,&quot;typed-protocols ^&gt;=1.1&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library api-tests-lib:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;QuickCheck&quot;,&quot;base&quot;,&quot;bytestring&quot;,&quot;cardano-slotting:testlib ^&gt;=0.2.0&quot;,&quot;cborg&quot;,&quot;hashable&quot;,&quot;nothunks&quot;,&quot;ouroboros-network:api&quot;,&quot;quickcheck-instances&quot;,&quot;serialise&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;,&quot;time&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library framework:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;Win32-network ^&gt;=0.2&quot;,&quot;base &gt;=4.12 &amp;&amp; &lt;4.23&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.13&quot;,&quot;cardano-strict-containers&quot;,&quot;cborg &gt;=0.2.1 &amp;&amp; &lt;0.3&quot;,&quot;containers &gt;=0.5 &amp;&amp; &lt;0.9&quot;,&quot;contra-tracer&quot;,&quot;deepseq&quot;,&quot;hashable&quot;,&quot;io-classes:{io-classes, si-timers, strict-stm} ^&gt;=1.8.0.1&quot;,&quot;monoidal-synchronisation ^&gt;=0.1.0.6&quot;,&quot;network ^&gt;=3.2.7&quot;,&quot;network-mux ^&gt;=0.10&quot;,&quot;nothunks ^&gt;=0.1.4 || ^&gt;=0.2 || ^&gt;=0.3&quot;,&quot;ouroboros-network:{api, tests-lib}&quot;,&quot;psqueues&quot;,&quot;quiet&quot;,&quot;random ^&gt;=1.2&quot;,&quot;text&quot;,&quot;typed-protocols:{typed-protocols, cborg, stateful} ^&gt;=1.1&quot;]</li>
+</ul>
+<p>if os(windows)</p>
+<ul class="build-depends">
+<li>Win32 &gt;=2.5.4.1 &amp;&amp; &lt;3.0</li>
+</ul>
+
+          </dd>
+          <dt>library tests-lib:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;QuickCheck&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;cborg &gt;=0.2.1 &amp;&amp; &lt;0.3&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;deepseq&quot;,&quot;deque ^&gt;=0.4&quot;,&quot;io-classes:{io-classes, si-timers, strict-stm} ^&gt;=1.8.0.1&quot;,&quot;io-sim&quot;,&quot;network-mux&quot;,&quot;pretty-simple&quot;,&quot;psqueues &gt;=0.2.3 &amp;&amp; &lt;0.3&quot;,&quot;serialise &gt;=0.2 &amp;&amp; &lt;0.3&quot;,&quot;tasty&quot;,&quot;tasty-expected-failure&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library framework-tests-lib:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;QuickCheck&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;hashable&quot;,&quot;io-classes:{io-classes, si-timers, strict-stm}&quot;,&quot;io-sim&quot;,&quot;network-mux&quot;,&quot;ouroboros-network:{api, framework, tests-lib}&quot;,&quot;quickcheck-monoids&quot;,&quot;random&quot;,&quot;serialise&quot;,&quot;typed-protocols:{typed-protocols, examples}&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library orphan-instances:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;containers&quot;,&quot;io-classes:si-timers&quot;,&quot;iproute&quot;,&quot;network&quot;,&quot;network-mux&quot;,&quot;ouroboros-network:{ouroboros-network, api, framework, protocols}&quot;,&quot;text&quot;,&quot;typed-protocols&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library protocols:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.13&quot;,&quot;cborg &gt;=0.2.1 &amp;&amp; &lt;0.3&quot;,&quot;constraints&quot;,&quot;containers&quot;,&quot;deepseq&quot;,&quot;io-classes:{io-classes, si-timers} ^&gt;=1.8.0.1&quot;,&quot;nothunks&quot;,&quot;ouroboros-network:api&quot;,&quot;quiet&quot;,&quot;serialise&quot;,&quot;singletons&quot;,&quot;text&quot;,&quot;typed-protocols:{typed-protocols, cborg, stateful, stateful-cborg} ^&gt;=1.1&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library protocols-tests-lib:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;QuickCheck&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-strict-containers&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;deepseq&quot;,&quot;io-classes:{io-classes, si-timers, strict-stm}&quot;,&quot;io-sim&quot;,&quot;network-mux&quot;,&quot;ouroboros-network:{api, api-tests-lib, framework, protocols, tests-lib}&quot;,&quot;pipes&quot;,&quot;quickcheck-instances&quot;,&quot;serialise&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;,&quot;text&quot;,&quot;typed-protocols:{typed-protocols, codec-properties, stateful}&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library ouroboros-network-tests-lib:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;QuickCheck&quot;,&quot;aeson&quot;,&quot;array&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-strict-containers&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;deepseq&quot;,&quot;dns&quot;,&quot;hashable&quot;,&quot;io-classes:{io-classes, si-timers, strict-mvar, strict-stm}&quot;,&quot;io-sim&quot;,&quot;iproute&quot;,&quot;monoidal-synchronisation&quot;,&quot;mtl&quot;,&quot;network&quot;,&quot;network-mux&quot;,&quot;nothunks&quot;,&quot;ouroboros-network:{ouroboros-network, api, api-tests-lib, framework, protocols, protocols-tests-lib, tests-lib}&quot;,&quot;pretty-simple&quot;,&quot;quickcheck-monoids&quot;,&quot;random&quot;,&quot;serialise&quot;,&quot;splitmix&quot;,&quot;tasty&quot;,&quot;tasty-hunit&quot;,&quot;tasty-quickcheck&quot;,&quot;text&quot;,&quot;time &gt;=1.9.1 &amp;&amp; &lt;1.16&quot;,&quot;transformers-except&quot;,&quot;typed-protocols&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable demo-ping-pong:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;async&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;contra-tracer&quot;,&quot;directory&quot;,&quot;network-mux&quot;,&quot;ouroboros-network:{api, framework}&quot;,&quot;typed-protocols:examples&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable demo-connection-manager:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;contra-tracer&quot;,&quot;hashable&quot;,&quot;io-classes:{io-classes, si-timers, strict-stm}&quot;,&quot;network&quot;,&quot;network-mux&quot;,&quot;optparse-applicative&quot;,&quot;ouroboros-network:{api, framework}&quot;,&quot;random&quot;,&quot;typed-protocols:{typed-protocols, examples}&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite api-bench:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cryptohash-sha256&quot;,&quot;nothunks&quot;,&quot;ouroboros-network:api&quot;,&quot;tasty-bench&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite sim-benchmarks:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base&quot;,&quot;deepseq&quot;,&quot;ouroboros-network:{ouroboros-network, ouroboros-network-tests-lib}&quot;,&quot;splitmix&quot;,&quot;tasty-bench &gt;=0.3.5&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
