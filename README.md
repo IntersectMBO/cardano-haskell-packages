@@ -176,6 +176,20 @@ Typical examples of this are anything that you add in `cabal.project`:
 
 This is enforced by the CI, which will build newly added packages in PRs.
 
+### How quickly a CHaP change will take effect
+
+There is an automatic GitHub "deployment" that runs whenever a PR is merged
+into the `main` branch. It's quite quick. However, both the human-readable CHaP
+UI and the `repository` stanza in a `cabal.project` use the
+https://chap.intersectmbo.org URL, and that site is served via GitHub Pages.
+
+As such, even after the deployment reports success, it might take a while for
+the content available at the URL to update, due to stale CDN caches, etc. In
+practice, it often seems like just a minute or two before a merged PR's change
+become visible on the UI or after a `cabal update` command. But the general
+guidance about (GitHub's) CDNs seems to be that it might occasionally take
+longer, even up to 30 minutes sometimes.
+
 ### How to add a new package version
 
 Package versions are defined using metadata files `_sources/$pkg_name/$pkg_version/meta.toml`,
