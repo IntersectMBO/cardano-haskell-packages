@@ -1,0 +1,2 @@
+timestamp = 2026-02-04T15:45:01Z
+github = { repo = "carbolymer/ghc-source-gen", rev = "637c7f5c75544ed1883b11d638cb33f1b329215c" }
