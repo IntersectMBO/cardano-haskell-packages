@@ -1,0 +1,3 @@
+timestamp = 2026-02-04T16:30:43Z
+github = { repo = "carbolymer/proto-lens", rev = "e8faaaa51a687ca17ce58c54094436b8bc568aa0" }
+subdir = 'proto-lens-arbitrary'
