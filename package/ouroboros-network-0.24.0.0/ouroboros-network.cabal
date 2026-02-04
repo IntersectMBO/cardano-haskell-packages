@@ -132,7 +132,7 @@ library api-tests-lib
     QuickCheck,
     base,
     bytestring,
-    cardano-slotting:testlib ^>=0.2.0,
+    cardano-slotting:testlib >=0.2.0 && <0.2.0.2,
     cborg,
     hashable,
     nothunks,

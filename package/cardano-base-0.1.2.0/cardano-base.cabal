@@ -1,0 +1,90 @@
+cabal-version: 3.0
+name: cardano-base
+version: 0.1.2.0
+synopsis: Various utilities for Cardano
+description: Various utilities for Cardano.
+category:
+  Cardano,
+
+copyright: 2025 Input Output Global Inc (IOG).
+author: IOHK
+maintainer: operations@iohk.io
+license: Apache-2.0
+license-files:
+  LICENSE
+  NOTICE
+
+extra-doc-files:
+  CHANGELOG.md
+  README.md
+
+common project-config
+  default-language: Haskell2010
+  build-depends: base >=4.18 && <5
+  ghc-options:
+    -Wall
+    -Wcompat
+    -Wincomplete-record-updates
+    -Wincomplete-uni-patterns
+    -Wpartial-fields
+    -Wunused-packages
+
+  -- ghc-9.14 gives redundant constraint warnings on some constraints
+  -- that are needed for earlier compilers.
+  if impl(ghc <9.14)
+    ghc-options:
+      -Wredundant-constraints
+
+library
+  import: project-config
+  hs-source-dirs: src
+  exposed-modules:
+    Cardano.Base.Bytes
+    Cardano.Base.FeatureFlags
+    Cardano.Base.IP
+    Cardano.Base.Proxy
+
+  build-depends:
+    aeson,
+    bytestring,
+    deepseq,
+    iproute,
+    mempack,
+    nothunks,
+    text,
+
+library testlib
+  import: project-config
+  visibility: public
+  hs-source-dirs: testlib
+  exposed-modules:
+    Test.Cardano.Base.Arbitrary
+    Test.Cardano.Base.Bytes
+    Test.Cardano.Base.TreeDiff
+
+  build-depends:
+    QuickCheck,
+    bytestring,
+    cardano-base,
+    mempack,
+    random,
+    tree-diff,
+
+test-suite tests
+  import: project-config
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Main.hs
+  other-modules:
+    Test.Cardano.Base.IP
+
+  build-depends:
+    aeson,
+    aeson-qq,
+    cardano-base,
+    hspec,
+
+  ghc-options:
+    -threaded
+    -rtsopts
+    -with-rtsopts=-N
