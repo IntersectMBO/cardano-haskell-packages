@@ -1,0 +1,3 @@
+timestamp = 2026-02-05T18:24:26Z
+github = { repo = "IntersectMBO/plutus", rev = "b7e75c98073093eae53b3a030231a8f0a56f1f5d" }
+subdir = 'plutus-metatheory'
