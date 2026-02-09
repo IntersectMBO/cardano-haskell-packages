@@ -34,6 +34,8 @@ build-repo()
 build-repo main
 build-repo HEAD
 
+scripts/check-archive-extension.sh _{main,HEAD}/_repo/01-index.tar
+
 rm -rf _repo
 cp -a _HEAD/_repo _repo
 
