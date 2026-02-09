@@ -189,7 +189,6 @@ jobs:
   deploy-check:
     runs-on: nixos
 
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: 
       - build-repo
 
