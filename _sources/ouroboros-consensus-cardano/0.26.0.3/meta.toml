@@ -5,3 +5,7 @@ subdir = 'ouroboros-consensus-cardano'
 [[revisions]]
 number = 1
 timestamp = 2026-01-29T19:27:06Z
+
+[[revisions]]
+number = 2
+timestamp = 2026-02-09T12:34:49Z
