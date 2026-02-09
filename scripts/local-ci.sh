@@ -22,7 +22,7 @@ build-repo()
     rm -rf "_$REF"
     mkdir -p "_$REF"
     git archive "$REF" _sources | tar -x -C "_$REF"
-    nix develop --command \
+    nix develop .?rev="$SHA" --command \
       foliage build -j 0 -v error \
         --write-metadata \
         --input-directory "_$REF/_sources" \
