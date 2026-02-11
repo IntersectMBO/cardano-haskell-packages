@@ -213,7 +213,8 @@
         "type": "github"
       },
       "original": {
-        "owner": "input-output-hk",
+        "owner": "angerman",
+        "ref": "fix/retry-backoff-download-concurrency",
         "repo": "foliage",
         "type": "github"
       }

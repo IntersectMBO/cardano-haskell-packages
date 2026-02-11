@@ -6,7 +6,7 @@
     flake-utils = { url = "github:numtide/flake-utils"; };
 
     foliage = {
-      url = "github:input-output-hk/foliage";
+      url = "github:angerman/foliage/fix/retry-backoff-download-concurrency";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.haskell-nix.follows = "haskell-nix";
       inputs.flake-utils.follows = "flake-utils";
