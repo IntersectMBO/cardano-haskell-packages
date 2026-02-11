@@ -205,11 +205,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770167591,
-        "narHash": "sha256-8hNYEKzCM53o+QEnd8ZUXOE2dBQ1proUG06g9CPx7aY=",
-        "owner": "input-output-hk",
+        "lastModified": 1770792100,
+        "narHash": "sha256-K+VEX/hXQGPT5ozVsHBtEd/MvTGzvauPmg8JUJdd3bY=",
+        "owner": "angerman",
         "repo": "foliage",
-        "rev": "06f7c546caa2b15885ffd3224ea37ade2628e375",
+        "rev": "7057b963b9e78442c8f7602acfd84f4da8554b75",
         "type": "github"
       },
       "original": {
