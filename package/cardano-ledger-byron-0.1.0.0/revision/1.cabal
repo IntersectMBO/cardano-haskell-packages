@@ -146,7 +146,7 @@ library
                      , binary
                      , bytestring
                      , canonical-json
-                     , cardano-binary <= 1.5.0.0
+                     , cardano-binary
                      , cardano-crypto
                      , cardano-crypto-wrapper
                      , cardano-prelude < 0.1.0.1

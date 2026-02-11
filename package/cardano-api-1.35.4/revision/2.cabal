@@ -120,7 +120,7 @@ library
                       , cardano-ledger-shelley-ma < 0.1.1
                       , cardano-prelude
                       , cardano-protocol-tpraos
-                      , cardano-slotting
+                      , cardano-slotting < 0.1.1
                       , cborg
                       , vector-map
                       , contra-tracer

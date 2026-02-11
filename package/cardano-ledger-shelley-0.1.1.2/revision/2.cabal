@@ -101,7 +101,7 @@ library
     cardano-crypto-wrapper,
     cardano-data,
     cardano-ledger-byron,
-    cardano-ledger-core,
+    cardano-ledger-core >= 0.1.1.1,
     cardano-slotting,
     cborg,
     vector-map < 1,

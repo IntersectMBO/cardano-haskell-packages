@@ -89,7 +89,7 @@
           <dt>library cardano-diffusion:</dt>
           <dd>
             <ul class="build-depends">
-            <li>[&quot;aeson&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-diffusion:{api, protocols}&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;dns&quot;,&quot;io-classes:{io-classes, si-timers, strict-stm} ^&gt;=1.8&quot;,&quot;monoidal-synchronisation&quot;,&quot;network ^&gt;=3.2.7&quot;,&quot;network-mux&quot;,&quot;ouroboros-network:{ouroboros-network, api, framework, protocols}&quot;,&quot;random&quot;,&quot;typed-protocols:{typed-protocols, stateful} ^&gt;=1.1&quot;]</li>
+            <li>[&quot;aeson&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-diffusion:{api,protocols}&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;dns&quot;,&quot;io-classes:{io-classes,si-timers,strict-stm} ^&gt;=1.8&quot;,&quot;monoidal-synchronisation&quot;,&quot;network ^&gt;=3.2.7&quot;,&quot;network-mux&quot;,&quot;ouroboros-network:{ouroboros-network,api,framework,protocols}&quot;,&quot;random&quot;,&quot;typed-protocols:{typed-protocols,stateful} ^&gt;=1.1&quot;]</li>
             </ul>
             <p>if !os(windows)</p>
             <ul class="build-depends">
@@ -106,42 +106,42 @@
           <dt>library orphan-instances:</dt>
           <dd>
             <ul class="build-depends">
-<li>[&quot;aeson&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;cardano-diffusion:{cardano-diffusion, api}&quot;,&quot;containers&quot;,&quot;ouroboros-network:{ouroboros-network, api, orphan-instances}&quot;]</li>
+<li>[&quot;aeson&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;cardano-diffusion:{cardano-diffusion,api}&quot;,&quot;containers&quot;,&quot;ouroboros-network:{ouroboros-network,api,orphan-instances}&quot;]</li>
 </ul>
 
           </dd>
           <dt>library protocols:</dt>
           <dd>
             <ul class="build-depends">
-<li>[&quot;base &gt;=4.12 &amp;&amp; &lt;4.23&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.13&quot;,&quot;cardano-diffusion:api&quot;,&quot;cborg &gt;=0.2.1 &amp;&amp; &lt;0.3&quot;,&quot;io-classes:{io-classes, si-timers} ^&gt;=1.8.0.1&quot;,&quot;ouroboros-network:{api, framework, protocols}&quot;,&quot;random&quot;,&quot;typed-protocols:{typed-protocols, cborg, stateful} ^&gt;=1.1&quot;]</li>
+<li>[&quot;base &gt;=4.12 &amp;&amp; &lt;4.23&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.13&quot;,&quot;cardano-diffusion:api&quot;,&quot;cborg &gt;=0.2.1 &amp;&amp; &lt;0.3&quot;,&quot;io-classes:{io-classes,si-timers} ^&gt;=1.8.0.1&quot;,&quot;ouroboros-network:{api,framework,protocols}&quot;,&quot;random&quot;,&quot;typed-protocols:{typed-protocols,cborg,stateful} ^&gt;=1.1&quot;]</li>
 </ul>
 
           </dd>
           <dt>library protocols-tests-lib:</dt>
           <dd>
             <ul class="build-depends">
-<li>[&quot;QuickCheck&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-diffusion:{api, protocols}&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;io-classes:{io-classes, si-timers}&quot;,&quot;io-sim&quot;,&quot;ouroboros-network:{api, framework, protocols, protocols-tests-lib}&quot;,&quot;random&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;,&quot;text&quot;,&quot;typed-protocols&quot;]</li>
+<li>[&quot;QuickCheck&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-diffusion:{api,protocols}&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;io-classes:{io-classes,si-timers}&quot;,&quot;io-sim&quot;,&quot;ouroboros-network:{api,framework,protocols,protocols-tests-lib}&quot;,&quot;random&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;,&quot;text&quot;,&quot;typed-protocols&quot;]</li>
 </ul>
 
           </dd>
           <dt>library cardano-diffusion-tests-lib:</dt>
           <dd>
             <ul class="build-depends">
-<li>[&quot;QuickCheck&quot;,&quot;aeson&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-diffusion:{cardano-diffusion, api, orphan-instances, protocols, protocols-tests-lib}&quot;,&quot;cardano-slotting&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;dns&quot;,&quot;io-classes:{io-classes, si-timers, strict-stm}&quot;,&quot;io-sim&quot;,&quot;iproute&quot;,&quot;monoidal-synchronisation&quot;,&quot;network&quot;,&quot;network-mux&quot;,&quot;ouroboros-network:{ouroboros-network, api, api-tests-lib, framework, framework-tests-lib, ouroboros-network-tests-lib, protocols, protocols-tests-lib, tests-lib}&quot;,&quot;pipes&quot;,&quot;pretty-simple&quot;,&quot;psqueues&quot;,&quot;quickcheck-monoids&quot;,&quot;random&quot;,&quot;serialise&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;,&quot;time&quot;,&quot;typed-protocols:{typed-protocols, examples}&quot;]</li>
+<li>[&quot;QuickCheck&quot;,&quot;aeson&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-diffusion:{cardano-diffusion,api,orphan-instances,protocols,protocols-tests-lib}&quot;,&quot;cardano-slotting&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;dns&quot;,&quot;io-classes:{io-classes,si-timers,strict-stm}&quot;,&quot;io-sim&quot;,&quot;iproute&quot;,&quot;monoidal-synchronisation&quot;,&quot;network&quot;,&quot;network-mux&quot;,&quot;ouroboros-network:{ouroboros-network,api,api-tests-lib,framework,framework-tests-lib,ouroboros-network-tests-lib,protocols,protocols-tests-lib,tests-lib}&quot;,&quot;pipes&quot;,&quot;pretty-simple&quot;,&quot;psqueues&quot;,&quot;quickcheck-monoids&quot;,&quot;random&quot;,&quot;serialise&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;,&quot;time&quot;,&quot;typed-protocols:{typed-protocols,examples}&quot;]</li>
 </ul>
 
           </dd>
           <dt>library subscription:</dt>
           <dd>
             <ul class="build-depends">
-<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.13&quot;,&quot;cardano-diffusion ^&gt;=0.1&quot;,&quot;cborg &gt;=0.2.8 &amp;&amp; &lt;0.3&quot;,&quot;containers &gt;=0.5 &amp;&amp; &lt;0.9&quot;,&quot;contra-tracer &gt;=0.1 &amp;&amp; &lt;0.3&quot;,&quot;io-classes:si-timers ^&gt;=1.8.0.1&quot;,&quot;network-mux ^&gt;=0.10&quot;,&quot;ouroboros-network:{api, framework} ^&gt;=0.24&quot;]</li>
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring &gt;=0.10 &amp;&amp; &lt;0.13&quot;,&quot;cardano-diffusion ^&gt;=0.1&quot;,&quot;cborg &gt;=0.2.8 &amp;&amp; &lt;0.3&quot;,&quot;containers &gt;=0.5 &amp;&amp; &lt;0.9&quot;,&quot;contra-tracer &gt;=0.1 &amp;&amp; &lt;0.3&quot;,&quot;io-classes:si-timers ^&gt;=1.8.0.1&quot;,&quot;network-mux ^&gt;=0.10&quot;,&quot;ouroboros-network:{api,framework} ^&gt;=0.24&quot;]</li>
 </ul>
 
           </dd>
           <dt>executable demo-chain-sync:</dt>
           <dd>
             <ul class="build-depends">
-<li>[&quot;async&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-diffusion&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;directory&quot;,&quot;infinite-list&quot;,&quot;io-classes:{si-timers, strict-stm}&quot;,&quot;network-mux&quot;,&quot;optparse-applicative&quot;,&quot;ouroboros-network:{ouroboros-network, api, api-tests-lib, framework, protocols}&quot;,&quot;random&quot;,&quot;serialise&quot;,&quot;typed-protocols&quot;]</li>
+<li>[&quot;async&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-diffusion&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;directory&quot;,&quot;infinite-list&quot;,&quot;io-classes:{si-timers,strict-stm}&quot;,&quot;network-mux&quot;,&quot;optparse-applicative&quot;,&quot;ouroboros-network:{ouroboros-network,api,api-tests-lib,framework,protocols}&quot;,&quot;random&quot;,&quot;serialise&quot;,&quot;typed-protocols&quot;]</li>
 </ul>
 
           </dd>
@@ -162,14 +162,14 @@
           <dt>test-suite protocols-cddl:</dt>
           <dd>
             <ul class="build-depends">
-<li>[&quot;QuickCheck&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-diffusion:{api, protocols, protocols-tests-lib}&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;directory&quot;,&quot;filepath&quot;,&quot;mtl&quot;,&quot;network&quot;,&quot;ouroboros-network:{api, api-tests-lib, protocols-tests-lib}&quot;,&quot;process-extras&quot;,&quot;quickcheck-instances&quot;,&quot;serialise&quot;,&quot;tasty&quot;,&quot;tasty-hunit&quot;,&quot;tasty-quickcheck&quot;,&quot;temporary&quot;,&quot;text&quot;,&quot;typed-protocols:{typed-protocols, stateful}&quot;]</li>
+<li>[&quot;QuickCheck&quot;,&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-diffusion:{api,protocols,protocols-tests-lib}&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;directory&quot;,&quot;filepath&quot;,&quot;mtl&quot;,&quot;network&quot;,&quot;ouroboros-network:{api,api-tests-lib,protocols-tests-lib}&quot;,&quot;process-extras&quot;,&quot;quickcheck-instances&quot;,&quot;serialise&quot;,&quot;tasty&quot;,&quot;tasty-hunit&quot;,&quot;tasty-quickcheck&quot;,&quot;temporary&quot;,&quot;text&quot;,&quot;typed-protocols:{typed-protocols,stateful}&quot;]</li>
 </ul>
 
           </dd>
           <dt>test-suite protocols-bench:</dt>
           <dd>
             <ul class="build-depends">
-<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-diffusion:{api, protocols, protocols-tests-lib}&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;deepseq&quot;,&quot;network&quot;,&quot;ouroboros-network:{api, protocols-tests-lib}&quot;,&quot;tasty-bench&quot;,&quot;typed-protocols:{typed-protocols, stateful}&quot;]</li>
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.23&quot;,&quot;bytestring&quot;,&quot;cardano-diffusion:{api,protocols,protocols-tests-lib}&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;deepseq&quot;,&quot;network&quot;,&quot;ouroboros-network:{api,protocols-tests-lib}&quot;,&quot;tasty-bench&quot;,&quot;typed-protocols:{typed-protocols,stateful}&quot;]</li>
 </ul>
 
           </dd>

@@ -87,7 +87,7 @@ library
                      , binary
                      , bytestring
                      , canonical-json
-                     , cardano-binary
+                     , cardano-binary < 1.7
                      , cardano-crypto
                      , cardano-prelude >= 0.1.0.1
                      , cryptonite
@@ -124,7 +124,7 @@ test-suite test
                        Paths_cardano_crypto_wrapper
                        GetDataFileName
   build-depends:       bytestring
-                     , cardano-binary
+                     , cardano-binary < 1.7
                      , cardano-binary-test
                      , cardano-crypto
                      , cardano-crypto-wrapper

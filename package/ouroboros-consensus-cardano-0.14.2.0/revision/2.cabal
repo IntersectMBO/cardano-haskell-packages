@@ -144,7 +144,7 @@ library
     , ouroboros-consensus-protocol  ^>=0.7
     , ouroboros-network-api         ^>=0.7.1
     , serialise                     ^>=0.2
-    , small-steps ==1.0.1.0
+    , small-steps
     , sop-core                      ^>=0.5
     , sop-extras                    ^>=0.1
     , strict-sop-core               ^>=0.1
@@ -185,7 +185,7 @@ library unstable-byronspec
     , nothunks
     , ouroboros-consensus        ^>=0.16
     , serialise                  ^>=0.2
-    , small-steps ==1.0.1.0
+    , small-steps
     , transformers
 
 library unstable-byron-testlib
@@ -258,7 +258,7 @@ test-suite byron-test
     , ouroboros-consensus:{ouroboros-consensus, unstable-consensus-testlib}
     , ouroboros-network-mock
     , QuickCheck
-    , small-steps ==1.0.1.0
+    , small-steps                                                            <1.1
     , small-steps-test
     , tasty
     , tasty-quickcheck
@@ -304,7 +304,7 @@ library unstable-shelley-testlib
     , ouroboros-network-api
     , QuickCheck
     , quiet                                                                                   ^>=0.2
-    , small-steps ==1.0.1.0
+    , small-steps
 
 test-suite shelley-test
   import:         common-test
@@ -526,7 +526,7 @@ library unstable-cardano-tools
     , nothunks
     , ouroboros-consensus            ^>=0.16
     , ouroboros-consensus-cardano
-    , ouroboros-consensus-diffusion  ^>=0.12
+    , ouroboros-consensus-diffusion  ^>=0.12 || ^>=0.14
     , ouroboros-consensus-protocol   ^>=0.7
     , ouroboros-network
     , ouroboros-network-api

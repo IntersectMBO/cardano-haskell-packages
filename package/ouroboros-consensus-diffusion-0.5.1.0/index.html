@@ -95,35 +95,35 @@
           <dt>library diffusion-testlib:</dt>
           <dd>
             <ul class="build-depends">
-<li>[&quot;base&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;fgl&quot;,&quot;fs-sim&quot;,&quot;graphviz&quot;,&quot;io-classes&quot;,&quot;io-sim&quot;,&quot;mtl&quot;,&quot;ouroboros-consensus-diffusion&quot;,&quot;ouroboros-consensus:{ouroboros-consensus, consensus-testlib}&quot;,&quot;ouroboros-network&quot;,&quot;ouroboros-network-api&quot;,&quot;ouroboros-network-framework&quot;,&quot;ouroboros-network-mock&quot;,&quot;ouroboros-network-protocols&quot;,&quot;QuickCheck&quot;,&quot;quiet &gt;=0.2 &amp;&amp; &lt;0.3&quot;,&quot;random&quot;,&quot;si-timers&quot;,&quot;text&quot;,&quot;typed-protocols&quot;]</li>
+<li>[&quot;base&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;contra-tracer&quot;,&quot;fgl&quot;,&quot;fs-sim&quot;,&quot;graphviz&quot;,&quot;io-classes&quot;,&quot;io-sim&quot;,&quot;mtl&quot;,&quot;ouroboros-consensus-diffusion&quot;,&quot;ouroboros-consensus:{ouroboros-consensus,consensus-testlib}&quot;,&quot;ouroboros-network&quot;,&quot;ouroboros-network-api&quot;,&quot;ouroboros-network-framework&quot;,&quot;ouroboros-network-mock&quot;,&quot;ouroboros-network-protocols&quot;,&quot;QuickCheck&quot;,&quot;quiet &gt;=0.2 &amp;&amp; &lt;0.3&quot;,&quot;random&quot;,&quot;si-timers&quot;,&quot;text&quot;,&quot;typed-protocols&quot;]</li>
 </ul>
 
           </dd>
           <dt>library mock-testlib:</dt>
           <dd>
             <ul class="build-depends">
-<li>[&quot;base&quot;,&quot;bytestring&quot;,&quot;cardano-crypto-class&quot;,&quot;containers&quot;,&quot;ouroboros-consensus-diffusion:diffusion-testlib&quot;,&quot;ouroboros-consensus:{ouroboros-consensus, consensus-testlib, mock-block}&quot;,&quot;QuickCheck&quot;,&quot;serialise&quot;]</li>
+<li>[&quot;base&quot;,&quot;bytestring&quot;,&quot;cardano-crypto-class&quot;,&quot;containers&quot;,&quot;ouroboros-consensus-diffusion:diffusion-testlib&quot;,&quot;ouroboros-consensus:{ouroboros-consensus,consensus-testlib,mock-block}&quot;,&quot;QuickCheck&quot;,&quot;serialise&quot;]</li>
 </ul>
 
           </dd>
           <dt>test-suite infra-test:</dt>
           <dd>
             <ul class="build-depends">
-<li>[&quot;base&quot;,&quot;ouroboros-consensus-diffusion:diffusion-testlib&quot;,&quot;ouroboros-consensus:{ouroboros-consensus, consensus-testlib}&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;]</li>
+<li>[&quot;base&quot;,&quot;ouroboros-consensus-diffusion:diffusion-testlib&quot;,&quot;ouroboros-consensus:{ouroboros-consensus,consensus-testlib}&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;]</li>
 </ul>
 
           </dd>
           <dt>test-suite mock-test:</dt>
           <dd>
             <ul class="build-depends">
-<li>[&quot;base&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;ouroboros-consensus-diffusion:diffusion-testlib&quot;,&quot;ouroboros-consensus-diffusion:mock-testlib&quot;,&quot;ouroboros-consensus:{ouroboros-consensus, consensus-testlib, mock-block}&quot;,&quot;ouroboros-network-mock&quot;,&quot;QuickCheck&quot;,&quot;serialise&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;]</li>
+<li>[&quot;base&quot;,&quot;bytestring&quot;,&quot;cborg&quot;,&quot;containers&quot;,&quot;ouroboros-consensus-diffusion:diffusion-testlib&quot;,&quot;ouroboros-consensus-diffusion:mock-testlib&quot;,&quot;ouroboros-consensus:{ouroboros-consensus,consensus-testlib,mock-block}&quot;,&quot;ouroboros-network-mock&quot;,&quot;QuickCheck&quot;,&quot;serialise&quot;,&quot;tasty&quot;,&quot;tasty-quickcheck&quot;]</li>
 </ul>
 
           </dd>
           <dt>test-suite consensus-test:</dt>
           <dd>
             <ul class="build-depends">
-<li>[&quot;base&quot;,&quot;binary&quot;,&quot;bytestring&quot;,&quot;cardano-slotting&quot;,&quot;containers&quot;,&quot;ouroboros-consensus-diffusion:diffusion-testlib&quot;,&quot;directory&quot;,&quot;fs-api&quot;,&quot;fs-sim&quot;,&quot;io-sim&quot;,&quot;mtl&quot;,&quot;nothunks&quot;,&quot;ouroboros-consensus-diffusion&quot;,&quot;ouroboros-consensus:{ouroboros-consensus, consensus-testlib}&quot;,&quot;ouroboros-network-api&quot;,&quot;ouroboros-network-mock&quot;,&quot;QuickCheck&quot;,&quot;quiet&quot;,&quot;serialise&quot;,&quot;si-timers&quot;,&quot;tasty&quot;,&quot;tasty-hunit&quot;,&quot;tasty-quickcheck&quot;,&quot;temporary&quot;,&quot;time&quot;]</li>
+<li>[&quot;base&quot;,&quot;binary&quot;,&quot;bytestring&quot;,&quot;cardano-slotting&quot;,&quot;containers&quot;,&quot;ouroboros-consensus-diffusion:diffusion-testlib&quot;,&quot;directory&quot;,&quot;fs-api&quot;,&quot;fs-sim&quot;,&quot;io-sim&quot;,&quot;mtl&quot;,&quot;nothunks&quot;,&quot;ouroboros-consensus-diffusion&quot;,&quot;ouroboros-consensus:{ouroboros-consensus,consensus-testlib}&quot;,&quot;ouroboros-network-api&quot;,&quot;ouroboros-network-mock&quot;,&quot;QuickCheck&quot;,&quot;quiet&quot;,&quot;serialise&quot;,&quot;si-timers&quot;,&quot;tasty&quot;,&quot;tasty-hunit&quot;,&quot;tasty-quickcheck&quot;,&quot;temporary&quot;,&quot;time&quot;]</li>
 </ul>
 
           </dd>

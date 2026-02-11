@@ -121,7 +121,7 @@ library
     heapwords,
     iproute,
     measures,
-    mempack,
+    mempack ^>=0.1,
     microlens,
     mtl,
     non-integral >=1.0,

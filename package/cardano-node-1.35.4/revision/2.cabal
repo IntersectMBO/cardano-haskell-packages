@@ -163,13 +163,13 @@ library
                       , network-mux
                       , nothunks
                       , optparse-applicative-fork
-                      , ouroboros-consensus < 0.1.0.1
-                      , ouroboros-consensus-byron < 0.1.0.1
-                      , ouroboros-consensus-cardano < 0.1.0.1
-                      , ouroboros-consensus-protocol < 0.1.0.1
-                      , ouroboros-consensus-shelley < 0.1.0.1
-                      , ouroboros-network < 0.1.0.1
-                      , ouroboros-network-framework < 0.1.0.1
+                      , ouroboros-consensus <= 0.1.0.1
+                      , ouroboros-consensus-byron <= 0.1.0.1
+                      , ouroboros-consensus-cardano <= 0.1.0.1
+                      , ouroboros-consensus-protocol <= 0.1.0.1
+                      , ouroboros-consensus-shelley <= 0.1.0.1
+                      , ouroboros-network <= 0.1.0.1
+                      , ouroboros-network-framework <= 0.1.0.1
                       , psqueues
                       , safe-exceptions
                       , scientific

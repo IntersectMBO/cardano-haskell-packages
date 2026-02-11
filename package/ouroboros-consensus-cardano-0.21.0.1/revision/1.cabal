@@ -517,7 +517,7 @@ library unstable-cardano-tools
 
   build-depends:
     aeson,
-    base >=4.14 && <4.22,
+    base >=4.14 && <4.21,
     base16-bytestring >=1.0,
     bytestring >=0.10 && <0.13,
     cardano-crypto,

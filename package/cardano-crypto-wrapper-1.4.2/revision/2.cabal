@@ -87,7 +87,7 @@ library
                      , binary
                      , bytestring
                      , canonical-json
-                     , cardano-binary
+                     , cardano-binary < 1.5.0.1
                      , cardano-crypto
                      , cardano-prelude >= 0.1.0.1
                      , cryptonite
