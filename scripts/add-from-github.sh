@@ -100,11 +100,14 @@ do_package() {
   local PKG_NAME
   PKG_NAME=$(basename "$CABAL_FILE" .cabal)
 
-  local PKG_VERSION
-  PKG_VERSION=$(awk -v IGNORECASE=1 '/^version/ { print $2 }' "$CABAL_FILE")
+  local ORIG_VERSION
+  ORIG_VERSION=$(awk -v IGNORECASE=1 '/^version/ { print $2 }' "$CABAL_FILE")
 
+  local PKG_VERSION
   if [[ -n $OVERWRITE_VERSION ]]; then
-    PKG_VERSION="$OVERWRITE_VERSION"
+    PKG_VERSION=$OVERWRITE_VERSION
+  else
+    PKG_VERSION=$ORIG_VERSION
   fi
 
   local PKG_ID="$PKG_NAME-$PKG_VERSION"
@@ -128,8 +131,21 @@ do_package() {
   mkdir -p "$(dirname "$METAFILE")"
   render_meta "$TIMESTAMP" "$REPO_URL" "$REPO_REV" "$SUBDIR" "$OVERWRITE_VERSION" > "$METAFILE"
   log "Written $METAFILE"
-
   git add "$METAFILE"
+
+  if [[ -n $OVERWRITE_VERSION ]]; then
+    REVSDIR=${METAFILE%/*}/revisions
+    REV0FILE=$REVSDIR/0.cabal
+    mkdir -p "$REVSDIR"
+    cp -a "$CABAL_FILE" "$REV0FILE"
+    set -x
+    sed -i "/^version/I s/$ORIG_VERSION/$OVERWRITE_VERSION/" "$REV0FILE"
+    set +x
+    git add "$REV0FILE"
+    log "Written $REV0FILE with an updated version:"
+    diff -u "$CABAL_FILE" "$REV0FILE" >&2 || true
+  fi
+
   git commit -m"Added $PKG_ID" -m "From $REPO_URL at $REPO_REV"
 }
 
