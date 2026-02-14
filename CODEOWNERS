@@ -178,3 +178,11 @@ _sources/marlowe-test         @input-output-hk/marlowe
 
 # HAL team
 _sources/cardano-wallet-read      @cardano-foundation/cf-hal-team
+
+# Tweag
+_sources/merkle-tree-incremental @tweag/functional-engineering
+_sources/scls-cardano            @tweag/functional-engineering
+_sources/scls-cbor               @tweag/functional-engineering
+_sources/scls-core               @tweag/functional-engineering
+_sources/scls-format             @tweag/functional-engineering
+_sources/scls-util               @tweag/functional-engineering
