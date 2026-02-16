@@ -1,0 +1,3 @@
+timestamp = 2026-02-18T01:47:24Z
+github = { repo = "tweag/cardano-cls", rev = "53839a0ced2a2dde4bc210b99fa54d05dbdae475" }
+subdir = 'scls-format'
