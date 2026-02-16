@@ -1,0 +1,3 @@
+timestamp = 2026-02-16T19:20:35Z
+github = { repo = "tweag/cooked-validators", rev = "a9fe22d067156610431d3b83c427486127ecd318" }
+subdir = '.'
