@@ -187,6 +187,7 @@ jobs:
   deploy-check:
     runs-on: nixos
 
+    if: '!github.event.pull_request.head.repo.fork'
     needs:
       - build-repo
 
