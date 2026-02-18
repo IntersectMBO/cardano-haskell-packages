@@ -1,0 +1,138 @@
+cabal-version: 3.4
+name: scls-cardano
+version: 0.1.0.0
+synopsis: CDDL Namespace Definitions and Serialisation Code
+description:
+  A library for defining CDDL schema for Cardano Ledger State namespaces,
+  generation of the test data and files validation.
+
+homepage: https://github.com/tweag/cardano-canonical-ledger
+license: Apache-2.0
+license-file: LICENSE
+author: Tweag IO Team <cardano-cls@tweag.io>
+maintainer: cardano-cls@tweag.io
+-- copyright:
+category: Data
+build-type: Simple
+extra-doc-files: CHANGELOG.md
+-- extra-source-files:
+tested-with: ghc ==9.14.1 || ==9.12.1 || ==9.10.2
+
+common warnings
+  ghc-options:
+    -Wall
+    -Werror=unused-packages
+
+library
+  import: warnings
+  exposed-modules:
+    Cardano.SCLS.CDDL
+
+  other-modules:
+    Cardano.SCLS.Common
+    Cardano.SCLS.Namespace.Blocks
+    Cardano.SCLS.Namespace.GovCommittee
+    Cardano.SCLS.Namespace.GovConstitution
+    Cardano.SCLS.Namespace.GovPParams
+    Cardano.SCLS.Namespace.GovProposals
+    Cardano.SCLS.Namespace.Nonces
+    Cardano.SCLS.Namespace.PoolStake
+    Cardano.SCLS.Namespace.Snapshots
+    Cardano.SCLS.Namespace.UTxO
+
+  build-depends:
+    base >=4.18 && <5,
+    containers,
+    cuddle >=1.1,
+    heredoc >=0.2,
+    scls-core,
+    text,
+
+  hs-source-dirs:
+    cddl-src
+
+  default-language: GHC2021
+
+library validate
+  import: warnings
+  visibility: public
+  exposed-modules:
+    Cardano.SCLS.CDDL.Validate
+
+  build-depends:
+    base >=4.18 && <5,
+    bytestring,
+    containers,
+    cuddle >=1.1,
+    scls-cardano,
+    scls-core,
+    text,
+
+  hs-source-dirs:
+    cddl-validate
+
+  default-language: GHC2021
+
+library testlib
+  import: warnings
+  hs-source-dirs: testlib
+  exposed-modules:
+    Cardano.SCLS.Testlib
+
+  build-depends:
+    QuickCheck,
+    base >=4.18 && <5,
+    base16-bytestring,
+    bytestring,
+    cborg,
+    cuddle,
+    hspec,
+    hspec-expectations,
+    scls-cardano:{validate},
+    scls-cbor,
+    scls-core,
+    text,
+
+  visibility: public
+  default-language: GHC2021
+
+executable gen-cddl
+  import: warnings
+  default-language: GHC2021
+  hs-source-dirs: gen-cddl
+  main-is: Main.hs
+  build-depends:
+    base >=4.18 && <5,
+    cuddle >=1.1,
+    directory >=1,
+    filepath >=1.4,
+    prettyprinter,
+    scls-cardano,
+    scls-core,
+    text,
+
+test-suite scls-cardano-test
+  import: warnings
+  default-language: GHC2021
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Main.hs
+  other-modules:
+    Conformance
+    Reference
+
+  build-depends:
+    base >=4.18 && <5,
+    base16-bytestring,
+    bytestring,
+    cborg,
+    containers,
+    cuddle >=1.1,
+    directory,
+    filepath,
+    hspec,
+    megaparsec,
+    random >=1.2,
+    scls-cardano,
+    scls-cardano:validate,
+    text,

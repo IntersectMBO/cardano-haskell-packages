@@ -1,0 +1,135 @@
+cabal-version: 3.4
+name: scls-format
+version: 0.1.0.0
+synopsis: A library for realing and serializing SCLS files
+description:
+  This is a reference implementation of library for reading and writing SCLS files.
+  See CIP for the format: link
+
+license: Apache-2.0
+license-file: LICENSE
+author: Tweag IO Team <cardano-cls@tweag.io>
+copyright: 2025 (c) Modus Create, Inc.
+category: Codec
+build-type: Simple
+extra-doc-files: CHANGELOG.md
+tested-with: ghc ==9.14.1 || ==9.12.1 || ==9.10.2
+
+-- extra-source-files:
+common warnings
+  ghc-options:
+    -Wall
+    -Werror=unused-packages
+
+library
+  import: warnings
+  exposed-modules:
+    Cardano.SCLS.Internal.Entry.CBOREntry
+    Cardano.SCLS.Internal.Entry.ChunkEntry
+    Cardano.SCLS.Internal.Frame
+    Cardano.SCLS.Internal.Hash
+    Cardano.SCLS.Internal.Reader
+    Cardano.SCLS.Internal.Record.Chunk
+    Cardano.SCLS.Internal.Record.Hdr
+    Cardano.SCLS.Internal.Record.Internal.Class
+    Cardano.SCLS.Internal.Record.Manifest
+    Cardano.SCLS.Internal.Record.Metadata
+    Cardano.SCLS.Internal.Serializer.Builder.InMemory
+    Cardano.SCLS.Internal.Serializer.ChunksBuilder.InMemory
+    Cardano.SCLS.Internal.Serializer.Dump
+    Cardano.SCLS.Internal.Serializer.Dump.Plan
+    Cardano.SCLS.Internal.Serializer.External.Impl
+    Cardano.SCLS.Internal.Serializer.HasKey
+    Cardano.SCLS.Internal.Serializer.MetadataBuilder.InMemory
+    Cardano.SCLS.Internal.Serializer.Reference.Impl
+    Cardano.SCLS.Internal.Version
+    Cardano.SCLS.Query
+    Cardano.Types.Namespace
+    Cardano.Types.SlotNo
+
+  -- other-modules:
+  other-extensions:
+    AllowAmbiguousTypes
+    DataKinds
+    FunctionalDependencies
+    LambdaCase
+    OverloadedStrings
+    RecordWildCards
+    ViewPatterns
+
+  default-extensions:
+    DerivingStrategies
+    StrictData
+
+  build-depends:
+    FailT,
+    base >=4.18 && <5,
+    base16-bytestring,
+    byte-order >=0.1.3.1,
+    bytestring,
+    cborg,
+    containers,
+    crypton,
+    directory,
+    filepath,
+    memory,
+    mempack-scls,
+    merkle-tree-incremental,
+    mtl,
+    pqueue,
+    primitive,
+    resourcet,
+    scls-core,
+    streaming,
+    temporary,
+    text,
+    time,
+    transformers,
+    vector,
+    vector-algorithms,
+    vector-builder,
+
+  hs-source-dirs: src
+  default-language: GHC2021
+
+test-suite scls-format-test
+  import: warnings
+  default-language: GHC2021
+  other-modules:
+    ChunksBuilderSpec
+    MetadataBuilderSpec
+    MultiNamespace
+    NamespacedEncodingSpec
+    QuerySpec
+    Roundtrip
+    TestEntry
+
+  -- other-extensions:
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Main.hs
+  build-depends:
+    HUnit,
+    QuickCheck,
+    base >=4.18 && <5,
+    bytestring,
+    cborg >=0.2,
+    containers,
+    cuddle >=1.1,
+    filepath,
+    hspec,
+    hspec-expectations,
+    mempack-scls,
+    merkle-tree-incremental,
+    primitive,
+    random >=1.2,
+    resourcet,
+    scls-cardano,
+    scls-cardano:testlib,
+    scls-cbor,
+    scls-core,
+    scls-format,
+    streaming >=0.2.4.0,
+    temporary,
+    text >=2.0,
+    time,

@@ -1,0 +1,64 @@
+cabal-version: 3.4
+name: mempack-scls
+version: 0.1.0.0
+synopsis: A library for reading and serializing SCLS files
+description:
+  Compatibility package for mempack. It provides additional required
+  features (that will likely be contributed to upstream) and additional
+  compatibility layer that allows library to work simultaneously with
+  mempack-1.x and mempack-2.x families of the functions
+
+license: Apache-2.0
+license-file: LICENSE
+author: Tweag IO Team <cardano-cls@tweag.io>
+copyright: 2025 (c) Modus Create, Inc.
+category: Codec
+build-type: Simple
+extra-doc-files: CHANGELOG.md
+tested-with: ghc ==9.14.1 || ==9.12.1 || ==9.10.2
+
+flag use-mempack-1
+  description: Use the old mempack package
+  default: False
+  manual: False
+
+-- extra-source-files:
+common warnings
+  ghc-options: -Wall
+
+library
+  import: warnings
+  exposed-modules:
+    Data.MemPack.ByteOrdered
+    Data.MemPack.Extra
+
+  reexported-modules:
+    Data.MemPack,
+    Data.MemPack.Buffer,
+    Data.MemPack.Error,
+
+  build-depends:
+    FailT,
+    base >=4.18 && <5,
+    byte-order >=0.1.3.1,
+    bytestring,
+    cborg,
+    memory,
+    mtl,
+    primitive,
+    text,
+
+  default-language: GHC2021
+
+  if flag(use-mempack-1)
+    hs-source-dirs:
+      mempack-1.0
+
+    build-depends:
+      mempack >=0.1 && <0.2
+  else
+    hs-source-dirs:
+      mempack-2.0
+
+    build-depends:
+      mempack >=0.2 && <0.3

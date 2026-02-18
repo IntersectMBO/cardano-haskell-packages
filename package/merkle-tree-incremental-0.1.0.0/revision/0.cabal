@@ -1,0 +1,70 @@
+cabal-version: 3.4
+name: merkle-tree-incremental
+version: 0.1.0.0
+description: A library for constructing Merkle Trees in an incremental fashion.
+license: Apache-2.0
+license-file: LICENSE
+author: Tweag IO Team <cardano-cls@tweag.io>
+copyright: 2025 (c) Modus Create, Inc.
+build-type: Simple
+extra-source-files:
+  README.md
+
+tested-with: ghc ==9.14.1 || ==9.12.1 || ==9.10.2
+
+common warnings
+  ghc-options:
+    -Wall
+    -Werror=unused-packages
+
+library
+  import: warnings
+  exposed-modules:
+    Crypto.Hash.MerkleTree.Incremental
+
+  other-modules:
+    Paths_merkle_tree_incremental
+
+  autogen-modules:
+    Paths_merkle_tree_incremental
+
+  other-extensions:
+    RankNTypes
+    ScopedTypeVariables
+    TypeApplications
+
+  hs-source-dirs:
+    src
+
+  build-depends:
+    base >=4.7 && <5,
+    bytestring >=0.11.0.0,
+    crypton >=1.0.0,
+    memory >=0.18.0,
+
+  default-language: GHC2021
+
+test-suite merkle-tree-incremental-test
+  import: warnings
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+    Paths_merkle_tree_incremental
+    Reference
+
+  autogen-modules:
+    Paths_merkle_tree_incremental
+
+  hs-source-dirs:
+    test
+
+  build-depends:
+    base >=4.7 && <5,
+    bytestring >=0.11.0.0,
+    crypton >=1.0.0,
+    hspec,
+    memory,
+    merkle-tree-incremental,
+    quickcheck-instances,
+
+  default-language: GHC2021
