@@ -55,7 +55,7 @@ library
     base16-bytestring,
     binary,
     bytestring,
-    cardano-binary >=1.7,
+    cardano-binary ^>=1.7,
     cardano-crypto-class ^>=2.2,
     cardano-crypto-praos >=2.2,
     cardano-slotting >=0.2,
