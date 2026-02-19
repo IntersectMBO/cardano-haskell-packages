@@ -66,7 +66,6 @@ render_meta() {
   local REPO_URL=$2
   local REPO_REV=$3
   local SUBDIR=$4
-  local FORCE_VERSION=$5
 
   local REPO=${REPO_URL#https://github.com/}
 
@@ -74,9 +73,6 @@ render_meta() {
   echo "github = { repo = \"$REPO\", rev = \"$REPO_REV\" }"
   if [[ -n $SUBDIR ]]; then
     echo "subdir = '$SUBDIR'"
-  fi
-  if [[ -n $FORCE_VERSION ]]; then
-    echo "force-version = true"
   fi
 }
 
@@ -129,7 +125,7 @@ do_package() {
   fi
 
   mkdir -p "$(dirname "$METAFILE")"
-  render_meta "$TIMESTAMP" "$REPO_URL" "$REPO_REV" "$SUBDIR" "$OVERWRITE_VERSION" > "$METAFILE"
+  render_meta "$TIMESTAMP" "$REPO_URL" "$REPO_REV" "$SUBDIR" >"$METAFILE"
   log "Written $METAFILE"
   git add "$METAFILE"
 
