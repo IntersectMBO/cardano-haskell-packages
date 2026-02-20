@@ -22,7 +22,7 @@ build-repo()
     rm -rf "_$REF"
     mkdir -p "_$REF"
     git archive "$REF" _sources | tar -x -C "_$REF"
-    nix develop --command \
+    nix develop .?rev="$SHA" --command \
       foliage build -j 0 -v error \
         --write-metadata \
         --input-directory "_$REF/_sources" \
@@ -33,6 +33,8 @@ build-repo()
 
 build-repo main
 build-repo HEAD
+
+scripts/check-archive-extension.sh _{main,HEAD}/_repo/01-index.tar
 
 rm -rf _repo
 cp -a _HEAD/_repo _repo
