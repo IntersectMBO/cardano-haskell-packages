@@ -42,12 +42,22 @@ let
       '';
       configureArgs = "--allow-boot-library-installs";
 
-      modules = [{
-        postHaddock = ''
-          mkdir $doc/nix-support
-          echo "doc haddock $docdir/html" >> $doc/nix-support/hydra-build-products
-        '';
-      }];
+      modules = [
+        {
+          postHaddock = ''
+            mkdir $doc/nix-support
+            echo "doc haddock $docdir/html" >> $doc/nix-support/hydra-build-products
+          '';
+        }
+        # proto-lens-protobuf-types needs protoc on PATH during build
+        ({ config, lib, ... }: {
+          packages = lib.optionalAttrs (config.packages ? proto-lens-protobuf-types) {
+            proto-lens-protobuf-types.components.library.build-tools = [
+              pkgs.buildPackages.protobuf
+            ];
+          };
+        })
+      ];
 
     }
     (extraConfig compiler-nix-name)
