@@ -213,15 +213,21 @@
         let addPackageKeys = x: x // { package-keys = builtins.attrNames x.packages; };
         in {
           modules = [
-            (addPackageKeys {
-              # Packages that depend on the plutus-tx plugin have broken haddock
-              packages = {
-                cardano-node-emulator.doHaddock = false;
-                plutus-ledger.doHaddock = false;
-                plutus-script-utils.doHaddock = false;
-                plutus-scripts-bench.doHaddock = false;
-              };
-            })
+            ({ pkgs, ... }:
+              addPackageKeys {
+                # Packages that depend on the plutus-tx plugin have broken haddock
+                packages = {
+                  cardano-node-emulator.doHaddock = false;
+                  plutus-ledger.doHaddock = false;
+                  plutus-script-utils.doHaddock = false;
+                  plutus-scripts-bench.doHaddock = false;
+
+                  hydra-node.components.library.build-tools = [ pkgs.etcd ];
+                  proto-lens-protobuf-types.components.library.build-tools = [ pkgs.protobuf ];
+                  proto-lens-etcd.components.library.build-tools = [ pkgs.protobuf ];
+                };
+              }
+            )
           ];
         };
 
