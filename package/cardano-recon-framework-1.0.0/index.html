@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    cardano-recon-framework-1.0.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      cardano-recon-framework-1.0.0
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p></p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Cardano Re(altime) Con(formance) Framework based on Linear Temporal Logic (LTL).</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Ruslan Feizerakhmanov, Juergen Nicklisch, Michael Karg</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>ruslan.feizerakhmanov@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/IntersectMBO/cardano-node/tree/db790a84c1f21f9badfdcedfe802512678d51214/bench/cardano-recon-framework">https://github.com/IntersectMBO/cardano-node</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>db790a84c1f21f9badfdcedfe802512678d51214</dd>
+          <dt>Subdir</dt>
+          <dd>bench/cardano-recon-framework</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2026-03-06T13:11:00Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library cardano-recon-framework:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;base&quot;,&quot;containers&quot;,&quot;text&quot;,&quot;directory&quot;,&quot;trace-dispatcher ^&gt;=2.11&quot;,&quot;serialise&quot;,&quot;bytestring&quot;,&quot;time&quot;,&quot;stm&quot;,&quot;aeson&quot;,&quot;streaming&quot;,&quot;megaparsec&quot;,&quot;unagi-chan&quot;,&quot;yaml&quot;]</li>
+            </ul>
+                      </dd>
+          <dt>executable cardano-recon:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base&quot;,&quot;text&quot;,&quot;containers&quot;,&quot;cardano-recon-framework&quot;,&quot;trace-dispatcher ^&gt;=2.11&quot;,&quot;aeson&quot;,&quot;streaming&quot;,&quot;async&quot;,&quot;optparse-applicative&quot;,&quot;aeson-pretty&quot;,&quot;ekg-core&quot;,&quot;network&quot;,&quot;hostname&quot;,&quot;contra-tracer ^&gt;=0.1.0&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite cardano-recon-test:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base&quot;,&quot;cardano-recon-framework&quot;,&quot;containers&quot;,&quot;tasty&quot;,&quot;tasty-hunit&quot;,&quot;text&quot;,&quot;megaparsec&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
