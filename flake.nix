@@ -220,6 +220,9 @@
                 plutus-ledger.doHaddock = false;
                 plutus-script-utils.doHaddock = false;
                 plutus-scripts-bench.doHaddock = false;
+                # https://gitlab.haskell.org/ghc/ghc/-/issues/25739
+                ouroboros-network.doHaddock = false;
+                cardano-diffusion.doHaddock = false;
               };
             })
           ];
