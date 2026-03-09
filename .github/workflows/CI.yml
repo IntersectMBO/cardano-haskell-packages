@@ -208,6 +208,7 @@ jobs:
 
       - name: Unpack built repository
         run: |
+          rm -rf built-repo
           mkdir built-repo
           tar xf _repo.tar -C built-repo
 
