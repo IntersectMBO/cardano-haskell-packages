@@ -1,0 +1,3 @@
+timestamp = 2026-03-10T14:34:17Z
+github = { repo = "IntersectMBO/cardano-ledger", rev = "30a3e666b84f9d056f464b3a00c56ab0c5bccacd" }
+subdir = 'libs/cardano-ledger-api'
