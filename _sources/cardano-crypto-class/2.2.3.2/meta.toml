@@ -5,3 +5,7 @@ subdir = 'cardano-crypto-class'
 [[revisions]]
 number = 1
 timestamp = 2026-03-07T08:36:03Z
+
+[[revisions]]
+number = 2
+timestamp = 2026-03-10T15:03:53Z
