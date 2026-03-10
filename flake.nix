@@ -223,6 +223,7 @@
                 # https://gitlab.haskell.org/ghc/ghc/-/issues/25739
                 ouroboros-network.doHaddock = false;
                 cardano-diffusion.doHaddock = false;
+                cardano-ledger-shelley.doHaddock = false;
               };
             })
           ];
