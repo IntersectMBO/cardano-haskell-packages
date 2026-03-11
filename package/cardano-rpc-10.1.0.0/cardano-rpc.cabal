@@ -1,0 +1,144 @@
+cabal-version: 3.8
+name: cardano-rpc
+version: 10.1.0.0
+synopsis: A gRPC server and client for interacting with the Cardano node
+description:
+  A Haskell library providing a gRPC-based RPC interface for the Cardano node,
+  implementing the UTxO RPC protocol for chain querying and transaction
+  submission.
+
+category:
+  Blockchain,
+  Cardano,
+  GRPC,
+  Network,
+  RPC,
+
+copyright: 2019-2023 Input Output Global Inc (IOG), 2023-2026 Intersect.
+author: IOHK
+maintainer: operations@iohk.io
+license: Apache-2.0
+license-files:
+  LICENSE
+  NOTICE
+
+build-type: Simple
+extra-doc-files:
+  CHANGELOG.md
+  README.md
+
+common project-config
+  default-language: Haskell2010
+  default-extensions:
+    ImportQualifiedPost
+    OverloadedStrings
+
+  ghc-options:
+    -Wall
+    -Wcompat
+    -Wincomplete-record-updates
+    -Wincomplete-uni-patterns
+    -Wno-unticked-promoted-constructors
+    -Wpartial-fields
+    -Wredundant-constraints
+    -Wunused-packages
+
+library
+  import: project-config
+  hs-source-dirs: src
+  exposed-modules:
+    Cardano.Rpc.Client
+    Cardano.Rpc.Proto.Api.Node
+    Cardano.Rpc.Proto.Api.UtxoRpc.Query
+    Cardano.Rpc.Proto.Api.UtxoRpc.Submit
+    Cardano.Rpc.Server
+    Cardano.Rpc.Server.Config
+    Cardano.Rpc.Server.Internal.Env
+    Cardano.Rpc.Server.Internal.Error
+    Cardano.Rpc.Server.Internal.Monad
+    Cardano.Rpc.Server.Internal.Node
+    Cardano.Rpc.Server.Internal.Tracing
+    Cardano.Rpc.Server.Internal.UtxoRpc.Query
+    Cardano.Rpc.Server.Internal.UtxoRpc.Submit
+    Cardano.Rpc.Server.Internal.UtxoRpc.Type
+
+  other-modules:
+    Cardano.Rpc.Server.Internal.Orphans
+    Paths_cardano_rpc
+
+  autogen-modules:
+    Paths_cardano_rpc
+
+  build-depends:
+    aeson,
+    base,
+    bytestring,
+    cardano-api >=10.17,
+    cardano-binary,
+    cardano-ledger-api,
+    cardano-ledger-conway,
+    cardano-ledger-core,
+    cardano-rpc:gen,
+    containers,
+    contra-tracer,
+    data-default,
+    filepath,
+    generic-data,
+    grapesy,
+    grpc-spec,
+    proto-lens,
+    proto-lens-protobuf-types,
+    random,
+    rio,
+    text,
+
+-- this should be replaced by utxorpc package from hackage
+-- ideally we should upstream whatever is implemented in Proto.Cardano.Rpc.Node
+-- into utxorpc
+library gen
+  import: project-config
+  hs-source-dirs: gen
+  exposed-modules:
+    Proto.Cardano.Rpc.Node
+    Proto.Cardano.Rpc.Node_Fields
+    Proto.Utxorpc.V1beta.Cardano.Cardano
+    Proto.Utxorpc.V1beta.Cardano.Cardano_Fields
+    Proto.Utxorpc.V1beta.Query.Query
+    Proto.Utxorpc.V1beta.Query.Query_Fields
+    Proto.Utxorpc.V1beta.Submit.Submit
+    Proto.Utxorpc.V1beta.Submit.Submit_Fields
+
+  build-depends:
+    proto-lens-protobuf-types,
+    proto-lens-runtime,
+
+test-suite cardano-rpc-test
+  import: project-config
+  hs-source-dirs: test/cardano-rpc-test
+  main-is: cardano-rpc-test.hs
+  type: exitcode-stdio-1.0
+  build-depends:
+    base,
+    cardano-api,
+    cardano-api:gen,
+    cardano-ledger-api,
+    cardano-ledger-conway,
+    cardano-ledger-core,
+    cardano-rpc,
+    containers,
+    hedgehog,
+    hedgehog-extras,
+    rio,
+    tasty,
+    tasty-hedgehog,
+
+  ghc-options:
+    -threaded
+    -rtsopts
+    "-with-rtsopts=-N -T"
+
+  build-tool-depends: tasty-discover:tasty-discover
+  other-modules:
+    Test.Cardano.Rpc.ProtocolParameters
+    Test.Cardano.Rpc.TxOutput
+    Test.Cardano.Rpc.Type
