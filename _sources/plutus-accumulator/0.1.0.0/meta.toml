@@ -1,0 +1,3 @@
+timestamp = 2026-03-19T10:17:37Z
+github = { repo = "cardano-scaling/plutus-accumulator", rev = "f1ecb84d2d5f9ae4fc1f109c376eaaab53d0f052" }
+subdir = 'plutus-accumulator'
