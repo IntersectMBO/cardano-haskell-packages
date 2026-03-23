@@ -1,0 +1,48 @@
+cabal-version: 3.4
+name:          plutus-accumulator
+version:       0.1.0.0
+license:       Apache-2.0
+build-type:    Simple
+
+library
+  hs-source-dirs:  lib
+  exposed-modules:
+    Plutus.Crypto.Accumulator
+    Plutus.Crypto.BlsUtils
+    Offchain
+  build-depends:
+    , base                         >=4.9   && <5
+    , plutus-core                  >= 1.55
+    , plutus-tx
+
+benchmark bench
+  type:           exitcode-stdio-1.0
+  main-is:        Main.hs
+  hs-source-dirs: bench
+  other-modules:
+    -- Accumulator.Run
+    Accumulator.Scripts
+    -- Bls.Run
+    Bls.Scripts
+  build-depends:
+    , base >=4.9     && <5
+    , plutus-core 
+    , plutus-tx
+    , plutus-tx-plugin
+    , plutus-ledger-api
+    -- , plutus-benchmark:plutus-benchmark-common
+    , plutus-accumulator
+    , hedgehog
+    , bytestring
+    , aeson
+
+-- test-suite test
+  -- type:           exitcode-stdio-1.0
+  -- main-is:        Test.hs
+  -- hs-source-dirs: test
+  -- build-depends:
+    -- , base >=4.9     && <5
+    -- , plutus-core
+    -- , plutus-tx
+    -- , plutus-accumulator
+ 
