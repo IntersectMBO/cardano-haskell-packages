@@ -1,0 +1,114 @@
+cabal-version: 3.0
+name: strict-checked-vars
+version: 0.2.1.0
+synopsis:
+  Strict MVars and TVars with invariant checking for IO and IOSim
+
+description:
+  Strict @MVar@ and @TVar@ interfaces with invariant checking compatible with
+  [IO](https://hackage.haskell.org/package/base-4.18.0.0/docs/Prelude.html#t:IO)
+  & [io-sim](https://hackage.haskell.org/package/io-sim).
+
+license: Apache-2.0
+license-files:
+  LICENSE
+  NOTICE
+
+copyright: 2019-2023 Input Output Global Inc (IOG).
+author: IOG Engineering Team
+maintainer: operations@iohk.io, Joris Dral
+category: Concurrency
+build-type: Simple
+extra-doc-files:
+  CHANGELOG.md
+  README.md
+
+bug-reports: https://github.com/IntersectMBO/io-classes-extra/issues
+tested-with: ghc ==9.6 || ==9.8 || ==9.10 || ==9.12
+
+source-repository head
+  type: git
+  location: https://github.com/IntersectMBO/io-classes-extra
+  subdir: strict-checked-vars
+
+source-repository this
+  type: git
+  location: https://github.com/IntersectMBO/io-classes-extra
+  subdir: strict-checked-vars
+  tag: strict-checked-vars-0.2.1.0
+
+flag checkmvarinvariants
+  description: Enable runtime invariant checks on StrictMVars
+  manual: True
+  default: False
+
+flag checktvarinvariants
+  description: Enable runtime invariant checks on StrictTVars
+  manual: True
+  default: False
+
+library
+  hs-source-dirs: src
+  exposed-modules:
+    Control.Concurrent.Class.MonadMVar.Strict.Checked
+    Control.Concurrent.Class.MonadSTM.Strict.TVar.Checked
+
+  default-language: Haskell2010
+  default-extensions: ImportQualifiedPost
+  build-depends:
+    base >=4.9 && <5,
+    io-classes:{io-classes, strict-mvar, strict-stm} ^>=1.8,
+
+  ghc-options:
+    -Wall
+    -Wcompat
+    -Wincomplete-uni-patterns
+    -Wincomplete-record-updates
+    -Wpartial-fields
+    -Widentities
+    -Wunused-packages
+
+  if flag(checkmvarinvariants)
+    cpp-options: -DCHECK_MVAR_INVARIANTS
+
+  if flag(checktvarinvariants)
+    cpp-options: -DCHECK_TVAR_INVARIANTS
+
+test-suite test
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Main.hs
+  other-modules:
+    Test.Control.Concurrent.Class.MonadMVar.Strict.Checked
+    Test.Control.Concurrent.Class.MonadMVar.Strict.Checked.WHNF
+    Test.Control.Concurrent.Class.MonadSTM.Strict.TVar.Checked
+    Test.Control.Concurrent.Class.MonadSTM.Strict.TVar.Checked.WHNF
+    Test.Utils
+
+  default-language: Haskell2010
+  default-extensions: ImportQualifiedPost
+  build-depends:
+    QuickCheck,
+    base,
+    io-classes,
+    io-sim,
+    nothunks,
+    strict-checked-vars,
+    tasty,
+    tasty-quickcheck,
+
+  ghc-options:
+    -Wall
+    -Wcompat
+    -Wincomplete-uni-patterns
+    -Wincomplete-record-updates
+    -Wpartial-fields
+    -Widentities
+    -Wunused-packages
+    -fno-ignore-asserts
+
+  if flag(checkmvarinvariants)
+    cpp-options: -DCHECK_MVAR_INVARIANTS
+
+  if flag(checktvarinvariants)
+    cpp-options: -DCHECK_TVAR_INVARIANTS
