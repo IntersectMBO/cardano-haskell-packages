@@ -5,3 +5,7 @@ subdir = 'ouroboros-network'
 [[revisions]]
 number = 1
 timestamp = 2026-03-20T13:06:25Z
+
+[[revisions]]
+number = 2
+timestamp = 2026-03-24T16:56:51Z
