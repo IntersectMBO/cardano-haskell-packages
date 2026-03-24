@@ -1,0 +1,3 @@
+timestamp = 2026-03-24T08:52:36Z
+github = { repo = "intersectmbo/io-classes-extra", rev = "b2356a34b30a9431bbcdf1cf7a5b71e00e9e5bbe" }
+subdir = 'strict-checked-vars'
