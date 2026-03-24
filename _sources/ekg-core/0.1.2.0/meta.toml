@@ -1,0 +1,3 @@
+timestamp = 2026-03-24T08:53:01Z
+github = { repo = "haskell-github-trust/ekg-core", rev = "1f9e1bdeddf45e5a7767bf42f1eaac5671136810" }
+subdir = './'
