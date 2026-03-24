@@ -1,0 +1,3 @@
+timestamp = 2026-03-24T08:52:54Z
+github = { repo = "hedgehogqa/haskell-hedgehog", rev = "947e0806579778fb2e28d62afb30d6e61214244c" }
+subdir = 'hedgehog'
