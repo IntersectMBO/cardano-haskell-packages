@@ -1,0 +1,3 @@
+timestamp = 2026-03-27T16:00:06Z
+github = { repo = "haskell-servant/servant", rev = "e07e92abd62641fc0f199a33e5131de273140cb0" }
+subdir = 'servant-server'
