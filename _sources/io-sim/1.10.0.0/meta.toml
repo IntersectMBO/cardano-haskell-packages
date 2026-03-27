@@ -1,3 +1,7 @@
 timestamp = 2026-03-27T22:15:05Z
 github = { repo = "input-output-hk/io-sim", rev = "4063ded432ea150aab9bad99858663ccfce63724" }
 subdir = 'io-sim'
+
+[[revisions]]
+number = 1
+timestamp = 2026-03-27T22:17:20Z
