@@ -1,0 +1,165 @@
+cabal-version: 3.4
+name: cuddle
+version: 1.1.0.0
+synopsis: CDDL Generator and test utilities
+description:
+  Cuddle is a library for generating and manipulating [CDDL](https://datatracker.ietf.org/doc/html/rfc8610).
+
+  Included in this package is a command line tool for working with CDDL files. It
+  currently supports four functions:
+
+  - Formatting of CDDL files
+  - Validating that a CDDL file is legal
+  - Generating random CBOR terms matching CDDL productions
+  - Testing compliance of a CBOR file against a CDDL spec.
+
+license: Apache-2.0
+license-file: LICENSE
+author: IOG Ledger Team
+maintainer: hackage@iohk.io
+copyright: 2025 Input Output Global Inc (IOG)
+category: Codec
+build-type: Simple
+extra-doc-files: CHANGELOG.md
+tested-with: ghc ==9.6 || ==9.8 || ==9.10 || ==9.12
+data-files:
+  example/cddl-files/*.cddl
+  example/cddl-files/validator/negative/*.cddl
+
+source-repository head
+  type: git
+  location: https://github.com/input-output-hk/cuddle
+
+flag example
+  description: Enable the example executable
+  manual: True
+  default: False
+
+common warnings
+  ghc-options: -Wall
+
+library
+  import: warnings
+  exposed-modules:
+    Codec.CBOR.Cuddle.CBOR.Gen
+    Codec.CBOR.Cuddle.CBOR.Validator
+    Codec.CBOR.Cuddle.CDDL
+    Codec.CBOR.Cuddle.CDDL.CBORGenerator
+    Codec.CBOR.Cuddle.CDDL.CTree
+    Codec.CBOR.Cuddle.CDDL.CtlOp
+    Codec.CBOR.Cuddle.CDDL.Postlude
+    Codec.CBOR.Cuddle.CDDL.Resolve
+    Codec.CBOR.Cuddle.Comments
+    Codec.CBOR.Cuddle.Huddle
+    Codec.CBOR.Cuddle.Huddle.HuddleM
+    Codec.CBOR.Cuddle.IndexMappable
+    Codec.CBOR.Cuddle.Parser
+    Codec.CBOR.Cuddle.Parser.Lexer
+    Codec.CBOR.Cuddle.Pretty
+    Codec.CBOR.Cuddle.Pretty.Columnar
+    Codec.CBOR.Cuddle.Pretty.Utils
+
+  build-depends:
+    base >=4.18 && <5,
+    base16-bytestring >=1.0.2,
+    boxes >=0.1.5,
+    bytestring >=0.11.4,
+    capability >=0.5,
+    cborg >=0.2.10,
+    containers >=0.6.7,
+    data-default-class >=0.2,
+    foldable1-classes-compat >=0.1.1,
+    generic-optics >=2.2.1,
+    hashable >=1.4,
+    megaparsec >=9.5,
+    mtl >=2.3.1,
+    mutable-containers >=0.3.4,
+    optics-core >=0.4.1,
+    ordered-containers >=0.2.4,
+    parser-combinators >=1.3,
+    prettyprinter >=1.7.1,
+    random >=1.2,
+    regex-tdfa >=1.3.2,
+    scientific >=0.3.7,
+    text >=2.0.2,
+    tree-diff >=0.3,
+
+  hs-source-dirs: src
+  default-language: GHC2021
+
+executable example
+  import: warnings
+
+  if flag(example)
+    buildable: True
+  else
+    buildable: False
+
+  default-language: GHC2021
+  other-modules:
+    Conway
+    Monad
+
+  hs-source-dirs: example
+  main-is: Main.hs
+  build-depends:
+    base,
+    cuddle,
+    megaparsec,
+    prettyprinter,
+    random,
+    text,
+
+executable cuddle
+  import: warnings
+  default-language: GHC2021
+  hs-source-dirs: ./bin/
+  main-is: Main.hs
+  build-depends:
+    base,
+    base16-bytestring,
+    bytestring,
+    cborg,
+    cuddle,
+    megaparsec,
+    mtl,
+    optparse-applicative >=0.18,
+    prettyprinter,
+    random,
+    text,
+
+test-suite cuddle-test
+  import: warnings
+  default-language: GHC2021
+  other-modules:
+    Paths_cuddle
+    Test.Codec.CBOR.Cuddle.CDDL.Examples
+    Test.Codec.CBOR.Cuddle.CDDL.Gen
+    Test.Codec.CBOR.Cuddle.CDDL.GeneratorSpec
+    Test.Codec.CBOR.Cuddle.CDDL.Parser
+    Test.Codec.CBOR.Cuddle.CDDL.Pretty
+    Test.Codec.CBOR.Cuddle.CDDL.Validator
+    Test.Codec.CBOR.Cuddle.Huddle
+
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Main.hs
+  build-depends:
+    HUnit >=1.6.2,
+    QuickCheck >=2.14,
+    base,
+    bytestring,
+    cborg,
+    containers,
+    cuddle,
+    data-default-class,
+    generic-random,
+    hspec >=2.11,
+    hspec-megaparsec >=2.2,
+    megaparsec,
+    pretty-simple,
+    prettyprinter,
+    random,
+    string-qq >=0.0.6,
+    text,
+    tree-diff,

@@ -1,0 +1,64 @@
+name:                ekg-wai
+version:             0.1.2.0
+synopsis:            Remote monitoring of processes
+description:
+  This library lets you remotely monitor a running process over HTTP.
+  It provides a simple way to integrate a monitoring server into any
+  application.
+
+  This is a port of the ekg library to depend on wai instead of snap.
+homepage:            https://github.com/tvh/ekg-wai
+bug-reports:         https://github.com/tvh/ekg-wai/issues
+license:             BSD3
+license-file:        LICENSE
+author:              Timo von Holtz, Johan Tibell
+maintainer:          tvh@tvholtz.net
+category:            System, Network
+build-type:          Simple
+data-files:          assets/index.html assets/monitor.js assets/monitor.css
+                     assets/jquery.flot.min.js assets/jquery-1.6.4.min.js
+                     assets/bootstrap-1.4.0.min.css
+                     assets/chart_line_add.png assets/cross.png
+extra-source-files:  LICENSE.icons LICENSE.javascript README.md
+                     assets/jquery-1.6.4.js assets/jquery.flot.js
+                     assets/bootstrap-1.4.0.css
+                     examples/Basic.hs
+cabal-version:       >= 1.10
+tested-with:         GHC == 9.0.2
+                   , GHC == 9.2.8
+                   , GHC == 9.4.8
+                   , GHC == 9.6.6
+                   , GHC == 9.8.4
+                   , GHC == 9.10.1
+library
+  exposed-modules:
+    System.Remote.Monitoring.Wai
+
+  other-modules:
+    Paths_ekg_wai
+    System.Remote.Monitoring.Wai.Json
+    System.Remote.Monitoring.Wai.App
+
+  build-depends:
+    aeson,
+    base >= 4.8 && < 5,
+    bytestring < 1.0,
+    ekg-core >= 0.1 && < 0.2,
+    ekg-json >= 0.1 && < 0.2,
+    filepath < 1.6,
+    http-types,
+    network,
+    text,
+    time < 1.15,
+    transformers,
+    unordered-containers,
+    wai,
+    wai-app-static,
+    warp
+
+  ghc-options: -Wall
+  default-language:    Haskell98
+
+source-repository head
+  type:     git
+  location: https://github.com/tvh/ekg-wai.git

@@ -1,0 +1,173 @@
+cabal-version: 2.4
+
+name:                   hedgehog-extras
+version:                0.10.1.0
+synopsis:               Supplemental library for hedgehog
+description:            Supplemental library for hedgehog.
+category:               Test
+author:                 IOHK
+maintainer:             operations@iohk.io
+license:                Apache-2.0
+license-files:          LICENSE
+                        NOTICE
+build-type:             Simple
+extra-doc-files:        CHANGELOG.md
+                        README.md
+source-repository head
+  type:                 git
+  location:             https://github.com/input-output-hk/hedgehog-extras
+
+common aeson                        { build-depends: aeson                            >= 2.0.0.0 && < 2.3         }
+common aeson-pretty                 { build-depends: aeson-pretty                     >= 0.8.5   && < 0.9         }
+common async                        { build-depends: async                                          < 2.3         }
+common base                         { build-depends: base                             >= 4.12    && < 4.22        }
+common bytestring                   { build-depends: bytestring                                     < 0.13        }
+common containers                   { build-depends: containers                                     < 0.9         }
+common deepseq                      { build-depends: deepseq                                        < 1.6         }
+common Diff                         { build-depends: Diff                                           < 1.1         }
+common directory                    { build-depends: directory                                      < 1.4         }
+common exceptions                   { build-depends: exceptions                                     < 0.11        }
+common filepath                     { build-depends: filepath                                       < 1.6         }
+common hedgehog                     { build-depends: hedgehog                                       < 1.8         }
+common hedgehog-quickcheck          { build-depends: hedgehog-quickcheck                            < 0.2         }
+common http-conduit                 { build-depends: http-conduit                                   < 2.4         }
+common lifted-async                 { build-depends: lifted-async                                   < 0.12        }
+common lifted-base                  { build-depends: lifted-base                                    < 0.3         }
+common mmorph                       { build-depends: mmorph                                         < 1.3         }
+common monad-control                { build-depends: monad-control                                  < 1.1         }
+common mtl                          { build-depends: mtl                                            < 2.4         }
+common network                      { build-depends: network                                        < 3.3         }
+common process                      { build-depends: process                                        < 1.7         }
+common resourcet                    { build-depends: resourcet                                      < 1.4         }
+common retry                        { build-depends: retry                            >= 0.9     && < 0.10        }
+common stm                          { build-depends: stm                                            < 2.6         }
+common tar                          { build-depends: tar                              >= 0.7     && < 0.8         }
+common tasty                        { build-depends: tasty                                          < 1.6         }
+common tasty-discover               { build-depends: tasty-discover                   >= 5.0.2   && < 5.3         }
+common tasty-hedgehog               { build-depends: tasty-hedgehog                                 < 1.5         }
+common tasty-quickcheck             { build-depends: tasty-quickcheck                               < 0.11        }
+common temporary                    { build-depends: temporary                                      < 1.4         }
+common text                         { build-depends: text                                           < 2.2         }
+common time                         { build-depends: time                             >= 1.9.1   && < 1.16        }
+common transformers                 { build-depends: transformers                                   < 0.7         }
+common transformers-base            { build-depends: transformers-base                              < 0.5         }
+common unliftio                     { build-depends: unliftio                                       < 0.3         }
+common yaml                         { build-depends: yaml                                           < 0.12        }
+common zlib                         { build-depends: zlib                                           < 0.8         }
+
+common hedgehog-extras              { build-depends: hedgehog-extras                                              }
+
+common Win32
+  if os(windows)
+    build-depends:      Win32   >= 2.5.4.1 && < 2.15
+
+common project-config
+  default-language:     Haskell2010
+  default-extensions:   NoImplicitPrelude
+  ghc-options:          -Wall
+                        -Wcompat
+                        -Wincomplete-record-updates
+                        -Wincomplete-uni-patterns
+                        -Wpartial-fields
+                        -Wredundant-constraints
+                        -Wunused-packages
+
+library
+  import:               base, project-config,
+                        aeson-pretty,
+                        aeson,
+                        async,
+                        bytestring,
+                        containers,
+                        deepseq,
+                        Diff,
+                        directory,
+                        exceptions,
+                        filepath,
+                        hedgehog,
+                        http-conduit,
+                        lifted-async,
+                        lifted-base,
+                        mmorph,
+                        monad-control,
+                        mtl,
+                        network,
+                        process,
+                        resourcet,
+                        stm,
+                        tar,
+                        tasty,
+                        tasty-discover,
+                        tasty-hedgehog,
+                        temporary,
+                        text,
+                        time,
+                        transformers,
+                        transformers-base,
+                        unliftio,
+                        Win32,
+                        yaml,
+                        zlib,
+  hs-source-dirs:       src
+
+
+  if os(windows)
+    exposed-modules:    Hedgehog.Extras.Internal.Win32.NamedPipes
+  exposed-modules:      Hedgehog.Extras
+                        Hedgehog.Extras.Aeson
+                        Hedgehog.Extras.Internal.Cli
+                        Hedgehog.Extras.Internal.Orphans
+                        Hedgehog.Extras.Internal.Plan
+                        Hedgehog.Extras.Internal.Test.Integration
+                        Hedgehog.Extras.Stock
+                        Hedgehog.Extras.Stock.Aeson
+                        Hedgehog.Extras.Stock.CallStack
+                        Hedgehog.Extras.Stock.IO.File
+                        Hedgehog.Extras.Stock.IO.Network.NamedPipe
+                        Hedgehog.Extras.Stock.IO.Network.Port
+                        Hedgehog.Extras.Stock.IO.Network.Socket
+                        Hedgehog.Extras.Stock.IO.Network.Sprocket
+                        Hedgehog.Extras.Stock.IO.Process
+                        Hedgehog.Extras.Stock.Monad
+                        Hedgehog.Extras.Stock.OS
+                        Hedgehog.Extras.Stock.String
+                        Hedgehog.Extras.Stock.Time
+                        Hedgehog.Extras.Test
+                        Hedgehog.Extras.Test.Base
+                        Hedgehog.Extras.Test.Concurrent
+                        Hedgehog.Extras.Test.File
+                        Hedgehog.Extras.Test.Golden
+                        Hedgehog.Extras.Test.MonadAssertion
+                        Hedgehog.Extras.Test.Network
+                        Hedgehog.Extras.Test.Prim
+                        Hedgehog.Extras.Test.Process
+                        Hedgehog.Extras.Test.TestWatchdog
+                        Hedgehog.Extras.Test.Tripwire
+                        Hedgehog.Extras.Test.Unit
+
+test-suite hedgehog-extras-test
+  import:               base, project-config,
+                        directory,
+                        hedgehog,
+                        hedgehog-extras,
+                        lifted-base,
+                        network,
+                        process,
+                        resourcet,
+                        tasty,
+                        tasty-discover,
+                        tasty-hedgehog,
+                        transformers,
+                        time,
+  hs-source-dirs:       test
+  main-is:              hedgehog-extras-test.hs
+  type:                 exitcode-stdio-1.0
+
+  other-modules:        Hedgehog.Extras.Stock.IO.Network.PortSpec
+                        Hedgehog.Extras.Test.TestExpectFailure
+                        Hedgehog.Extras.Test.TestWatchdogSpec
+                        Hedgehog.Extras.Test.UnitSpec
+                        Hedgehog.Extras.Test.WorkspaceSpec
+
+  build-tool-depends:   tasty-discover:tasty-discover
+  ghc-options:          -threaded -rtsopts "-with-rtsopts=-N -T"
