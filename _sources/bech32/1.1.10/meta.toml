@@ -1,0 +1,3 @@
+timestamp = 2026-03-27T15:59:23Z
+github = { repo = "IntersectMBO/bech32", rev = "adbb4eb32069dea87b418ec126df1821b227b7f0" }
+subdir = 'bech32'
