@@ -1,0 +1,241 @@
+cabal-version: 2.2
+name: inline-r
+version: 1.0.2
+license: BSD-3-Clause
+license-file: LICENSE
+author: Mathieu Boespflug, Facundo Dominguez, Alexander Vershilov
+maintainer: Mathieu Boespflug <m@tweag.io>
+build-type: Simple
+Category: FFI
+Synopsis: Seamlessly call R from Haskell and vice versa. No FFI required.
+description:
+  For up to date Haddock documentation, please see
+  <http://www.stackage.org/package/inline-r>.
+homepage: https://tweag.github.io/HaskellR
+
+extra-source-files:
+  CHANGELOG.md
+  cbits/missing_r.h
+  tests/shootout/binarytrees.R
+  tests/shootout/fasta.R
+  tests/shootout/knucleotide.R
+  tests/shootout/fastaredux.R
+  tests/shootout/mandelbrot.R
+  tests/shootout/mandelbrot-noout.R
+  tests/shootout/nbody.R
+  tests/shootout/pidigits.R
+  tests/shootout/regexdna.R
+  tests/shootout/reversecomplement.R
+  tests/shootout/spectralnorm.R
+  tests/shootout/spectralnorm-math.R
+  tests/shootout/fannkuchredux.R
+  tests/R/fib.R
+  tests/R/fib-benchmark.R
+  ./R/collectAntis.R
+extra-tmp-files: inline-r.buildinfo
+
+source-repository head
+  type: git
+  location: git://github.com/tweag/HaskellR.git
+  subdir: inline-r
+
+common common-config
+  ghc-options: -Werror=unused-packages -Wall
+  default-language: Haskell2010
+
+common common-test-and-benchmark-config
+  import: common-config
+  ghc-options: -threaded
+  hs-source-dirs: tests
+
+common common-test-suite-deps
+  build-depends:
+    inline-r,
+    base >=4.6 && <5,
+    tasty-hunit >=0.4.1 && <0.11,
+
+common common-benchmark-deps
+  build-depends:
+    inline-r,
+    base >=4.6 && <5,
+    criterion >=0.8 && <1.7,
+
+library
+  import: common-config
+  exposed-modules:
+    Control.Memory.Region
+    Data.Vector.SEXP
+    Data.Vector.SEXP.Base
+    Data.Vector.SEXP.Mutable
+    Foreign.R
+    Foreign.R.Constraints
+    Foreign.R.Context
+    Foreign.R.Embedded
+    Foreign.R.Encoding
+    Foreign.R.Error
+    Foreign.R.Internal
+    Foreign.R.Parse
+    Foreign.R.Type
+    H.Prelude
+    H.Prelude.Interactive
+    Language.R
+    Language.R.Debug
+    Language.R.GC
+    Language.R.Globals
+    Language.R.HExp
+    Language.R.Instance
+    Language.R.Internal
+    Language.R.Internal.FunWrappers
+    Language.R.Internal.FunWrappers.TH
+    Language.R.Literal
+    Language.R.Matcher
+    Language.R.QQ
+  if !os(windows)
+    exposed-modules:
+      Foreign.R.EventLoop
+      Language.R.Event
+  other-modules:
+    Control.Monad.R.Class
+    Control.Monad.R.Internal
+    Data.Vector.SEXP.Mutable.Internal
+    Internal.Error
+  build-depends:
+    base >=4.7 && <5,
+    aeson >=0.6 && <2.3,
+    bytestring >=0.10 && <0.13,
+    containers >=0.5 && <0.8,
+    data-default-class >=0.1.2.0 && <0.3,
+    deepseq >=1.3 && <1.6,
+    exceptions >=0.6 && <1.1,
+    heredoc >=0.2 && <0.3,
+    inline-c >=0.6 && <0.10,
+    mtl >=2.1 && <2.4,
+    primitive >=0.5 && <0.10,
+    process >=1.2 && <1.7,
+    reflection >=2 && <2.2,
+    setenv >=0.1.1 && <0.2,
+    template-haskell >=2.8 && <2.23,
+    temporary >=1.2 && <1.4,
+    text >=0.11 && <2.2,
+    vector >=0.10 && <0.14,
+  if impl(ghc <9)
+    build-depends:
+      singletons >=2.7 && <3,
+  else
+    build-depends:
+      singletons >=3 && <3.1,
+      singletons-th >=3 && <3.5,
+  hs-source-dirs: src
+  includes: cbits/missing_r.h
+  c-sources: cbits/missing_r.c
+  cc-options: -Werror=incompatible-pointer-types
+  include-dirs: cbits
+  other-extensions:
+    CPP
+    ForeignFunctionInterface
+  if os(windows)
+    extra-libraries: R
+  else
+    build-depends: unix >= 2.6 && <2.9
+    pkgconfig-depends: libR >= 3.0
+  -- XXX -fcontext-stack=32 required on GHC >= 7.8 to allow foreign
+  -- export function -wrappers of high arities.
+  ghc-options: -freduction-depth=32
+  --- We don't use ticks for promoted constructors, because we use
+  --- promoted constructors heavily and because they confuse hsc2hs.
+  ghc-options: -fno-warn-unticked-promoted-constructors
+
+test-suite tests
+  import:
+    common-test-and-benchmark-config,
+    common-test-suite-deps,
+  type: exitcode-stdio-1.0
+  main-is: tests.hs
+  build-depends:
+    bytestring >=0.10 && <0.13,
+    directory >=1.2 && <1.4,
+    heredoc >=0.2 && <0.3,
+    ieee754 >=0.7 && <0.9,
+    quickcheck-assertions >=0.1.1 && <0.4,
+    singletons >=0.10 && <3.1,
+    tasty >=0.11 && <1.6,
+    tasty-expected-failure >=0.11 && <0.13,
+    tasty-hunit >=0.4.1 && <0.11,
+    tasty-quickcheck >=0.4.1 && <0.12,
+    temporary >=1.2 && <1.4,
+    vector >=0.12.3.1 && <0.14,
+  if !os(windows)
+    build-depends: unix >=2.5 && <2.9,
+  other-modules:
+    Test.GC
+    Test.FunPtr
+    Test.Constraints
+    Test.Event
+    Test.Regions
+    Test.Vector
+    Test.Matcher
+
+test-suite test-qq
+  import:
+    common-test-and-benchmark-config,
+    common-test-suite-deps,
+  type: exitcode-stdio-1.0
+  main-is: test-qq.hs
+  build-depends:
+    mtl >=2.0 && <2.4,
+    singletons >=0.9 && <3.1,
+    text >=0.11 && <2.2,
+
+test-suite test-shootout
+  import:
+    common-test-and-benchmark-config,
+    common-test-suite-deps,
+  type: exitcode-stdio-1.0
+  main-is: test-shootout.hs
+  other-modules: Test.Scripts
+  build-depends:
+    filepath >=1.3 && <1.6,
+    process >=1.2 && <1.7,
+    silently >=1.2 && <1.3,
+    tasty >=0.11 && <1.6,
+    template-haskell >=2.8 && <2.23,
+  if os(windows)
+    buildable: False
+
+test-suite test-env1
+  import:
+    common-test-and-benchmark-config,
+    common-test-suite-deps,
+  type: exitcode-stdio-1.0
+  main-is: test-env1.hs
+  build-depends:
+    tasty >=0.11 && <1.6,
+
+test-suite test-env2
+  import:
+    common-test-and-benchmark-config,
+    common-test-suite-deps,
+  type: exitcode-stdio-1.0
+  main-is: test-env2.hs
+  build-depends:
+    tasty >=0.11 && <1.6,
+
+benchmark bench-qq
+  import:
+    common-test-and-benchmark-config,
+    common-benchmark-deps,
+  main-is: bench-qq.hs
+  type: exitcode-stdio-1.0
+  build-depends:
+    filepath >=1.3 && <1.6,
+    template-haskell >=2.8 && <2.22,
+
+benchmark bench-hexp
+  import:
+    common-test-and-benchmark-config,
+    common-benchmark-deps,
+  main-is: bench-hexp.hs
+  type: exitcode-stdio-1.0
+  build-depends:
+    primitive >=0.5 && <0.10,
+    singletons >=2.7 && <3.1,
