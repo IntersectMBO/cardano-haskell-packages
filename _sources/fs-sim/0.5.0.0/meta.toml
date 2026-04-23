@@ -1,0 +1,3 @@
+timestamp = 2026-04-23T15:35:02Z
+github = { repo = "input-output-hk/fs-sim", rev = "6e50751964e2d44d102747490728dbcc3fa65bc1" }
+subdir = 'fs-sim'
