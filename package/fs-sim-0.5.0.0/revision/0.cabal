@@ -1,0 +1,116 @@
+cabal-version: 3.0
+name: fs-sim
+version: 0.5.0.0
+synopsis: Simulated file systems
+description: Simulated file systems.
+license: Apache-2.0
+license-files:
+  LICENSE
+  NOTICE
+
+copyright: 2019-2024 Input Output Global Inc (IOG)
+author: IOG Engineering Team
+maintainer: operations@iohk.io, Joris Dral (joris@well-typed.com)
+homepage: https://github.com/input-output-hk/fs-sim
+bug-reports: https://github.com/input-output-hk/fs-sim/issues
+category: Testing
+build-type: Simple
+extra-doc-files:
+  CHANGELOG.md
+  README.md
+
+tested-with: ghc ==9.2 || ==9.4 || ==9.6 || ==9.8 || ==9.10 || ==9.12 || ==9.14
+
+source-repository head
+  type: git
+  location: https://github.com/input-output-hk/fs-sim
+  subdir: fs-sim
+
+source-repository this
+  type: git
+  location: https://github.com/input-output-hk/fs-sim
+  subdir: fs-sim
+  tag: fs-sim-0.5.0.0
+
+library
+  hs-source-dirs: src
+  exposed-modules:
+    System.FS.Sim.Error
+    System.FS.Sim.FsTree
+    System.FS.Sim.MockFS
+    System.FS.Sim.Prim
+    System.FS.Sim.STM
+    System.FS.Sim.Stream
+
+  default-language: Haskell2010
+  build-depends:
+    QuickCheck ^>=2.13 || ^>=2.14 || ^>=2.15 || ^>=2.16 || ^>=2.17,
+    base >=4.16 && <4.23,
+    base16-bytestring ^>=0.1 || ^>=1.0,
+    bytestring ^>=0.10 || ^>=0.11 || ^>=0.12,
+    containers ^>=0.5 || ^>=0.6 || ^>=0.7 || ^>=0.8,
+    fs-api ^>=0.4,
+    io-classes ^>=1.6 || ^>=1.7 || ^>=1.8.0.1 || ^>=1.9 || ^>=1.10,
+    io-classes:strict-stm,
+    mtl ^>=2.2 || ^>=2.3,
+    primitive ^>=0.9,
+    safe-wild-cards ^>=1.0,
+    text ^>=1.2 || ^>=2.0 || ^>=2.1,
+
+  ghc-options:
+    -Wall
+    -Wcompat
+    -Wincomplete-uni-patterns
+    -Wincomplete-record-updates
+    -Wpartial-fields
+    -Widentities
+    -Wredundant-constraints
+    -Wmissing-export-lists
+    -Wunused-packages
+
+test-suite fs-sim-test
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Main.hs
+  other-modules:
+    Test.System.FS.Sim.Error
+    Test.System.FS.Sim.FsTree
+    Test.System.FS.Sim.Stream
+    Test.System.FS.StateMachine
+    Test.Util
+    Test.Util.RefEnv
+    Test.Util.WithEntryCounter
+
+  default-language: Haskell2010
+  build-depends:
+    QuickCheck,
+    base,
+    bifunctors,
+    bytestring,
+    containers,
+    deepseq,
+    fs-api,
+    fs-sim,
+    generics-sop,
+    io-classes:strict-stm,
+    pretty-show,
+    primitive,
+    quickcheck-state-machine >=0.10,
+    random,
+    tasty,
+    tasty-hunit,
+    tasty-quickcheck,
+    temporary,
+    text,
+
+  ghc-options:
+    -Wall
+    -Wcompat
+    -Wincomplete-uni-patterns
+    -Wincomplete-record-updates
+    -Wpartial-fields
+    -Widentities
+    -Wredundant-constraints
+    -Wmissing-export-lists
+    -Wunused-packages
+    -fno-ignore-asserts
