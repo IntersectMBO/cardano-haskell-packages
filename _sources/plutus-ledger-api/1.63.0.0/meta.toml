@@ -1,0 +1,3 @@
+timestamp = 2026-05-02T15:05:10Z
+github = { repo = "IntersectMBO/plutus", rev = "ac40fae4dea9dcad51b38a9c5c48148655cb13a2" }
+subdir = 'plutus-ledger-api'
