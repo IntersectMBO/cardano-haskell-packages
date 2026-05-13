@@ -1,0 +1,3 @@
+timestamp = 2026-05-13T16:23:27Z
+github = { repo = "cardano-scaling/haskell-accumulator", rev = "a05dc3d8590ad53bb4df3f8eabf33d5674eb5c5d" }
+subdir = 'haskell-accumulator'
