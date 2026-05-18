@@ -224,6 +224,7 @@
                 ouroboros-network.doHaddock = false;
                 cardano-diffusion.doHaddock = false;
                 cardano-ledger-shelley.doHaddock = false;
+                cardano-api.doHaddock = false;
               };
             })
           ];
