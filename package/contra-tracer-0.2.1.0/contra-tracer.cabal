@@ -1,0 +1,50 @@
+name:                contra-tracer
+version:             0.2.1.0
+synopsis:            Arrow and contravariant tracers
+description:         A simple interface for logging, tracing and monitoring
+license:             Apache-2.0
+license-files:       LICENSE
+author:              Alexander Vieth
+maintainer:          aovieth@gmail.com
+copyright:           2019-2021 Input Output (Hong Kong) Ltd., 2019-2021 Well-Typed LLP, 2019-2021 Alexander Vieth
+category:            Logging
+build-type:          Simple
+extra-source-files:  README.md CHANGELOG.md
+cabal-version:       >=1.10
+
+source-repository head
+  type: git
+  location: https://github.com/avieth/contra-tracer
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Control.Tracer
+                       Control.Tracer.Arrow
+
+  default-language:    Haskell2010
+  build-depends:       base < 5
+  if impl(ghc < 8.5)
+    build-depends:     contravariant
+  ghc-options:        -Wall
+                      -Wincomplete-uni-patterns
+                      -Wincomplete-record-updates
+                      -Wpartial-fields
+                      -Wredundant-constraints
+
+test-suite contra-tracer-tests
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test, src
+  main-is:             Main.hs
+  other-modules:
+      Test.Control.Tracer.Properties
+      Control.Tracer
+      Control.Tracer.Arrow
+  default-language:    Haskell2010
+
+  build-depends:
+      base < 5
+    , contra-tracer
+
+  if impl(ghc < 8.5)
+    build-depends:
+      contravariant
