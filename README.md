@@ -102,10 +102,18 @@ To use CHaP with `haskell.nix`, do the following:
 2. Setup a fetcher for the package repository. The easiest way is to use a flake input, such as:
 ```
 inputs.CHaP = {
-  url = "github:intersectmbo/cardano-haskell-packages?ref=repo";
+  url = "github:intersectmbo/cardano-haskell-packages?ref=index-only";
   flake = false;
 };
 ```
+The `index-only` branch mirrors `repo` but omits the source tarballs,
+which are not needed for plan resolution. haskell.nix will fetch each
+package source over HTTPS at build time via `pkgs.fetchurl` (keyed by
+URL + sha256, so binary cache hits are preserved). If you would rather
+fetch the source tarballs as part of the flake input itself, use
+`?ref=repo` — but note that this downloads the source for every package
+and every version in CHaP, including packages and versions your project
+does not use.
 3. Tell haskell-nix to map the CHaP url to the appropriate nix store path using the `inputMap` argument of one of [haskell.nix project functions](https://input-output-hk.github.io/haskell.nix/reference/library.html#top-level-attributes). Using `cabalProject` this would look like the following:
 ```
 cabalProject {
@@ -323,6 +331,17 @@ git worktree add _repo repo
 
 When using this later, remember to pull before creating a revision.
 
+There is also an `index-only` branch which mirrors `repo` but omits the
+`package/` subdirectory (all source tarballs) and `01-index.tar` (the
+uncompressed mirror of `01-index.tar.gz`, which cabal regenerates locally
+when it does its `v2-update`). Together those account for almost all of
+the branch size, and are not needed for plan resolution. The branch is
+updated automatically each time `repo` is updated. Consumers that only
+need the index — for example a Nix flake input used to compute a cabal
+install plan — can point at `index-only` to avoid the large download,
+and rely on `pkgs.fetchurl` (keyed by URL + sha256) to retrieve
+individual package sources at build time.
+
 #### ... by building it locally
 
 `foliage` is available in the Nix dev shell, which you can get into using `nix develop`.
@@ -442,7 +461,7 @@ Along with requiring linear history, this ensures that package repository that w
     - This happens twice, without Haddock and with Haddock.
 - Builds any newly added packages using the newly built repository.
     - This happens twice, without Haddock and with Haddock.
-- If on the master branch, deploys the package repository to the `repo` branch, along with some static web content.
+- If on the main branch, deploys the package repository to the `repo` branch, along with some static web content. The same tree minus the `package/` subdirectory is also deployed to the `index-only` branch for consumers that only need the index.
 
 #### Troubleshooting CI / GitHub Actions
 
