@@ -48,7 +48,7 @@
         "plutus-ledger-api"
         "cardano-ledger-api"
         "ouroboros-network"
-        "ouroboros-consensus-cardano"
+        "ouroboros-consensus"
         "cardano-api"
         "cardano-node"
 
