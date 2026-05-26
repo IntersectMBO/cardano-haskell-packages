@@ -37,7 +37,7 @@ let
           secure: True
 
         extra-packages: ${package-id}
-        constraints: ghc source
+        constraints: ghc source, validation < 1.2
         allow-newer: ghc:Cabal
       '';
       configureArgs = "--allow-boot-library-installs";
