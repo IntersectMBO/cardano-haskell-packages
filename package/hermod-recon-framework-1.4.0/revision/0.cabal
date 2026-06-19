@@ -1,0 +1,228 @@
+cabal-version:      3.4
+name:               hermod-recon-framework
+description:        Re(altime) Con(formance) Framework based on Linear Temporal Logic (LTL).
+category:           Testing
+copyright:          2026 Intersect.
+version:            1.4.0
+license:            Apache-2.0
+license-files:      LICENSE
+                    NOTICE
+author:             Ruslan Feizerakhmanov, Juergen Nicklisch, Michael Karg
+maintainer:         ruslan.feizerakhmanov@iohk.io
+
+build-type:         Simple
+extra-doc-files:
+    CHANGELOG.md
+    examples/cfgs/context.yaml
+    examples/cfgs/formulas.yaml
+    examples/extracts/ok-1.txt
+    examples/extracts/ok-2.txt
+    examples/extracts/ok-3.txt
+    examples/extracts/ok-4.txt
+    examples/extracts/ok-5.txt
+    examples/extracts/fail-1.txt
+    examples/extracts/fail-2.txt
+    examples/extracts/fail-3.txt
+    examples/extracts/fail-4.txt
+    examples/extracts/fail-5.txt
+    examples/extracts/fail-6.txt
+    docs/*.txt
+data-files:
+    README.md
+    recon-language-overview.md
+
+flag debug
+  description:          Enable some pure verbose debug traces.
+  default:              False
+  manual:               True
+
+common common
+    ghc-options:      -Wall
+
+    if impl(ghc >= 9.8)
+      ghc-options:
+        -Wno-x-partial
+
+    default-language: Haskell2010
+
+    default-extensions:
+      BangPatterns
+      FlexibleContexts
+      FunctionalDependencies
+      LambdaCase
+      MultiParamTypeClasses
+      NamedFieldPuns
+      NumericUnderscores
+      OverloadedRecordDot
+      OverloadedStrings
+      RecordWildCards
+      ScopedTypeVariables
+      StandaloneDeriving
+      TypeApplications
+
+      Strict
+
+    if flag(debug)
+      CPP-Options:        -DTRACE
+
+library
+    import:           common
+    exposed-modules:
+                      Hermod.ReCon.Common.Types
+                    , Hermod.ReCon.Common.Parser
+
+                    , Hermod.ReCon.LTL.Check
+                    , Hermod.ReCon.LTL.ContinuousFormula
+                    , Hermod.ReCon.LTL.Formula
+                    , Hermod.ReCon.LTL.Formula.Parser
+                    , Hermod.ReCon.LTL.Formula.Prec
+                    , Hermod.ReCon.LTL.Formula.Yaml
+                    , Hermod.ReCon.LTL.Formula.Pretty
+                    , Hermod.ReCon.LTL.Satisfy
+
+                    , Hermod.ReCon.Integer.Polynomial.Parser
+                    , Hermod.ReCon.Integer.Polynomial.Term
+                    , Hermod.ReCon.Integer.Polynomial.Value
+
+                    , Hermod.ReCon.Presburger.Decide
+                    , Hermod.ReCon.Presburger.Formula
+                    , Hermod.ReCon.Presburger.Parser
+
+                    , Hermod.ReCon.Trace.Event
+                    , Hermod.ReCon.Trace.Feed
+                    , Hermod.ReCon.Trace.Ingest
+
+    other-modules:
+                      Hermod.ReCon.LTL.Internal.Occurs
+                    , Hermod.ReCon.LTL.Internal.Progress
+                    , Hermod.ReCon.LTL.Internal.Rewrite
+                    , Hermod.ReCon.LTL.Internal.Subst
+                    , Hermod.ReCon.LTL.Internal.IR.HomogeneousFormula
+                    , Hermod.ReCon.LTL.Internal.IR.HomogeneousFormula.FinFree
+                    , Hermod.ReCon.Presburger.Internal.CooperQE
+                    , Hermod.ReCon.Presburger.Internal.IR.AffineDNF
+                    , Hermod.ReCon.Presburger.Internal.IR.CompNF
+                    , Hermod.ReCon.Presburger.Internal.IR.DNF
+                    , Hermod.ReCon.Presburger.Internal.IR.ForallFree
+                    , Hermod.ReCon.Presburger.Internal.IR.NegNF
+                    , Hermod.ReCon.Presburger.Internal.IR.NormAffineDNF
+                    , Hermod.ReCon.Presburger.Internal.IR.QuantifierFree
+    other-extensions:
+
+    build-depends:    base
+                    , containers
+                    , mtl
+                    , text
+                    , directory
+                    , trace-dispatcher
+                    , serialise
+                    , bytestring
+                    , time
+                    , stm
+                    , aeson
+                    , streaming
+                    , megaparsec
+                    , unagi-chan
+                    , yaml
+
+    hs-source-dirs:   src
+
+    ghc-options:      -O2
+
+
+executable hermod-recon
+    import:           common
+    main-is:          Hermod/ReCon.hs
+
+    ghc-options:      -O2
+                      -threaded
+                      -rtsopts
+                      -- limit to 2 cores for now
+                      "-with-rtsopts=-N2"
+
+    other-modules:
+        Hermod.ReCon.TraceMessage
+      , Hermod.ReCon.Cli
+    other-extensions:
+
+    -- Other library packages from which modules are imported.
+    build-depends:
+        base
+      , text
+      , containers
+      , hermod-recon-framework
+      , trace-dispatcher
+      , aeson
+      , streaming
+      , async
+      , optparse-applicative
+      , aeson-pretty
+      , ekg-core
+      , network
+      , hostname
+      , contra-tracer
+
+
+    -- Directories containing source files.
+    hs-source-dirs:   app
+
+executable hermod-recon-grep
+    import:           common
+    main-is:          Hermod/ReConGrep.hs
+
+    ghc-options:      -O2
+
+    build-depends:
+        base
+      , text
+      , containers
+      , bytestring
+      , aeson
+      , aeson-pretty
+      , mtl
+      , time
+      , hermod-recon-framework
+      , trace-dispatcher
+      , optparse-applicative
+
+    hs-source-dirs:   app
+
+test-suite hermod-recon-test
+  import: common
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Hermod/ReCon/Unit.hs
+  other-modules:
+      Hermod.ReCon.Integer.Polynomial.Semantics.Suite
+    , Hermod.ReCon.Integer.Polynomial.Syntax.Suite
+    , Hermod.ReCon.LTL.Semantics.Suite
+    , Hermod.ReCon.LTL.Syntax.Suite
+    , Hermod.ReCon.Presburger.Semantics.Suite
+    , Hermod.ReCon.Presburger.Syntax.Suite
+  build-depends:
+      base
+    , hermod-recon-framework
+    , containers
+    , tasty
+    , tasty-hunit
+    , text
+    , megaparsec
+
+test-suite hermod-recon-integration-test
+  import: common
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Hermod/ReCon/Integration.hs
+  other-modules:
+      Hermod.ReCon.Integration.Suite
+    , Paths_hermod_recon_framework
+  autogen-modules:
+      Paths_hermod_recon_framework
+  build-depends:
+      base
+    , hermod-recon-framework
+    , containers
+    , filepath
+    , tasty
+    , tasty-hunit
+    , text
