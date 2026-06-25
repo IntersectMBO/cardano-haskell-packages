@@ -186,3 +186,9 @@ _sources/scls-cardano            @tweag/functional-engineering
 _sources/scls-cbor               @tweag/functional-engineering
 _sources/scls-core               @tweag/functional-engineering
 _sources/scls-format             @tweag/functional-engineering
+
+# cardano-db-sync
+_sources/cardano-db              @IntersectMBO/core-tech-dbsync-maintainers
+_sources/cardano-db-sync         @IntersectMBO/core-tech-dbsync-maintainers
+_sources/cardano-db-tool         @IntersectMBO/core-tech-dbsync-maintainers
+_sources/cardano-smash-server    @IntersectMBO/core-tech-dbsync-maintainers
