@@ -282,6 +282,25 @@ jobs:
           git update-ref "refs/heads/repo" "$commitId"
           git push origin repo
 
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v22
+        with:
+          extra-conf: |
+            accept-flake-config = true
+
+      - name: Update CHaP flake input
+        run: |
+          # Restore the original checkout but leave the untracked _repo untouched
+          git restore --staged --worktree .
+          nix flake update CHaP
+          if git diff --quiet -- flake.lock; then
+           echo "flake.lock unchanged; skipping commit"
+           exit 0
+          fi
+          git add flake.lock
+          git commit -m 'Update CHaP flake input'
+          git push origin HEAD:${{ github.ref_name }}
+
       - name: Setup Pages
         uses: actions/configure-pages@v6
 
