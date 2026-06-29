@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    cardano-client-demo-0.1.0.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      cardano-client-demo-0.1.0.0
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>A simple demo cardano-node client application</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>This is intended to demonstrate how to write simple
+applications that interact with the cardano-node,
+using the cardano-api.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>IOHK</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>operations@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/cardano-node/tree/ebc7be471b30e5931b35f9bbc236d21c375b91bb/cardano-client-demo">https://github.com/input-output-hk/cardano-node</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>ebc7be471b30e5931b35f9bbc236d21c375b91bb</dd>
+          <dt>Subdir</dt>
+          <dd>cardano-client-demo</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2022-11-10T17:31:44Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>executable scan-blocks:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;cardano-api&quot;,&quot;filepath&quot;,&quot;time&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable scan-blocks-pipelined:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;cardano-api&quot;,&quot;cardano-ledger-byron&quot;,&quot;cardano-slotting&quot;,&quot;filepath&quot;,&quot;time&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable chain-sync-client-with-ledger-state:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;cardano-api&quot;,&quot;cardano-ledger-byron&quot;,&quot;cardano-slotting&quot;,&quot;ouroboros-consensus&quot;,&quot;ouroboros-consensus-cardano&quot;,&quot;filepath&quot;,&quot;sop-core&quot;,&quot;text&quot;,&quot;time&quot;,&quot;transformers&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable ledger-state:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;aeson&quot;,&quot;base16-bytestring&quot;,&quot;bytestring&quot;,&quot;containers&quot;,&quot;filepath&quot;,&quot;memory&quot;,&quot;mtl&quot;,&quot;text&quot;,&quot;time&quot;,&quot;transformers&quot;,&quot;transformers-except&quot;,&quot;yaml&quot;,&quot;cryptonite&quot;,&quot;cardano-api&quot;,&quot;cardano-binary&quot;,&quot;cardano-crypto-class&quot;,&quot;cardano-crypto-wrapper&quot;,&quot;cardano-ledger-byron&quot;,&quot;cardano-node&quot;,&quot;cardano-slotting&quot;,&quot;iohk-monitoring&quot;,&quot;ouroboros-network&quot;,&quot;ouroboros-consensus&quot;,&quot;ouroboros-consensus-cardano&quot;,&quot;ouroboros-consensus-byron&quot;,&quot;ouroboros-consensus-shelley&quot;,&quot;cardano-ledger-shelley&quot;,&quot;typed-protocols&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable stake-credential-history:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.14 &amp;&amp; &lt;4.15&quot;,&quot;base16-bytestring&quot;,&quot;binary&quot;,&quot;bech32&quot;,&quot;bytestring&quot;,&quot;cardano-ledger-alonzo&quot;,&quot;cardano-api&quot;,&quot;cardano-data&quot;,&quot;cardano-ledger-core&quot;,&quot;cardano-ledger-shelley&quot;,&quot;vector-map&quot;,&quot;cardano-slotting&quot;,&quot;containers&quot;,&quot;optparse-applicative&quot;,&quot;ouroboros-consensus-shelley&quot;,&quot;text&quot;,&quot;transformers&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>

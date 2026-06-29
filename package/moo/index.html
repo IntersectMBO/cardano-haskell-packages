@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    moo-1.2.0.0.0.0.1
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      moo-1.2.0.0.0.0.1
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Genetic algorithm library</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Moo library provides building blocks to build custom
+genetic algorithms in Haskell. They can be used to
+find solutions to optimization and search problems.
+
+Variants supported out of the box: binary (using
+bit-strings) and continuous (real-coded).
+Potentially supported variants: permutation,
+tree, hybrid encodings (require customizations).
+
+Binary GAs: binary and Gray encoding; point mutation;
+one-point, two-point, and uniform crossover.
+Continuous GAs: Gaussian mutation; BLX-α, UNDX, and
+SBX crossover.
+Selection operators: roulette, tournament, and
+stochastic universal sampling (SUS);
+with optional niching, ranking, and scaling.
+Replacement strategies: generational with elitism
+and steady state.
+Constrained optimization: random constrained
+initialization, death penalty, constrained
+selection without a penalty function.
+Multi-objective optimization: NSGA-II
+and constrained NSGA-II.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Sergey Astanin &lt;s.astanin@gmail.com&gt;</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>Sergey Astanin &lt;s.astanin@gmail.com&gt;</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>BSD3</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/input-output-hk/moo/tree/8c487714fbfdea66188fcb85053e7e292e0cc348">https://github.com/input-output-hk/moo</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>8c487714fbfdea66188fcb85053e7e292e0cc348</dd>
+                  </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2022-10-19T10:03:21Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library moo:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;base &gt;=4 &amp;&amp; &lt;5&quot;,&quot;MonadRandom&quot;,&quot;mersenne-random-pure64&quot;,&quot;gray-code &gt;=0.2.1&quot;,&quot;random &gt;=0.1&quot;,&quot;random-shuffle &gt;=0.0.2&quot;,&quot;mtl &gt;=2&quot;,&quot;time&quot;,&quot;array&quot;,&quot;parallel &gt;=3.0&quot;,&quot;vector&quot;,&quot;containers&quot;]</li>
+            </ul>
+                      </dd>
+          <dt>test-suite moo-tests:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;moo&quot;,&quot;base &lt;5&quot;,&quot;HUnit&quot;,&quot;random &gt;=0.1&quot;,&quot;random-shuffle &gt;=0.0.2&quot;,&quot;MonadRandom&quot;,&quot;mersenne-random-pure64&quot;,&quot;gray-code &gt;=0.2.1&quot;,&quot;mtl&quot;,&quot;time&quot;,&quot;array&quot;,&quot;containers&quot;,&quot;parallel &gt;=3.0&quot;,&quot;vector&quot;,&quot;containers&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
