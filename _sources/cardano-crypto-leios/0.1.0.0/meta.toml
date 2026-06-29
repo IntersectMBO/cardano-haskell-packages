@@ -1,0 +1,3 @@
+timestamp = 2026-06-29T12:04:42Z
+github = { repo = "intersectmbo/cardano-base", rev = "60827efde9e1790895039a8891f4bd06bf996401" }
+subdir = 'cardano-crypto-leios'
