@@ -269,6 +269,16 @@ jobs:
           git add --force _repo
           treeId=$(git write-tree --prefix=_repo)
 
+          # Build a tree mirroring `repo` but without the `package/` subdirectory
+          # (all source tarballs) and `01-index.tar` (the uncompressed mirror of
+          # `01-index.tar.gz`, which cabal regenerates locally during `v2-update`).
+          # Together those account for almost all of the branch size and are not
+          # needed for plan resolution. Consumers that only need the index (e.g.
+          # for `nix flake` inputs that compute a cabal plan) can use this branch
+          # to avoid the large download. We recompute via `git ls-tree | git mktree`
+          # so we never have to touch the working tree.
+          indexTreeId=$(git ls-tree "$treeId" | grep -Ev $'\t(package|01-index\\.tar)$' | git mktree)
+
           # the checkout action doesn't checkout all branches so we fetch
           # the repo branch, if the remote doesn't have it, it's ok we do
           # without
@@ -281,6 +291,14 @@ jobs:
           fi
           git update-ref "refs/heads/repo" "$commitId"
           git push origin repo
+
+          if git fetch --quiet origin index-only; then
+            indexCommitId=$(git commit-tree -p origin/index-only -m "Update from ${{ github.sha }}" "$indexTreeId")
+          else
+            indexCommitId=$(git commit-tree -m "Update from ${{ github.sha }}" "$indexTreeId")
+          fi
+          git update-ref "refs/heads/index-only" "$indexCommitId"
+          git push origin index-only
 
       - name: Setup Pages
         uses: actions/configure-pages@v6
