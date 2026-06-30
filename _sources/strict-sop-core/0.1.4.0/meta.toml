@@ -1,0 +1,3 @@
+timestamp = 2026-06-26T14:21:10Z
+github = { repo = "input-output-hk/sop-extras", rev = "145be0d1ee25a09add618dde8b90600f8d1293ca" }
+subdir = 'strict-sop-core'
