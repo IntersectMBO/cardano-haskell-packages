@@ -184,6 +184,37 @@ jobs:
           --override-input CHaP path:_repo
           --show-trace
 
+  check-existence:
+    runs-on: ubuntu-latest
+    needs:
+      - build-repo
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Download package metadata
+        uses: actions/download-artifact@v8
+        with:
+          name: package-metadata
+          path: .
+
+      - name: Check that new package names also exist on Hackage
+        run: |
+          pkg-names() { jq -r 'map(."pkg-name") | unique | .[]' "$@"; }
+
+          MISSING=$(mktemp); trap 'rm -f "$MISSING"' EXIT
+          LANG=C join -v2 <(pkg-names packages-old.json) <(pkg-names packages-new.json) |
+            xargs -r scripts/not-on-hackage.sh >"$MISSING"
+          [ -s "$MISSING" ] || exit 0
+
+          # Output a multi-line annotation
+          sed '1s/^/::error::/;$!s/$/%0A/' <<EOF | tr -d '\n'; echo
+          The following packages do not exist on Hackage:
+          $(sed 's/^/* /' "$MISSING")
+          Please ensure they are published or are candidates before adding them to CHaP
+          EOF
+
+          false # Fail
+
   deploy-check:
     runs-on: nixos
 
