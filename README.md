@@ -235,6 +235,21 @@ The script will:
 You can tell the script to override the package version either by passing
 the version explicitly or by adding a "revision number" (see below).
 
+#### New packages
+
+If this the first published version of the package, you will also need to create and upload
+a "Hackage candidate placeholder" for it. This is a dummy version of the package that is uploaded
+to Hackage as a candidate but never published there. This prevents unauthorized release of a
+Hackage package with the same name as the one on CHaP.
+
+Creating the placeholder is done for you automatically by `add-from-github.sh`, but you can also do
+it manually using `hackage-candidates/create-placeholders.sh`. Uploading is done using
+`hackage-candidates/upload-placeholders.sh`. Note that you will need Hackage uploading credentials,
+and will pass them to the script in the `HACKAGE_TOKEN` environment variable.
+
+CI checks that any newly-added packages already exist on Hackage, either as a candidate or as a
+published package. You will need to upload the placeholder before CI will succeed on your PR.
+
 ### How to add a new package metadata revision
 
 CHaP supports package metadata revisions just like Hackage. These allow you to provide an edited cabal
