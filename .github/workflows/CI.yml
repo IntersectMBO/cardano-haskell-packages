@@ -210,7 +210,8 @@ jobs:
           sed '1s/^/::error::/;$!s/$/%0A/' <<EOF | tr -d '\n'; echo
           The following packages do not exist on Hackage:
           $(sed 's/^/* /' "$MISSING")
-          Please ensure they are published or are candidates before adding them to CHaP
+          Please ensure they are published or are candidates before adding them to CHaP.
+          You can use the scripts in hackage-candidates/ to help with this.
           EOF
 
           false # Fail

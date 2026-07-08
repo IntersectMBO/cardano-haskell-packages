@@ -124,6 +124,12 @@ do_package() {
     return
   fi
 
+  if ! [[ -d "_sources/$PKG_NAME" ]] || ! find "_sources/$PKG_NAME" -maxdepth 2 -name meta.toml | grep -q .
+  then
+    log "Adding a Hackage candidate placeholder for $PKG_NAME"
+    hackage-candidates/create-placeholders.sh --no-commit "$PKG_NAME"
+  fi
+
   mkdir -p "$(dirname "$METAFILE")"
   render_meta "$TIMESTAMP" "$REPO_URL" "$REPO_REV" "$SUBDIR" >"$METAFILE"
   log "Written $METAFILE"
@@ -142,18 +148,51 @@ do_package() {
     diff -u "$CABAL_FILE" "$REV0FILE" >&2 || true
   fi
 
-  git commit -m"Added $PKG_ID" -m "From $REPO_URL at $REPO_REV"
+  echo "$PKG_ID"
 }
 
 WORKDIR=$("$SCRIPT_DIR"/fetch-github-cabal-files.sh "$REPO_URL" "$REPO_REV")
 
 if [[ ${#SUBDIRS[@]} -eq 0 ]]; then
-  do_package "$REPO_URL" "$REPO_REV" "" "$WORKDIR"
-else
-  for subdir in "${SUBDIRS[@]}"; do
-    do_package "$REPO_URL" "$REPO_REV" "$subdir" "$WORKDIR"
+  SUBDIRS+=("")
+fi
+
+mapfile -t PKG_IDS < <(
+  for SUBDIR in "${SUBDIRS[@]}"; do
+    do_package "$REPO_URL" "$REPO_REV" "$SUBDIR" "$WORKDIR"
   done
+)
+
+# Fail unless all the subdirs produced a package
+[[ ${#PKG_IDS[@]} -eq ${#SUBDIRS[@]} ]]
+
+if [[ ${#PKG_IDS[@]} -gt 1 ]]
+then
+  git commit \
+    -m "Added packages from $(basename "$REPO_URL" .git)" \
+    -m "$(printf '* %s\n' "${PKG_IDS[@]}")" \
+    -m "From $REPO_URL at $REPO_REV"
+elif [[ ${#PKG_IDS[@]} -gt 0 ]]
+then
+  git commit \
+    -m "Added ${PKG_IDS[*]}" \
+    -m "From $REPO_URL at $REPO_REV"
 fi
 
 log "Removing work directory $WORKDIR"
 rm -rf "$WORKDIR"
+
+git log -1 --name-status
+
+NEW_CANDIDATES=$(git log -1 --name-only --format= | grep ^hackage-candidates/ | xargs sed -n '/^name: */Is///p')
+
+if [[ -n $NEW_CANDIDATES ]]
+then
+  log ""
+  log "**** New Hackage candidates were created ****"
+  log ""
+  log "Please remember to upload them using"
+  log ""
+  log "hackage-candidates/upload-placeholders.sh \\"
+  sed 's/^/  /;$!s/$/ \\/' <<<"$NEW_CANDIDATES" >&2
+fi
