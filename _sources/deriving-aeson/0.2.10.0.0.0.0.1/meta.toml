@@ -1,3 +1,2 @@
 timestamp = 2026-07-13T07:20:00Z
 github = { repo = "fumieval/deriving-aeson", rev = "b866d88e591f56e9207de590f92d4936db51eb57" }
-force-version = true

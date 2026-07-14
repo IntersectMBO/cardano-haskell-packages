@@ -1,4 +1,4 @@
-Allow aeson 2.3.
+Allow aeson 2.3 (CHaP-only patched release).
 
 deriving-aeson-0.2.10 (the latest release on Hackage) caps aeson <2.3,
 which makes it impossible to solve the plutus >=1.66 packages, whose
@@ -6,11 +6,21 @@ libraries require aeson >=2.3. Upstream has not (yet) published a
 release or revision allowing aeson 2.3; the plutus repo itself builds
 with `allow-newer: deriving-aeson:aeson`, which confirms compatibility.
 
-This CHaP-only patched version can be deprecated once upstream releases
-a version (or revises 0.2.10) with aeson 2.3 support.
+The version is bumped to 0.2.10.0.0.0.0.1 following the CHaP convention
+for patched Hackage packages, so it can never collide with a future
+upstream release. This patched version can be deprecated once upstream
+releases a version (or revises 0.2.10) with aeson 2.3 support.
 
 --- a/deriving-aeson.cabal
 +++ b/deriving-aeson.cabal
+@@ -1,6 +1,6 @@
+ cabal-version:       2.4
+ name:                deriving-aeson
+-version:             0.2.10
++version:             0.2.10.0.0.0.0.1
+ synopsis:            Type driven generic aeson instance customisation
+ description:         This package provides a newtype wrapper with
+   FromJSON/ToJSON instances customisable via a phantom type parameter.
 @@ -23,7 +23,7 @@ library
    exposed-modules:
      Deriving.Aeson
