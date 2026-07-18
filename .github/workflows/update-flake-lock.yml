@@ -3,24 +3,46 @@ name: Bump package indices
 on:
   workflow_dispatch: # allows manual triggering
   schedule:
-    - cron: '0 0 * * 0' # runs weekly on Sunday at 00:00
+    - cron: '14 3 * * 0' # runs weekly on Sunday at 03:14 UTC
 
 jobs:
   lockfile:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
+
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v22
+        uses: cachix/install-nix-action@v31
         with:
-          extra-conf: |
+          extra_nix_config: |
             accept-flake-config = true
+
       - name: Update flake.lock
-        uses: DeterminateSystems/update-flake-lock@v28
-        with:
-          token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
-          inputs: hackage-nix CHaP
-          pr-labels: |
-            dependencies
-            automated
+        env:
+          TARGET_BRANCH: ${{ github.ref_name }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -x
+
+          # See https://github.com/orgs/community/discussions/26560 and https://github.com/actions/checkout/issues/13
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git checkout -b update-flake-inputs
+
+          nix flake update CHaP hackage-nix \
+            --commit-lock-file --commit-lockfile-summary 'Update CHaP and hackage-nix flake inputs'
+
+          git push -fu origin update-flake-inputs
+          git fetch origin "$TARGET_BRANCH:refs/remotes/origin/$TARGET_BRANCH"
+
+          if EXISTING_PR=$(gh pr view update-flake-inputs --json number --jq .number)
+          then
+            gh pr edit "$EXISTING_PR" -b "$(git log -1 --format='%b')"
+          else
+            gh pr create -B "$TARGET_BRANCH" --fill-first -l dependencies,automated
+          fi
