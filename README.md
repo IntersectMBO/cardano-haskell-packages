@@ -117,7 +117,7 @@ cabalProject {
 To build some of the pacakges from CHaP, some C libraries will need to be installed. If you don't have those libraries installed cabal may pick an older library version that might not compile. An easy way to add those libraries is using the overlays provided by [iohk-nix](https://github.com/input-output-hk/iohk-nix). For example `plutus-core==1.21.0.0` depends on `libblst`, `haskell-nix-crypto` and `crypto` are the two overlays that would make it available during the build.
 
 When you want to update the state of CHaP, you can simply update the flake input
-(in the example above you would run `nix flake lock --update-input CHaP`).
+(in the example above you would run `nix flake update CHaP`).
 
 If you have CHaP configured correctly, then when you run `cabal build` from inside a `haskell.nix`
 shell, you should not see any of the packages in CHaP being built by cabal.
@@ -295,7 +295,7 @@ Ideally, include the conditions under which we can deprecate it, e.g. "can depre
 
 ### How to update Hackage index used by CHaP
 
-If one of your packages requires a newer version of a package published on Hackage, you will need to run: `nix flake lock --update-input hackage-nix`.
+If one of your packages requires a newer version of a package published on Hackage, you will need to run: `nix flake update hackage-nix`.
 [`hackage.nix`] is automatically updated from Hackage once per day.
 If things still don't work because the version of the package is not available you'll need either wait for the automatic update or make a PR to [`hackage.nix`] first and then rerun the above command.
 
