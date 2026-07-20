@@ -4,3 +4,7 @@ github = { repo = "input-output-hk/hedgehog-extras", rev = "c1130836a55f662b17d2
 [[revisions]]
 number = 1
 timestamp = 2026-05-28T05:27:06Z
+
+[[revisions]]
+number = 2
+timestamp = 2026-07-20T00:54:09Z
