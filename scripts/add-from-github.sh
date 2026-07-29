@@ -184,7 +184,7 @@ rm -rf "$WORKDIR"
 
 git log -1 --name-status
 
-NEW_CANDIDATES=$(git log -1 --name-only --format= | grep ^hackage-candidates/ | xargs sed -n '/^name: */Is///p')
+NEW_CANDIDATES=$(git log --name-only --format= main.. | { grep ^hackage-candidates/ || true; } | xargs sed -n '/^name: */Is///p')
 
 if [[ -n $NEW_CANDIDATES ]]
 then
