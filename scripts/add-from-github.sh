@@ -182,9 +182,9 @@ fi
 log "Removing work directory $WORKDIR"
 rm -rf "$WORKDIR"
 
-git log -1 --name-status
+git log --name-status @^..
 
-NEW_CANDIDATES=$(git log --name-only --format= main.. | { grep ^hackage-candidates/ || true; } | xargs sed -n '/^name: */Is///p')
+NEW_CANDIDATES=$(git log --name-only --format= @^.. hackage-candidates/ | xargs -r -d'\n' sed -n '/^name: */Is///p')
 
 if [[ -n $NEW_CANDIDATES ]]
 then
