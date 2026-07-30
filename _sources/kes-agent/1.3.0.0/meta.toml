@@ -1,0 +1,3 @@
+timestamp = 2026-07-30T09:29:13Z
+github = { repo = "input-output-hk/kes-agent", rev = "19ffbb01d4a6514b67af62d59b3cd4e0b4682beb" }
+subdir = 'kes-agent'
