@@ -35,8 +35,11 @@ done
 
 PLURAL=; [[ ${#PACKAGES[@]} -eq 1 ]] || PLURAL=s
 
-if [[ -z "$NO_COMMIT" ]]
+if [[ -z "${NO_COMMIT-}" ]]
 then
   git commit -m "$(printf "Add Hackage candidate placeholder%s for %s" "$PLURAL" "${PACKAGES[*]}")"
   git log -1 --name-status
+  echo >&2
+  echo >&2 "**** Please remember to upload these candidates using"
+  echo >&2 "**** hackage-candidates/upload-placeholders.sh ${PACKAGES[@]}"
 fi
