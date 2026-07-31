@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    cardano-config-1.0.0.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      cardano-config-1.0.0.0
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Cardano-node configuration parsing</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Datatypes and parsers for optparse-applicative and from YAML/JSON for the @cardano-node@ configuration.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Javier Sagredo</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>javier.sagredo@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/IntersectMBO/cardano-config/tree/9fcad6480539c933b8f4e99d61db91d9fe9ae4c2">https://github.com/IntersectMBO/cardano-config</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>9fcad6480539c933b8f4e99d61db91d9fe9ae4c2</dd>
+                  </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2026-07-31T13:58:39Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>library cardano-config:</dt>
+          <dd>
+            <ul class="build-depends">
+            <li>[&quot;cardano-config:internal&quot;]</li>
+            </ul>
+                      </dd>
+          <dt>library internal:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson ^&gt;=2.2 || ^&gt;=2.3&quot;,&quot;autodocodec ^&gt;=0.6&quot;,&quot;autodocodec-schema ^&gt;=0.2&quot;,&quot;base &gt;=4.18 &amp;&amp; &lt;4.23&quot;,&quot;bytestring ^&gt;=0.12.2&quot;,&quot;canonical-json ^&gt;=0.6&quot;,&quot;cardano-crypto-class ^&gt;=2.5&quot;,&quot;cardano-crypto-wrapper ^&gt;=1.7&quot;,&quot;cardano-ledger-alonzo ^&gt;=1.16&quot;,&quot;cardano-ledger-byron ^&gt;=1.3&quot;,&quot;cardano-ledger-conway ^&gt;=1.23&quot;,&quot;cardano-ledger-core ^&gt;=1.21&quot;,&quot;cardano-ledger-dijkstra ^&gt;=0.3&quot;,&quot;cardano-ledger-shelley ^&gt;=1.19&quot;,&quot;containers ^&gt;=0.6 || ^&gt;=0.7 || ^&gt;=0.8&quot;,&quot;data-default ^&gt;=0.8&quot;,&quot;directory ^&gt;=1.3.10&quot;,&quot;filepath ^&gt;=1.5.4&quot;,&quot;iproute ^&gt;=1.7.15&quot;,&quot;network ^&gt;=3.2.8&quot;,&quot;network-uri ^&gt;=2.6.4&quot;,&quot;optparse-applicative ^&gt;=0.19&quot;,&quot;scientific ^&gt;=0.3.8&quot;,&quot;text ^&gt;=2.1.3&quot;,&quot;time ^&gt;=1.14 || ^&gt;=1.15&quot;,&quot;trace-dispatcher ^&gt;=2.13&quot;,&quot;transformers ^&gt;=0.6.1&quot;,&quot;yaml ^&gt;=0.11.11&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>library commands:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson&quot;,&quot;aeson-pretty ^&gt;=0.8.11&quot;,&quot;base&quot;,&quot;bytestring&quot;,&quot;cardano-config:internal&quot;,&quot;optparse-applicative&quot;,&quot;safe-exceptions ^&gt;=0.1.7&quot;,&quot;text&quot;,&quot;yaml&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable cardano-config:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base&quot;,&quot;cardano-config:commands&quot;,&quot;optparse-applicative&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite cardano-config-test:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson&quot;,&quot;base&quot;,&quot;cardano-config:internal&quot;,&quot;cardano-crypto-class&quot;,&quot;cardano-crypto-wrapper&quot;,&quot;cardano-ledger-alonzo&quot;,&quot;cardano-ledger-conway&quot;,&quot;cardano-ledger-core&quot;,&quot;cardano-ledger-dijkstra&quot;,&quot;cardano-ledger-shelley&quot;,&quot;optparse-applicative&quot;,&quot;tasty&quot;,&quot;tasty-hunit&quot;,&quot;text&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>
