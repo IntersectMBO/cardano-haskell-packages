@@ -30,7 +30,7 @@ library
         base >=4.11 && <5,
         containers,
         deepseq,
-        nothunks,
+        nothunks <0.3.2,
         primitive,
         tree-diff,
         vector,

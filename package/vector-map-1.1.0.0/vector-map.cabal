@@ -31,7 +31,7 @@ library
         aeson,
         containers,
         deepseq,
-        nothunks,
+        nothunks <0.3.2,
         primitive,
         vector,
         vector-algorithms
