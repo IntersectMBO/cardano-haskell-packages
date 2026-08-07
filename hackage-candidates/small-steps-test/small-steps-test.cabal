@@ -1,0 +1,22 @@
+cabal-version: 3.0
+name: small-steps-test
+version: 0.0.0.0
+license: Apache-2.0
+maintainer: operations@iohk.io
+author: IOHK
+homepage: https://github.com/intersectmbo/cardano-haskell-packages/
+synopsis: Candidate package that prevents unauthorized release of 'small-steps-test'
+category: Control
+build-type: Simple
+
+source-repository head
+  type: git
+  location: https://github.com/intersectmbo/cardano-haskell-packages
+  subdir: hackage-candidates/small-steps-test
+
+library
+  default-language: Haskell2010
+  build-depends:
+    base >=1 && <100,
+
+  buildable: False

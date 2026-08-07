@@ -17,7 +17,7 @@ jobs:
   shellcheck:
     runs-on: nixos
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Run shellcheck on scripts/*.sh
         run: nix-shell -I nixpkgs=https://github.com/nixos/nixpkgs/archive/release-23.05.tar.gz -p shellcheck --run 'shellcheck scripts/*.sh'
         
@@ -25,7 +25,7 @@ jobs:
     runs-on: nixos
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0 # the check script below needs the whole history
 
@@ -37,11 +37,11 @@ jobs:
 
     steps:
       - name: Checkout main
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: main
 
-      - uses: actions/cache@v5
+      - uses: actions/cache@v6
         with:
           path: _cache
           key: 1 # bump to refresh
@@ -66,7 +66,7 @@ jobs:
           cp _repo-main/foliage/packages.json packages-old.json
 
       - name: Checkout tip commit
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           clean: false
 
@@ -116,7 +116,7 @@ jobs:
       - build-repo
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Download built repository
         uses: actions/download-artifact@v8
@@ -145,7 +145,7 @@ jobs:
       - build-repo
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Download built repository
         uses: actions/download-artifact@v8
@@ -184,6 +184,38 @@ jobs:
           --override-input CHaP path:_repo
           --show-trace
 
+  check-existence:
+    runs-on: ubuntu-latest
+    needs:
+      - build-repo
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Download package metadata
+        uses: actions/download-artifact@v8
+        with:
+          name: package-metadata
+          path: .
+
+      - name: Check that new package names also exist on Hackage
+        run: |
+          pkg-names() { jq -r 'map(."pkg-name") | unique | .[]' "$@"; }
+
+          MISSING=$(mktemp); trap 'rm -f "$MISSING"' EXIT
+          LANG=C join -v2 <(pkg-names packages-old.json) <(pkg-names packages-new.json) |
+            xargs -r scripts/not-on-hackage.sh >"$MISSING"
+          [ -s "$MISSING" ] || exit 0
+
+          # Output a multi-line annotation
+          sed '1s/^/::error::/;$!s/$/%0A/' <<EOF | tr -d '\n'; echo
+          The following packages do not exist on Hackage:
+          $(sed 's/^/* /' "$MISSING")
+          Please ensure they are published or are candidates before adding them to CHaP.
+          You can use the scripts in hackage-candidates/ to help with this.
+          EOF
+
+          false # Fail
+
   deploy-check:
     runs-on: nixos
 
@@ -192,11 +224,11 @@ jobs:
       - build-repo
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           path: src
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           path: repo
           ref: repo
@@ -245,7 +277,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Download built repository
         uses: actions/download-artifact@v8
@@ -301,13 +333,13 @@ jobs:
           git push origin index-only
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _repo
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

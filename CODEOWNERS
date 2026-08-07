@@ -11,6 +11,7 @@ _sources/bech32                     @input-output-hk/core-tech-release
 _sources/cardano-crypto             @input-output-hk/core-tech-release
 _sources/cardano-crypto-class       @input-output-hk/core-tech-release
 _sources/cardano-crypto-praos       @input-output-hk/core-tech-release
+_sources/cardano-crypto-leios       @input-output-hk/core-tech-release @input-output-hk/team-leios @ch1bo
 _sources/measures                   @input-output-hk/core-tech-release
 _sources/cardano-slotting           @input-output-hk/core-tech-release
 _sources/cardano-mempool            @input-output-hk/core-tech-release
