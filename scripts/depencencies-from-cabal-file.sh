@@ -14,7 +14,7 @@ if [ ! -f "$FILE_TO_PARSE" ]; then
     exit 1
 fi
 
-# Perl script to extract dependencies 
+# Perl script to extract dependencies
 perl -e '
   use strict;
   use warnings;
@@ -51,7 +51,7 @@ perl -e '
     if ($line =~ $start_tag_re) {
       $state = 1;
       $line =~ s/$start_tag_re//i;
-    } else { 
+    } else {
       if ($line =~ $other_start_tag_re) {
         $state = 0;
       }

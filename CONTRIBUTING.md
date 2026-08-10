@@ -7,7 +7,7 @@ generally important topics, so read that first.
 
 ## Core maintainers
 
-The core maintainers of the project are the members of the 
+The core maintainers of the project are the members of the
 @input-output-hk/cardano-haskell-packages-trustees Github team.
 
 The responsibilities of the maintainers are both maintaining the project's
@@ -20,10 +20,10 @@ infrastructure, but also keeping the package repository healthy. That means
       a patched version of a Hackage package.
 
 The maintainers do _not_ have any authority over package maintainers when it
-comes to deciding how to release, revise, or deprecate their own packages, 
+comes to deciding how to release, revise, or deprecate their own packages,
 although it may be a good idea to advise them.
 
-The goal with the infrastructure should be to make it easy for users to 
+The goal with the infrastructure should be to make it easy for users to
 use, and hard for them to do the wrong thing. Ideally the project maintainers
 should not have to get involved often, if at all.
 
@@ -48,12 +48,12 @@ order to build the packages, and we cannot currently do that purely in
 Nix. So we build it "impurely" in GHA, and then trigger the Nix build
 after that.
 
-Otherwise we would probably use Hydra for building packages, which 
+Otherwise we would probably use Hydra for building packages, which
 would be more convenient.
 
 ### nixbuild.net
 
 nixbuild.net requires an access token to use. At the moment we are
-using a token issued to @michaelpj. 
+using a token issued to @michaelpj.
 
 For any larger issues with nixbuild.net, contact @shlevy.
