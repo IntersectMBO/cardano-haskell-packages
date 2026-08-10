@@ -3,7 +3,7 @@
 
 usage() {
     echo "This script generates a dependency graph among the packages in"
-    echo "the CHaP repository. It may have inaccuracies but it is meant to" 
+    echo "the CHaP repository. It may have inaccuracies but it is meant to"
     echo "serve as a map and to be easy and quick to generate."
     echo -e
     echo "Usage: $0 [{-p <path_to_directory>|-h>}]"
@@ -43,7 +43,7 @@ is_version_more_recent() {
   return 1
 }
 
-declare -A packages 
+declare -A packages
 declare -A repos
 declare -A versions
 declare -A cabal_files
@@ -123,7 +123,7 @@ while IFS= read -r line; do
   add_to_packages "$(basename "$(ls "$DIR"/repos/"$revision"/"$package"/*.cabal)" .cabal)" "$repo" "$version" "$(ls "$DIR"/repos/"$revision"/"$package"/*.cabal)"
 done < "$DIR/package-revs.txt"
 
-# Sort packages by repo and extract dependency list 
+# Sort packages by repo and extract dependency list
 echo "Creating package list sorted by repo in: $DIR/repo_package_cabal.txt"
 rm -f "$DIR/repo_package_cabal_unordered.txt"
 for package in "${!packages[@]}"; do
@@ -132,12 +132,12 @@ for package in "${!packages[@]}"; do
     if [[ -f "$cabal_file" ]]; then
       package_deps=$("scripts/depencencies-from-cabal-file.sh" "$cabal_file" | sort -u)
       dependencies["$package"]=$(echo "$package_deps" | tr '\n' ' ')
-    fi 
+    fi
 done
 sort "$DIR/repo_package_cabal_unordered.txt" > "$DIR/repo_package_cabal.txt"
 rm -f "$DIR/repo_package_cabal_unordered.txt"
 
-# Now we generate the dot graph 
+# Now we generate the dot graph
 DOT_FILE="$DIR/dependencies.dot"
 echo "Generating dot dependency graph in: $DOT_FILE"
 rm -f "$DOT_FILE"

@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v7
       - name: Run shellcheck on scripts/*.sh
         run: nix-shell -I nixpkgs=https://github.com/nixos/nixpkgs/archive/release-23.05.tar.gz -p shellcheck --run 'shellcheck scripts/*.sh'
-        
+
   check:
     runs-on: nixos
 
@@ -54,7 +54,7 @@ jobs:
             echo "Could not access repository secret keys (PR is coming from a fork?)"
             echo "Generating fresh keys for this run"
             nix develop -c foliage create-keys
-          else 
+          else
             mkdir _keys
             echo "$KEYS" | base64 -d | tar xvz -C _keys
           fi
@@ -100,7 +100,7 @@ jobs:
             packages-old.json
             packages-new.json
 
-      # Note: we use the check script from the tip so we pick up changes 
+      # Note: we use the check script from the tip so we pick up changes
       # to the script from the PR itself.
       - name: Check new index is an extension of the old index
         run: |
@@ -129,12 +129,12 @@ jobs:
           tar xf _repo.tar -C _repo
 
       - name: Build smoke test packages
-        # The > is the "YAML folded string" marker, which replaces 
-        # newlines with spaces, since the usual bash idiom of \ 
+        # The > is the "YAML folded string" marker, which replaces
+        # newlines with spaces, since the usual bash idiom of \
         # doesn't work for some reason
         run: >
           nix build .#allSmokeTestPackages
-          -L 
+          -L
           --override-input CHaP path:_repo
           --show-trace
 
@@ -256,7 +256,7 @@ jobs:
     # This job is fine to run on GitHub provided (free) runners.
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: 
+    needs:
       - check
       - build-repo
       - deploy-check
