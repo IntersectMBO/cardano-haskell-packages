@@ -1,0 +1,3 @@
+timestamp = 2026-08-27T14:00:00Z
+github = { repo = "IntersectMBO/cardano-node", rev = "94ec4195f15f1fd290ab647be5e518b4e8b82e39" }
+subdir = 'cardano-submit-api'
