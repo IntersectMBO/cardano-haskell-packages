@@ -1,0 +1,3 @@
+timestamp = 2025-03-27T13:44:12Z
+github = { repo = "cardano-foundation/cardano-wallet", rev = "9a7baf3ff48bc63c407c19b20735923587382767" }
+subdir = 'lib/coin-selection'
