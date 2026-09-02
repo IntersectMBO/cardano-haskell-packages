@@ -1,0 +1,3 @@
+timestamp = 2026-09-02T08:49:12Z
+github = { repo = "IntersectMBO/dmq-node", rev = "40dec23ae9d99cea7e7fd62f8a925ad5e3786ca1" }
+subdir = 'dmq-node'
