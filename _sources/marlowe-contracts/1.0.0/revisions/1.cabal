@@ -1,0 +1,112 @@
+cabal-version:   3.4
+name:            marlowe-contracts
+version:         1.0.0
+license:         Apache-2.0
+license-files:
+  LICENSE
+  NOTICE
+
+build-type:      Simple
+maintainer:      yves.hauser@iohk.io
+stability:       experimental
+author:          Yves Hauser
+synopsis:        Collection of Marlowe contract examples
+description:     Collection of Marlowe contract examples
+category:        Language
+extra-doc-files: ReadMe.md
+
+source-repository head
+  type:     git
+  location: https://github.com/input-output-hk/marlowe-cardano
+  subdir:   marlowe-contracts
+
+flag defer-plugin-errors
+  description:
+    Defer errors from the plugin, useful for things like Haddock that can't handle it.
+
+  default:     False
+  manual:      True
+
+common lang
+  default-language:   Haskell2010
+  default-extensions:
+    DeriveFoldable
+    DeriveFunctor
+    DeriveGeneric
+    DeriveLift
+    DeriveTraversable
+    ExplicitForAll
+    ScopedTypeVariables
+    StandaloneDeriving
+
+  ghc-options:
+    -Wall -Wnoncanonical-monad-instances -Wincomplete-uni-patterns
+    -Wincomplete-record-updates -Wredundant-constraints -Widentities
+
+  if flag(defer-plugin-errors)
+    ghc-options: -fplugin-opt PlutusTx.Plugin:defer-errors
+
+library
+  import:          lang
+  hs-source-dirs:  src
+  exposed-modules:
+    Marlowe.Contracts
+    Marlowe.Contracts.ChunkedValueTransfer
+    Marlowe.Contracts.Common
+    Marlowe.Contracts.Escrow
+    Marlowe.Contracts.Forward
+    Marlowe.Contracts.Futures
+    Marlowe.Contracts.Options
+    Marlowe.Contracts.Raffle
+    Marlowe.Contracts.StructuredProducts
+    Marlowe.Contracts.Swap
+    Marlowe.Contracts.Trivial
+    Marlowe.Contracts.UTC.Common
+    Marlowe.Contracts.UTC.CouponBond
+    Marlowe.Contracts.UTC.Forward
+    Marlowe.Contracts.UTC.Options
+    Marlowe.Contracts.UTC.StructuredProducts
+    Marlowe.Contracts.UTC.Swap
+    Marlowe.Contracts.UTC.ZeroCouponBond
+    Marlowe.Contracts.ZeroCouponBond
+
+  other-modules:
+  build-depends:
+    , aeson
+    , base >=4.9 && <5
+    , containers
+    , ilist
+    , marlowe-cardano
+    , marlowe-object
+    , plutus-ledger-api ^>=1.21
+    , plutus-tx ^>=1.21
+    , split
+    , text
+    , time
+
+test-suite marlowe-contracts-test
+  import:         lang
+  hs-source-dirs: test
+  type:           exitcode-stdio-1.0
+  main-is:        Spec.hs
+  other-modules:
+    Spec.Marlowe.Analysis
+    Spec.Marlowe.Contracts
+
+  build-depends:
+    , base >=4.9 && <5
+    , bytestring
+    , marlowe-cardano
+    , marlowe-contracts
+    , marlowe-object
+    , plutus-ledger-ada
+    , plutus-ledger-api
+    , plutus-tx
+    , QuickCheck
+    , tasty
+    , tasty-hunit
+    , tasty-quickcheck
+    , text
+    , time
+    , unordered-containers
+    , uuid
