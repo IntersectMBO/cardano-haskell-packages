@@ -1,0 +1,169 @@
+cabal-version: 3.0
+
+name:                   hermod-tracing-core
+version:                1.0.0
+synopsis:               Modern, modular, configurable tracing and metrics system
+description:            This is Hermod's core package and API for development of simple and efficient tracers
+                        around the arrow based contra-tracer package
+category:               System,
+                        Logging,
+                        Tracing,
+                        Metrics,
+copyright:              2020-2023 Input Output Global Inc (IOG), 2023-2026 Intersect.
+author:                 Juergen Nicklisch, Michael Karg, Ruslan Feizerakhmanov
+maintainer:             operations@iohk.io
+homepage:               https://github.com/IntersectMBO/hermod-tracing
+bug-reports:            https://github.com/IntersectMBO/hermod-tracing/issues
+license:                Apache-2.0
+license-files:          LICENSE
+                        NOTICE
+extra-doc-files:        CHANGELOG.md
+                        README.md
+                        doc/hermod-tracing-core.md
+data-files:             doc/config.json
+
+common project-config
+  default-language:     Haskell2010
+
+  default-extensions:   LambdaCase
+                        NamedFieldPuns
+                        OverloadedStrings
+
+  ghc-options:          -Wall
+                        -Wcompat
+                        -Wincomplete-uni-patterns
+                        -Wincomplete-record-updates
+                        -Wpartial-fields
+                        -Widentities
+                        -Wredundant-constraints
+                        -Wmissing-export-lists
+
+  if impl(ghc >= 9.8)
+    ghc-options:        -Wno-x-partial
+
+
+library
+  import:             project-config
+  hs-source-dirs:     src
+  exposed-modules:    Hermod.Tracing
+                      Hermod.Tracing.Configuration
+                      Hermod.Tracing.ConfigurationParser
+                      Hermod.Tracing.Consistency
+                      Hermod.Tracing.DocuGenerator
+                      Hermod.Tracing.Formatter
+                      Hermod.Tracing.FrequencyLimiter
+                      Hermod.Tracing.HermodTracingMessage
+                      Hermod.Tracing.Trace.Annotations
+                      Hermod.Tracing.Tracer.DataPoint
+                      Hermod.Tracing.Tracer.EKG
+                      Hermod.Tracing.Tracer.Standard
+                      Hermod.Tracing.Tracer.Forward
+                      Hermod.Tracing.Tracer.Composed
+                      Hermod.Tracing.Types.TraceMessage
+                      Hermod.Tracing.Utils
+
+  other-modules:      Hermod.Tracing.Types.DocuGenerator
+
+  build-depends:        base >=4.12 && <5
+                      , hermod-tracing-api:internal
+                      , hermod-tracing-api:public
+                      , aeson >= 2.1.0.0
+                      , aeson-pretty
+                      , async
+                      , bytestring
+                      , cborg
+                      , cborg-json
+                      , containers
+                      , contra-tracer
+                      , deepseq
+                      , directory
+                      , ekg-core
+                      , filepath
+                      , hostname
+                      , network
+                      , serialise
+                      , stm
+                      , text
+                      , time
+                      , unagi-chan >= 0.4.1.4
+                      , unliftio
+                      , unliftio-core
+                      , unordered-containers
+                      , yaml
+
+  if os(windows)
+     build-depends:     Win32
+  else
+     build-depends:     unix
+
+
+test-suite hermod-tracing-core-test
+  import:               project-config
+  type:                 exitcode-stdio-1.0
+  hs-source-dirs:       test
+  main-is:              hermod-tracing-core-test.hs
+  other-modules:        Hermod.Tracing.Test.Types
+                        Hermod.Tracing.Test.Oracles
+                        Hermod.Tracing.Test.Config
+                        Hermod.Tracing.Test.Tracer
+                        Hermod.Tracing.Test.Script
+                        Hermod.Tracing.Test.Unit.TestObjects
+                        Hermod.Tracing.Test.Unit.Aggregation
+                        Hermod.Tracing.Test.Unit.Trivial
+                        Hermod.Tracing.Test.Unit.Routing
+                        Hermod.Tracing.Test.Unit.EKG
+                        Hermod.Tracing.Test.Unit.Configuration
+                        Hermod.Tracing.Test.Unit.ConfigFile
+                        Hermod.Tracing.Test.Unit.DataPoint
+                        Hermod.Tracing.Test.Unit.FrequencyLimiting
+                        Hermod.Tracing.Test.Unit.Documentation
+                        Paths_hermod_tracing_core
+
+  autogen-modules:      Paths_hermod_tracing_core
+
+  ghc-options:          -Wno-incomplete-patterns
+
+  build-depends:        base >=4.12 && <5
+                      , aeson
+                      , bytestring
+                      , containers
+                      , deepseq
+                      , ekg-core
+                      , generic-data
+                      , hostname
+                      , text
+                      , stm
+                      , tasty
+                      , tasty-hunit
+                      , tasty-quickcheck
+                      , time
+                      , hermod-tracing-core
+                      , unordered-containers
+                      , utf8-string
+                      , yaml
+                      , QuickCheck
+
+
+benchmark hermod-tracing-core-bench
+  import:               project-config
+  type:                 exitcode-stdio-1.0
+  hs-source-dirs:       bench, test
+  main-is:              hermod-tracing-core-bench.hs
+
+  other-modules:        Hermod.Tracing.Test.Types
+                        Hermod.Tracing.Test.Oracles
+                        Hermod.Tracing.Test.Config
+                        Hermod.Tracing.Test.Tracer
+                        Hermod.Tracing.Test.Script
+
+  ghc-options:          -Wno-incomplete-patterns
+
+  build-depends:        base >=4.12 && <5
+                      , aeson
+                      , containers
+                      , criterion
+                      , ekg-core
+                      , text
+                      , time
+                      , hermod-tracing-core
+                      , QuickCheck

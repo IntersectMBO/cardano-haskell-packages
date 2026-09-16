@@ -1,0 +1,89 @@
+cabal-version: 3.0
+
+name:                   hermod-tracing-api
+version:                1.0.0
+synopsis:               Thin API layer for the hermod-tracing-core tracing system
+description:            Core types (Trace, MetaTrace, LogFormatting) and combinators
+                        (traceWith, contramapM, foldTraceM, routingTrace) that form the
+                        stable API surface of the Hermod tracing system. Packages that
+                        implement or consume tracers can depend on this package without
+                        pulling in the full hermod-tracing-core implementation.
+                        .
+                        This package exposes two sublibraries. User-space packages should
+                        depend only on @hermod-tracing-api@ (the @public@ sublibrary).
+                        The @internal@ sublibrary is not a stable API — it may change
+                        between any two releases without a major version bump. Its
+                        @visibility: public@ declaration exists solely to allow
+                        @hermod-tracing-core@ (a separate Cabal package) to depend on it;
+                        this is an accepted Haskell ecosystem pattern (cf. @text:text-internal@).
+category:               System,
+                        Logging,
+                        Tracing,
+                        Metrics,
+copyright:              2020-2023 Input Output Global Inc (IOG), 2023-2026 Intersect.
+author:                 Juergen Nicklisch, Michael Karg, Ruslan Feizerakhmanov
+maintainer:             operations@iohk.io
+homepage:               https://github.com/IntersectMBO/hermod-tracing
+bug-reports:            https://github.com/IntersectMBO/hermod-tracing/issues
+license:                Apache-2.0
+license-files:          LICENSE
+                        NOTICE
+extra-doc-files:        CHANGELOG.md
+                        README.md
+
+common project-config
+  default-language:     Haskell2010
+
+  default-extensions:   LambdaCase
+                        NamedFieldPuns
+                        OverloadedStrings
+
+  ghc-options:          -Wall
+                        -Wcompat
+                        -Wincomplete-uni-patterns
+                        -Wincomplete-record-updates
+                        -Wpartial-fields
+                        -Widentities
+                        -Wredundant-constraints
+                        -Wmissing-export-lists
+
+  if impl(ghc >= 9.8)
+    ghc-options:        -Wno-x-partial
+
+
+-- Not a stable API. May change between any two releases without a major version bump.
+-- visibility: public exists solely so that hermod-tracing-core (a separate Cabal package)
+-- can depend on it. User-space packages shall depend on the public sublibrary only.
+library internal
+  import:             project-config
+  visibility:         public
+  hs-source-dirs:     src/internal
+  exposed-modules:    Hermod.Tracing.Trace
+                      Hermod.Tracing.Trace.Combinators
+                      Hermod.Tracing.Types
+                      Hermod.Tracing.Types.Annotations
+                      Hermod.Tracing.Types.Config
+                      Hermod.Tracing.Types.Doc
+
+  build-depends:        base >=4.12 && <5
+                      , aeson >= 2.1.0.0
+                      , containers
+                      , contra-tracer ^>= 0.2.1
+                      , deepseq
+                      , hostname
+                      , network
+                      , serialise
+                      , text
+                      , unliftio
+                      , unliftio-core
+
+library public
+  import:             project-config
+  visibility:         public
+  hs-source-dirs:     src/public
+  exposed-modules:    Hermod.Tracing.API
+
+  build-depends:        base >=4.12 && <5
+                      , hermod-tracing-api:internal
+                      , unliftio
+                      , unliftio-core

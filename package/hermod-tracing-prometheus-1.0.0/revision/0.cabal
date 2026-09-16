@@ -1,0 +1,65 @@
+cabal-version: 3.0
+
+name:                   hermod-tracing-prometheus
+version:                1.0.0
+synopsis:               Prometheus TCP server backend for hermod-tracing
+description:            Optional Prometheus exposition backend for the hermod-tracing
+                        system. Exposes a minimal HTTP/TCP server that serves current
+                        EKG metrics in the Prometheus text exposition format.
+category:               System,
+                        Logging,
+                        Tracing,
+                        Metrics,
+copyright:              2020-2023 Input Output Global Inc (IOG), 2023-2026 Intersect.
+author:                 Juergen Nicklisch, Michael Karg
+maintainer:             operations@iohk.io
+license:                Apache-2.0
+license-files:          LICENSE
+                        NOTICE
+extra-doc-files:        CHANGELOG.md
+                        README.md
+
+common project-config
+  default-language:     Haskell2010
+
+  default-extensions:   LambdaCase
+                        NamedFieldPuns
+                        OverloadedStrings
+
+  ghc-options:          -Wall
+                        -Wcompat
+                        -Wincomplete-uni-patterns
+                        -Wincomplete-record-updates
+                        -Wpartial-fields
+                        -Widentities
+                        -Wredundant-constraints
+                        -Wmissing-export-lists
+
+  if impl(ghc >= 9.8)
+    ghc-options:        -Wno-x-partial
+
+
+library
+  import:             project-config
+  hs-source-dirs:     src
+  exposed-modules:    Hermod.Tracing.Prometheus.Exposition
+                      Hermod.Tracing.Prometheus.NetworkRun
+                      Hermod.Tracing.Prometheus.TCPServer
+
+  build-depends:        base >=4.12 && <5
+                      , hermod-tracing-api:internal
+                      , hermod-tracing-core
+                      , aeson >= 2.1.0.0
+                      , async
+                      , bytestring
+                      , containers
+                      , contra-tracer
+                      , ekg-core
+                      , hashable
+                      , http-date
+                      , network
+                      , stm
+                      , text
+                      , time-manager
+                      , unix-compat
+                      , unordered-containers
