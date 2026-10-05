@@ -221,13 +221,6 @@
     extraConfig = compiler: let
       addPackageKeys = x: x // {package-keys = builtins.attrNames x.packages;};
     in {
-      # acts' manual finitary flag (default on) pulls in the ghc library (via
-      # finitary and ghc-typelits-*), which on GHC 9.6 conflicts with
-      # bytestring ^>=0.12.2 required by cardano-keys (a dependency of
-      # ouroboros-consensus >= 5). Needed for dmq-node >= 0.7.2.0.
-      cabalProjectLocal = ''
-        constraints: acts -finitary
-      '';
       modules = [
         (addPackageKeys {
           # Packages that depend on the plutus-tx plugin have broken haddock
