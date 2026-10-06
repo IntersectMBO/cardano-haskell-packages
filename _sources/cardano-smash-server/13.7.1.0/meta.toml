@@ -1,0 +1,3 @@
+timestamp = 2026-06-25T07:34:00Z
+github = { repo = "IntersectMBO/cardano-db-sync", rev = "ef00c76513947b356b81505ca3792b89322bd792" }
+subdir = 'cardano-smash-server'
