@@ -65,8 +65,8 @@ library
   other-modules:      Hermod.Tracing.Types.DocuGenerator
 
   build-depends:        base >=4.12 && <5
-                      , hermod-tracing-api:internal
-                      , hermod-tracing-api:public
+                      , hermod-tracing-api:internal < 1.1
+                      , hermod-tracing-api:public < 1.1
                       , aeson >= 2.1.0.0
                       , aeson-pretty
                       , async
