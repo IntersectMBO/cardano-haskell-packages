@@ -1,3 +1,7 @@
 timestamp = 2026-10-13T17:54:54Z
 github = { repo = "intersectmbo/cardano-base", rev = "579a3054597fd922686a7b72111df0beec54c2d8" }
 subdir = 'cardano-base'
+
+[[revisions]]
+number = 1
+timestamp = 2026-10-16T13:16:21Z
