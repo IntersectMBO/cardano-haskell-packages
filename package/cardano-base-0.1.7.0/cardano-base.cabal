@@ -67,7 +67,7 @@ library testlib
     Test.Cardano.Base.TreeDiff
 
   build-depends:
-    QuickCheck,
+    QuickCheck >= 2.18,
     bytestring,
     cardano-base,
     hspec,
