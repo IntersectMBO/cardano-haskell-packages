@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>
+    plutus-executables-1.72.0.0
+  </title>
+  <style>
+    ul.build-depends {
+      list-style: none;
+    }
+
+    ul.build-depends li {
+      display: inline;
+    }
+
+    ul.build-depends li:not(:last-child):after {
+      content: ",";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container px-4 py-5">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+      </li>
+    </ul>
+    <h1 class="py-5">
+      plutus-executables-1.72.0.0
+    </h1>
+    <dl class="row class=" px-4 py-5">
+      <dt class="col-sm-3">Synopsis</dt>
+      <dd class="col-sm-9">
+        <p>Tools for running plutus core programs</p>
+      </dd>
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">
+        <p>Command-line tools for working with Plutus Core programs: @uplc@ (evaluate,
+optimise, certify and convert Untyped Plutus Core, including CIP-57
+blueprints), @plc@ (typed Plutus Core) and @pir@ (Plutus IR), plus the
+@plutus@ multi-tool.</p>
+      </dd>
+      <dt class="col-sm-3">Author</dt>
+      <dd class="col-sm-9">
+        <p>Plutus Core Team</p>
+      </dd>
+      <dt class="col-sm-3">Maintainer</dt>
+      <dd class="col-sm-9">
+        <p>ana.pantilie@iohk.io</p>
+      </dd>
+      <dt class="col-sm-3">License</dt>
+      <dd class="col-sm-9">
+        <p>Apache-2.0</p>
+      </dd>
+      <dt class="col-sm-3">Source</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dd>
+          <a href="https://github.com/IntersectMBO/plutus/tree/152220ae3da8cd6ceaf2688094af541ac1245f58/plutus-executables">https://github.com/IntersectMBO/plutus</a>
+          </dd>
+          <dt>Commit hash</dt>
+          <dd>152220ae3da8cd6ceaf2688094af541ac1245f58</dd>
+          <dt>Subdir</dt>
+          <dd>plutus-executables</dt>
+        </dl>
+      </dd>
+      <dt class="col-sm-3">Timestamp</dt>
+      <dd class="col-sm-9">
+        <p>2026-10-17T08:57:03Z</p>
+      </dd>
+      <dt class="col-sm-3">Revisions</dt>
+      <dd class="col-sm-9">
+        <p>None</p>
+      </dd>
+      <dt class="col-sm-3">Dependencies</dt>
+      <dd class="col-sm-9">
+        <dl>
+          <dt>executable pir:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;bytestring&quot;,&quot;cassava&quot;,&quot;containers&quot;,&quot;lens&quot;,&quot;megaparsec&quot;,&quot;mtl&quot;,&quot;optparse-applicative&quot;,&quot;plutus-core ^&gt;=1.72&quot;,&quot;plutus-core:plutus-ir&quot;,&quot;plutus-ledger-api:plutus-execlib&quot;,&quot;text&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable plc:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;bytestring&quot;,&quot;mtl&quot;,&quot;optparse-applicative&quot;,&quot;plutus-core ^&gt;=1.72&quot;,&quot;plutus-core:flat&quot;,&quot;plutus-ledger-api:plutus-execlib&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable uplc:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;base16-bytestring&quot;,&quot;bytestring&quot;,&quot;criterion&quot;,&quot;deepseq&quot;,&quot;extra&quot;,&quot;filepath&quot;,&quot;haskeline&quot;,&quot;mtl&quot;,&quot;optparse-applicative&quot;,&quot;plutus-core ^&gt;=1.72&quot;,&quot;plutus-core:flat&quot;,&quot;plutus-ledger-api:plutus-execlib&quot;,&quot;plutus-metatheory ^&gt;=1.72&quot;,&quot;prettyprinter&quot;,&quot;serialise&quot;,&quot;split&quot;,&quot;text&quot;,&quot;time&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>executable plutus:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;aeson-pretty&quot;,&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;brick&quot;,&quot;bytestring&quot;,&quot;containers&quot;,&quot;exceptions&quot;,&quot;filepath&quot;,&quot;lens&quot;,&quot;megaparsec&quot;,&quot;microlens&quot;,&quot;microlens-th ^&gt;=0.4&quot;,&quot;mono-traversable&quot;,&quot;mtl&quot;,&quot;plutus-core ^&gt;=1.72&quot;,&quot;plutus-core:flat&quot;,&quot;plutus-core:plutus-ir&quot;,&quot;prettyprinter&quot;,&quot;primitive&quot;,&quot;serialise&quot;,&quot;singletons&quot;,&quot;singletons-th&quot;,&quot;text&quot;,&quot;text-zipper&quot;,&quot;vty ^&gt;=6.6&quot;,&quot;vty-crossplatform ^&gt;=0.5&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite test-simple:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;extra&quot;,&quot;plutus-metatheory ^&gt;=1.72&quot;,&quot;process&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite test-detailed:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;base16-bytestring ^&gt;=1.0&quot;,&quot;bytestring&quot;,&quot;directory&quot;,&quot;extra&quot;,&quot;filepath&quot;,&quot;plutus-core ^&gt;=1.72&quot;,&quot;plutus-metatheory ^&gt;=1.72&quot;,&quot;process&quot;,&quot;tasty&quot;,&quot;tasty-hunit&quot;,&quot;text&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite test-certifier:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;directory&quot;,&quot;filepath&quot;,&quot;plutus-core&quot;,&quot;plutus-ledger-api:plutus-execlib&quot;,&quot;plutus-metatheory&quot;,&quot;process&quot;,&quot;tasty&quot;,&quot;tasty-hunit&quot;,&quot;text&quot;,&quot;time&quot;]</li>
+</ul>
+
+          </dd>
+          <dt>test-suite test-cli:</dt>
+          <dd>
+            <ul class="build-depends">
+<li>[&quot;base &gt;=4.9 &amp;&amp; &lt;5&quot;,&quot;plutus-ledger-api:plutus-execlib&quot;,&quot;prettyprinter&quot;,&quot;process&quot;,&quot;tasty&quot;,&quot;tasty-hunit&quot;]</li>
+</ul>
+
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+  </div>
+</body>
+
+</html>

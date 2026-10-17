@@ -1,0 +1,275 @@
+cabal-version:   3.0
+name:            plutus-executables
+version:         1.72.0.0
+synopsis:        Tools for running plutus core programs
+description:
+  Command-line tools for working with Plutus Core programs: @uplc@ (evaluate,
+  optimise, certify and convert Untyped Plutus Core, including CIP-57
+  blueprints), @plc@ (typed Plutus Core) and @pir@ (Plutus IR), plus the
+  @plutus@ multi-tool.
+
+homepage:        https://github.com/IntersectMBO/plutus
+license:         Apache-2.0
+license-files:
+  LICENSE
+  NOTICE
+
+author:          Plutus Core Team
+maintainer:      ana.pantilie@iohk.io
+category:        Development
+build-type:      Simple
+extra-doc-files: CHANGELOG.md
+
+source-repository head
+  type:     git
+  location: https://github.com/IntersectMBO/plutus
+
+common lang
+  default-language:   Haskell2010
+  default-extensions:
+    BangPatterns
+    DeriveFoldable
+    DeriveFunctor
+    DeriveGeneric
+    DeriveLift
+    DeriveTraversable
+    DerivingStrategies
+    DerivingVia
+    ExistentialQuantification
+    ExplicitForAll
+    FlexibleContexts
+    GADTs
+    GeneralizedNewtypeDeriving
+    ImportQualifiedPost
+    LambdaCase
+    MultiParamTypeClasses
+    NamedFieldPuns
+    OverloadedStrings
+    ScopedTypeVariables
+    StandaloneDeriving
+    TypeApplications
+    TypeSynonymInstances
+
+  ghc-options:
+    -Wall -Wnoncanonical-monad-instances -Wincomplete-uni-patterns
+    -Wincomplete-record-updates -Wredundant-constraints -Widentities
+    -Wunused-packages -Wmissing-deriving-strategies
+
+  if impl(ghc >=9.8)
+    ghc-options: -Wno-x-partial
+
+common ghc-version-support
+  -- See the section on GHC versions in CONTRIBUTING
+  if (impl(ghc <9.6) || impl(ghc >=9.7))
+    buildable: False
+
+-- This means that we no longer support uplc/plc/pir on Windows
+common os-support
+  if (impl(ghcjs) || os(windows))
+    buildable: False
+
+executable pir
+  import:          lang
+  main-is:         pir/Main.hs
+  other-modules:   Paths_plutus_executables
+  autogen-modules: Paths_plutus_executables
+  hs-source-dirs:  executables
+  build-depends:
+    , base                              >=4.9   && <5
+    , bytestring
+    , cassava
+    , containers
+    , lens
+    , megaparsec
+    , mtl
+    , optparse-applicative
+    , plutus-core                       ^>=1.72
+    , plutus-core:plutus-ir
+    , plutus-ledger-api:plutus-execlib
+    , text
+
+executable plc
+  import:          lang
+  main-is:         plc/Main.hs
+  other-modules:   Paths_plutus_executables
+  autogen-modules: Paths_plutus_executables
+  hs-source-dirs:  executables
+  build-depends:
+    , base                              >=4.9   && <5
+    , bytestring
+    , mtl
+    , optparse-applicative
+    , plutus-core                       ^>=1.72
+    , plutus-core:flat
+    , plutus-ledger-api:plutus-execlib
+
+executable uplc
+  import:          lang, os-support, ghc-version-support
+  main-is:         uplc/Main.hs
+  other-modules:   Paths_plutus_executables
+  autogen-modules: Paths_plutus_executables
+  hs-source-dirs:  executables
+  build-depends:
+    , base                              >=4.9   && <5
+    , base16-bytestring
+    , bytestring
+    , criterion
+    , deepseq
+    , extra
+    , filepath
+    , haskeline
+    , mtl
+    , optparse-applicative
+    , plutus-core                       ^>=1.72
+    , plutus-core:flat
+    , plutus-ledger-api:plutus-execlib
+    , plutus-metatheory                 ^>=1.72
+    , prettyprinter
+    , serialise
+    , split
+    , text
+    , time
+
+executable plutus
+  import:             lang
+  main-is:            Main.hs
+  hs-source-dirs:     plutus
+
+  -- Hydra complains that this is not buildable on mingw32 because of brick.
+  -- Strange, because I thought vty added support for windows.
+  if os(windows)
+    buildable: False
+
+  other-modules:
+    AnyProgram.Apply
+    AnyProgram.Bench
+    AnyProgram.Compile
+    AnyProgram.Debug
+    AnyProgram.Example
+    AnyProgram.IO
+    AnyProgram.Parse
+    AnyProgram.Run
+    AnyProgram.With
+    Common
+    Debugger.TUI.Draw
+    Debugger.TUI.Event
+    Debugger.TUI.Main
+    Debugger.TUI.Types
+    GetOpt
+    Mode.Compile
+    Mode.HelpVersion
+    Mode.ListExamples
+    Mode.PrintBuiltins
+    Mode.PrintCostModel
+    Paths_plutus_executables
+    Types
+
+  autogen-modules:    Paths_plutus_executables
+  build-depends:
+    , aeson-pretty
+    , base                   >=4.9   && <5
+    , brick
+    , bytestring
+    , containers
+    , exceptions
+    , filepath
+    , lens
+    , megaparsec
+    , microlens
+    , microlens-th           ^>=0.4
+    , mono-traversable
+    , mtl
+    , plutus-core            ^>=1.72
+    , plutus-core:flat
+    , plutus-core:plutus-ir
+    , prettyprinter
+    , primitive
+    , serialise
+    , singletons
+    , singletons-th
+    , text
+    , text-zipper
+    , vty                    ^>=6.6
+    , vty-crossplatform      ^>=0.5
+
+  ghc-options:        -O2 -threaded -rtsopts -with-rtsopts=-N
+  default-extensions:
+    GADTs
+    TypeApplications
+
+test-suite test-simple
+  import:             lang, os-support, ghc-version-support
+  type:               exitcode-stdio-1.0
+  main-is:            Spec.hs
+  hs-source-dirs:     test/simple
+  build-depends:
+    , base               >=4.9   && <5
+    , extra
+    , plutus-metatheory  ^>=1.72
+    , process
+
+  build-tool-depends:
+    , plutus-executables:plc
+    , plutus-executables:uplc
+
+test-suite test-detailed
+  import:             lang, os-support, ghc-version-support
+  type:               exitcode-stdio-1.0
+  main-is:            Spec.hs
+  hs-source-dirs:     test/detailed
+  build-depends:
+    , base               >=4.9   && <5
+    , base16-bytestring  ^>=1.0
+    , bytestring
+    , directory
+    , extra
+    , filepath
+    , plutus-core        ^>=1.72
+    , plutus-metatheory  ^>=1.72
+    , process
+    , tasty
+    , tasty-hunit
+    , text
+
+  build-tool-depends:
+    , plutus-executables:plc
+    , plutus-executables:uplc
+
+test-suite test-certifier
+  import:             lang, os-support, ghc-version-support
+  type:               exitcode-stdio-1.0
+  main-is:            Spec.hs
+  hs-source-dirs:     test/certifier
+  other-modules:      Test.Certifier.Executable
+  build-depends:
+    , base                              >=4.9 && <5
+    , directory
+    , filepath
+    , plutus-core
+    , plutus-ledger-api:plutus-execlib
+    , plutus-metatheory
+    , process
+    , tasty
+    , tasty-hunit
+    , text
+    , time
+
+  build-tool-depends: plutus-executables:uplc
+
+test-suite test-cli
+  import:             lang, os-support, ghc-version-support
+  type:               exitcode-stdio-1.0
+  main-is:            Spec.hs
+  hs-source-dirs:     test/cli
+  build-depends:
+    , base                              >=4.9 && <5
+    , plutus-ledger-api:plutus-execlib
+    , prettyprinter
+    , process
+    , tasty
+    , tasty-hunit
+
+  build-tool-depends:
+    , plutus-executables:pir
+    , plutus-executables:plc
+    , plutus-executables:uplc
