@@ -134,7 +134,7 @@ library
     network-mux ^>=1,
     nothunks,
     optparse-applicative >=0.18 && <0.20,
-    ouroboros-consensus:{ouroboros-consensus, cardano, diffusion} ^>=5.2,
+    ouroboros-consensus:{ouroboros-consensus, cardano, diffusion} >=5.2 && <5.4,
     ouroboros-network:{ouroboros-network, api, framework, orphan-instances, protocols, tracing} ^>=2.0,
     psqueues,
     quiet,
