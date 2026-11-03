@@ -1,0 +1,3 @@
+timestamp = 2026-11-03T16:00:09Z
+github = { repo = "intersectmbo/hermod-tracing", rev = "e595ed44f194103e758cb0a5ac4b19506e4ecedc" }
+subdir = 'trace-dispatcher'
