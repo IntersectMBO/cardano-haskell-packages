@@ -40,7 +40,8 @@ jobs:
           git push -fu origin update-flake-inputs
           git fetch origin "$TARGET_BRANCH:refs/remotes/origin/$TARGET_BRANCH"
 
-          if EXISTING_PR=$(gh pr view update-flake-inputs --json number --jq .number)
+          EXISTING_PR=$(gh pr list --head update-flake-inputs --json number --jq '.[0].number // 0')
+          if [[ $EXISTING_PR -gt 0 ]]
           then
             gh pr edit "$EXISTING_PR" -b "$(git log -1 --format='%b')"
           else
