@@ -1,0 +1,3 @@
+timestamp = 2026-11-13T12:41:00Z
+github = { repo = "IntersectMBO/cardano-node", rev = "885ae5820eb6d461045381c6bfa20b1657627f1f" }
+subdir = 'bench/locli'
