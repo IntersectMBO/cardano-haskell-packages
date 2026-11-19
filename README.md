@@ -525,3 +525,4 @@ The advantage of adding constraints is that it tends to more directly reveal the
 The advantage of the revision is that it permanently records the incompatibility information, which is useful for future people.
 
 [`hackage.nix`]: https://github.com/input-output-hk/hackage.nix
+
